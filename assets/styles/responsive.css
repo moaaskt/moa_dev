@@ -1,0 +1,167 @@
+@media (max-width:920px) {
+    html {
+        /* a cada 1rem será considera 10px */
+        font-size: 50%;
+    }
+
+    .apresentacao {
+        padding: 0;
+        margin-top: 150px;
+        display: flex;
+        flex-direction: column;
+        width: 500px;
+    }
+
+    .computer-logo img {
+        margin-top: 50px;
+        width: 250px;
+    }
+
+    .person {
+        max-width: 800px;
+        text-align: justify;
+    }
+
+    .person img {
+        max-width: 100%;
+    }
+
+    .informacoes-pessoais {
+        margin: 0;
+    }
+
+    #initial div {
+        margin-left: 5%;
+    }
+
+    #projects {
+        padding: 100px 50px 150px 50px;
+    }
+
+    #projects>h3{
+        letter-spacing: 8px;
+    }
+    
+
+    .knowledge-container {
+        margin-top: 10%;
+    }
+
+    #knowledge>h3 {
+        text-align: center;
+        margin-bottom: 5%;
+    }
+
+    .saida-knowledge {
+        width: unset;
+        margin-left: 10px;
+        margin-right: 10px;
+        height: 120px;
+    }
+    
+    .titleContact {
+        position: absolute;
+        top: 10;
+        left: 10%;
+        font-size: 4.8rem;
+    }
+
+    .links-contact {
+        flex-direction: column;
+        left: 0;
+        align-items: center;
+        height: unset;
+        margin-top: 5% ;
+
+    }
+
+    .links-contact a {
+        margin-top: 15%;
+    }
+
+    .links-contact a+a {
+        margin-top: 5%;
+    }
+    .knowledge-container {
+        margin-top: 15%;
+    }
+}
+
+
+@media(max-width: 817px) {
+    .person img {
+        display: none;
+    }
+
+
+}
+
+@media (max-width: 641px) {
+    .knowledge-container {
+        gap: 20px;
+    }
+
+}
+
+@media (max-width: 524px) {
+    html {
+        font-size: 40%;
+    }
+
+    #initial div a {
+        padding: 10px 40px;
+    }
+
+    .informacoes-pessoais {
+        width: unset;
+    }
+
+    .card {
+        margin-top: 13%;
+    }
+
+    .knowledge-container {
+        padding: 0;
+        margin-bottom: 15px;
+        margin-top: 30%;
+    }
+
+    
+
+
+    @keyframes typing {
+        from {
+            width: 0;
+        }
+
+        to {
+            width: 250px;
+            transform: translate(-30px);
+            color: #4c93fb ;
+            ;
+        }
+    }
+}
+
+
+@media (max-width: 353px) {
+    .knowledge-type h3 {
+        font-size: 1.6rem;
+    }
+
+    footer {
+        height: 3vh;
+    }
+    .links-contacta {
+        margin-top: 15%;
+        width: 200px;
+    }
+    .titleContact, #knowledge>h3{
+        font-size: 28px;
+    }
+
+    .links-contact a {
+        max-width: 250px;
+    }
+
+}
