@@ -11,6 +11,7 @@ html {
 
 body {
     font-family: 'IBM Plex Sans', sans-serif;
+
 }
 
 ul {
@@ -28,8 +29,8 @@ header {
     display: flex;
     justify-content: center;
     padding: 20px 0;
-    color: #f0f0f0;
-    background-color: #000000;
+    color: #333333 ;
+    background-color: #f3f3f3;
     z-index: 99;
     align-items: center;
     border-bottom: .5px solid #F2F2F2;
@@ -47,7 +48,7 @@ nav {
 
 nav h1 {
     z-index: 10;
-    color: #4c93fb  ;
+    color: #007bff  ;
     font-size: 3.0rem;
     font-weight: 700;
     letter-spacing: 6px;
@@ -63,7 +64,7 @@ nav ul li {
 }
 
 ul li a {
-    color: #F2F2F2;
+    color: #007bff ;
     font-size: 2.2rem;
     height: 39px;
     display: flex;
@@ -83,7 +84,7 @@ ul li a::before {
 }
 
 ul li a:hover {
-    color: #f2f2f2c9;
+    color: #333333 ;
 }
 
 ul li a:hover::before {
@@ -92,15 +93,16 @@ ul li a:hover::before {
 
 .content {
     height: 90vh;
-    background-color: #F2F2F2;
+    background-color: #ffffff ;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
+
 #initial {
     height: 10vh;
-    background: #f2f2f2;
+    background: #ffffff ;
 }
 
 #initial div {
@@ -122,7 +124,7 @@ ul li a:hover::before {
 #initial div a:hover {
     color: #ffffff;
     background: rgba(79, 75, 71, .5);
-    border: 1px solid #34dde4;
+    border: 1px solid #007bff ;
 }
 
 #initial div a .fa-github {
@@ -141,6 +143,7 @@ ul li a:hover::before {
 }
 
 .apresentacao h1 {
+    color: #000000;
     width: fit-content;
     font-size: 5.0rem;
     opacity: 0;
@@ -148,6 +151,7 @@ ul li a:hover::before {
 }
 
 .apresentacao p {
+    color: #000000;
     font-size: 2.4rem;
     font-weight: 500;
 }
@@ -155,7 +159,7 @@ ul li a:hover::before {
 .typing {
     white-space: nowrap;
     overflow: hidden;
-    border-right: 2px solid #7080c0;
+    border-right: 2px solid #333333 ;
     width: 390px;
     font-size: 2.8rem;
     
@@ -163,7 +167,7 @@ ul li a:hover::before {
 
 .typing-animation {
     animation: typing 4s steps(45) 2s normal both, blinkCursor 750ms steps(45) 0.7s infinite normal;
-    color: #34dde4;
+    color: #007bff  ;
 }
 
 .computer-logo {
@@ -173,7 +177,7 @@ ul li a:hover::before {
 
 #information {
     height: 60vh;
-    background-color: #03030321;
+    background-color: #f8f9fa ;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -204,7 +208,7 @@ ul li a:hover::before {
 .informacoes-pessoais h3 {
     font-family: 'Poppins', sans-serif;
     font-size: 5.0rem;
-    color: #000000;
+    color: #212529 ;
     font-weight: 700;
     letter-spacing: 5px;
 }
@@ -216,19 +220,18 @@ ul li a:hover::before {
 }
 
 .informacoes-pessoais p span {
-    color: #000000;
+    color: #ff5722  ;
 }
 
 #projects {
     position: relative;
     height: fit-content;
-    background: rgb(0, 0, 0);
-    background: linear-gradient(126deg, rgba(0, 0, 0, 1) 0%, rgba(79, 75, 71, 1) 100%);
+    background-color: #f5f5f5 ;
     padding: 150px 0 250px 0;
 }
 
 #projects>h3{
-    color: #4c93fb;
+    color: #4caf50 ;
     font-size: 4.5rem;
     letter-spacing: 15px;
     font-family: 'Poppins', sans-serif;
@@ -249,7 +252,7 @@ ul li a:hover::before {
 
 .card {
     background: rgba(0, 0, 0, 0.1);
-    box-shadow: 0 4px 16px 0 #ffffff;
+    box-shadow: 0 4px 16px 0 #333333 ;
     backdrop-filter: blur(0px);
     -webkit-backdrop-filter: blur(0px);
     border-radius: 10px;
@@ -276,7 +279,7 @@ ul li a:hover::before {
 }
 
 .card:hover {
-    box-shadow: 0 0px 40px 0 #34dde4;
+    box-shadow: 0 0px 40px 0 #333333 ;
 
 }
 
@@ -289,6 +292,10 @@ ul li a:hover::before {
 
 .card a:hover {
     color: #f7cdac9a;
+}
+.card .links p {
+    color: #4caf50 ;
+
 }
 
 .links {
@@ -310,20 +317,20 @@ ul li a:hover::before {
 #knowledge>h3 {
     font-family: 'Poppins', sans-serif;
     font-weight: 800;
-    margin-top: 50px;
+    margin-top: 4px;
     font-size: 4.5rem;
     display: flex;
     justify-content: center;
     position: absolute;
     top: 0;
-    left: 10%;
-    color: #4c93fb;
+    left: 5%;
+    color: #d81b60 ;
     font-size: 4.5rem;
     
 }
 
 .dev-span{
-    color: #a07c7c;
+    color: #333333 ;
 }
 
 .knowledge-container {
@@ -349,7 +356,7 @@ ul li a:hover::before {
 
 .knowledge-type h3 {
     font-size: 2.2rem;
-    color: #4c93fb;
+    color: #212529 ;
     transition: all ease 0.5s;
 }
 
@@ -380,15 +387,16 @@ ul li a:hover::before {
     position: relative;
     justify-content: center;
     margin-top: 5%;
-    background-color: #a07c7c;
+    background-color: #e9ecef ;
     padding-top: 200px;
     padding-bottom: 50px;
 }
 
 .titleContact {
+    color: #212529 ;
     position: absolute;
-    top: 10;
-    left: 10%;
+    top: 27%;
+    left: 3%;
     font-size: 4.5rem;
     font-weight: 800;
     font-family: 'Poppins', sans-serif;
@@ -421,6 +429,7 @@ ul li a:hover::before {
 }
 
 .links-contact a span {
+    color: #ffc107 ;
     font-size: 1.6rem;
     font-weight: 700;
     letter-spacing: 2px;
@@ -440,7 +449,7 @@ ul li a:hover::before {
     align-items: center;
     padding-bottom: 1%;
     padding-top: 2%;
-    background-color: #a07c7c;
+    background-color: #ffffff;
 }
 
 .fa-angles-up {
@@ -563,3 +572,44 @@ footer .fa-github {
         transform: translatey(0px);
     }
 }
+.dark-mode-btn {
+    float: right;
+}
+
+.dark-mode-btn input[type="checkbox"] {
+    display: none;
+}
+
+.dark-mode-btn label {
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+    background-color: #ccc;
+    border-radius: 10px;
+    position: relative;
+    cursor: pointer;
+}
+
+.dark-mode-btn label:after {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: #fff;
+    top: 2px;
+    left: 2px;
+    transition: 0.3s;
+}
+
+.dark-mode-btn input[type="checkbox"]:checked + label {
+    background-color: #222;
+}
+
+.dark-mode-btn input[type="checkbox"]:checked + label:after {
+    transform: translateX(20px);
+}
+
+/* Estilos do modo escuro */
+
+
