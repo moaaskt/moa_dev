@@ -407,3 +407,18 @@ color: #4c93fb ;
         background-color: #000000; /* Cor de fundo do menu aberto no modo escuro */
     }
 }
+
+.dark-mode .checkbox-label {
+    background-color: rgb(7, 7, 7);
+    width: 50px;
+    height: 26px;
+    border-radius: 50px;
+    position: relative;
+    padding: 5px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .fa-moon {color: #f5f50b;}
