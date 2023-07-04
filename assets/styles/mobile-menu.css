@@ -53,12 +53,12 @@ ul.open {
         z-index: 1;
         display: flex;
         position: absolute;
-        gap: 50px;
+        gap: 43px;
         right: 0;
         width: 30vh;
         top: 0;
         flex-direction: column;
-        height: 100vh;
+        height: 50vh;
         padding: 100px 50px;
         background-color: #f3f3f3;
     }

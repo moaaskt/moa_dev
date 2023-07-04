@@ -108,7 +108,8 @@ ul li a:hover::before {
 }
 
 #initial div {
-    margin-left: 15%;
+    margin-top: 1px;
+    margin-left: 20%;
 }
 
 #initial div a {
@@ -124,9 +125,9 @@ ul li a:hover::before {
 }
 
 #initial div a:hover {
-    color: #ffffff;
-    background: rgba(79, 75, 71, .5);
-    border: 1px solid #007bff ;
+    color: #4c93fb;
+    /* background: rgba(110, 119, 133, 0.5); */
+    /* border: 1px solid #007bff ; */
 }
 
 #initial div a .fa-github {
@@ -274,9 +275,9 @@ ul li a:hover::before {
 }
 
 .card img {
-    max-height: 220px;
+    max-height: 210px;
  
-    max-width: 200px;
+    max-width: 240px;
     width: auto;
 }
 
@@ -352,10 +353,17 @@ ul li a:hover::before {
 }
 
 .knowledge-type:hover h3 {
-    color: #34dde4;
+    color: #d81b60;
 }
-
-
+.knowledge-type:hover{
+    color: #d81b60;
+}
+.knowledge-type img :hover{
+    color: #d81b60;
+}
+.knowledge-type img #imgs :hover{
+    color: #d81b60;
+}
 .knowledge-type h3 {
     font-size: 2.2rem;
     color: #212529 ;

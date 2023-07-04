@@ -108,7 +108,7 @@ color: #4c93fb ;
 }
 
 .dark-mode #initial div {
-    margin-left: 15%;
+    margin-left: 20%;
 }
 
 .dark-mode #initial div a {
@@ -116,10 +116,10 @@ color: #4c93fb ;
     font-weight: 700;
     letter-spacing: 3px;
     max-width: 315px;
-    color: #00ffff ;
-    padding: 10px 100px;
+    color: #ffffff ;
+    /* padding: 10px 100px; */
     transition: all ease 0.3s;
-    background: #ffffff ;
+    background: #007bff ;
     border: solid 1px transparent;
 }
 
@@ -300,7 +300,7 @@ color: #4c93fb ;
 }
 
 .dark-mode .knowledge-type:hover h3 {
-    color: #34dde4;
+    /* color: #34dde4; */
 }
 
 
@@ -392,19 +392,19 @@ color: #4c93fb ;
         z-index: 1;
         display: flex;
         position: absolute;
-        gap: 50px;
+        gap: 43px;
         right: 0;
         width: 30vh;
         top: 0;
         flex-direction: column;
-        height: 100vh;
+        height: 50vh;
         padding: 100px 50px;
-        background-color: #f3f3f3;
+        background-color: #f3f3f3d4;
     }
 
     /* Estilos para o modo escuro */
     .dark-mode .nav-list.on {
-        background-color: #000000; /* Cor de fundo do menu aberto no modo escuro */
+        background-color: #0000007a ; /* Cor de fundo do menu aberto no modo escuro */
     }
 }
 
