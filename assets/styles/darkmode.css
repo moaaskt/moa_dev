@@ -377,3 +377,33 @@ color: #4c93fb ;
     padding-top: 2%;
     background-color: #444444;
 }
+
+@media (max-width: 920px) {
+    .dark-mode .nav-list {
+        display: none;
+    }
+
+    .mobile-menu {
+        z-index: 1;
+        display: block;
+    }
+
+    .nav-list.on {
+        z-index: 1;
+        display: flex;
+        position: absolute;
+        gap: 50px;
+        right: 0;
+        width: 30vh;
+        top: 0;
+        flex-direction: column;
+        height: 100vh;
+        padding: 100px 50px;
+        background-color: #f3f3f3;
+    }
+
+    /* Estilos para o modo escuro */
+    .dark-mode .nav-list.on {
+        background-color: #000000; /* Cor de fundo do menu aberto no modo escuro */
+    }
+}
