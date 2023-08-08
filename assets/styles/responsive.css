@@ -4,6 +4,13 @@
         font-size: 50%;
     }
 
+    .fab{
+    
+        bottom: 20px;
+        right: auto;
+      }
+      
+
     .apresentacao {
         padding: 0;
         margin-top: 150px;
