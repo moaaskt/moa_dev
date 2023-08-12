@@ -338,11 +338,11 @@ ul li a:hover::before {
 
 .knowledge-container {
     max-width: 1120px;
-    padding: 60px 0;
+    padding: 50px 0;
     display: flex;
-    gap: 50px;
+    gap: 30px;
     flex-wrap: wrap;
-    margin-top: 5%;
+    margin-top: 8%;
 }
 
 .knowledge-type {
@@ -351,19 +351,22 @@ ul li a:hover::before {
     text-align: center;
     cursor: pointer;
 }
-
-.knowledge-type:hover h3 {
-    color: #d81b60;
+.knowledge-type img{
+    display: flex;
+    width: 80px;
+    margin-left: 22px;
+  
+    
 }
+
 .knowledge-type:hover{
     color: #d81b60;
 }
-.knowledge-type img :hover{
+.knowledge-type img:hover{
     color: #d81b60;
 }
-.knowledge-type img #imgs :hover{
-    color: #d81b60;
-}
+
+
 .knowledge-type h3 {
     font-size: 2.2rem;
     color: #212529 ;
