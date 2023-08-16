@@ -353,7 +353,7 @@ ul li a:hover::before {
 }
 .knowledge-type img{
     display: flex;
-    width: 80px;
+    width: 75px;
     margin-left: 22px;
   
     
@@ -676,10 +676,4 @@ footer .fa-github {
     transform: translateX(24px);
   }
   
-  .fab{
-    position: fixed;
-    bottom:40px;
-    left:20px;
-  }
   
- 
