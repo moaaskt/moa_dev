@@ -60,6 +60,6 @@ ul.open {
         flex-direction: column;
         height: 50vh;
         padding: 100px 50px;
-        background-color: #f3f3f3;
+        background: var(--nav-bg);
     }
 }

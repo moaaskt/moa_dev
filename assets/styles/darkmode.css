@@ -2,19 +2,10 @@ body.dark-mode {
     background-color: #292929; 
     color: rgb(8, 8, 8);
 }
-.dark-mode header {
-    position: fixed;
-    height: 10vh;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    padding: 20px 0;
-    color: #f0f0f0;
-    background-color: #222222;
-    z-index: 99;
-    align-items: center;
-    border-bottom: .5px solid #F2F2F2;
-    box-shadow: 2px 2px 2px 3px rgba(0, 0, 0, 0.2);
+.dark-mode header{
+    background: transparent;
+    box-shadow: none;
+    border-bottom: none;
 }
 
 .dark-mode .content {
@@ -399,12 +390,12 @@ color: #4c93fb ;
         flex-direction: column;
         height: 50vh;
         padding: 100px 50px;
-        background-color: #f3f3f3d4;
+        background: var(--nav-bg);
     }
 
     /* Estilos para o modo escuro */
     .dark-mode .nav-list.on {
-        background-color: #0000007a ; /* Cor de fundo do menu aberto no modo escuro */
+        background: var(--nav-bg);
     }
 }
 
