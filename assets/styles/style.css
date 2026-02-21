@@ -55,7 +55,7 @@ nav {
 
 nav h1 {
     z-index: 10;
-    color: #007bff  ;
+    color: var(--brand-primary);
     font-size: 3.0rem;
     font-weight: 700;
     letter-spacing: 6px;
@@ -185,7 +185,7 @@ ul li a:hover::before {
 
 #information {
     height: 60vh;
-    background-color: #f8f9fa ;
+    background-color: var(--section-1);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -228,13 +228,13 @@ ul li a:hover::before {
 }
 
 .informacoes-pessoais p span {
-    color: #ff5722  ;
+    color: var(--brand-warning);
 }
 
 #projects {
     position: relative;
     height: fit-content;
-    background-color: #f5f5f5 ;
+    background-color: var(--section-2);
     padding: 150px 0 250px 0;
 }
 
@@ -262,7 +262,7 @@ ul li a:hover::before {
     background: var(--surface);
     color: var(--text);
     border: 1px solid var(--border);
-    box-shadow: 0 4px 16px 0 #333333 ;
+    box-shadow: var(--shadow-soft);
     backdrop-filter: blur(0px);
     -webkit-backdrop-filter: blur(0px);
     border-radius: 10px;
@@ -288,7 +288,7 @@ ul li a:hover::before {
 }
 
 .card:hover {
-    box-shadow: 0 0px 40px 0 #333333 ;
+    box-shadow: var(--shadow-strong);
 
 }
 
@@ -303,7 +303,7 @@ ul li a:hover::before {
     color: #f7cdac9a;
 }
 .card .links p {
-    color: #4caf50 ;
+    color: var(--brand-success);
 
 }
 
@@ -333,13 +333,13 @@ ul li a:hover::before {
     position: absolute;
     top: 0;
     left: 5%;
-    color: #d81b60 ;
+    color: var(--brand-tertiary);
     font-size: 4.5rem;
     
 }
 
 .dev-span{
-    color: #333333 ;
+    color: var(--logo-color);
 }
 
 
@@ -407,13 +407,13 @@ ul li a:hover::before {
     position: relative;
     justify-content: center;
     margin-top: 5%;
-    background-color: #e9ecef ;
+    background-color: var(--section-3);
     padding-top: 200px;
     padding-bottom: 50px;
 }
 
 .titleContact {
-    color: #212529 ;
+    color: var(--title-color);
     position: absolute;
     top: 27%;
     left: 3%;
@@ -486,7 +486,7 @@ ul li a:hover::before {
 
 footer {
     height: 7vh;
-    background-color: #000000;
+    background-color: var(--footer-bg);
     padding: 10px;
     box-shadow: 10px 10px 5px 10px rgba(0, 0, 0, 0.50);
     display: flex;
@@ -669,7 +669,7 @@ footer .fa-github {
   .fa-sun {color: #f39c12;}
   
   .checkbox-label .ball {
-    background-color: #007bff;
+    background-color: var(--brand-primary);
     width: 22px;
     height: 22px;
     position: absolute;
