@@ -16,6 +16,7 @@
         href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&family=Poppins:wght@700&display=swap"
         rel="stylesheet">
        
+    <link rel="stylesheet" href="assets/styles/theme.css">
     <link rel="stylesheet" href="assets/styles/style.css">
     <link rel="stylesheet" href="assets/styles/mobile-menu.css">
     <link rel="stylesheet" href="assets/styles/responsive.css">
@@ -39,18 +40,18 @@
             <div class="fab"  >
         
                 <input type="checkbox" class="checkbox" id="dark-mode-toggle">
-                <label title="Dark-Mode"  for="dark-mode-toggle" class="checkbox-label">
+                <label aria-label="Alternar modo escuro" title="Dark-Mode" for="dark-mode-toggle" class="checkbox-label">
                   <i class="fas fa-moon"></i>
                   <i class="fas fa-sun"></i>
                   <span class="ball"></span>
                 </label>
               </div>
           
-            <div class="mobile-menu">
+            <button class="mobile-menu" aria-label="Abrir menu">
                 <div class="one"></div>
                 <div class="two"></div>
                 <div class="three"></div>
-            </div>
+            </button>
             
         </nav>
     </header>
@@ -208,6 +209,7 @@
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="assets/javascript/scroll-reveal.js"></script>
     <script src="assets/javascript/darkModeToggle.js"></script>
+    <script src="assets/javascript/theme-persistence.js"></script>
 </body>
 
 </html>
