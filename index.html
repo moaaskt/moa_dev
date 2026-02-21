@@ -16,6 +16,7 @@
         href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&family=Poppins:wght@700&display=swap"
         rel="stylesheet">
        
+    <link rel="stylesheet" href="assets/styles/settings.css">
     <link rel="stylesheet" href="assets/styles/theme.css">
     <link rel="stylesheet" href="assets/styles/style.css">
     <link rel="stylesheet" href="assets/styles/mobile-menu.css">
@@ -202,6 +203,30 @@
     </footer>
 
 
+    <div id="settings-root">
+        <button id="settings-toggle" aria-label="Abrir configurações">⚙</button>
+
+        <aside id="settings-panel" aria-hidden="true">
+            <header class="settings-header">
+                <h2>Configurações</h2>
+                <button id="settings-close" aria-label="Fechar configurações">✕</button>
+            </header>
+
+            <div class="settings-content">
+                <section class="settings-group">
+                    <h3>Tema</h3>
+                    <button data-theme="light">Claro</button>
+                    <button data-theme="dark">Escuro</button>
+                </section>
+
+                <section class="settings-group">
+                    <h3>Accent</h3>
+                    <input type="color" id="accent-picker">
+                </section>
+            </div>
+        </aside>
+    </div>
+
     <script src="assets/javascript/mobile-navbar.js"></script>
     <script src="assets/javascript/knowledge-over.js"></script>
     <script src="assets/javascript/back-top.js"></script>
@@ -210,6 +235,7 @@
     <script src="assets/javascript/scroll-reveal.js"></script>
     <script src="assets/javascript/darkModeToggle.js"></script>
     <script src="assets/javascript/theme-persistence.js"></script>
+    <script src="assets/javascript/settings.js"></script>
 </body>
 
 </html>

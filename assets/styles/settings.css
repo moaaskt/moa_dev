@@ -1,0 +1,33 @@
+#settings-toggle{
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 200;
+}
+
+#settings-panel{
+    position: fixed;
+    top: 0;
+    right: -320px;
+    width: 320px;
+    height: 100vh;
+    background: var(--surface);
+    border-left: 1px solid var(--border);
+    transition: right .25s ease;
+    z-index: 199;
+}
+
+#settings-panel.open{
+    right: 0;
+}
+
+.settings-header{
+    display: flex;
+    justify-content: space-between;
+    padding: 16px;
+    border-bottom: 1px solid var(--border);
+}
+
+.settings-content{
+    padding: 16px;
+}
