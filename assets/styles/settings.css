@@ -3,6 +3,8 @@
     right: 20px;
     bottom: 20px;
     z-index: 200;
+    min-width: 44px;
+    min-height: 44px;
 }
 
 #settings-panel{
@@ -71,4 +73,29 @@
     color: var(--text);
     border: 1px solid var(--border);
     border-radius: 4px;
+}
+
+#settings-panel label{
+    display: block;
+    font-size: 1.2rem;
+    color: var(--text);
+    margin-bottom: 4px;
+}
+
+#settings-panel input[type="color"]{
+    width: 100%;
+    min-height: 44px;
+    cursor: pointer;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background: var(--bg);
+    margin-bottom: 10px;
+}
+
+#settings-panel small{
+    display: block;
+    opacity: .75;
+    margin-top: 6px;
+    font-size: 1.1rem;
+    color: var(--text);
 }
