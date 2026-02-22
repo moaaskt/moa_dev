@@ -1,18 +1,35 @@
 (function(){
-  const panel    = document.getElementById('settings-panel');
-  const openBtn  = document.getElementById('settings-toggle');
+  const panel   = document.getElementById('settings-panel');
+  const openBtn = document.getElementById('settings-toggle');
   const closeBtn = document.getElementById('settings-close');
+  const overlay = document.getElementById('settings-overlay');
 
-  openBtn.addEventListener('click', ()=>{
+  function openPanel() {
     panel.classList.add('open');
     panel.setAttribute('aria-hidden', 'false');
     openBtn.setAttribute('aria-expanded', 'true');
-  });
+    if (overlay) overlay.hidden = false;
+    document.body.style.overflow = 'hidden';
+    if (closeBtn) closeBtn.focus();
+  }
 
-  closeBtn.addEventListener('click', ()=>{
+  function closePanel() {
     panel.classList.remove('open');
     panel.setAttribute('aria-hidden', 'true');
     openBtn.setAttribute('aria-expanded', 'false');
+    if (overlay) overlay.hidden = true;
+    document.body.style.overflow = '';
+    if (openBtn) openBtn.focus();
+  }
+
+  openBtn.addEventListener('click', openPanel);
+  closeBtn.addEventListener('click', closePanel);
+  if (overlay) overlay.addEventListener('click', closePanel);
+
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && panel.classList.contains('open')) {
+      closePanel();
+    }
   });
 
   // --- helpers ---

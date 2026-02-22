@@ -102,7 +102,10 @@
 
 @media(max-width: 817px) {
     .person img {
-        display: none;
+        display: block;
+        width: 220px;
+        height: 220px;
+        margin: 0 auto 20px;
     }
 
 

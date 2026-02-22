@@ -40,8 +40,17 @@
     box-shadow: none;
 }
 
+#settings-overlay{
+    position: fixed;
+    inset: 0;
+    z-index: 198;
+    background: rgba(0,0,0,.35);
+}
+
 .settings-content{
     padding: 16px;
+    overflow-y: auto;
+    max-height: calc(100vh - 70px);
 }
 
 /* Override: font-size herdado do html { font-size: 62.5% } torna textos micro */

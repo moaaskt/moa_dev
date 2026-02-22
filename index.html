@@ -82,25 +82,13 @@
             </div>
         </div>
     </section>
-    <section id="tech-marquee" aria-label="Tecnologias que uso">
-        <div class="marquee" role="presentation">
-            <div class="marquee__track">
-                <span>PHP</span><span>CodeIgniter</span><span>MySQL</span><span>React</span><span>TypeScript</span>
-                <span>Python</span><span>APIs</span><span>Docker</span><span>Git</span><span>Bootstrap</span>
-            </div>
-            <div class="marquee__track" aria-hidden="true">
-                <span>PHP</span><span>CodeIgniter</span><span>MySQL</span><span>React</span><span>TypeScript</span>
-                <span>Python</span><span>APIs</span><span>Docker</span><span>Git</span><span>Bootstrap</span>
-            </div>
-        </div>
-    </section>
     <div id="initial">
         <div><a href="https://github.com/moaaskt" title="Acesse projetos" target="_blank"><i class="fa-brands fa-github"></i>GitHub</a>
         </div>
     </div>
     <section id="information">
         <div class="person">
-            <div><img id="img2" src="assets/imgs/IMG_0152_Original.jpg" alt="" width=""></div>
+            <div><img id="img2" src="assets/imgs/IMG_0152_Original.jpg" alt="Foto de Moacir"></div>
             <div class="informacoes-pessoais">
                 <h3>...</h3>
                 <p><span>Técnico em Desenvolvimento de Sistemas</span>, minha trajetória sempre foi pautada por desafios e aprendizado contínuo. Atuando como freelancer, mergulhei de cabeça na área de desenvolvimento, onde encontrei minha verdadeira paixão. Meus projetos no GitHub são um reflexo das habilidades que adquiri, e minha facilidade em aprender diferentes <span>linguagens de programação</span> me permite abraçar novas tecnologias de forma ágil.</p>
@@ -153,10 +141,11 @@
         </div>
     </section>
     <section id="knowledge">
-        <h3 class="h3-skila">Skills:</h3>
+        <!-- <h3 class="h3-skila">Skills:</h3> -->
 
-        
-        <div class="knowledge-container">
+        <div class="skills-marquee" aria-label="Tecnologias e ferramentas">
+            <div class="skills-marquee__viewport" role="presentation">
+                <div class="knowledge-container skills-marquee__track">
             <div class="knowledge-type">
                 <i class="fa-brands fa-node"></i>
                 <h3>Node JS</h3>
@@ -198,6 +187,8 @@
                 <i class="fa-solid fa-database"></i>
                 <h3>PostgreSQL</h3>
             </div>
+                </div>
+            </div>
         </div>
        
     </section>
@@ -226,11 +217,12 @@
 
 
     <div id="settings-root">
-        <button id="settings-toggle" aria-label="Abrir configurações">⚙</button>
+        <button id="settings-toggle" aria-label="Abrir configurações" aria-controls="settings-panel" aria-expanded="false">⚙</button>
 
-        <aside id="settings-panel" aria-hidden="true">
+        <div id="settings-overlay" hidden></div>
+        <aside id="settings-panel" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="settings-title">
             <header class="settings-header">
-                <h2>Configurações</h2>
+                <h2 id="settings-title">Configurações</h2>
                 <button id="settings-close" aria-label="Fechar configurações">✕</button>
             </header>
 
