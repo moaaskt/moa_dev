@@ -23,8 +23,18 @@
     <link rel="stylesheet" href="assets/styles/responsive.css">
     <link rel="stylesheet" href="assets/styles/darkmodeResponsive.css">
     <link rel="stylesheet" href="assets/styles/darkmode.css">
-    
-    
+    <script>
+(function(){
+  try{
+    var saved = localStorage.getItem('moa-theme');
+    if(saved === 'dark'){
+      document.documentElement.classList.add('dark-mode');
+    }
+  }catch(e){}
+})();
+</script>
+
+
 </head>
 
 <body>
@@ -233,7 +243,6 @@
     <script src="assets/javascript/soft-scroll.js"></script>
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="assets/javascript/scroll-reveal.js"></script>
-    <script src="assets/javascript/darkModeToggle.js"></script>
     <script src="assets/javascript/theme-persistence.js"></script>
     <script src="assets/javascript/settings.js"></script>
 </body>

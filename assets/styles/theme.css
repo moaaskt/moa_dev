@@ -53,3 +53,26 @@ body.dark-mode{
   --shadow-soft: 0 4px 16px rgba(255,255,255,.08);
   --shadow-strong: 0 0 40px #34dde4;
 }
+
+html.dark-mode{
+  --bg: #121212;
+  --text: #e6e6e6;
+  --surface: #1c1c1c;
+  --border: rgba(255,255,255,.12);
+
+  --accent: #4c93fb;
+  --accent-2: #7ab0ff;
+
+  --nav-bg: rgba(20,20,20,.8);
+
+  --section-1: #2c3e50;
+  --section-2: #222222;
+  --section-3: #444444;
+  --footer-bg: #000000;
+
+  --title-color: #e6e6e6;
+  --logo-color: #f0f0f0;
+
+  --shadow-soft: 0 4px 16px rgba(255,255,255,.08);
+  --shadow-strong: 0 0 40px #34dde4;
+}
