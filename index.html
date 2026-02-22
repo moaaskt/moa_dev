@@ -82,6 +82,18 @@
             </div>
         </div>
     </section>
+    <section id="tech-marquee" aria-label="Tecnologias que uso">
+        <div class="marquee" role="presentation">
+            <div class="marquee__track">
+                <span>PHP</span><span>CodeIgniter</span><span>MySQL</span><span>React</span><span>TypeScript</span>
+                <span>Python</span><span>APIs</span><span>Docker</span><span>Git</span><span>Bootstrap</span>
+            </div>
+            <div class="marquee__track" aria-hidden="true">
+                <span>PHP</span><span>CodeIgniter</span><span>MySQL</span><span>React</span><span>TypeScript</span>
+                <span>Python</span><span>APIs</span><span>Docker</span><span>Git</span><span>Bootstrap</span>
+            </div>
+        </div>
+    </section>
     <div id="initial">
         <div><a href="https://github.com/moaaskt" title="Acesse projetos" target="_blank"><i class="fa-brands fa-github"></i>GitHub</a>
         </div>
@@ -230,6 +242,14 @@
                 </section>
 
                 <section class="settings-group">
+                    <h3>Presets</h3>
+                    <button type="button" data-preset="default">Padrão</button>
+                    <button type="button" data-preset="ocean">Ocean</button>
+                    <button type="button" data-preset="purple">Purple</button>
+                    <button type="button" data-preset="matrix">Matrix</button>
+                </section>
+
+                <section class="settings-group">
                     <h3>Accent</h3>
                     <label for="accent-picker">Principal</label>
                     <input type="color" id="accent-picker">
@@ -241,7 +261,14 @@
                     <h3>Navbar</h3>
                     <label for="navbg-picker">Cor</label>
                     <input type="color" id="navbg-picker">
-                    <small>Obs: aplica com transparência padrão</small>
+                    <label for="navalpha-range">Transparência</label>
+                    <input type="range" id="navalpha-range" min="0.30" max="0.95" step="0.05">
+                    <small>Alpha atual: <span id="navalpha-value"></span></small>
+                </section>
+
+                <section class="settings-group">
+                    <h3>Reset</h3>
+                    <button type="button" id="settings-reset">Restaurar padrão</button>
                 </section>
             </div>
         </aside>

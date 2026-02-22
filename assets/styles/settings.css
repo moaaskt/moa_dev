@@ -99,3 +99,19 @@
     font-size: 1.1rem;
     color: var(--text);
 }
+
+#settings-panel button{
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+#settings-panel input[type="range"]{
+    width: 100%;
+    min-height: 44px;
+}
+
+#settings-panel .settings-group:last-child button{
+    background: var(--accent);
+    color: var(--bg);
+    border-color: transparent;
+}
