@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 
@@ -9,7 +9,6 @@ function GithubIcon({ size = 16 }) {
     </svg>
   );
 }
-import { useVanta } from '../../hooks/useVanta';
 
 const TYPING_TEXT = 'Full Stack Developer';
 
@@ -41,21 +40,43 @@ const fadeUp = (delay = 0) => ({
 });
 
 export default function Hero() {
-  const vantaRef = useVanta('DOTS', {
-    mouseControls: true,
-    touchControls: true,
-    gyroControls: false,
-    minHeight: 200,
-    minWidth: 200,
-    scale: 1.0,
-    scaleMobile: 1.0,
-    color: 0xb8f73c,
-    color2: 0x888888,
-    backgroundColor: 0x080808,
-    size: 2.5,
-    spacing: 35.0,
-    showLines: false,
-  });
+  const vantaRef = useRef(null);
+
+  useEffect(() => {
+    let effect = null;
+    let cancelled = false;
+    let timer = null;
+
+    const init = () => {
+      if (cancelled) return;
+      if (window.VANTA && window.THREE && vantaRef.current) {
+        try {
+          effect = window.VANTA.DOTS({
+            el: vantaRef.current,
+            mouseControls: true,
+            touchControls: false,
+            backgroundColor: 0x080808,
+            color: 0xb8f73c,
+            color2: 0x444444,
+            size: 3.0,
+            spacing: 30.0,
+            showLines: false,
+          });
+        } catch (e) {
+          console.warn('Vanta DOTS unavailable (WebGL not supported):', e.message);
+        }
+      } else {
+        timer = setTimeout(init, 200);
+      }
+    };
+
+    init();
+    return () => {
+      cancelled = true;
+      clearTimeout(timer);
+      if (effect) effect.destroy();
+    };
+  }, []);
 
   const { displayed, done } = useTypingCursor(TYPING_TEXT, 70);
 
