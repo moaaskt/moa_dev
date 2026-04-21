@@ -1,9 +1,13 @@
+import guiadocachorro from '../assets/images/projects/guiadocachorro.jpeg';
+import petflix from '../assets/images/projects/petflix.png';
+import chatjovemprogramador from '../assets/images/projects/chatjovem.png';
+
 export const projects = [
   {
     id: 'guiadocachorro',
     title: 'Guia do Cachorro',
     description: 'Portal completo de lifestyle e bem-estar canino. Frontend moderno com Next.js 16, Tailwind v4 e banco de dados Supabase.',
-    image: null,
+    image: guiadocachorro,
     tags: ['Next.js', 'TypeScript', 'Tailwind', 'Supabase'],
     category: 'fullstack',
     featured: true,
@@ -31,7 +35,7 @@ export const projects = [
     id: 'petflix',
     title: 'Petflix',
     description: 'Streaming de vídeos para pets com autenticação Firebase e integração com YouTube Data API.',
-    image: null,
+    image: petflix,
     tags: ['JavaScript', 'Firebase', 'YouTube API', 'CSS'],
     category: 'frontend',
     featured: false,
@@ -45,7 +49,7 @@ export const projects = [
     id: 'chatbot-gemini',
     title: 'ChatBot Jovem Programador',
     description: 'Chatbot especialista construído com Python e IA Generativa (Google Gemini) para tirar dúvidas sobre o programa Jovem Programador.',
-    image: null,
+    image: chatjovemprogramador,
     tags: ['Python', 'Google Gemini', 'IA Generativa', 'NLP'],
     category: 'ai',
     featured: false,

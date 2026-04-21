@@ -43,38 +43,46 @@ export default function Hero() {
   const vantaRef = useRef(null);
 
   useEffect(() => {
-    let effect = null;
-    let cancelled = false;
-    let timer = null;
+    const canvas = vantaRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
 
-    const init = () => {
-      if (cancelled) return;
-      if (window.VANTA && window.THREE && vantaRef.current) {
-        try {
-          effect = window.VANTA.DOTS({
-            el: vantaRef.current,
-            mouseControls: true,
-            touchControls: false,
-            backgroundColor: 0x080808,
-            color: 0xb8f73c,
-            color2: 0x444444,
-            size: 3.0,
-            spacing: 30.0,
-            showLines: false,
-          });
-        } catch (e) {
-          console.warn('Vanta DOTS unavailable (WebGL not supported):', e.message);
-        }
-      } else {
-        timer = setTimeout(init, 200);
-      }
+    const resize = () => {
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
     };
+    resize();
+    window.addEventListener('resize', resize);
 
-    init();
+    const particles = Array.from({ length: 120 }, () => ({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      r: Math.random() * 2 + 1,
+      dx: (Math.random() - 0.5) * 0.4,
+      dy: (Math.random() - 0.5) * 0.4,
+      opacity: Math.random() * 0.6 + 0.2,
+    }));
+
+    let animId;
+    const draw = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(p => {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(184, 247, 60, ${p.opacity})`;
+        ctx.fill();
+        p.x += p.dx;
+        p.y += p.dy;
+        if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+      });
+      animId = requestAnimationFrame(draw);
+    };
+    draw();
+
     return () => {
-      cancelled = true;
-      clearTimeout(timer);
-      if (effect) effect.destroy();
+      cancelAnimationFrame(animId);
+      window.removeEventListener('resize', resize);
     };
   }, []);
 
@@ -96,16 +104,10 @@ export default function Hero() {
         overflow: 'hidden',
       }}
     >
-      {/* Vanta background layer */}
-      <div
+      {/* Particle background layer */}
+      <canvas
         ref={vantaRef}
-        style={{
-          position: 'absolute',
-          inset: 0,
-          width: '100%',
-          height: '100%',
-          zIndex: 0,
-        }}
+        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', zIndex: 0 }}
       />
 
       {/* Content */}
