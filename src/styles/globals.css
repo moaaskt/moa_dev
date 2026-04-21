@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+:root {
+  /* Fundos */
+  --bg-primary: #080808;
+  --bg-secondary: #0f0f0f;
+  --bg-elevated: #161616;
+
+  /* Accent — Verde limão elétrico */
+  --accent: #b8f73c;
+  --accent-dim: #8ab82a;
+  --accent-glow: rgba(184, 247, 60, 0.15);
+
+  /* Texto */
+  --text-primary: #f0f0f0;
+  --text-secondary: #888888;
+  --text-muted: #444444;
+
+  /* Bordas */
+  --border: rgba(255, 255, 255, 0.06);
+  --border-accent: rgba(184, 247, 60, 0.3);
+
+  /* Tipografia */
+  --text-xs:   0.75rem;
+  --text-sm:   0.875rem;
+  --text-base: 1rem;
+  --text-lg:   1.25rem;
+  --text-xl:   1.75rem;
+  --text-2xl:  2.5rem;
+  --text-3xl:  4rem;
+  --text-4xl:  6rem;
+
+  /* Layout */
+  --max-width: 1200px;
+  --padding-x: clamp(1.5rem, 5vw, 4rem);
+  --section-padding: clamp(80px, 12vw, 160px) 0;
+  --grid-gap: 1.5rem;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background-color: var(--accent);
+  color: var(--bg-primary);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
