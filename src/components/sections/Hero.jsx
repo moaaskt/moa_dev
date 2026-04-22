@@ -48,15 +48,14 @@ export default function Hero() {
     const ctx = canvas.getContext('2d');
 
     const resize = () => {
-      canvas.width = canvas.offsetWidth;
-      canvas.height = canvas.offsetHeight;
+      canvas.width = canvas.offsetWidth || window.innerWidth;
+      canvas.height = canvas.offsetHeight || window.innerHeight;
     };
-    resize();
     window.addEventListener('resize', resize);
 
     const particles = Array.from({ length: 120 }, () => ({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
+      x: Math.random() * window.innerWidth,
+      y: Math.random() * window.innerHeight,
       r: Math.random() * 2 + 1,
       dx: (Math.random() - 0.5) * 0.4,
       dy: (Math.random() - 0.5) * 0.4,
@@ -78,9 +77,14 @@ export default function Hero() {
       });
       animId = requestAnimationFrame(draw);
     };
-    draw();
+
+    const timeoutId = setTimeout(() => {
+      resize();
+      draw();
+    }, 100);
 
     return () => {
+      clearTimeout(timeoutId);
       cancelAnimationFrame(animId);
       window.removeEventListener('resize', resize);
     };
@@ -107,7 +111,7 @@ export default function Hero() {
       {/* Particle background layer */}
       <canvas
         ref={vantaRef}
-        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', zIndex: 0 }}
+        style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', display: 'block', zIndex: 0 }}
       />
 
       {/* Content */}
@@ -187,7 +191,7 @@ export default function Hero() {
           }}
         >
           Desenvolvendo soluções web com React, Node.js, PHP e Python.
-          Baseado em Palhoça, SC.
+      
         </motion.p>
 
         {/* Buttons */}
@@ -295,9 +299,6 @@ export default function Hero() {
         @keyframes scrollBounce {
           0%, 100% { transform: translateX(-50%) translateY(0); }
           50% { transform: translateX(-50%) translateY(6px); }
-        }
-        @media (max-width: 479px) {
-          #hero canvas { display: none !important; }
         }
       `}</style>
     </section>

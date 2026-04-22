@@ -13,23 +13,9 @@ export const projects = [
     featured: true,
     links: {
       github: 'https://github.com/moaaskt/guiadocachorro',
-      live: null,
+      live: 'https://guiadocachorro.vercel.app/',
     },
     year: 2025,
-  },
-  {
-    id: 'loja-virtual',
-    title: 'Loja Virtual',
-    description: 'E-commerce completo com painel administrativo, carrinho de compras, checkout e área do cliente. Desenvolvido com PHP e CodeIgniter 4.',
-    image: null,
-    tags: ['PHP', 'CodeIgniter 4', 'MySQL', 'Bootstrap'],
-    category: 'fullstack',
-    featured: true,
-    links: {
-      github: 'https://github.com/moaaskt/loja-virtual-codeigniter',
-      live: null,
-    },
-    year: 2024,
   },
   {
     id: 'petflix',
@@ -41,7 +27,7 @@ export const projects = [
     featured: false,
     links: {
       github: 'https://github.com/moaaskt/petflix',
-      live: 'https://flixpet.netlify.app/',
+      live: 'https://petflix-neon.vercel.app/#/home',
     },
     year: 2024,
   },
@@ -55,6 +41,20 @@ export const projects = [
     featured: false,
     links: {
       github: 'https://github.com/moaaskt/ChatJovemProgramador-staging',
+      live: 'https://chatjovemprogramador.up.railway.app/',
+    },
+    year: 2024,
+  },
+  {
+    id: 'loja-virtual',
+    title: 'Loja Virtual',
+    description: 'E-commerce completo com painel administrativo, carrinho de compras, checkout e área do cliente. Desenvolvido com PHP e CodeIgniter 4.',
+    image: null,
+    tags: ['PHP', 'CodeIgniter 4', 'MySQL', 'Bootstrap'],
+    category: 'fullstack',
+    featured: true,
+    links: {
+      github: 'https://github.com/moaaskt/loja-virtual-codeigniter',
       live: null,
     },
     year: 2024,

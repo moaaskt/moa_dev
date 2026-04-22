@@ -9,13 +9,37 @@ function GithubIcon({ size = 15 }) {
   );
 }
 
+const pillStyle = {
+  fontFamily: 'JetBrains Mono, monospace',
+  fontSize: '0.65rem',
+  letterSpacing: '0.06em',
+  color: '#b8f73c',
+  background: '#161616',
+  border: '1px solid rgba(184,247,60,0.3)',
+  padding: '0.25rem 0.6rem',
+  borderRadius: '4px',
+  whiteSpace: 'nowrap',
+};
+
+const extraPillStyle = {
+  fontFamily: 'JetBrains Mono, monospace',
+  fontSize: '0.65rem',
+  letterSpacing: '0.06em',
+  color: 'var(--text-muted)',
+  background: '#161616',
+  border: '1px solid rgba(255,255,255,0.1)',
+  padding: '0.25rem 0.6rem',
+  borderRadius: '4px',
+  whiteSpace: 'nowrap',
+};
+
 function CodePlaceholder() {
   return (
     <div
       style={{
         width: '100%',
         height: '100%',
-        background: 'var(--bg-elevated)',
+        background: '#0f0f0f',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -30,115 +54,91 @@ function CodePlaceholder() {
   );
 }
 
-function CardLinks({ github, live }) {
+function TagPills({ tags }) {
+  const visible = tags.slice(0, 3);
+  const extra = tags.length - 3;
   return (
-    <div style={{ display: 'flex', gap: '0.75rem', marginTop: 'auto', paddingTop: '1rem' }}>
-      {github && (
-        <a
-          href={github}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Ver no GitHub"
-          style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '0.4rem',
-            fontFamily: 'DM Sans, sans-serif',
-            fontSize: 'var(--text-sm)',
-            color: 'var(--text-secondary)',
-            transition: 'color 0.25s ease',
-          }}
-          onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--accent)')}
-          onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-secondary)')}
-        >
-          <GithubIcon size={15} />
-          GitHub
-        </a>
-      )}
-      {live && (
-        <a
-          href={live}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Ver projeto ao vivo"
-          style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '0.4rem',
-            fontFamily: 'DM Sans, sans-serif',
-            fontSize: 'var(--text-sm)',
-            color: 'var(--text-secondary)',
-            transition: 'color 0.25s ease',
-          }}
-          onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--accent)')}
-          onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-secondary)')}
-        >
-          <ExternalLink size={14} />
-          Live
-        </a>
+    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem', alignItems: 'center' }}>
+      {visible.map((tag) => (
+        <span key={tag} title={tag} style={pillStyle}>{tag}</span>
+      ))}
+      {extra > 0 && (
+        <span style={extraPillStyle}>+{extra}</span>
       )}
     </div>
   );
 }
 
-function TagPills({ tags }) {
+function LinkButton({ href, label, icon }) {
+  const [hovered, setHovered] = useState(false);
   return (
-    <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap' }}>
-      {tags.slice(0, 3).map((tag) => (
-        <span
-          key={tag}
-          style={{
-            fontFamily: 'JetBrains Mono, monospace',
-            fontSize: '0.65rem',
-            letterSpacing: '0.06em',
-            color: 'var(--text-secondary)',
-            background: 'rgba(0,0,0,0.5)',
-            border: '1px solid var(--border)',
-            padding: '0.2rem 0.5rem',
-            borderRadius: '3px',
-          }}
-        >
-          {tag}
-        </span>
-      ))}
-    </div>
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={label}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      style={{
+        display: 'inline-flex',
+        alignItems: 'center',
+        gap: '0.4rem',
+        fontFamily: 'DM Sans, sans-serif',
+        fontSize: 'var(--text-sm)',
+        color: hovered ? 'var(--accent)' : 'var(--text-secondary)',
+        transition: 'color 0.25s ease',
+        textDecoration: 'none',
+      }}
+    >
+      {icon}
+      {label}
+    </a>
   );
 }
 
 export default function ProjectCard({ project, featured = false }) {
   const [hovered, setHovered] = useState(false);
 
-  const cardStyle = {
+  const wrapperStyle = {
     background: 'var(--bg-secondary)',
     border: `1px solid ${hovered ? 'var(--border-accent)' : 'var(--border)'}`,
     borderRadius: '8px',
     overflow: 'hidden',
     display: 'flex',
     flexDirection: featured ? 'row' : 'column',
+    height: '100%',
+    ...(featured ? { minHeight: '280px' } : {}),
     transform: hovered ? 'translateY(-4px)' : 'translateY(0)',
     boxShadow: hovered ? '0 0 30px var(--accent-glow)' : 'none',
     transition: 'border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease',
     cursor: 'default',
   };
 
-  const imageContainerStyle = {
-    position: 'relative',
-    flexShrink: 0,
-    ...(featured
-      ? { width: '45%', minHeight: '240px' }
-      : { aspectRatio: '16/9', width: '100%' }),
-    overflow: 'hidden',
-  };
+  const imageWrapperStyle = featured
+    ? {
+        flexShrink: 0,
+        width: '50%',
+        alignSelf: 'stretch',
+        overflow: 'hidden',
+        position: 'relative',
+      }
+    : {
+        width: '100%',
+        aspectRatio: '16/9',
+        flexShrink: 0,
+        overflow: 'hidden',
+        position: 'relative',
+      };
 
   return (
     <div
-      style={cardStyle}
+      style={wrapperStyle}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       className={featured ? 'project-card-featured' : ''}
     >
-      {/* Image */}
-      <div style={imageContainerStyle}>
+      {/* Image / Placeholder */}
+      <div style={imageWrapperStyle}>
         {project.image ? (
           <>
             <img
@@ -148,6 +148,7 @@ export default function ProjectCard({ project, featured = false }) {
                 width: '100%',
                 height: '100%',
                 objectFit: 'cover',
+                display: 'block',
                 transform: hovered ? 'scale(1.03)' : 'scale(1)',
                 transition: 'transform 0.4s ease',
               }}
@@ -159,28 +160,35 @@ export default function ProjectCard({ project, featured = false }) {
                 background: 'rgba(0,0,0,0.4)',
                 opacity: hovered ? 1 : 0,
                 transition: 'opacity 0.25s ease',
+                pointerEvents: 'none',
               }}
             />
           </>
         ) : (
           <CodePlaceholder />
         )}
-        {/* Tags overlay */}
-        <div style={{ position: 'absolute', top: '0.75rem', left: '0.75rem' }}>
-          <TagPills tags={project.tags} />
-        </div>
       </div>
 
       {/* Content */}
       <div
         style={{
-          padding: '1.25rem 1.5rem',
+          padding: featured ? '1.5rem' : '1.25rem',
           display: 'flex',
           flexDirection: 'column',
           flex: 1,
+          minWidth: 0,
         }}
       >
-        <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
+        {/* Title + Year */}
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'flex-start',
+            justifyContent: 'space-between',
+            gap: '0.5rem',
+            marginBottom: '0.5rem',
+          }}
+        >
           <h3
             style={{
               fontFamily: 'Syne, sans-serif',
@@ -188,6 +196,7 @@ export default function ProjectCard({ project, featured = false }) {
               fontSize: 'var(--text-lg)',
               color: 'var(--text-primary)',
               letterSpacing: '-0.02em',
+              margin: 0,
             }}
           >
             {project.title}
@@ -197,14 +206,15 @@ export default function ProjectCard({ project, featured = false }) {
               fontFamily: 'JetBrains Mono, monospace',
               fontSize: 'var(--text-xs)',
               color: 'var(--text-muted)',
-              marginLeft: '0.5rem',
               flexShrink: 0,
+              paddingTop: '2px',
             }}
           >
             {project.year}
           </span>
         </div>
 
+        {/* Description */}
         <p
           style={{
             fontFamily: 'DM Sans, sans-serif',
@@ -212,22 +222,54 @@ export default function ProjectCard({ project, featured = false }) {
             color: 'var(--text-secondary)',
             lineHeight: 1.65,
             display: '-webkit-box',
-            WebkitLineClamp: 2,
+            WebkitLineClamp: featured ? 3 : 2,
             WebkitBoxOrient: 'vertical',
             overflow: 'hidden',
-            marginBottom: '0.5rem',
+            margin: 0,
           }}
         >
           {project.description}
         </p>
 
-        <CardLinks github={project.links.github} live={project.links.live} />
+        {/* Footer: tags above, links below */}
+        <div
+          style={{
+            marginTop: 'auto',
+            paddingTop: '1rem',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '0.75rem',
+          }}
+        >
+          <TagPills tags={project.tags} />
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+            {project.links.github && (
+              <LinkButton
+                href={project.links.github}
+                label="GitHub"
+                icon={<GithubIcon size={15} />}
+              />
+            )}
+            {project.links.live && (
+              <LinkButton
+                href={project.links.live}
+                label="Live"
+                icon={<ExternalLink size={14} />}
+              />
+            )}
+          </div>
+        </div>
       </div>
 
       <style>{`
         @media (max-width: 767px) {
-          .project-card-featured { flex-direction: column !important; }
-          .project-card-featured > div:first-child { width: 100% !important; aspect-ratio: 16/9; min-height: unset !important; }
+          .project-card-featured {
+            flex-direction: column !important;
+          }
+          .project-card-featured > div:first-child {
+            width: 100% !important;
+            aspect-ratio: 16/9 !important;
+          }
         }
       `}</style>
     </div>

@@ -8,8 +8,7 @@ export default function Projects() {
   const [activeFilter, setActiveFilter] = useState('all');
 
   const filtered = projects
-    .filter((p) => activeFilter === 'all' || p.category === activeFilter)
-    .sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0));
+    .filter((p) => activeFilter === 'all' || p.category === activeFilter);
 
   return (
     <section
