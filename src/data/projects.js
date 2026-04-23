@@ -48,7 +48,7 @@ export const projects = [
   },
   {
     id: 'loja-virtual',
-    title: 'Loja Virtual',
+    title: 'Sistema de e-commerce',
     description: 'E-commerce completo com painel administrativo, carrinho de compras, checkout e área do cliente. Desenvolvido com PHP e CodeIgniter 4.',
     image: gstore,
     tags: ['PHP', 'CodeIgniter 4', 'JavaScript', 'MySQL', 'Bootstrap'],
