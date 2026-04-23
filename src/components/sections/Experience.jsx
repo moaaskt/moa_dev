@@ -1,5 +1,6 @@
 import { useScrollAnimation } from '../../hooks/useScrollAnimation';
 import SectionHeader from '../ui/SectionHeader';
+import TechIcon from '../ui/TechIcon';
 import { experiences } from '../../data/experience';
 
 function formatPeriod(period) {
@@ -113,19 +114,9 @@ function ExperienceCard({ exp, index }) {
           {exp.description}
         </p>
 
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', alignItems: 'center' }}>
           {exp.tags.map(tag => (
-            <span key={tag} style={{
-              fontFamily: 'JetBrains Mono, monospace',
-              fontSize: 'var(--text-xs)',
-              color: 'var(--text-secondary)',
-              background: 'var(--bg-elevated)',
-              border: '1px solid var(--border)',
-              padding: '3px 10px',
-              borderRadius: '4px',
-            }}>
-              {tag}
-            </span>
+            <TechIcon key={tag} techName={tag} />
           ))}
         </div>
       </div>

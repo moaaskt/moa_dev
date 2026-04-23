@@ -68,10 +68,11 @@ export default function Projects() {
         {/* Cards grid */}
         <motion.div
           layout
+          className="projects-grid"
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
-            gap: 'var(--grid-gap)',
+            gridTemplateColumns: 'repeat(2, 1fr)',
+            gap: '1.5rem',
           }}
         >
           <AnimatePresence mode="popLayout">
@@ -83,10 +84,8 @@ export default function Projects() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.3, delay: i * 0.05, ease: [0.16, 1, 0.3, 1] }}
-                style={project.featured ? { gridColumn: '1 / -1' } : {}}
-                className={project.featured ? 'project-featured-wrapper' : ''}
               >
-                <ProjectCard project={project} featured={project.featured} />
+                <ProjectCard project={project} />
               </motion.div>
             ))}
           </AnimatePresence>
@@ -94,7 +93,7 @@ export default function Projects() {
 
         <style>{`
           @media (max-width: 767px) {
-            .project-featured-wrapper { grid-column: unset !important; }
+            .projects-grid { grid-template-columns: 1fr !important; }
           }
         `}</style>
       </div>

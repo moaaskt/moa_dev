@@ -1,5 +1,18 @@
 import { useState } from 'react';
 import { ExternalLink } from 'lucide-react';
+import TechIcon from './TechIcon';
+
+const extraPillStyle = {
+  fontFamily: 'JetBrains Mono, monospace',
+  fontSize: '0.65rem',
+  letterSpacing: '0.06em',
+  color: 'var(--text-muted)',
+  background: '#161616',
+  border: '1px solid rgba(255,255,255,0.1)',
+  padding: '0.2rem 0.55rem',
+  borderRadius: '3px',
+  whiteSpace: 'nowrap',
+};
 
 function GithubIcon({ size = 15 }) {
   return (
@@ -9,29 +22,20 @@ function GithubIcon({ size = 15 }) {
   );
 }
 
-const pillStyle = {
-  fontFamily: 'JetBrains Mono, monospace',
-  fontSize: '0.65rem',
-  letterSpacing: '0.06em',
-  color: '#b8f73c',
-  background: '#161616',
-  border: '1px solid rgba(184,247,60,0.3)',
-  padding: '0.25rem 0.6rem',
-  borderRadius: '4px',
-  whiteSpace: 'nowrap',
-};
-
-const extraPillStyle = {
-  fontFamily: 'JetBrains Mono, monospace',
-  fontSize: '0.65rem',
-  letterSpacing: '0.06em',
-  color: 'var(--text-muted)',
-  background: '#161616',
-  border: '1px solid rgba(255,255,255,0.1)',
-  padding: '0.25rem 0.6rem',
-  borderRadius: '4px',
-  whiteSpace: 'nowrap',
-};
+function TagIcons({ tags }) {
+  const visible = tags.slice(0, 6);
+  const extra = tags.length - 6;
+  return (
+    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', alignItems: 'center' }}>
+      {visible.map((tag) => (
+        <TechIcon key={tag} techName={tag} />
+      ))}
+      {extra > 0 && (
+        <span style={extraPillStyle}>+{extra}</span>
+      )}
+    </div>
+  );
+}
 
 function CodePlaceholder() {
   return (
@@ -39,32 +43,17 @@ function CodePlaceholder() {
       style={{
         width: '100%',
         height: '100%',
-        background: '#0f0f0f',
+        background: '#161616',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        color: 'var(--text-muted)',
+        color: '#444',
       }}
     >
       <svg width={40} height={40} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
         <polyline points="16 18 22 12 16 6" />
         <polyline points="8 6 2 12 8 18" />
       </svg>
-    </div>
-  );
-}
-
-function TagPills({ tags }) {
-  const visible = tags.slice(0, 3);
-  const extra = tags.length - 3;
-  return (
-    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem', alignItems: 'center' }}>
-      {visible.map((tag) => (
-        <span key={tag} title={tag} style={pillStyle}>{tag}</span>
-      ))}
-      {extra > 0 && (
-        <span style={extraPillStyle}>+{extra}</span>
-      )}
     </div>
   );
 }
@@ -84,8 +73,8 @@ function LinkButton({ href, label, icon }) {
         alignItems: 'center',
         gap: '0.4rem',
         fontFamily: 'DM Sans, sans-serif',
-        fontSize: 'var(--text-sm)',
-        color: hovered ? 'var(--accent)' : 'var(--text-secondary)',
+        fontSize: '0.85rem',
+        color: hovered ? '#b8f73c' : '#888',
         transition: 'color 0.25s ease',
         textDecoration: 'none',
       }}
@@ -96,49 +85,37 @@ function LinkButton({ href, label, icon }) {
   );
 }
 
-export default function ProjectCard({ project, featured = false }) {
+export default function ProjectCard({ project }) {
   const [hovered, setHovered] = useState(false);
-
-  const wrapperStyle = {
-    background: 'var(--bg-secondary)',
-    border: `1px solid ${hovered ? 'var(--border-accent)' : 'var(--border)'}`,
-    borderRadius: '8px',
-    overflow: 'hidden',
-    display: 'flex',
-    flexDirection: featured ? 'row' : 'column',
-    height: '100%',
-    ...(featured ? { minHeight: '280px' } : {}),
-    transform: hovered ? 'translateY(-4px)' : 'translateY(0)',
-    boxShadow: hovered ? '0 0 30px var(--accent-glow)' : 'none',
-    transition: 'border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease',
-    cursor: 'default',
-  };
-
-  const imageWrapperStyle = featured
-    ? {
-        flexShrink: 0,
-        width: '50%',
-        alignSelf: 'stretch',
-        overflow: 'hidden',
-        position: 'relative',
-      }
-    : {
-        width: '100%',
-        aspectRatio: '16/9',
-        flexShrink: 0,
-        overflow: 'hidden',
-        position: 'relative',
-      };
 
   return (
     <div
-      style={wrapperStyle}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className={featured ? 'project-card-featured' : ''}
+      style={{
+        background: 'var(--bg-secondary)',
+        border: `1px solid ${hovered ? 'var(--accent)' : 'var(--border)'}`,
+        borderRadius: '8px',
+        overflow: 'hidden',
+        display: 'flex',
+        flexDirection: 'column',
+        height: '100%',
+        transform: hovered ? 'translateY(-4px)' : 'translateY(0)',
+        boxShadow: hovered ? '0 8px 30px rgba(184,247,60,0.1)' : 'none',
+        transition: 'all 0.25s ease',
+        cursor: 'default',
+      }}
     >
       {/* Image / Placeholder */}
-      <div style={imageWrapperStyle}>
+      <div
+        style={{
+          width: '100%',
+          aspectRatio: '16/9',
+          flexShrink: 0,
+          overflow: 'hidden',
+          position: 'relative',
+        }}
+      >
         {project.image ? (
           <>
             <img
@@ -172,7 +149,7 @@ export default function ProjectCard({ project, featured = false }) {
       {/* Content */}
       <div
         style={{
-          padding: featured ? '1.5rem' : '1.25rem',
+          padding: '1.5rem',
           display: 'flex',
           flexDirection: 'column',
           flex: 1,
@@ -193,8 +170,8 @@ export default function ProjectCard({ project, featured = false }) {
             style={{
               fontFamily: 'Syne, sans-serif',
               fontWeight: 700,
-              fontSize: 'var(--text-lg)',
-              color: 'var(--text-primary)',
+              fontSize: '1.2rem',
+              color: '#f0f0f0',
               letterSpacing: '-0.02em',
               margin: 0,
             }}
@@ -204,8 +181,8 @@ export default function ProjectCard({ project, featured = false }) {
           <span
             style={{
               fontFamily: 'JetBrains Mono, monospace',
-              fontSize: 'var(--text-xs)',
-              color: 'var(--text-muted)',
+              fontSize: '0.75rem',
+              color: '#444',
               flexShrink: 0,
               paddingTop: '2px',
             }}
@@ -218,11 +195,11 @@ export default function ProjectCard({ project, featured = false }) {
         <p
           style={{
             fontFamily: 'DM Sans, sans-serif',
-            fontSize: 'var(--text-sm)',
-            color: 'var(--text-secondary)',
+            fontSize: '0.9rem',
+            color: '#888',
             lineHeight: 1.65,
             display: '-webkit-box',
-            WebkitLineClamp: featured ? 3 : 2,
+            WebkitLineClamp: 3,
             WebkitBoxOrient: 'vertical',
             overflow: 'hidden',
             margin: 0,
@@ -231,18 +208,19 @@ export default function ProjectCard({ project, featured = false }) {
           {project.description}
         </p>
 
-        {/* Footer: tags above, links below */}
+        {/* Footer */}
         <div
           style={{
             marginTop: 'auto',
             paddingTop: '1rem',
+            borderTop: '1px solid #1a1a1a',
             display: 'flex',
             flexDirection: 'column',
             gap: '0.75rem',
           }}
         >
-          <TagPills tags={project.tags} />
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+          <TagIcons tags={project.tags} />
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1.2rem' }}>
             {project.links.github && (
               <LinkButton
                 href={project.links.github}
@@ -260,18 +238,6 @@ export default function ProjectCard({ project, featured = false }) {
           </div>
         </div>
       </div>
-
-      <style>{`
-        @media (max-width: 767px) {
-          .project-card-featured {
-            flex-direction: column !important;
-          }
-          .project-card-featured > div:first-child {
-            width: 100% !important;
-            aspect-ratio: 16/9 !important;
-          }
-        }
-      `}</style>
     </div>
   );
 }

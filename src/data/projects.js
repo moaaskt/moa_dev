@@ -1,6 +1,7 @@
 import guiadocachorro from '../assets/images/projects/guiadocachorro.jpeg';
 import petflix from '../assets/images/projects/petflix.png';
 import chatjovemprogramador from '../assets/images/projects/chatjovem.png';
+import gstore from '../assets/images/projects/gstore.png';
 
 export const projects = [
   {
@@ -24,7 +25,7 @@ export const projects = [
     image: petflix,
     tags: ['JavaScript', 'Firebase', 'YouTube API', 'CSS'],
     category: 'frontend',
-    featured: false,
+    featured: true,
     links: {
       github: 'https://github.com/moaaskt/petflix',
       live: 'https://petflix-neon.vercel.app/#/home',
@@ -36,9 +37,9 @@ export const projects = [
     title: 'ChatBot Jovem Programador',
     description: 'Chatbot especialista construído com Python e IA Generativa (Google Gemini) para tirar dúvidas sobre o programa Jovem Programador.',
     image: chatjovemprogramador,
-    tags: ['Python', 'Google Gemini', 'IA Generativa', 'NLP'],
+    tags: ['Python', 'JavaScript','Google Gemini', 'IA Generativa', 'NLP'],
     category: 'ai',
-    featured: false,
+    featured: true,
     links: {
       github: 'https://github.com/moaaskt/ChatJovemProgramador-staging',
       live: 'https://chatjovemprogramador.up.railway.app/',
@@ -49,10 +50,10 @@ export const projects = [
     id: 'loja-virtual',
     title: 'Loja Virtual',
     description: 'E-commerce completo com painel administrativo, carrinho de compras, checkout e área do cliente. Desenvolvido com PHP e CodeIgniter 4.',
-    image: null,
-    tags: ['PHP', 'CodeIgniter 4', 'MySQL', 'Bootstrap'],
+    image: gstore,
+    tags: ['PHP', 'CodeIgniter 4', 'JavaScript', 'MySQL', 'Bootstrap'],
     category: 'fullstack',
-    featured: true,
+    featured: false,
     links: {
       github: 'https://github.com/moaaskt/loja-virtual-codeigniter',
       live: null,
@@ -64,7 +65,7 @@ export const projects = [
     title: 'Gopher Scraper',
     description: 'Sistema de rastreamento e monitoramento de preços com scraping automático.',
     image: null,
-    tags: ['JavaScript', 'Web Scraping', 'Node.js'],
+    tags: ['JavaScript', 'Web Scraping', 'Node.js' ],
     category: 'backend',
     featured: false,
     links: {
