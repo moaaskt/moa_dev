@@ -5,16 +5,16 @@ Este documento registra a memória atual do projeto, progresso das waves, pendê
 ---
 
 ## 🚦 Status Geral
-- **Wave Ativa**: Wave 0: Discovery Técnico e Contexto GSD
-- **Status da Wave**: Em Aprovação (Aguardando revisão do planejamento inicial do usuário)
+- **Wave Ativa**: Wave 2: Narrativa profissional, textos e posicionamento para recrutadores
+- **Status da Wave**: Pendente (Aguardando planejamento da Wave 2)
 - **Última Atualização**: 2026-06-01
 
 ---
 
 ## 📈 Progresso das Waves
 
-- [ ] **Wave 0**: Discovery técnico e contexto GSD `[Em Progresso]`
-- [ ] **Wave 1**: Fundação profissional, contatos, links, metadados e SEO básico `[Pendente]`
+- [x] **Wave 0**: Discovery técnico e contexto GSD `[Concluído]`
+- [x] **Wave 1**: Fundação profissional, contatos, links, metadados e SEO básico `[Concluído]`
 - [ ] **Wave 2**: Narrativa profissional, textos e posicionamento para recrutadores `[Pendente]`
 - [ ] **Wave 3**: Projetos, cards e cases `[Pendente]`
 - [ ] **Wave 4**: UI/UX, hero, foto pessoal, favicon e identidade visual `[Pendente]`
@@ -37,5 +37,4 @@ As seguintes informações ou decisões estão pendentes e precisam ser fornecid
 
 ## 🎯 Próximos Passos Recomendados
 
-1. **Aprovação do Contexto**: Aguardar a aprovação explícita do usuário para o planejamento de contexto (Wave 0).
-2. **Planejar a Wave 1**: Executar `/gsd-plan-phase 1` para detalhar as modificações da Wave 1 (Fundação profissional, contatos, links, metadados e SEO básico) após a aprovação da Wave 0.
+1. **Planejar a Wave 2**: Executar `/gsd-plan-phase 2` para detalhar a narrativa profissional, textos e posicionamento para recrutadores.
