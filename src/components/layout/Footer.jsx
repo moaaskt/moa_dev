@@ -1,4 +1,5 @@
 import { MessageCircle } from 'lucide-react';
+import { contactDetails } from '../../data/contacts';
 
 function GithubIcon({ size = 18 }) {
   return (
@@ -17,8 +18,8 @@ function LinkedinIcon({ size = 18 }) {
 }
 
 const SOCIAL = [
-  { label: 'GitHub', icon: GithubIcon, href: 'https://github.com/moaaskt' },
-  { label: 'LinkedIn', icon: LinkedinIcon, href: 'https://linkedin.com/in/moacirneto' },
+  { label: 'GitHub', icon: GithubIcon, href: contactDetails.github },
+  { label: 'LinkedIn', icon: LinkedinIcon, href: contactDetails.linkedin },
   { label: 'WhatsApp', icon: MessageCircle, href: 'https://wa.me/5548999999999', ariaLabel: 'WhatsApp' },
 ];
 
@@ -69,7 +70,7 @@ export default function Footer() {
       >
         Desenvolvido por{' '}
         <span style={{ color: 'var(--text-secondary)' }}>Moacir Neto</span>
-        {' '}•{' '}2025
+        {' '}•{' '}{new Date().getFullYear()}
       </p>
     </footer>
   );

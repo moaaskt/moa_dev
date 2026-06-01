@@ -1,5 +1,6 @@
 import { useScrollAnimation } from '../../hooks/useScrollAnimation';
 import SectionHeader from '../ui/SectionHeader';
+import { contactDetails } from '../../data/contacts';
 
 const contacts = [
   {
@@ -16,7 +17,7 @@ const contacts = [
   {
     label: 'LinkedIn',
     value: 'moa-dev',
-    href: 'https://linkedin.com/in/moa-dev/',
+    href: contactDetails.linkedin,
     color: '#0A66C2',
     icon: (
       <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
