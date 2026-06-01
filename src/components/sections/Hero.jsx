@@ -10,7 +10,7 @@ function GithubIcon({ size = 16 }) {
   );
 }
 
-const TYPING_TEXT = 'Full Stack Developer';
+const TYPING_TEXT = 'Desenvolvedor Full Stack Jr.';
 
 function useTypingCursor(text, speed = 80) {
   const [displayed, setDisplayed] = useState('');
@@ -190,8 +190,7 @@ export default function Hero() {
             margin: '0 auto 2.5rem',
           }}
         >
-          Desenvolvendo soluções web com React, Node.js, PHP e Python.
-      
+          Desenvolvo sistemas web com PHP/CodeIgniter, React e Python, conectando interfaces, regras de negócio, APIs, automações e soluções com IA.
         </motion.p>
 
         {/* Buttons */}

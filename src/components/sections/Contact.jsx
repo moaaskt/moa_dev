@@ -125,7 +125,7 @@ export default function Contact() {
             maxWidth: '480px',
             margin: '0 auto',
           }}>
-            Aberto a oportunidades CLT ou freelance. Me chama!
+            Aberto a oportunidades como Desenvolvedor Full Stack Jr. e projetos onde eu possa contribuir com soluções web, automações e evolução de sistemas.
           </p>
         </div>
 

@@ -50,8 +50,7 @@ export default function About() {
                 marginBottom: '1.25rem',
               }}
             >
-              Sou técnico em Desenvolvimento de Sistemas pelo SENAI e atuo como desenvolvedor full stack
-              há mais de 4 anos — entre projetos pessoais, freelances e experiência CLT em agência digital.
+              Sou Técnico em Desenvolvimento de Sistemas pelo SENAI e venho construindo uma trajetória prática no desenvolvimento web, criando projetos full stack, integrações e soluções que resolvem problemas reais.
             </motion.p>
 
             <motion.p
@@ -62,12 +61,24 @@ export default function About() {
                 fontSize: 'var(--text-base)',
                 color: 'var(--text-secondary)',
                 lineHeight: 1.8,
+                marginBottom: '1.25rem',
+              }}
+            >
+              Tenho experiência com PHP/CodeIgniter, JavaScript, React, Python, Docker, bancos de dados e APIs. Gosto de atuar em toda a stack: da regra de negócio e modelagem de dados até interfaces responsivas e bem organizadas.
+            </motion.p>
+
+            <motion.p
+              {...fadeUp(0.3)}
+              animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+              style={{
+                fontFamily: 'DM Sans, sans-serif',
+                fontSize: 'var(--text-base)',
+                color: 'var(--text-secondary)',
+                lineHeight: 1.8,
                 marginBottom: '2rem',
               }}
             >
-              Apaixonado por resolver problemas com código limpo e interfaces bem construídas. Gosto
-              de trabalhar em toda a stack: do banco de dados até a UI. Baseado em{' '}
-              <span style={{ color: 'var(--text-primary)' }}>Palhoça, SC</span>.
+              Minha evolução como dev vem de projetos reais, estudo constante e manutenção de sistemas em produção, onde aprendi a investigar bugs, entender impacto no usuário e entregar correções com responsabilidade.
             </motion.p>
 
             <motion.div
