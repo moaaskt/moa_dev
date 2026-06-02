@@ -5,7 +5,7 @@ Este documento registra a memória atual do projeto, progresso das waves, pendê
 ---
 
 ## 🚦 Status Geral
-- **Wave Ativa**: Wave 5: Qualidade técnica, lint, acessibilidade, performance e responsividade
+- **Wave Ativa**: Wave 5B: Acessibilidade (WCAG AA & UX)
 - **Status da Wave**: Pendente (Aguardando planejamento)
 - **Última Atualização**: 2026-06-02
 
@@ -20,7 +20,9 @@ Este documento registra a memória atual do projeto, progresso das waves, pendê
 - [x] **Wave 4A**: Favicon, caminhos de asset e performance leve de animações `[Concluído]`
 - [ ] **Wave 4B**: Hero com foto pessoal `[Bloqueado — Falta profile.webp]`
 - [ ] **Wave 4C**: Imagem social og-image `[Bloqueado — Falta og-image.png]`
-- [ ] **Wave 5**: Qualidade técnica, lint, acessibilidade, performance e responsividade `[Pendente]`
+- [x] **Wave 5A**: Correção de lint e qualidade de código `[Concluído]`
+- [ ] **Wave 5B**: Acessibilidade (WCAG AA & UX) `[Pendente]`
+- [ ] **Wave 5C**: Performance e responsividade fina `[Pendente]`
 - [ ] **Wave 6**: README, GitHub profile, LinkedIn e publicação final `[Pendente]`
 
 ---
@@ -39,4 +41,4 @@ As seguintes informações ou decisões estão pendentes e precisam ser fornecid
 
 ## 🎯 Próximos Passos Recomendados
 
-1. **Planejar a Wave 5**: Executar `/gsd-plan-phase 5` para detalhar a melhoria de qualidade técnica, linter, acessibilidade e performance fina do portfólio, enquanto aguarda o fornecimento dos ativos visuais para as Waves 4B/4C.
+1. **Planejar a Wave 5B**: Executar `/gsd-plan-phase 5` (focado na subwave 5B) para detalhar as melhorias de contraste sob a WCAG AA para a cor `--text-secondary`, rótulos `aria-label` em botões/links e validação de keyboard focus.
