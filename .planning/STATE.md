@@ -5,8 +5,8 @@ Este documento registra a memória atual do projeto, progresso das waves, pendê
 ---
 
 ## 🚦 Status Geral
-- **Wave Ativa**: Wave 5C: Performance e responsividade fina
-- **Status da Wave**: Pendente (Próxima etapa recomendada)
+- **Wave Ativa**: Wave 5C-2: Conversão WebP mantendo originais
+- **Status da Wave**: Pendente (Próxima etapa recomendada — Adiada)
 - **Última Atualização**: 2026-06-02
 
 ---
@@ -23,7 +23,9 @@ Este documento registra a memória atual do projeto, progresso das waves, pendê
 - [x] **Wave 5A**: Correção de lint e qualidade de código `[Concluído]`
 - [x] **Wave 5B-1**: Acessibilidade sem mudança visual `[Concluído]`
 - [ ] **Wave 5B-2**: Contraste visual `[Opcional/Adiado — Contraste atual já passa WCAG AA]`
-- [ ] **Wave 5C**: Performance e responsividade fina `[Pendente]`
+- [x] **Wave 5C-1**: Performance segura sem conversão de imagens `[Concluído]`
+- [ ] **Wave 5C-2**: Conversão WebP mantendo originais `[Pendente — Adiada]`
+- [ ] **Wave 5C-3**: Limpeza de PNG/JPEG originais `[Pendente — Adiada / Requer aprovação explícita]`
 - [ ] **Wave 6**: README, GitHub profile, LinkedIn e publicação final `[Pendente]`
 
 ---
@@ -36,10 +38,10 @@ As seguintes informações ou decisões estão pendentes e precisam ser fornecid
 2. **Dados de Redes Sociais (Wave 1)**: Os links das redes sociais (LinkedIn, GitHub, E-mail, WhatsApp) em `Footer.jsx` e `Navbar.jsx` já estão atualizados ou precisaremos preenchê-los com informações reais de Moacir Neto?
 3. **Foto Pessoal (Wave 4)**: A foto pessoal (`profile.jpg`) de Moacir Neto já está disponível no repositório no caminho `/src/assets/images/profile.jpg`, ou precisaremos gerá-la/obtê-la?
 4. **Metadados & Títulos SEO (Wave 1)**: Qual é o título final desejado para a tag `<title>` do site (ex: `Moacir Neto | Desenvolvedor Full Stack Jr`)?
-5. **Configurações adicionais de deploy (Wave 1)**: Confirmar se o repositório correto no GitHub é de fato `https://github.com/moaaskt/moa_dev` para validar a propriedade `homepage` em `package.json`.
+5. **Configurações adicionais de deploy (Wave 1)**: Confirmar se o repositório correto no GitHub é de fato `https://github.com/moaaskt/moa_dev` para validar a propriedade `homepage` in `package.json`.
 
 ---
 
 ## 🎯 Próximos Passos Recomendados
 
-1. **Planejar a Wave 5C**: Executar `/gsd-plan-phase 5` (focado na subwave 5C) para detalhar e planejar as otimizações de performance e responsividade fina no tablet e desktop.
+1. **Planejar/Aprovar a Wave 5C-2**: Prosseguir com a conversão cirúrgica de imagens para WebP mantendo os arquivos originais (.png/.jpeg) temporariamente no diretório para validação.
