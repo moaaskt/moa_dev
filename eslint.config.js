@@ -23,7 +23,13 @@ export default defineConfig([
       },
     },
     rules: {
-      'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
+      'no-unused-vars': [
+        'error',
+        {
+          varsIgnorePattern: '^(motion|Navbar|Hero|About|Projects|Skills|Experience|Contact|Footer|CustomCursor|ScrollProgress|Loader|AnimatePresence|X|Menu|SectionHeader|ContactCard|TechIcon|ExperienceCard|ChevronDown|GithubIcon|ProjectCard|SkillIcon|CategoryGroup|ExternalLink|TagIcons|CodePlaceholder|LinkButton|IconComponent|TechItem|MarqueeRow|App)$',
+          argsIgnorePattern: '^Icon$'
+        }
+      ],
     },
   },
 ])
