@@ -5,9 +5,9 @@ Este documento registra a memória atual do projeto, progresso das waves, pendê
 ---
 
 ## 🚦 Status Geral
-- **Wave Ativa**: Wave 4: UI/UX, hero, foto pessoal, favicon e identidade visual
-- **Status da Wave**: Pendente (Aguardando planejamento da Wave 4)
-- **Última Atualização**: 2026-06-01
+- **Wave Ativa**: Wave 5: Qualidade técnica, lint, acessibilidade, performance e responsividade
+- **Status da Wave**: Pendente (Aguardando planejamento)
+- **Última Atualização**: 2026-06-02
 
 ---
 
@@ -17,7 +17,9 @@ Este documento registra a memória atual do projeto, progresso das waves, pendê
 - [x] **Wave 1**: Fundação profissional, contatos, links, metadados e SEO básico `[Concluído]`
 - [x] **Wave 2**: Narrativa profissional, textos e posicionamento para recrutadores `[Concluído]`
 - [x] **Wave 3**: Projetos, cards e cases `[Concluído]`
-- [ ] **Wave 4**: UI/UX, hero, foto pessoal, favicon e identidade visual `[Pendente]`
+- [x] **Wave 4A**: Favicon, caminhos de asset e performance leve de animações `[Concluído]`
+- [ ] **Wave 4B**: Hero com foto pessoal `[Bloqueado — Falta profile.webp]`
+- [ ] **Wave 4C**: Imagem social og-image `[Bloqueado — Falta og-image.png]`
 - [ ] **Wave 5**: Qualidade técnica, lint, acessibilidade, performance e responsividade `[Pendente]`
 - [ ] **Wave 6**: README, GitHub profile, LinkedIn e publicação final `[Pendente]`
 
@@ -37,4 +39,4 @@ As seguintes informações ou decisões estão pendentes e precisam ser fornecid
 
 ## 🎯 Próximos Passos Recomendados
 
-1. **Planejar a Wave 4**: Executar `/gsd-plan-phase 4` para detalhar a identidade visual, favicon, foto de perfil e prevenção de memory leaks.
+1. **Planejar a Wave 5**: Executar `/gsd-plan-phase 5` para detalhar a melhoria de qualidade técnica, linter, acessibilidade e performance fina do portfólio, enquanto aguarda o fornecimento dos ativos visuais para as Waves 4B/4C.
