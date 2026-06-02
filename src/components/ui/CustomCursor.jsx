@@ -6,19 +6,69 @@ export default function CustomCursor() {
   const current = useRef({ x: -100, y: -100 });
   const isHovering = useRef(false);
   const rafId = useRef(null);
+  const isRunning = useRef(false);
 
   useEffect(() => {
-    console.log('[CustomCursor] mounted, width:', window.innerWidth);
     if (window.innerWidth <= 768) return;
 
     document.body.style.cursor = 'none';
 
-    const onMove = (e) => {
-      pos.current = { x: e.clientX, y: e.clientY };
+    const loop = () => {
+      const dx = pos.current.x - current.current.x;
+      const dy = pos.current.y - current.current.y;
+
+      // Smooth interpolation (LERP)
+      current.current.x += dx * 0.12;
+      current.current.y += dy * 0.12;
+
+      const size = isHovering.current ? 40 : 10;
+
+      if (dotRef.current) {
+        dotRef.current.style.left = `${current.current.x}px`;
+        dotRef.current.style.top = `${current.current.y}px`;
+        dotRef.current.style.width = `${size}px`;
+        dotRef.current.style.height = `${size}px`;
+        dotRef.current.style.background = isHovering.current ? 'transparent' : 'var(--accent)';
+        dotRef.current.style.border = isHovering.current ? '2px solid var(--accent)' : 'none';
+        dotRef.current.style.transform = 'translate(-50%, -50%)';
+      }
+
+      // Keep animating if not fully stabilized
+      if (Math.abs(dx) > 0.08 || Math.abs(dy) > 0.08) {
+        rafId.current = requestAnimationFrame(loop);
+      } else {
+        // Snap to exact target and pause loop
+        current.current = { ...pos.current };
+        if (dotRef.current) {
+          dotRef.current.style.left = `${pos.current.x}px`;
+          dotRef.current.style.top = `${pos.current.y}px`;
+        }
+        isRunning.current = false;
+        rafId.current = null;
+      }
     };
 
-    const onEnter = () => { isHovering.current = true; };
-    const onLeave = () => { isHovering.current = false; };
+    const startLoop = () => {
+      if (!isRunning.current) {
+        isRunning.current = true;
+        rafId.current = requestAnimationFrame(loop);
+      }
+    };
+
+    const onMove = (e) => {
+      pos.current = { x: e.clientX, y: e.clientY };
+      startLoop();
+    };
+
+    const onEnter = () => {
+      isHovering.current = true;
+      startLoop();
+    };
+
+    const onLeave = () => {
+      isHovering.current = false;
+      startLoop();
+    };
 
     const interactables = 'a, button, [data-cursor]';
 
@@ -29,27 +79,9 @@ export default function CustomCursor() {
       });
     };
 
-    const loop = () => {
-      current.current.x += (pos.current.x - current.current.x) * 0.12;
-      current.current.y += (pos.current.y - current.current.y) * 0.12;
-
-      if (dotRef.current) {
-        const size = isHovering.current ? 40 : 10;
-        dotRef.current.style.left = `${current.current.x}px`;
-        dotRef.current.style.top = `${current.current.y}px`;
-        dotRef.current.style.width = `${size}px`;
-        dotRef.current.style.height = `${size}px`;
-        dotRef.current.style.background = isHovering.current ? 'transparent' : 'var(--accent)';
-        dotRef.current.style.border = isHovering.current ? '2px solid var(--accent)' : 'none';
-        dotRef.current.style.transform = `translate(-50%, -50%)`;
-      }
-
-      rafId.current = requestAnimationFrame(loop);
-    };
-
     window.addEventListener('mousemove', onMove);
     addListeners();
-    rafId.current = requestAnimationFrame(loop);
+    startLoop();
 
     // Re-scan after a tick so dynamic elements are included
     const timeout = setTimeout(addListeners, 500);
@@ -60,7 +92,9 @@ export default function CustomCursor() {
         el.removeEventListener('mouseenter', onEnter);
         el.removeEventListener('mouseleave', onLeave);
       });
-      cancelAnimationFrame(rafId.current);
+      if (rafId.current) {
+        cancelAnimationFrame(rafId.current);
+      }
       clearTimeout(timeout);
       document.body.style.cursor = '';
     };

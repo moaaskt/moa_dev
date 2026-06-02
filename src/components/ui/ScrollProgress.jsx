@@ -4,20 +4,39 @@ export default function ScrollProgress() {
   const barRef = useRef(null);
 
   useEffect(() => {
-    let rafId;
+    let ticking = false;
+    let rafId = null;
 
-    const update = () => {
+    const updateProgress = () => {
       const scrollTop = window.scrollY;
       const docHeight = document.documentElement.scrollHeight - window.innerHeight;
       const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+
       if (barRef.current) {
         barRef.current.style.width = `${progress}%`;
       }
-      rafId = requestAnimationFrame(update);
+      ticking = false;
     };
 
-    rafId = requestAnimationFrame(update);
-    return () => cancelAnimationFrame(rafId);
+    const handleScroll = () => {
+      if (!ticking) {
+        rafId = requestAnimationFrame(updateProgress);
+        ticking = true;
+      }
+    };
+
+    // Passive listener for best scrolling performance
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    // Initial call to set correct progress on mount
+    updateProgress();
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (rafId) {
+        cancelAnimationFrame(rafId);
+      }
+    };
   }, []);
 
   return (

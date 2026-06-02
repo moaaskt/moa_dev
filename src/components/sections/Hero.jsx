@@ -43,6 +43,8 @@ export default function Hero() {
   const vantaRef = useRef(null);
 
   useEffect(() => {
+    if (window.innerWidth < 480) return;
+
     const canvas = vantaRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
