@@ -5,8 +5,8 @@ Este documento registra a memória atual do projeto, progresso das waves, pendê
 ---
 
 ## 🚦 Status Geral
-- **Wave Ativa**: Wave 2: Narrativa profissional, textos e posicionamento para recrutadores
-- **Status da Wave**: Pendente (Aguardando planejamento da Wave 2)
+- **Wave Ativa**: Wave 4: UI/UX, hero, foto pessoal, favicon e identidade visual
+- **Status da Wave**: Pendente (Aguardando planejamento da Wave 4)
 - **Última Atualização**: 2026-06-01
 
 ---
@@ -15,8 +15,8 @@ Este documento registra a memória atual do projeto, progresso das waves, pendê
 
 - [x] **Wave 0**: Discovery técnico e contexto GSD `[Concluído]`
 - [x] **Wave 1**: Fundação profissional, contatos, links, metadados e SEO básico `[Concluído]`
-- [ ] **Wave 2**: Narrativa profissional, textos e posicionamento para recrutadores `[Pendente]`
-- [ ] **Wave 3**: Projetos, cards e cases `[Pendente]`
+- [x] **Wave 2**: Narrativa profissional, textos e posicionamento para recrutadores `[Concluído]`
+- [x] **Wave 3**: Projetos, cards e cases `[Concluído]`
 - [ ] **Wave 4**: UI/UX, hero, foto pessoal, favicon e identidade visual `[Pendente]`
 - [ ] **Wave 5**: Qualidade técnica, lint, acessibilidade, performance e responsividade `[Pendente]`
 - [ ] **Wave 6**: README, GitHub profile, LinkedIn e publicação final `[Pendente]`
@@ -37,4 +37,4 @@ As seguintes informações ou decisões estão pendentes e precisam ser fornecid
 
 ## 🎯 Próximos Passos Recomendados
 
-1. **Planejar a Wave 2**: Executar `/gsd-plan-phase 2` para detalhar a narrativa profissional, textos e posicionamento para recrutadores.
+1. **Planejar a Wave 4**: Executar `/gsd-plan-phase 4` para detalhar a identidade visual, favicon, foto de perfil e prevenção de memory leaks.
