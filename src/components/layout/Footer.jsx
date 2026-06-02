@@ -18,9 +18,9 @@ function LinkedinIcon({ size = 18 }) {
 }
 
 const SOCIAL = [
-  { label: 'GitHub', icon: GithubIcon, href: contactDetails.github },
-  { label: 'LinkedIn', icon: LinkedinIcon, href: contactDetails.linkedin },
-  { label: 'WhatsApp', icon: MessageCircle, href: 'https://wa.me/5548999999999', ariaLabel: 'WhatsApp' },
+  { label: 'GitHub', icon: GithubIcon, href: contactDetails.github, ariaLabel: 'Acessar perfil de Moacir Neto no GitHub' },
+  { label: 'LinkedIn', icon: LinkedinIcon, href: contactDetails.linkedin, ariaLabel: 'Acessar perfil profissional de Moacir Neto no LinkedIn' },
+  { label: 'WhatsApp', icon: MessageCircle, href: 'https://wa.me/5548999999999', ariaLabel: 'Conversar com Moacir Neto no WhatsApp' },
 ];
 
 export default function Footer() {
@@ -54,7 +54,7 @@ export default function Footer() {
             onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--accent)')}
             onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-muted)')}
           >
-            <Icon size={18} />
+            <Icon size={18} aria-hidden="true" />
           </a>
         ))}
       </div>

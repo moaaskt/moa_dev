@@ -235,6 +235,7 @@ export default function Hero() {
             href="https://github.com/moaaskt"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Acessar perfil de Moacir Neto no GitHub"
             style={{
               display: 'inline-flex',
               alignItems: 'center',

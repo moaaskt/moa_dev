@@ -58,14 +58,14 @@ function CodePlaceholder() {
   );
 }
 
-function LinkButton({ href, label, icon }) {
+function LinkButton({ href, label, icon, ariaLabel }) {
   const [hovered, setHovered] = useState(false);
   return (
     <a
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label={label}
+      aria-label={ariaLabel || label}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
@@ -225,6 +225,7 @@ export default function ProjectCard({ project }) {
               <LinkButton
                 href={project.links.github}
                 label="GitHub"
+                ariaLabel={`Acessar código-fonte do projeto ${project.title} no GitHub`}
                 icon={<GithubIcon size={15} />}
               />
             )}
@@ -232,7 +233,8 @@ export default function ProjectCard({ project }) {
               <LinkButton
                 href={project.links.live}
                 label="Live"
-                icon={<ExternalLink size={14} />}
+                ariaLabel={`Acessar demonstração online do projeto ${project.title}`}
+                icon={<ExternalLink size={14} aria-hidden="true" />}
               />
             )}
             {!project.links.live && project.links.github && (

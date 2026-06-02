@@ -38,7 +38,7 @@ export default function TechIcon({ techName }) {
         cursor: 'default',
       }}
     >
-      <IconComponent size={20} color={entry.color} />
+      <IconComponent size={20} color={entry.color} aria-hidden="true" />
     </div>
   );
 }

@@ -29,6 +29,16 @@ export default function Navbar() {
     }
   }, [drawerOpen]);
 
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') setDrawerOpen(false);
+    };
+    if (drawerOpen) {
+      window.addEventListener('keydown', handleKeyDown);
+    }
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [drawerOpen]);
+
   const handleLinkClick = (href) => {
     setActive(href);
     setDrawerOpen(false);
@@ -135,7 +145,7 @@ export default function Navbar() {
             padding: '4px',
           }}
         >
-          <Menu size={24} />
+          <Menu size={24} aria-hidden="true" />
         </button>
       </motion.nav>
 
@@ -190,7 +200,7 @@ export default function Navbar() {
                   marginBottom: '2rem',
                 }}
               >
-                <X size={24} />
+                <X size={24} aria-hidden="true" />
               </button>
               <nav>
                 <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
