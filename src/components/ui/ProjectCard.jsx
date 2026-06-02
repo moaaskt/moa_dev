@@ -222,8 +222,8 @@ export default function ProjectCard({ project }) {
           }}
         >
           <TagIcons tags={project.tags} />
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1.2rem', minHeight: '24px' }}>
-            {!project.private && project.links.github && (
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1.2rem', minHeight: '24px', width: '100%' }}>
+            {project.links.github && (
               <LinkButton
                 href={project.links.github}
                 label="GitHub"
@@ -231,27 +231,13 @@ export default function ProjectCard({ project }) {
                 icon={<GithubIcon size={15} />}
               />
             )}
-            {!project.private && project.links.live && (
+            {project.links.live && (
               <LinkButton
                 href={project.links.live}
                 label="Live"
                 ariaLabel={`Acessar demonstração online do projeto ${project.title}`}
                 icon={<ExternalLink size={14} aria-hidden="true" />}
               />
-            )}
-            {!project.private && !project.links.live && project.links.github && (
-              <span
-                style={{
-                  fontFamily: 'JetBrains Mono, monospace',
-                  fontSize: '0.7rem',
-                  color: 'var(--text-secondary)',
-                  marginLeft: 'auto',
-                  letterSpacing: '0.06em',
-                  textTransform: 'uppercase',
-                }}
-              >
-                Código disponível
-              </span>
             )}
             {project.private && (
               <span
@@ -265,10 +251,25 @@ export default function ProjectCard({ project }) {
                   borderRadius: '3px',
                   letterSpacing: '0.06em',
                   textTransform: 'uppercase',
+                  marginLeft: project.links.live ? 'auto' : '0',
                 }}
                 aria-label="Caso de uso privado: código não disponível publicamente"
               >
                 Case Privado
+              </span>
+            )}
+            {project.links.github && (
+              <span
+                style={{
+                  fontFamily: 'JetBrains Mono, monospace',
+                  fontSize: '0.7rem',
+                  color: 'var(--text-secondary)',
+                  marginLeft: 'auto',
+                  letterSpacing: '0.06em',
+                  textTransform: 'uppercase',
+                }}
+              >
+                Código disponível
               </span>
             )}
           </div>

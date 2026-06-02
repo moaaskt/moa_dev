@@ -32,7 +32,7 @@ export const projects = [
     private: true,
     links: {
       github: null,
-      live: null,
+      live: 'https://rastrecob.digitalnexo.com.br/',
     },
     year: 2026,
   },
@@ -47,7 +47,7 @@ export const projects = [
     private: true,
     links: {
       github: null,
-      live: null,
+      live: 'https://doardigital.com.br/evento-santo',
     },
     year: 2025,
   },
@@ -59,9 +59,9 @@ export const projects = [
     tags: ['React', 'TypeScript', 'IA', 'Tailwind'],
     category: 'ai',
     featured: true,
-    private: true,
+    private: false,
     links: {
-      github: null,
+      github: 'https://github.com/moaaskt/vetos-ai',
       live: null,
     },
     year: 2026,
