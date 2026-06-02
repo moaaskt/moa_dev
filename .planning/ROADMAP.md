@@ -84,7 +84,18 @@ Refinamento técnico de baixo nível para certificar o portfólio sob auditorias
 
 ---
 
-## 🌊 Wave 6: README, GitHub Profile, LinkedIn e Publicação Final
+## 🌊 Wave 6: Projetos de Peso e Cases Profissionais
+Reorganizar e atualizar a seção de projetos para exibir exatamente 6 projetos fortes e profissionais, ocultando projetos acadêmicos e integrando suporte a cases privados sob NDA.
+- **Objetivos**:
+  - Atualizar `projects.js` removendo projetos acadêmicos (Rick & Morty, Petflix) e adicionando novos cases reais (WhatsMiau/Sherlock, Rastrecob, Evento Santo, VetOS IA).
+  - Implementar badge de "Case Privado" em `ProjectCard.jsx` e suporte de ícones no data layer para novas stacks.
+- **Critérios de Aceitação (UAT)**:
+  - O portfólio exibe exatamente 6 projetos no grid "Todos".
+  - Projetos sob NDA exibem o badge discreto "Case Privado" com acessibilidade `aria-label`, sem expor repositórios ou links.
+
+---
+
+## 🌊 Wave 7: README, GitHub Profile, LinkedIn e Publicação Final
 Polimento de canais de aquisição de talentos complementares e deploy público definitivo.
 - **Objetivos**:
   - Atualizar o `README.md` principal do repositório com diagramas de arquitetura, diferenciais e tags.

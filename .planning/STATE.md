@@ -5,8 +5,8 @@ Este documento registra a memória atual do projeto, progresso das waves, pendê
 ---
 
 ## 🚦 Status Geral
-- **Wave Ativa**: Wave 5C-3: Limpeza de PNG/JPEG originais
-- **Status da Wave**: Pendente (Aguardando validação visual e aprovação explícita)
+- **Wave Ativa**: Wave 6: Projetos de peso e cases profissionais
+- **Status da Wave**: Concluído (Aguardando validação e homologação do usuário)
 - **Última Atualização**: 2026-06-02
 
 ---
@@ -25,8 +25,9 @@ Este documento registra a memória atual do projeto, progresso das waves, pendê
 - [ ] **Wave 5B-2**: Contraste visual `[Opcional/Adiado — Contraste atual já passa WCAG AA]`
 - [x] **Wave 5C-1**: Performance segura sem conversão de imagens `[Concluído]`
 - [x] **Wave 5C-2**: Conversão WebP mantendo originais `[Concluído]`
-- [ ] **Wave 5C-3**: Limpeza de PNG/JPEG originais `[Pendente — Próxima etapa recomendada]`
-- [ ] **Wave 6**: README, GitHub profile, LinkedIn e publicação final `[Pendente]`
+- [ ] **Wave 5C-3**: Limpeza de PNG/JPEG originais `[Pendente]`
+- [x] **Wave 6**: Projetos de peso e cases profissionais `[Concluído]`
+- [ ] **Wave 7**: README, GitHub profile, LinkedIn e publicação final `[Pendente]`
 
 ---
 

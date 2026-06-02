@@ -13,7 +13,7 @@ export const skills = [
   },
   {
     category: 'Ferramentas',
-    items: ['Git', 'GitHub', 'Docker', 'Vercel', 'WordPress', 'Figma'],
+    items: ['Git', 'GitHub', 'Docker', 'Vercel', 'WordPress', 'Figma' , 'Linux'],
   },
   {
     category: 'IA & Data',

@@ -6,7 +6,9 @@ import {
   SiGooglegemini,
   SiYoutube, SiBootstrap, SiOpenai,
   SiHuggingface, SiPuppeteer, SiPostman,
+  SiGo, SiRedis, SiLaravel,
 } from 'react-icons/si';
+import { TbGps, TbBrain } from 'react-icons/tb';
 
 export const TECH_ICONS = {
   'Next.js':       { icon: SiNextdotjs,    color: '#ffffff' },
@@ -34,4 +36,9 @@ export const TECH_ICONS = {
   'NLP':           { icon: SiHuggingface,  color: '#FFD21E' },
   'Web Scraping':  { icon: SiPuppeteer,    color: '#40B5A4' },
   'REST API':      { icon: SiPostman,      color: '#FF6C37' },
+  'Go':            { icon: SiGo,           color: '#00ADD8' },
+  'Redis':         { icon: SiRedis,        color: '#DC382D' },
+  'Laravel':       { icon: SiLaravel,      color: '#FF2D20' },
+  'GPS/IoT':       { icon: TbGps,          color: '#06B6D4' },
+  'IA':            { icon: TbBrain,        color: '#b8f73c' },
 };
