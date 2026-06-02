@@ -1,7 +1,7 @@
-import guiadocachorro from '../assets/images/projects/guiadocachorro.jpeg';
-import petflix from '../assets/images/projects/petflix.png';
-import chatjovemprogramador from '../assets/images/projects/chatjovem.png';
-import gstore from '../assets/images/projects/gstore.png';
+import guiadocachorro from '../assets/images/projects/guiadocachorro.webp';
+import petflix from '../assets/images/projects/petflix.webp';
+import chatjovemprogramador from '../assets/images/projects/chatjovem.webp';
+import gstore from '../assets/images/projects/gstore.webp';
 
 export const projects = [
   {
