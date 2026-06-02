@@ -1,12 +1,16 @@
 import guiadocachorro from '../assets/images/projects/guiadocachorro.webp';
 import gstore from '../assets/images/projects/gstore.webp';
+import vetosIA from '../assets/images/projects/vetosAI.webp';
+import rastrecobImage from '../assets/images/projects/rastrecob.webp';
+import eventoSantoImage from '../assets/images/projects/eventosanto.webp';
+import sherlockScraperImage from '../assets/images/projects/sherlock-scraper.webp';
 
 export const projects = [
   {
     id: 'sherlock-scraper',
     title: 'WhatsMiau / Sherlock Scraper',
     description: 'CRM B2B para prospecção e qualificação de leads via WhatsApp, com scraping de dados públicos, enriquecimento com IA, campanhas assíncronas, chat multicanal e dashboard analítico.',
-    image: null,
+    image: sherlockScraperImage,
     tags: ['Go', 'React', 'TypeScript', 'PostgreSQL', 'Redis', 'Docker'],
     category: 'fullstack',
     featured: true,
@@ -21,7 +25,7 @@ export const projects = [
     id: 'rastrecob',
     title: 'Rastrecob',
     description: 'Case privado de sistema web para gestão de assinaturas, cobranças recorrentes, regras de negócio e provisionamento de usuários GPSWOX, com foco em fluxo transacional, validações e testes.',
-    image: null,
+    image: rastrecobImage,
     tags: ['Laravel', 'PHP', 'MySQL', 'GPS/IoT', 'Docker'],
     category: 'backend',
     featured: true,
@@ -34,9 +38,9 @@ export const projects = [
   },
   {
     id: 'evento-santo',
-    title: 'Evento Santo / DOAR Digital',
+    title: 'Evento Santo ',
     description: 'Case profissional em sistema web de eventos e doações, com atuação em manutenção de produção, checkout, faturas, regras de negócio, integrações e correção de bugs reais.',
-    image: null,
+    image: eventoSantoImage,
     tags: ['PHP', 'CodeIgniter', 'JavaScript', 'Bootstrap', 'MySQL', 'Docker'],
     category: 'fullstack',
     featured: true,
@@ -51,7 +55,7 @@ export const projects = [
     id: 'vetos-ia',
     title: 'VetOS IA',
     description: 'SaaS veterinário em desenvolvimento, com foco em gestão clínica, agenda, prontuários, atendimento e recursos de IA para apoiar fluxos internos da clínica.',
-    image: null,
+    image: vetosIA,
     tags: ['React', 'TypeScript', 'IA', 'Tailwind'],
     category: 'ai',
     featured: true,
