@@ -120,7 +120,9 @@ export default function ProjectCard({ project }) {
           <>
             <img
               src={project.image}
-              alt={project.title}
+              alt={`Captura de tela do projeto ${project.title}`}
+              loading="lazy"
+              decoding="async"
               style={{
                 width: '100%',
                 height: '100%',

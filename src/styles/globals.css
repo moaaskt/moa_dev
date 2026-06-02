@@ -116,3 +116,12 @@ img {
     transition-duration: 0.01ms !important;
   }
 }
+
+@media (max-width: 560px) {
+  #experience [style*="gap: 2rem"] {
+    gap: 1rem !important;
+  }
+  #experience [style*="padding: 1.5rem"] {
+    padding: 1.2rem !important;
+  }
+}

@@ -55,7 +55,8 @@ export default function Hero() {
     };
     window.addEventListener('resize', resize);
 
-    const particles = Array.from({ length: 120 }, () => ({
+    const particleCount = window.innerWidth >= 768 ? 120 : 60;
+    const particles = Array.from({ length: particleCount }, () => ({
       x: Math.random() * window.innerWidth,
       y: Math.random() * window.innerHeight,
       r: Math.random() * 2 + 1,
