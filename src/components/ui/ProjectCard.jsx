@@ -222,7 +222,7 @@ export default function ProjectCard({ project }) {
           }}
         >
           <TagIcons tags={project.tags} />
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1.2rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1.2rem', minHeight: '24px', width: '100%' }}>
             {project.links.github && (
               <LinkButton
                 href={project.links.github}
@@ -239,7 +239,26 @@ export default function ProjectCard({ project }) {
                 icon={<ExternalLink size={14} aria-hidden="true" />}
               />
             )}
-            {!project.links.live && project.links.github && (
+            {project.private && (
+              <span
+                style={{
+                  fontFamily: 'JetBrains Mono, monospace',
+                  fontSize: '0.7rem',
+                  color: 'var(--accent)',
+                  border: '1px solid var(--border-accent)',
+                  background: 'rgba(184, 247, 60, 0.05)',
+                  padding: '0.2rem 0.5rem',
+                  borderRadius: '3px',
+                  letterSpacing: '0.06em',
+                  textTransform: 'uppercase',
+                  marginLeft: project.links.live ? 'auto' : '0',
+                }}
+                aria-label="Caso de uso privado: código não disponível publicamente"
+              >
+                Case Privado
+              </span>
+            )}
+            {project.links.github && (
               <span
                 style={{
                   fontFamily: 'JetBrains Mono, monospace',

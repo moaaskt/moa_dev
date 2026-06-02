@@ -3,7 +3,7 @@ import {
   SiReact, SiNextdotjs, SiTypescript, SiJavascript, SiHtml5, SiCss, SiTailwindcss,
   SiNodedotjs, SiPhp, SiPython, SiCodeigniter,
   SiPostgresql, SiMysql, SiFirebase, SiSupabase,
-  SiDocker, SiWordpress, SiGit, SiGithub,
+  SiDocker, SiWordpress, SiGit, SiGithub, SiLinux,
 } from 'react-icons/si';
 import SectionHeader from '../ui/SectionHeader';
 
@@ -41,10 +41,12 @@ const CATEGORIES = [
   {
     title: 'Ferramentas',
     skills: [
+       { label: 'Linux',     Icon: SiLinux,     color: '#e4edf4ff' },
       { label: 'Docker',    Icon: SiDocker,    color: '#2496ED' },
       { label: 'WordPress', Icon: SiWordpress, color: '#21759B' },
       { label: 'Git',       Icon: SiGit,       color: '#F05032' },
       { label: 'GitHub',    Icon: SiGithub,    color: '#f0f0f0' },
+     
     ],
   },
 ];
