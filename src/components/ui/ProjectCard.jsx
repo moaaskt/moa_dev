@@ -235,6 +235,20 @@ export default function ProjectCard({ project }) {
                 icon={<ExternalLink size={14} />}
               />
             )}
+            {!project.links.live && project.links.github && (
+              <span
+                style={{
+                  fontFamily: 'JetBrains Mono, monospace',
+                  fontSize: '0.7rem',
+                  color: 'var(--text-secondary)',
+                  marginLeft: 'auto',
+                  letterSpacing: '0.06em',
+                  textTransform: 'uppercase',
+                }}
+              >
+                Código disponível
+              </span>
+            )}
           </div>
         </div>
       </div>
