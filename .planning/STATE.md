@@ -5,8 +5,8 @@ Este documento registra a memória atual do projeto, progresso das waves, pendê
 ---
 
 ## 🚦 Status Geral
-- **Wave Ativa**: Wave 5C-2: Conversão WebP mantendo originais
-- **Status da Wave**: Pendente (Próxima etapa recomendada — Adiada)
+- **Wave Ativa**: Wave 5C-3: Limpeza de PNG/JPEG originais
+- **Status da Wave**: Pendente (Aguardando validação visual e aprovação explícita)
 - **Última Atualização**: 2026-06-02
 
 ---
@@ -24,8 +24,8 @@ Este documento registra a memória atual do projeto, progresso das waves, pendê
 - [x] **Wave 5B-1**: Acessibilidade sem mudança visual `[Concluído]`
 - [ ] **Wave 5B-2**: Contraste visual `[Opcional/Adiado — Contraste atual já passa WCAG AA]`
 - [x] **Wave 5C-1**: Performance segura sem conversão de imagens `[Concluído]`
-- [ ] **Wave 5C-2**: Conversão WebP mantendo originais `[Pendente — Adiada]`
-- [ ] **Wave 5C-3**: Limpeza de PNG/JPEG originais `[Pendente — Adiada / Requer aprovação explícita]`
+- [x] **Wave 5C-2**: Conversão WebP mantendo originais `[Concluído]`
+- [ ] **Wave 5C-3**: Limpeza de PNG/JPEG originais `[Pendente — Próxima etapa recomendada]`
 - [ ] **Wave 6**: README, GitHub profile, LinkedIn e publicação final `[Pendente]`
 
 ---
@@ -44,4 +44,4 @@ As seguintes informações ou decisões estão pendentes e precisam ser fornecid
 
 ## 🎯 Próximos Passos Recomendados
 
-1. **Planejar/Aprovar a Wave 5C-2**: Prosseguir com a conversão cirúrgica de imagens para WebP mantendo os arquivos originais (.png/.jpeg) temporariamente no diretório para validação.
+1. **Executar a Wave 5C-3 (Limpeza)**: Realizar testes manuais finais no navegador locais para certificar a perfeita compatibilidade visual dos WebPs e, após aprovação explícita humana, prosseguir com a remoção definitiva e segura das 4 imagens originais (PNG/JPEG) brutas redundantes para higienizar o repositório.
