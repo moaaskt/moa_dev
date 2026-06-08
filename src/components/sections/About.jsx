@@ -1,15 +1,19 @@
+// 1. React, Core Hooks, and Native Packages
+
+// 2. Third-Party Libraries (Framer Motion, Lucide Icons, etc.)
 import { motion } from 'framer-motion';
-import { useScrollAnimation } from '../../hooks/useScrollAnimation';
+
+// 3. Reusable UI Components & Layout Elements
+import AboutPortrait from '../ui/AboutPortrait'; // eslint-disable-line no-unused-vars
 import SectionHeader from '../ui/SectionHeader';
+import TechIcon from '../ui/TechIcon';
 
-const STATS = [
-  { value: '4+', label: 'Anos de experiência' },
-  { value: '50+', label: 'Repositórios GitHub' },
-  { value: '6+', label: 'Projetos no portfólio' },
-  { value: '8mo', label: 'Experiência CLT' },
-];
+// 4. Data Layer, Configuration, and Custom Hooks / Utilities
+import { useScrollAnimation } from '../../hooks/useScrollAnimation';
 
-const TECH_TAGS = ['React', 'Node.js', 'PHP', 'Python', 'Next.js', 'Supabase'];
+// 5. CSS Stylesheets, Custom Fonts, and Module CSS (if any)
+
+const FAVORITE_STACK = ['React', 'PHP', 'Python', 'Next.js'];
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 30 },
@@ -30,15 +34,11 @@ export default function About() {
 
         <div
           ref={ref}
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-            gap: '4rem',
-            alignItems: 'start',
-          }}
+          className="about-grid"
+          style={{ alignItems: 'center' }}
         >
-          {/* Left: text + tags */}
-          <div>
+          {/* Biography and Tech Tags Container */}
+          <div className="about-content">
             <motion.p
               {...fadeUp(0.1)}
               animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
@@ -81,6 +81,7 @@ export default function About() {
               Minha evolução como dev vem de projetos reais, estudo constante e manutenção de sistemas em produção, onde aprendi a investigar bugs, entender impacto no usuário e entregar correções com responsabilidade.
             </motion.p>
 
+            {/* Favorite Stack Section */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={isVisible ? { opacity: 1, y: 0 } : {}}
@@ -93,93 +94,62 @@ export default function About() {
                   color: 'var(--accent)',
                   letterSpacing: '0.12em',
                   textTransform: 'uppercase',
-                  marginBottom: '0.75rem',
+                  marginBottom: '1rem',
                 }}
               >
                 // stack favorita
               </p>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
-                {TECH_TAGS.map((tag, i) => (
-                  <motion.span
-                    key={tag}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={isVisible ? { opacity: 1, scale: 1 } : {}}
-                    transition={{ duration: 0.3, delay: 0.4 + i * 0.06, ease: [0.16, 1, 0.3, 1] }}
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem' }}>
+                {FAVORITE_STACK.map((tech, i) => (
+                  <motion.div
+                    key={tech}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={isVisible ? { opacity: 1, y: 0 } : {}}
+                    transition={{ duration: 0.4, delay: 0.4 + i * 0.06, ease: [0.16, 1, 0.3, 1] }}
                     style={{
-                      fontFamily: 'JetBrains Mono, monospace',
-                      fontSize: 'var(--text-sm)',
-                      color: 'var(--text-secondary)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '0.5rem',
                       background: 'var(--bg-elevated)',
                       border: '1px solid var(--border)',
-                      padding: '0.35rem 0.8rem',
-                      borderRadius: '4px',
-                      transition: 'border-color 0.25s ease, color 0.25s ease',
+                      padding: '0.4rem 0.8rem',
+                      borderRadius: '6px',
                       cursor: 'default',
+                      transition: 'border-color 0.25s ease, transform 0.25s ease',
                     }}
                     onMouseEnter={(e) => {
                       e.currentTarget.style.borderColor = 'var(--border-accent)';
-                      e.currentTarget.style.color = 'var(--accent)';
+                      e.currentTarget.style.transform = 'translateY(-2px)';
                     }}
                     onMouseLeave={(e) => {
                       e.currentTarget.style.borderColor = 'var(--border)';
-                      e.currentTarget.style.color = 'var(--text-secondary)';
+                      e.currentTarget.style.transform = 'translateY(0)';
                     }}
                   >
-                    {tag}
-                  </motion.span>
+                    <TechIcon techName={tech} />
+                    <span
+                      style={{
+                        fontFamily: 'JetBrains Mono, monospace',
+                        fontSize: 'var(--text-xs)',
+                        color: 'var(--text-primary)',
+                      }}
+                    >
+                      {tech}
+                    </span>
+                  </motion.div>
                 ))}
               </div>
             </motion.div>
           </div>
 
-          {/* Right: stat cards */}
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: '1fr 1fr',
-              gap: '1rem',
-            }}
-          >
-            {STATS.map(({ value, label }, i) => (
-              <motion.div
-                key={label}
-                initial={{ opacity: 0, y: 20 }}
-                animate={isVisible ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: 0.15 + i * 0.1, ease: [0.16, 1, 0.3, 1] }}
-                style={{
-                  background: 'var(--bg-elevated)',
-                  border: '1px solid var(--border)',
-                  borderRadius: '8px',
-                  padding: '1.5rem',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: '0.35rem',
-                }}
-              >
-                <span
-                  style={{
-                    fontFamily: 'Syne, sans-serif',
-                    fontWeight: 800,
-                    fontSize: 'var(--text-2xl)',
-                    color: 'var(--accent)',
-                    letterSpacing: '-0.03em',
-                    lineHeight: 1,
-                  }}
-                >
-                  {value}
-                </span>
-                <span
-                  style={{
-                    fontFamily: 'DM Sans, sans-serif',
-                    fontSize: 'var(--text-sm)',
-                    color: 'var(--text-secondary)',
-                    lineHeight: 1.4,
-                  }}
-                >
-                  {label}
-                </span>
-              </motion.div>
-            ))}
+          {/* Profile Portrait Container */}
+          <div className="about-photo-wrapper">
+            <motion.div
+              {...fadeUp(0.25)}
+              animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            >
+              <AboutPortrait />
+            </motion.div>
           </div>
         </div>
       </div>

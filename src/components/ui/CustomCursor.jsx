@@ -105,6 +105,7 @@ export default function CustomCursor() {
   return (
     <div
       ref={dotRef}
+      id="custom-cursor"
       aria-hidden="true"
       style={{
         position: 'fixed',
