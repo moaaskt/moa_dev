@@ -1,0 +1,159 @@
+/* Estrutura do Grid da Seção Sobre Mim */
+.about-grid {
+  display: grid;
+  grid-template-areas: "photo" "content";
+  gap: 3rem;
+  align-items: center;
+}
+
+.about-photo-wrapper {
+  grid-area: photo;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-content {
+  grid-area: content;
+}
+
+@media (min-width: 768px) {
+  .about-grid {
+    grid-template-columns: 1.2fr 0.8fr;
+    grid-template-areas: "content photo";
+    gap: 4rem;
+  }
+}
+
+/* Componente Retrato Tech (Clipped Outer Wrapper) */
+.portrait-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  filter: drop-shadow(0 4px 10px rgba(184, 247, 60, 0.03)); /* Borda/glow estático ultra-sutil */
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.3s ease;
+  z-index: 2;
+  cursor: default; /* Restaura o cursor padrão do sistema sobre o card */
+}
+
+.portrait-wrapper:hover {
+  transform: translateY(-4px);
+  filter: drop-shadow(0 6px 16px rgba(184, 247, 60, 0.06)); /* Glow no hover mais sutil e premium */
+}
+
+/* Ocultar cursor customizado quando estiver sobre o Portrait */
+body:has(.portrait-wrapper:hover) #custom-cursor {
+  opacity: 0 !important;
+  transform: scale(0) !important;
+  transition: opacity 0.25s ease, transform 0.25s ease !important;
+}
+
+/* Moldura que cria a borda recortada angular */
+.portrait-tech-border {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  clip-path: polygon(0 0, 84% 0, 100% 13%, 100% 100%, 16% 100%, 0 87%);
+  background: var(--border);
+  padding: 1.5px; /* Define a espessura da borda recortada */
+  transition: background-color 0.3s ease;
+  z-index: 2;
+}
+
+.portrait-wrapper:hover .portrait-tech-border {
+  background-color: var(--border-accent);
+}
+
+/* Cartão Interno (Recortado) */
+.portrait-tech-card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  clip-path: polygon(0 0, 84% 0, 100% 13%, 100% 100%, 16% 100%, 0 87%);
+  background: var(--bg-elevated);
+  overflow: hidden;
+}
+
+.portrait-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 10%; /* Enquadra perfeitamente o rosto cortando o celular da base */
+  transform: scale(1.1); /* Enquadramento ideal aproximando o rosto */
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.portrait-wrapper:hover .portrait-image {
+  transform: scale(1.14);
+}
+
+/* Brilho sutil traseiro */
+.portrait-glow {
+  position: absolute;
+  inset: -10px;
+  background: var(--accent);
+  filter: blur(45px);
+  opacity: 0.03;
+  z-index: 1;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.portrait-wrapper:hover .portrait-glow {
+  opacity: 0.06;
+}
+
+/* Legenda Externa (Estilo de Terminal) */
+.portrait-caption-external {
+  margin-top: 1rem;
+  padding-left: 0.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  text-align: left;
+}
+
+.caption-terminal-prefix {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  color: var(--accent);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.caption-name {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 1.15rem; /* Reduzido levemente o peso visual */
+  color: var(--text-primary);
+  line-height: 1.2;
+  margin: 0;
+}
+
+.caption-role {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  font-size: 0.72rem; /* Mais discreto e elegante */
+  color: var(--text-secondary);
+  letter-spacing: 0.01em;
+}
+
+/* Suporte para acessibilidade (Reduced Motion) */
+@media (prefers-reduced-motion: reduce) {
+  .portrait-wrapper {
+    transition: none !important;
+    transform: none !important;
+    filter: none !important;
+  }
+  .portrait-image {
+    transition: none !important;
+    transform: scale(1.1) !important;
+  }
+  .portrait-wrapper:hover .portrait-image {
+    transform: scale(1.1) !important;
+  }
+  .portrait-glow {
+    opacity: 0.03 !important;
+  }
+}
