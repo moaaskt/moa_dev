@@ -64,7 +64,7 @@ export default function About() {
                 marginBottom: '1.25rem',
               }}
             >
-              Tenho experiência com PHP/CodeIgniter, JavaScript, React, Python, Docker, bancos de dados e APIs. Gosto de atuar em toda a stack: da regra de negócio e modelagem de dados até interfaces responsivas e bem organizadas.
+              Tenho experiência com PHP, JavaScript, React, Python, Docker, bancos de dados e APIs. Gosto de atuar em toda a stack: da regra de negócio e modelagem de dados até interfaces responsivas e bem organizadas.
             </motion.p>
 
             <motion.p
