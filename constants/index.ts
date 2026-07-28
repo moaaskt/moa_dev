@@ -158,6 +158,12 @@ export const SKILLS_ROW_4 = [
     width: 70,
     height: 70,
   },
+  {
+    skill_name: "Linux",
+    image: "linux.svg",
+    width: 70,
+    height: 70,
+  },
 ] as const;
 
 export const PROJECTS = [
