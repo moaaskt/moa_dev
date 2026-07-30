@@ -73,6 +73,7 @@ export const Skills = () => {
         <div className="w-full h-full z-[-10] opacity-30 absolute flex items-center justify-center bg-cover">
           <video
             className="w-full h-auto"
+            style={{ filter: "hue-rotate(-110deg) saturate(1.1) brightness(0.95)" }}
             preload="false"
             playsInline
             loop

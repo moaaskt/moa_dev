@@ -8,6 +8,7 @@ export const Hero = () => {
         muted
         loop
         className="rotate-180 absolute top-[-340px] left-0 w-full h-full object-cover -z-20"
+        style={{ filter: "hue-rotate(-110deg) saturate(1.1) brightness(0.95)" }}
       >
         <source src="/videos/blackhole.webm" type="video/webm" />
       </video>

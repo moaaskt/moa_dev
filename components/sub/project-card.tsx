@@ -19,7 +19,7 @@ export const ProjectCard = ({
   const showOverlay = repoLink || liveLink;
 
   return (
-    <div className="relative overflow-hidden rounded-lg shadow-lg border border-[#2A0E61] bg-[#03001417] backdrop-blur-md">
+    <div className="relative overflow-hidden rounded-lg shadow-lg border border-[#064e3b] bg-[#000f0a17] backdrop-blur-md">
       <div className="relative group overflow-hidden">
         <Image
           src={src}
