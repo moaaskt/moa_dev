@@ -174,6 +174,9 @@ export const PROJECTS = [
     image: "/projects/whatsmiau.png",
     repoLink: "https://github.com/moaaskt/sherlock-scraper",
     liveLink: "",
+    category: "IA & Python",
+    techStack: ["go.png", "react.png", "ts.png", "postgresql.png", "redis.svg", "docker.png"],
+    year: 2024,
   },
   {
     title: "Rastrecob",
@@ -182,6 +185,9 @@ export const PROJECTS = [
     image: "/projects/rastrecob.png",
     repoLink: "",
     liveLink: "https://rastrecob.digitalnexo.com.br/",
+    category: "Full Stack",
+    techStack: ["laravel.svg", "php.svg", "mysql.png", "docker.png"],
+    year: 2025,
   },
   {
     title: "Evento Santo",
@@ -190,6 +196,9 @@ export const PROJECTS = [
     image: "/projects/eventosanto.png",
     repoLink: "",
     liveLink: "https://doardigital.com.br/evento-santo",
+    category: "Full Stack",
+    techStack: ["php.svg", "codeigniter.svg", "js.png", "bootstrap.svg", "mysql.png", "docker.png"],
+    year: 2025,
   },
   {
     title: "VetOS IA",
@@ -198,6 +207,9 @@ export const PROJECTS = [
     image: "/projects/vetos.png",
     repoLink: "https://github.com/moaaskt/vetos-ai",
     liveLink: "",
+    category: "IA & Python",
+    techStack: ["react.png", "ts.png", "python.svg", "tailwind.png"],
+    year: 2025,
   },
   {
     title: "Loja Virtual CodeIgniter 4",
@@ -206,6 +218,9 @@ export const PROJECTS = [
     image: "/projects/lojavirtual.png",
     repoLink: "https://github.com/moaaskt/loja-virtual-codeigniter",
     liveLink: "",
+    category: "Backend",
+    techStack: ["php.svg", "codeigniter.svg", "mysql.png", "bootstrap.svg", "js.png"],
+    year: 2023,
   },
   {
     title: "Guia do Cachorro",
@@ -214,6 +229,9 @@ export const PROJECTS = [
     image: "/projects/guiadocachorro.png",
     repoLink: "https://github.com/moaaskt/guiadocachorro",
     liveLink: "https://guiadocachorro.vercel.app/",
+    category: "Frontend",
+    techStack: ["next.png", "ts.png", "tailwind.png", "supabase.svg"],
+    year: 2024,
   },
 ] as const;
 

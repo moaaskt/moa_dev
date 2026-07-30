@@ -19,6 +19,9 @@ export const Projects = () => {
             description={project.description}
             repoLink={project.repoLink}
             liveLink={project.liveLink}
+            category={project.category}
+            techStack={project.techStack}
+            year={project.year}
           />
         ))}
       </div>
