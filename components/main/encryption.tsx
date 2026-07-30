@@ -14,7 +14,7 @@ export const Encryption = () => {
           className="text-[40px] font-medium text-center text-gray-200"
         >
           Qualidade{" "}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-cyan-500">
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-green-600">
             &
           </span>{" "}
           boas práticas.
@@ -39,7 +39,7 @@ export const Encryption = () => {
           />
         </div>
 
-        <div className="Welcome-box px-[15px] py-[4px] z-[20] border my-[20px] border-[#7042F88B] opacity-[0.9]">
+        <div className="Welcome-box px-[15px] py-[4px] z-[20] border my-[20px] border-[#10b9818b] opacity-[0.9]">
           <h1 className="Welcome-text text-[12px]">Encryption</h1>
         </div>
       </div>
@@ -58,6 +58,7 @@ export const Encryption = () => {
           playsInline
           preload="false"
           className="w-full h-auto"
+          style={{ filter: "hue-rotate(-110deg) saturate(1.1) brightness(0.95)" }}
         >
           <source src="/videos/encryption-bg.webm" type="video/webm" />
         </video>

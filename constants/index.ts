@@ -4,94 +4,7 @@ import {
   RxLinkedinLogo,
 } from "react-icons/rx";
 
-export const SKILL_DATA = [
-  {
-    skill_name: "React",
-    image: "react.png",
-    width: 80,
-    height: 80,
-  },
-  {
-    skill_name: "Next.js 14",
-    image: "next.png",
-    width: 80,
-    height: 80,
-  },
-  {
-    skill_name: "PHP",
-    image: "php.svg",
-    width: 80,
-    height: 80,
-  },
-  {
-    skill_name: "CodeIgniter",
-    image: "codeigniter.svg",
-    width: 80,
-    height: 80,
-  },
-  {
-    skill_name: "Python",
-    image: "python.svg",
-    width: 80,
-    height: 80,
-  },
-  {
-    skill_name: "JavaScript",
-    image: "js.png",
-    width: 65,
-    height: 65,
-  },
-  {
-    skill_name: "TypeScript",
-    image: "ts.png",
-    width: 80,
-    height: 80,
-  },
-  {
-    skill_name: "Tailwind CSS",
-    image: "tailwind.png",
-    width: 80,
-    height: 80,
-  },
-  {
-    skill_name: "MySQL",
-    image: "mysql.png",
-    width: 70,
-    height: 70,
-  },
-  {
-    skill_name: "Docker",
-    image: "docker.png",
-    width: 70,
-    height: 70,
-  },
-  {
-    skill_name: "Node.js",
-    image: "node.png",
-    width: 80,
-    height: 80,
-  },
-] as const;
-
-export const SOCIALS = [
-  {
-    name: "LinkedIn",
-    icon: RxLinkedinLogo,
-    link: "https://www.linkedin.com/in/moa-dev/",
-  },
-  {
-    name: "GitHub",
-    icon: RxGithubLogo,
-    link: "https://github.com/moaaskt",
-  },
-  {
-    name: "WhatsApp",
-    icon: FaWhatsapp,
-    link: "https://wa.me/5548991792406",
-  },
-] as const;
-
-export const FRONTEND_SKILL = [
+export const SKILLS_ROW_1 = [
   {
     skill_name: "React",
     image: "react.png",
@@ -134,15 +47,33 @@ export const FRONTEND_SKILL = [
     width: 80,
     height: 80,
   },
+] as const;
+
+export const SOCIALS = [
+  {
+    name: "LinkedIn",
+    icon: RxLinkedinLogo,
+    link: "https://www.linkedin.com/in/moa-dev/",
+  },
+  {
+    name: "GitHub",
+    icon: RxGithubLogo,
+    link: "https://github.com/moaaskt",
+  },
+  {
+    name: "WhatsApp",
+    icon: FaWhatsapp,
+    link: "https://wa.me/5548991792406",
+  },
+] as const;
+
+export const SKILLS_ROW_2 = [
   {
     skill_name: "Bootstrap",
     image: "bootstrap.svg",
     width: 80,
     height: 80,
   },
-] as const;
-
-export const BACKEND_SKILL = [
   {
     skill_name: "PHP",
     image: "php.svg",
@@ -167,18 +98,36 @@ export const BACKEND_SKILL = [
     width: 80,
     height: 80,
   },
+  {
+    skill_name: "Express",
+    image: "express.png",
+    width: 80,
+    height: 80,
+  },
 ] as const;
 
-export const FULLSTACK_SKILL = [
+export const SKILLS_ROW_3 = [
   {
-    skill_name: "Docker",
-    image: "docker.png",
-    width: 70,
-    height: 70,
+    skill_name: "Go",
+    image: "go.png",
+    width: 80,
+    height: 80,
   },
   {
     skill_name: "MySQL",
     image: "mysql.png",
+    width: 70,
+    height: 70,
+  },
+  {
+    skill_name: "PostgreSQL",
+    image: "postgresql.png",
+    width: 80,
+    height: 80,
+  },
+  {
+    skill_name: "Docker",
+    image: "docker.png",
     width: 70,
     height: 70,
   },
@@ -190,7 +139,7 @@ export const FULLSTACK_SKILL = [
   },
 ] as const;
 
-export const OTHER_SKILL = [
+export const SKILLS_ROW_4 = [
   {
     skill_name: "Git",
     image: "git.svg",
@@ -206,6 +155,12 @@ export const OTHER_SKILL = [
   {
     skill_name: "WordPress",
     image: "wordpress.svg",
+    width: 70,
+    height: 70,
+  },
+  {
+    skill_name: "Linux",
+    image: "linux.svg",
     width: 70,
     height: 70,
   },

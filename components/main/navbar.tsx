@@ -9,7 +9,7 @@ export const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <div className="w-full h-[65px] fixed top-0 shadow-lg shadow-[#2A0E61]/50 bg-[#03001427] backdrop-blur-md z-50 px-10">
+    <div className="w-full h-[65px] fixed top-0 shadow-lg shadow-[#064e3b]/50 bg-[#000f0a27] backdrop-blur-md z-50 px-10">
       {/* Navbar Container */}
       <div className="w-full h-full flex items-center justify-between m-auto px-[10px]">
         {/* Logo + Name */}
@@ -30,12 +30,12 @@ export const Navbar = () => {
 
         {/* Web Navbar */}
         <div className="hidden md:flex w-[500px] h-full flex-row items-center justify-between md:mr-20">
-          <div className="flex items-center justify-between w-full h-auto border-[rgba(112,66,248,0.38)] bg-[rgba(3,0,20,0.37)] mr-[15px] px-[20px] py-[10px] rounded-full text-gray-200">
+          <div className="flex items-center justify-between w-full h-auto border-[rgba(16,185,129,0.38)] bg-[rgba(0,15,10,0.37)] mr-[15px] px-[20px] py-[10px] rounded-full text-gray-200">
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.title}
                 href={link.link}
-                className="cursor-pointer hover:text-[rgb(112,66,248)] transition"
+                className="cursor-pointer hover:text-[rgb(16,185,129)] transition"
               >
                 {link.title}
               </Link>
@@ -46,7 +46,7 @@ export const Navbar = () => {
               href={LINKS.sourceCode}
               target="_blank"
               rel="noreferrer noopener"
-              className="cursor-pointer hover:text-[rgb(112,66,248)] transition"
+              className="cursor-pointer hover:text-[rgb(16,185,129)] transition"
             >
               Source Code
             </Link>
@@ -78,14 +78,14 @@ export const Navbar = () => {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="absolute top-[65px] left-0 w-full bg-[#030014] p-5 flex flex-col items-center text-gray-300 md:hidden">
+        <div className="absolute top-[65px] left-0 w-full bg-[#000f0a] p-5 flex flex-col items-center text-gray-300 md:hidden">
           {/* Links */}
           <div className="flex flex-col items-center gap-4">
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.title}
                 href={link.link}
-                className="cursor-pointer hover:text-[rgb(112,66,248)] transition text-center"
+                className="cursor-pointer hover:text-[rgb(16,185,129)] transition text-center"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {link.title}
@@ -95,7 +95,7 @@ export const Navbar = () => {
               href={LINKS.sourceCode}
               target="_blank"
               rel="noreferrer noopener"
-              className="cursor-pointer hover:text-[rgb(112,66,248)] transition text-center"
+              className="cursor-pointer hover:text-[rgb(16,185,129)] transition text-center"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Source Code
