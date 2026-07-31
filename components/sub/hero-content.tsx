@@ -3,6 +3,7 @@
 import { SparklesIcon } from "@heroicons/react/24/solid";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
 
 import {
   slideInFromLeft,
@@ -48,13 +49,16 @@ export const HeroContent = () => {
           Sou Técnico em Desenvolvimento de Sistemas pelo SENAI/SC. Desenvolvo sistemas web com PHP, React e Python, conectando interfaces, regras de negócio, APIs e automações com IA.
         </motion.p>
 
-        <motion.a
-          href="#projects"
-          variants={slideInFromLeft(1)}
-          className="py-2 button-primary text-center text-white cursor-pointer rounded-lg max-w-[200px]"
-        >
-          Ver projetos
-        </motion.a>
+        <motion.div variants={slideInFromLeft(1)}>
+          <a href="#projects">
+            <HoverBorderGradient
+              containerClassName="max-w-[200px] cursor-pointer"
+              className="flex items-center justify-center text-center font-medium"
+            >
+              Ver projetos
+            </HoverBorderGradient>
+          </a>
+        </motion.div>
       </div>
 
       <motion.div
