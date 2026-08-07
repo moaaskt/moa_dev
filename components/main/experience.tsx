@@ -1,4 +1,5 @@
 import React from "react";
+import { CardSpotlight } from "@/components/ui/card-spotlight";
 
 export const Experience = () => {
   const experiences = [
@@ -51,7 +52,7 @@ export const Experience = () => {
                 
                 {/* Card de conteúdo */}
                 <div className={`w-full md:w-1/2 pl-12 md:pl-0 ${isLeft ? 'md:pr-12' : 'md:pl-12'}`}>
-                  <div className="p-6 rounded-xl border border-[#064e3b] bg-black/40 backdrop-blur-md hover:border-emerald-500/50 hover:bg-emerald-900/10 transition-all duration-300 text-left">
+                  <CardSpotlight className="p-6 bg-black/40 backdrop-blur-md hover:border-emerald-500/50 transition-all duration-300 text-left h-full">
                     <h3 className="text-xl font-bold text-white mb-1">{exp.role}</h3>
                     <h4 className="text-emerald-400 font-medium mb-2">{exp.company}</h4>
                     <span className="inline-block px-3 py-1 bg-emerald-500/10 text-emerald-300 text-xs rounded-full mb-4">
@@ -71,7 +72,7 @@ export const Experience = () => {
                         ))}
                       </div>
                     )}
-                  </div>
+                  </CardSpotlight>
                 </div>
               </div>
             );
