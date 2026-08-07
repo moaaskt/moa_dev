@@ -3,22 +3,26 @@ import React from "react";
 export const Experience = () => {
   const experiences = [
     {
-      role: "[CARGO 1]",
-      company: "[EMPRESA 1]",
-      period: "[PERÍODO 1]",
-      achievements: ["[CONQUISTA 1]", "[CONQUISTA 2]"],
+      role: "Desenvolvedor Full Stack Jr.",
+      company: "Evento Santo & Doar Digital",
+      period: "Jul/2025 – Mai/2026",
+      achievements: [
+        "Atuação em plataforma web multi-tenant em produção, em pelo menos 6 módulos (Eventos, Caravanas, Cursos, Produtos Avulsos, Faturas, Checkout)",
+        "Correção de bug crítico de estoque/checkout causado por lógica de deduplicação via MD5",
+        "Investigação e resolução de gargalo de performance (memory exhausted) na listagem de eventos",
+        "Correção de integração externa (GPSWOX) que retornava erro HTTP 422, incluindo ajuste de identificador de API e restrição UNIQUE de banco",
+      ],
+      stack: ["PHP", "CodeIgniter 4", "MySQL", "Bootstrap", "JavaScript"],
     },
     {
-      role: "[CARGO 2]",
-      company: "[EMPRESA 2]",
-      period: "[PERÍODO 2]",
-      achievements: ["[CONQUISTA 1]", "[CONQUISTA 2]"],
-    },
-    {
-      role: "[CARGO 3]",
-      company: "[EMPRESA 3]",
-      period: "[PERÍODO 3]",
-      achievements: ["[CONQUISTA 1]", "[CONQUISTA 2]"],
+      role: "Desenvolvedor Full Stack (Autônomo)",
+      company: "Projetos próprios",
+      period: "2023 – atual",
+      achievements: [
+        "VetOS IA: SaaS veterinário multi-tenant com NestJS, Prisma, PostgreSQL e Redis, autenticação JWT e controle de permissões por role",
+        "Desenvolvimento de projetos web sob demanda (e-commerce, portais de conteúdo, automações com IA)",
+      ],
+      stack: ["NestJS", "Prisma", "PostgreSQL", "Redis", "React", "Next.js"],
     },
   ];
 
@@ -58,6 +62,15 @@ export const Experience = () => {
                         <li key={i}>{item}</li>
                       ))}
                     </ul>
+                    {exp.stack && (
+                      <div className="mt-4 flex flex-wrap gap-2">
+                        {exp.stack.map((tech, i) => (
+                          <span key={i} className="px-2 py-1 bg-emerald-500/5 text-emerald-400 border border-emerald-500/20 text-xs rounded-md">
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>

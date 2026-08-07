@@ -34,11 +34,11 @@ export const HeroContent = () => {
           className="flex flex-col gap-6 mt-6 text-6xl text-bold text-white max-w-[600px] w-auto h-auto"
         >
           <span>
-            Transformando{" "}
+            Código que{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-green-600">
-              ideias em
-            </span>{" "}
-            soluções web reais.
+              resolve problemas
+            </span>
+            , não só que compila.
           </span>
         </motion.div>
 
@@ -46,7 +46,7 @@ export const HeroContent = () => {
           variants={slideInFromLeft(0.8)}
           className="text-lg text-gray-400 my-5 max-w-[600px]"
         >
-          Sou Técnico em Desenvolvimento de Sistemas pelo SENAI/SC. Desenvolvo sistemas web com PHP, React e Python, conectando interfaces, regras de negócio, APIs e automações com IA.
+          Full Stack Jr. com experiência prática em sistemas de produção — da correção de bugs críticos de negócio à construção de integrações e SaaS multi-tenant com IA.
         </motion.p>
 
         <motion.div variants={slideInFromLeft(1)}>
