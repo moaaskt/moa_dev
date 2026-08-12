@@ -4,6 +4,7 @@ import { Projects } from "@/components/main/projects";
 import { Skills } from "@/components/main/skills";
 import { Experience } from "@/components/main/experience";
 import { Contact } from "@/components/main/contact";
+import { GithubActivity } from "@/components/main/github-activity";
 
 export default function Home() {
   return (
@@ -13,9 +14,11 @@ export default function Home() {
         <Skills />
         <Encryption />
         <Projects />
+        <GithubActivity />
         <Experience />
         <Contact />
       </div>
     </main>
   );
 }
+
