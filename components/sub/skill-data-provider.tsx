@@ -45,6 +45,7 @@ export const SkillDataProvider = ({
         height={height} 
         alt={name} 
         unoptimized={src.endsWith('.svg')}
+        className="w-10 h-10 sm:w-14 sm:h-14 md:w-20 md:h-20 object-contain"
       />
     </motion.div>
   );
