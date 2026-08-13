@@ -40,7 +40,7 @@ export const HeroContent = () => {
           Full Stack Jr. com experiência prática em sistemas de produção — da correção de bugs críticos de negócio à construção de integrações e SaaS multi-tenant com IA.
         </motion.p>
 
-        <motion.div variants={slideInFromLeft(1)}>
+        <motion.div variants={slideInFromLeft(1)} className="flex w-full justify-center md:justify-start">
           <a href="#projects">
             <HoverBorderGradient
               containerClassName="max-w-[200px] cursor-pointer"
@@ -54,7 +54,7 @@ export const HeroContent = () => {
 
       <motion.div
         variants={slideInFromRight(0.8)}
-        className="w-full h-full flex justify-center items-center"
+        className="w-full h-full hidden md:flex justify-center items-center"
       >
         <Image
           src="/hero-bg.svg"
