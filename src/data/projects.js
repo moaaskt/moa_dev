@@ -68,7 +68,7 @@ export const projects = [
   },
   {
     id: 'loja-virtual',
-    title: 'Loja Virtual CodeIgniter 4',
+    title: "G'Store",
     description: 'Sistema de e-commerce desenvolvido com PHP e CodeIgniter 4, com cadastro de produtos, carrinho, painel administrativo, regras de negócio e fluxo de compra.',
     image: gstore,
     tags: ['PHP', 'CodeIgniter 4', 'MySQL', 'Bootstrap', 'JavaScript'],
@@ -77,7 +77,7 @@ export const projects = [
     private: false,
     links: {
       github: 'https://github.com/moaaskt/loja-virtual-codeigniter',
-      live: null,
+      live: 'http://gzstore.site.je/',
     },
     year: 2024,
   },
