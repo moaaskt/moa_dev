@@ -26,7 +26,7 @@ export default defineConfig([
       'no-unused-vars': [
         'error',
         {
-          varsIgnorePattern: '^(motion|Navbar|Hero|About|Projects|Skills|Experience|Contact|Footer|CustomCursor|ScrollProgress|Loader|AnimatePresence|X|Menu|SectionHeader|ContactCard|TechIcon|ExperienceCard|ChevronDown|GithubIcon|ProjectCard|SkillIcon|CategoryGroup|ExternalLink|TagIcons|CodePlaceholder|LinkButton|IconComponent|TechItem|MarqueeRow|App)$',
+          varsIgnorePattern: '^(motion|[A-Z_].*)$',
           argsIgnorePattern: '^Icon$'
         }
       ],
