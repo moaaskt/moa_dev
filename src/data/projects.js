@@ -77,7 +77,7 @@ export const projects = [
     private: false,
     links: {
       github: 'https://github.com/moaaskt/loja-virtual-codeigniter',
-      live: 'http://gzstore.site.je/',
+      live: 'https://gstore.moadev.com.br/',
     },
     year: 2024,
   },
