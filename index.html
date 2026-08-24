@@ -68,9 +68,24 @@
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
     </noscript>
 
+    <!-- Critical Baseline Inline Styles for Instant FCP -->
+    <style>
+      body { margin: 0; background-color: #080808; color: #f0f0f0; font-family: system-ui, -apple-system, sans-serif; }
+      #root-fallback {
+        position: fixed; inset: 0; background: #080808; display: flex; align-items: center; justify-content: center; z-index: 99999;
+      }
+      .brand-title {
+        font-weight: 800; font-size: clamp(2rem, 6vw, 4rem); color: #f0f0f0; letter-spacing: -0.03em;
+      }
+      .brand-accent { color: #b8f73c; }
+    </style>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <div id="root-fallback">
+        <span class="brand-title">moa<span class="brand-accent">(dev)</span></span>
+      </div>
+    </div>
     <script type="module" src="/src/main.jsx"></script>
 
 

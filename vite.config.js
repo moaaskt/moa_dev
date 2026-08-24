@@ -8,6 +8,8 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
+    cssCodeSplit: true,
+    minify: true,
     rollupOptions: {
       output: {
         manualChunks(id) {
