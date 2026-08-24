@@ -4,6 +4,9 @@ import vetosIA from '../assets/images/projects/vetosAI.webp';
 import rastrecobImage from '../assets/images/projects/rastrecob.webp';
 import eventoSantoImage from '../assets/images/projects/eventosanto.webp';
 import sherlockScraperImage from '../assets/images/projects/sherlock-scraper.webp';
+import petflixImage from '../assets/images/projects/petflix.webp';
+import radarAlfaImage from '../assets/images/projects/radaralfa.png';
+import rsSistemasImage from '../assets/images/projects/rs-sistemas.png';
 
 export const projects = [
   {
@@ -93,6 +96,51 @@ export const projects = [
     links: {
       github: 'https://github.com/moaaskt/guiadocachorro',
       live: 'https://guiadocachorro.vercel.app/',
+    },
+    year: 2025,
+  },
+  {
+    id: 'petflix',
+    title: 'Petflix',
+    description: 'Plataforma de streaming temática para pets com autenticação e catálogo interativo, desenvolvida com React, Tailwind CSS e integração com Firebase.',
+    image: petflixImage,
+    tags: ['React', 'Tailwind', 'Firebase', 'JavaScript'],
+    category: 'frontend',
+    featured: false,
+    private: false,
+    links: {
+      github: 'https://github.com/moaaskt/petflix',
+      live: 'https://petflix-neon.vercel.app/#/home',
+    },
+    year: 2025,
+  },
+  {
+    id: 'radar-alfa',
+    title: 'Radar Alpha',
+    description: 'Radar Pedagógico Inteligente e Tutor para coordenação escolar e alunos, com dashboard educacional moderno, métricas analíticas e recursos de IA.',
+    image: radarAlfaImage,
+    tags: ['React', 'TypeScript', 'Tailwind', 'IA'],
+    category: 'frontend',
+    featured: false,
+    private: false,
+    links: {
+      github: 'https://github.com/moaaskt/radar-alfa',
+      live: 'https://atlas-compass-prt.vercel.app/',
+    },
+    year: 2026,
+  },
+  {
+    id: 'rs-sistemas',
+    title: 'RS Sistemas & Eletrônicos',
+    description: 'Landing page e catálogo institucional para empresa de sistemas e eletrônicos, com design responsivo, alta performance e interface moderna.',
+    image: rsSistemasImage,
+    tags: ['React', 'TypeScript', 'Tailwind', 'JavaScript'],
+    category: 'frontend',
+    featured: false,
+    private: false,
+    links: {
+      github: 'https://github.com/moaaskt/integrify-solutions-main',
+      live: 'https://rs-sistemas-eletronicos.vercel.app/',
     },
     year: 2025,
   },

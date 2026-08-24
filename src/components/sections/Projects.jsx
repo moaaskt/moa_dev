@@ -7,8 +7,9 @@ import { projects, categories } from '../../data/projects';
 export default function Projects() {
   const [activeFilter, setActiveFilter] = useState('all');
 
-  const filtered = projects
-    .filter((p) => activeFilter === 'all' || p.category === activeFilter);
+  const filtered = activeFilter === 'all'
+    ? projects.filter((p) => p.featured !== false).slice(0, 6)
+    : projects.filter((p) => p.category === activeFilter);
 
   return (
     <section
