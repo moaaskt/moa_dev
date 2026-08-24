@@ -31,6 +31,7 @@ export default function AboutPortrait() {
               alt="Foto de Moacir Neto"
               className="portrait-image"
               loading="lazy"
+              decoding="async"
             />
           </div>
         </div>
