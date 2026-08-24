@@ -5,8 +5,8 @@ import rastrecobImage from '../assets/images/projects/rastrecob.webp';
 import eventoSantoImage from '../assets/images/projects/eventosanto.webp';
 import sherlockScraperImage from '../assets/images/projects/sherlock-scraper.webp';
 import petflixImage from '../assets/images/projects/petflix.webp';
-import radarAlfaImage from '../assets/images/projects/radaralfa.png';
-import rsSistemasImage from '../assets/images/projects/rs-sistemas.png';
+import radarAlfaImage from '../assets/images/projects/radaralfa.webp';
+import rsSistemasImage from '../assets/images/projects/rs-sistemas.webp';
 
 export const projects = [
   {

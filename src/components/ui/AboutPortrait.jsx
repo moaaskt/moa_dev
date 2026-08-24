@@ -5,7 +5,7 @@
 // 3. Reusable UI Components & Layout Elements
 
 // 4. Data Layer, Configuration, and Custom Hooks / Utilities
-import profileImg from '../../assets/moacir-profile.png';
+import profileImg from '../../assets/moacir-profile.webp';
 
 // 5. CSS Stylesheets, Custom Fonts, and Module CSS (if any)
 import '../../styles/about-portrait.css';
