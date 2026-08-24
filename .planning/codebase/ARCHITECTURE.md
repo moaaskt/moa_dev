@@ -24,10 +24,12 @@ graph TD
     Sections --> Projects[src/components/sections/Projects.jsx]
     Sections --> Skills[src/components/sections/Skills.jsx]
     Sections --> Experience[src/components/sections/Experience.jsx]
+    Sections --> GithubProjects[src/components/sections/GithubProjects.jsx]
     Sections --> Contact[src/components/sections/Contact.jsx]
 
     UI_Global --> Cursor[src/components/ui/CustomCursor.jsx]
     UI_Global --> ScrollProg[src/components/ui/ScrollProgress.jsx]
+    UI_Global --> Loader[App Loader in App.jsx]
 
     Sections -.-> StaticData[(src/data/)]
     Sections -.-> Hooks[src/hooks/]
@@ -37,7 +39,6 @@ graph TD
 ### 1. Functional React Component Pattern
 *   **Functional Components with Hooks**: All components are structured as functional React components. There are no legacy class components.
 *   **Single File Responsibility**: Each component resides in its own file (e.g., `src/components/ui/ProjectCard.jsx`), following a strict modular hierarchy.
-*   **Size Constraint**: Component files are kept compact (maximum ~150 lines target, excluding data maps) to make them highly readable and maintainable.
 *   **Strict Import Order Hierarchy**:
     1. React core and hooks (`useState`, `useEffect`, `useRef`)
     2. External animation & icon libraries (`framer-motion`, `lucide-react`, `react-icons`)
@@ -47,7 +48,8 @@ graph TD
 
 ### 2. State Management Strategy
 Because the site is a Single Page Application (SPA) with localized interactions, global state libraries (like Redux or Zustand) are intentionally avoided. Instead, the application relies on:
-*   **Component-Local State (`useState`)**: Used for interactive triggers, dynamic list filters, mobile drawer states, and custom hover states.
+*   **Component-Local State (`useState`)**: Used for interactive triggers, category filters, mobile drawer toggle, and GitHub repo lists.
+*   **Session Storage (`sessionStorage`)**: Used in `App.jsx` to show the initial branding loader only once per session (`moadev_visited`).
 *   **High-Performance Refs (`useRef`)**: Heavily utilized for DOM node references, canvas animation loops, cursor position tracking, and IntersectionObserver instances to prevent unnecessary re-renders.
 *   **Props Composition**: Used to pass data to subcomponents, keeping the data flow transparent and keeping components decoupled.
 
@@ -59,28 +61,30 @@ Complex client-side interactions (animations, scroll indicators, interactive can
 
 ### 1. Scroll-Triggered Animations (`src/hooks/useScrollAnimation.js`)
 An abstraction over the browser's native **Intersection Observer API**. It listens to elements entering the viewport to trigger fade-in or slide-up classes.
-*   **Performance**: Avoids heavy window scroll event listeners. Once an element becomes visible, the observer can fire transitions efficiently.
-*   **Usage**: Used by `About.jsx`, `Experience.jsx`, `Contact.jsx`, and `SectionHeader.jsx`.
+*   **Performance**: Avoids heavy window scroll event listeners. Once an element becomes visible, the observer fires transitions efficiently.
+*   **Usage**: Used across sections (`About.jsx`, `Experience.jsx`, `Contact.jsx`, etc.).
 
-### 2. Particle Canvas and Background Effects (`src/hooks/useVanta.js`)
-*   **Vanta.js Hook**: Abstracted hook to dynamically initialize and destroy WebGL backgrounds when components mount and unmount, preventing memory leaks.
-*   **Native Canvas Alternative**: In `Hero.jsx`, a highly performant **HTML5 Canvas 2D particle simulation** is implemented with `requestAnimationFrame`. This guarantees a lightweight, smooth background animation without loading bulky external dependencies.
+### 2. Particle Canvas and Background Effects (`src/hooks/useVanta.js` & `Hero.jsx`)
+*   **Native Canvas Particle Loop**: In `Hero.jsx`, a highly performant **HTML5 Canvas 2D particle simulation** is implemented with `requestAnimationFrame`. This guarantees a lightweight, smooth background animation without loading bulky external dependencies.
+*   **Vanta.js Hook**: Abstracted hook to dynamically initialize and destroy WebGL backgrounds with proper lifecycle teardown.
 
 ---
 
 ## 📊 Client-Only Static Data Layer
 
-All business logic and content details are isolated from the markup inside `src/data/`. This separates content from presentation and allows the developer to modify portfolio items, experience history, or skill tags without altering the component structure.
+All core business logic and content details are isolated inside `src/data/`. This separates content from presentation and allows the developer to modify portfolio items, experience history, or skill tags without altering the component structure.
 
-*   **`src/data/projects.js`**: Contains schema definitions for projects (`id`, `title`, `description`, `image`, `tags`, `category`, `featured`, `links`, `year`).
-*   **`src/data/skills.js`**: Groups technical proficiencies into categories (`Frontend`, `Backend`, `Banco de Dados`, `Ferramentas`, `IA & Data`), ensuring high scalability.
-*   **`src/data/experience.js`**: Defines the career chronology using structured structures (with start/end dates, duration calculations, responsibilities, and technical tags).
+*   **`src/data/projects.js`**: Contains schema definitions for featured projects (`id`, `title`, `description`, `image`, `tags`, `category`, `featured`, `links`, `year`).
+*   **`src/data/skills.js`**: Groups technical proficiencies into categories (`Frontend`, `Backend`, `Banco de Dados`, `Ferramentas`, `IA & Data`).
+*   **`src/data/experience.js`**: Defines the career chronology with period, role, company, description, and technology tags.
+*   **`src/data/contacts.js`**: Centralized contact cards with links and icons.
+*   **`src/data/techIcons.js`**: Mapping and styling tokens for technology badge icons.
 
 ---
 
 ## 🎨 Styling Strategy: Hybrid Tailwind & CSS Variables
 
-The project features a refined visual approach that merges the layout speed of Tailwind CSS with the explicit control of custom CSS variables and inline styles.
+The project features a refined visual approach that merges the layout speed of Tailwind CSS v4 with the explicit control of custom CSS variables and inline styles.
 
 ### 1. Design Tokens and CSS Variables (`src/styles/globals.css`)
 Centralized variables serve as the single source of truth for the portfolio's aesthetics:
@@ -89,32 +93,32 @@ Centralized variables serve as the single source of truth for the portfolio's ae
 *   **Fluid Layouts**: Layout padding utilizes clamp rules (`--padding-x: clamp(1.5rem, 5vw, 4rem)`) to naturally adapt to varying viewports without complex breakpoints.
 
 ### 2. Tailwind CSS Integration
-Imported at the top of the globals stack (`@import "tailwindcss";`), Tailwind classes provide utility scaffolding for layout grids, flexboxes, margins, and mobile media queries.
+Imported at the top of the globals stack (`@import "tailwindcss";`), Tailwind v4 utility engine provides instant styling primitives.
 
 ### 3. Reusable Animations Stack (`src/styles/animations.css`)
 Keyframe animations are defined natively to decouple complex CSS keyframes from JavaScript bundles:
 *   `fadeInUp`: Slide-up animation on entrance.
-*   `pulse-accent`: Elegant glowing visual cue using shadows.
-*   `marquee`: Infinite loop translations for the horizontal tech logos marquee track.
+*   `pulse-accent`: Glowing visual cue using shadows.
+*   `marquee`: Infinite loop translations for the horizontal tech logos marquee track (`TechMarquee.jsx`).
 
 ---
 
-## ✨ Interactive polishes: Low-Latency Animations
+## ✨ Interactive Polishes: Low-Latency Animations
 
 ### 1. Custom Smooth Cursor (`src/components/ui/CustomCursor.jsx`)
 An organic follow-through cursor implemented using **RequestAnimationFrame (rAF)**.
 *   **Technique**: Calculates current coordinates toward mouse position using linear interpolation (LERP):
     $$\text{current} = \text{current} + (\text{target} - \text{current}) \times 0.12$$
 *   **Desktop-Only Guard**: Explicitly disables custom cursors below $768\text{px}$ viewports to preserve mobile scroll behavior and render cycles.
-*   **Blending Effect**: Uses `mixBlendMode: 'difference'` to reverse colors automatically depending on the background.
+*   **Blending Effect**: Uses `mixBlendMode: 'difference'` to invert colors depending on background elements.
 
 ### 2. Scroll Progress Bar (`src/components/ui/ScrollProgress.jsx`)
-Tracks reading progress across the viewport using `requestAnimationFrame`, updating a slim, glow-styled bar anchored at the top of the window.
+Tracks reading progress across the viewport, updating a slim, glow-styled bar anchored at the top of the window.
 
 ### 3. Framer Motion Transitions (`framer-motion`)
 Integrated into layout-level transitions:
 *   **AnimatePresence**: Handles clean mount/unmount animations for the mobile drawer menu.
-*   **Layout Underlying Underline**: Uses Framer Motion's `layoutId` on the Navbar links to animate the indicator line smoothly from one item to another.
+*   **Layout Indicator Underline**: Uses Framer Motion's `layoutId="nav-underline"` on the Navbar links to animate the indicator line smoothly between active navigation items.
 
 ---
 
@@ -122,5 +126,5 @@ Integrated into layout-level transitions:
 
 The build environment is tailored specifically for instant deployment and reliable asset paths:
 
-*   **GitHub Pages Optimization**: Vite's config specifies a base path matching the repository name (`base: '/moa_dev/'`). This prevents broken relative assets when serving from a subfolder.
+*   **GitHub Pages Optimization**: Vite's config specifies `base: '/moa_dev/'` matching the repository name. This prevents broken relative assets when serving from a subfolder.
 *   **Single-Command Deployment**: The workflow packages code via `npm run build` and automatically runs `gh-pages -d dist`, pushing pre-compiled static production files directly to the `gh-pages` branch.

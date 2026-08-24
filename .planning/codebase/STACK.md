@@ -11,13 +11,14 @@ The project relies on a highly performant, modern, and light frontend stack. Bel
 | Layer | Technology | Actual Installed Version | Target Base Specification | Description / Role |
 | :--- | :--- | :--- | :--- | :--- |
 | **Framework** | [React](https://react.dev/) | `^19.2.5` | `18+` | Core UI library, operating with custom functional components and hooks. |
+| **DOM Renderer** | [ReactDOM](https://react.dev/) | `^19.2.5` | `18+` | Client rendering engine for DOM mounting (`createRoot`). |
 | **Build & Dev Server** | [Vite](https://vitejs.dev/) | `^8.0.9` | `5+` | Ultra-fast build tool and local development server using native ES Modules. |
-| **Styling** | [Tailwind CSS](https://tailwindcss.com/) | `^4.2.3` | `3+` | Bleeding-edge utility-first styling engine, compiled via Vite plugin. |
+| **Styling Engine** | [Tailwind CSS](https://tailwindcss.com/) | `^4.2.3` | `4+` | Modern CSS engine, compiled via `@tailwindcss/vite` plugin and `@import "tailwindcss";`. |
 
 ### Major Version Notes
-- **React 19**: Utilizes standard rendering features, and integrates with modern features. 
-- **Vite 8**: Integrates the latest development environment optimisations.
-- **Tailwind CSS v4**: Features deep build-time CSS integration, moving style imports into standard `@import "tailwindcss";` directly in `globals.css` and utilizing a Vite-native compiler (`@tailwindcss/vite`).
+- **React 19**: Utilizes standard rendering features, clean hook lifecycles, and modern JSX transformations.
+- **Vite 8**: Integrates the latest development environment optimizations and Rolldown-backed build pipeline.
+- **Tailwind CSS v4**: Features deep build-time CSS integration, moving style imports into standard `@import "tailwindcss";` directly in `src/styles/globals.css` without requiring legacy `tailwind.config.js`.
 
 ---
 
@@ -25,33 +26,36 @@ The project relies on a highly performant, modern, and light frontend stack. Bel
 
 ### 🎥 Animation & Micro-interactions
 - **[Framer Motion](https://www.framer.com/motion/)** (`^12.38.0`)
-  - **Purpose**: Power entrance animations, layout transitions, scroll-triggered staggers, and responsive micro-interactions.
-  - **Usage**: Encapsulated in section triggers and UI elements like buttons, project cards, and timelines using `<motion.div>` declarations.
+  - **Purpose**: Powers entrance animations, layout transitions (`layoutId`), mobile drawer transitions (`AnimatePresence`), and interactive micro-interactions.
+  - **Usage**: Encapsulated in section triggers, navbar indicators, and interactive UI components.
 
-### 🎨 Icons
+### 🎨 Icons & Brand Assets
 - **[Lucide React](https://lucide.dev/)** (`^1.8.0`)
   - **Purpose**: Provides clean, modern, outline SVG icons.
-  - **Usage**: Used for section headers, scroll indicators (`ChevronDown`), navigation icons, and metadata details.
+  - **Usage**: Used for section headers, scroll indicators (`ChevronDown`), navigation icons (`Menu`, `X`), external links, and UI status badges.
 - **[React Icons](https://react-icons.github.io/react-icons/)** (`^5.6.0`)
-  - **Purpose**: Provides developer/brand-specific icons (such as GitHub, LinkedIn, external page links).
+  - **Purpose**: Provides developer/brand-specific icons (`SiGithub`, `TbGitCommit`, WhatsApp, LinkedIn).
+  - **Usage**: Used across `GithubProjects.jsx`, `Contact.jsx`, and `Footer.jsx`.
 
 ### 🛠️ Class Utilities
 - **[clsx](https://github.com/lukeed/clsx)** (`^2.1.1`)
-  - **Purpose**: Small utility for conditionally constructing `className` strings.
-  - **Usage**: Simplifies dynamic styling logic for UI components, such as state-dependent nav links or active tabs.
+  - **Purpose**: Tiny utility for conditionally constructing `className` strings.
+  - **Usage**: Simplifies dynamic styling logic for UI components via helper in `src/utils/cn.js`.
 
-### 🧪 Testing
+### 🧪 Testing & Deployment
 - **[Playwright](https://playwright.dev/)** (`^1.59.1`)
   - **Purpose**: End-to-end (E2E) automated testing suite (`@playwright/test`).
-  - **Target Scope**: Continuous integration validations, accessibility validation, and critical path checks (e.g. contact form, project filtering).
+  - **Target Scope**: Cross-browser visual validation, accessibility checks, session loader behavior, and critical path navigation.
+- **[gh-pages](https://github.com/tschaub/gh-pages)** (`^6.3.0`)
+  - **Purpose**: Single-command deployment of production `dist/` artifacts to GitHub Pages branch.
 
 ---
 
 ## 🎨 Design System & CSS Variables
 
-The project styles are anchored inside [globals.css](file:///home/moadev/projetos/moa-portfolio/src/styles/globals.css). All visual tokens are declared under `:root` to ensure styling consistency and allow seamless themes in the future.
+The project styles are anchored inside [globals.css](file:///home/moa-dev/projetos/moa_dev/src/styles/globals.css). All visual tokens are declared under `:root` to ensure styling consistency.
 
-### 1. Color Palettes
+### 1. Color Palettes (The 90/10 Rule)
 The primary aesthetic rule is **90% dark neutral tones and 10% electric green accents** (`--accent`). Accents are never applied as a solid block background.
 
 | Variable Name | Color Value | Description / Use Case |
@@ -65,7 +69,7 @@ The primary aesthetic rule is **90% dark neutral tones and 10% electric green ac
 | `--text-primary` | `#f0f0f0` | Headers, section titles, and main content |
 | `--text-secondary` | `#888888` | Subtitle descriptions, supportive text labels |
 | `--text-muted` | `#444444` | Placeholders, inactive button borders, scroll track |
-| `--border` | `rgba(255, 255, 255, 0.06)`| Default card borders |
+| `--border` | `rgba(255, 255, 255, 0.06)` | Default card borders |
 | `--border-accent` | `rgba(184, 247, 60, 0.3)` | Border glowing state on hover or highlight |
 
 ### 2. Typography Rules
@@ -96,24 +100,23 @@ Three fonts are fetched from Google Fonts to serve distinct editorial purposes:
 The project utilizes ESLint v9 (`^9.39.4`) with flat configuration format.
 - **Libraries**:
   - `@eslint/js` (`^9.39.4`): Core JavaScript rules.
-  - `eslint-plugin-react-hooks` (`^7.1.1`): Enforces hook rules (e.g. dependency arrays, hook naming rules).
+  - `eslint-plugin-react-hooks` (`^7.1.1`): Enforces hook rules (dependency arrays, lifecycle correctness).
   - `eslint-plugin-react-refresh` (`^0.5.2`): Safeguards Hot Module Replacement integrity.
-- **Parser Settings**: Runs with ES Modules (`type: "module"` in package.json) and global browser environments.
+- **Rule Customization**:
+  - `no-unused-vars`: Ignores patterns matching `^(motion|[A-Z_].*)$` to facilitate Framer Motion and PascalCase component declarations, and `argsIgnorePattern: '^Icon$'`.
+- **Parser Settings**: Runs with ES Modules (`type: "module"` in `package.json`) and global browser environments.
 
 ---
 
 ## 🧠 Clean Code & Architecture Alignment
 
-The codebase conforms to Uncle Bob's "Clean Code" principles through strict guidelines:
+The codebase conforms to clean code principles:
 
 1. **Self-Documenting Names**:
-   - Variables are highly descriptive (e.g. `useScrollAnimation`, `vantaInstance`, `TYPING_TEXT`).
-   - Short files that avoid obscure variables (like `x` or `temp`).
+   - Variables are highly descriptive (e.g. `useScrollAnimation`, `fetchRepoCommits`, `formattedRepos`).
 2. **Single Responsibility Principle (SRP)**:
-   - One React component per file.
-   - Individual section files (e.g. [Hero.jsx](file:///home/moadev/projetos/moa-portfolio/src/components/sections/Hero.jsx), `About.jsx`, `Projects.jsx`).
-   - Hooks perform one specific task (e.g. `useVanta` manages Vanta lifecycles, `useScrollAnimation` manages scroll detection).
+   - One React component per file with modular separation between layout, sections, UI atoms, data, and hooks.
 3. **No Hidden Side Effects**:
-   - Clean lifecycle teardowns. Every hook (such as `useVanta` or custom animation timers) clears listeners, cancels animation frames, and tears down WebGL context on unmount to prevent leaks.
-4. **Structured imports**:
-   - Imports follow a consistent structural pattern: (1) React, (2) Third-party libraries, (3) Internal UI elements, (4) Data objects, (5) Styles.
+   - Clean lifecycle teardowns on unmount (`useEffect` cleanup functions for event listeners, intervals, and observers).
+4. **Structured Imports**:
+   - Imports follow a consistent 5-tier pattern: (1) React core, (2) Third-party libraries, (3) Internal UI components, (4) Data and hooks, (5) Styles.
