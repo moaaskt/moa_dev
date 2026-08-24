@@ -5,9 +5,9 @@ Este documento registra a memória atual do projeto, progresso das waves, pendê
 ---
 
 ## 🚦 Status Geral
-- **Wave Ativa**: Wave 6: Projetos de peso e cases profissionais
-- **Status da Wave**: Concluído (Aguardando validação e homologação do usuário)
-- **Última Atualização**: 2026-06-02
+- **Wave Ativa**: Wave 7: README, GitHub profile, LinkedIn e publicação final
+- **Status da Wave**: Concluído (Documentação entregue, testes e build validados)
+- **Última Atualização**: 2026-08-24
 
 ---
 
@@ -18,31 +18,21 @@ Este documento registra a memória atual do projeto, progresso das waves, pendê
 - [x] **Wave 2**: Narrativa profissional, textos e posicionamento para recrutadores `[Concluído]`
 - [x] **Wave 3**: Projetos, cards e cases `[Concluído]`
 - [x] **Wave 4A**: Favicon, caminhos de asset e performance leve de animações `[Concluído]`
-- [ ] **Wave 4B**: Hero com foto pessoal `[Bloqueado — Falta profile.webp]`
-- [ ] **Wave 4C**: Imagem social og-image `[Bloqueado — Falta og-image.png]`
+- [ ] **Wave 4B**: Hero com foto pessoal `[Opcional/Futuro — Utilizando partículas interativas e portrait em Sobre Mim]`
+- [ ] **Wave 4C**: Imagem social og-image `[Opcional/Futuro]`
 - [x] **Wave 5A**: Correção de lint e qualidade de código `[Concluído]`
 - [x] **Wave 5B-1**: Acessibilidade sem mudança visual `[Concluído]`
-- [ ] **Wave 5B-2**: Contraste visual `[Opcional/Adiado — Contraste atual já passa WCAG AA]`
+- [ ] **Wave 5B-2**: Contraste visual `[Opcional/Dispensado — Contraste já atende WCAG AA]`
 - [x] **Wave 5C-1**: Performance segura sem conversão de imagens `[Concluído]`
 - [x] **Wave 5C-2**: Conversão WebP mantendo originais `[Concluído]`
-- [ ] **Wave 5C-3**: Limpeza de PNG/JPEG originais `[Pendente]`
+- [ ] **Wave 5C-3**: Limpeza de PNG/JPEG originais `[Opcional/Pendente]`
 - [x] **Wave 6**: Projetos de peso e cases profissionais `[Concluído]`
-- [ ] **Wave 7**: README, GitHub profile, LinkedIn e publicação final `[Pendente]`
+- [x] **Wave 7**: README, GitHub profile, LinkedIn e publicação final `[Concluído]`
 
 ---
 
-## ❓ Pendências & Dúvidas Ativas (Ponto 9 das Regras Obrigatórias)
+## 🎯 Entregas Recentes (Wave 7)
 
-As seguintes informações ou decisões estão pendentes e precisam ser fornecidas ou validadas nas waves correspondentes:
-
-1. **Currículo em PDF (Wave 1)**: O arquivo do currículo em PDF já existe no repositório? Se sim, qual o caminho exato dele (ex: `/public/curriculo.pdf`)? Se não, precisamos criá-lo ou colocá-lo na pasta `public/`?
-2. **Dados de Redes Sociais (Wave 1)**: Os links das redes sociais (LinkedIn, GitHub, E-mail, WhatsApp) em `Footer.jsx` e `Navbar.jsx` já estão atualizados ou precisaremos preenchê-los com informações reais de Moacir Neto?
-3. **Foto Pessoal (Wave 4)**: A foto pessoal (`profile.jpg`) de Moacir Neto já está disponível no repositório no caminho `/src/assets/images/profile.jpg`, ou precisaremos gerá-la/obtê-la?
-4. **Metadados & Títulos SEO (Wave 1)**: Qual é o título final desejado para a tag `<title>` do site (ex: `Moacir Neto | Desenvolvedor Full Stack Jr`)?
-5. **Configurações adicionais de deploy (Wave 1)**: Confirmar se o repositório correto no GitHub é de fato `https://github.com/moaaskt/moa_dev` para validar a propriedade `homepage` in `package.json`.
-
----
-
-## 🎯 Próximos Passos Recomendados
-
-1. **Executar a Wave 5C-3 (Limpeza)**: Realizar testes manuais finais no navegador locais para certificar a perfeita compatibilidade visual dos WebPs e, após aprovação explícita humana, prosseguir com a remoção definitiva e segura das 4 imagens originais (PNG/JPEG) brutas redundantes para higienizar o repositório.
+1. **README.md Profissional**: Atualizado com badges de status, resumo executivo dos 6 cases, stack completa, decisões de arquitetura e instruções de execução.
+2. **PROFILE_GUIDE.md**: Criado guia de alinhamento de presença digital para o GitHub (pinned repos, bio, profile readme) e LinkedIn (headline, sobre, experiência e destaques).
+3. **Qualidade & Build**: ESLint com 0 erros e 0 warnings; Vite build de produção bem-sucedido.

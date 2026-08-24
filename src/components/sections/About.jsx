@@ -4,7 +4,7 @@
 import { motion } from 'framer-motion';
 
 // 3. Reusable UI Components & Layout Elements
-import AboutPortrait from '../ui/AboutPortrait'; // eslint-disable-line no-unused-vars
+import AboutPortrait from '../ui/AboutPortrait';
 import SectionHeader from '../ui/SectionHeader';
 import TechIcon from '../ui/TechIcon';
 
