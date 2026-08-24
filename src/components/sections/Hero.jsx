@@ -45,51 +45,60 @@ export default function Hero() {
   useEffect(() => {
     if (window.innerWidth < 480) return;
 
-    const canvas = vantaRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-
-    const resize = () => {
-      canvas.width = canvas.offsetWidth || window.innerWidth;
-      canvas.height = canvas.offsetHeight || window.innerHeight;
-    };
-    window.addEventListener('resize', resize);
-
-    const particleCount = window.innerWidth >= 768 ? 120 : 60;
-    const particles = Array.from({ length: particleCount }, () => ({
-      x: Math.random() * window.innerWidth,
-      y: Math.random() * window.innerHeight,
-      r: Math.random() * 2 + 1,
-      dx: (Math.random() - 0.5) * 0.4,
-      dy: (Math.random() - 0.5) * 0.4,
-      opacity: Math.random() * 0.6 + 0.2,
-    }));
-
     let animId;
-    const draw = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      particles.forEach(p => {
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(184, 247, 60, ${p.opacity})`;
-        ctx.fill();
-        p.x += p.dx;
-        p.y += p.dy;
-        if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
-        if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
-      });
-      animId = requestAnimationFrame(draw);
+    let timeoutId;
+
+    // Defer canvas initialization to avoid blocking FCP / TBT on first paint
+    const initCanvas = () => {
+      const canvas = vantaRef.current;
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return;
+
+      const resize = () => {
+        canvas.width = canvas.offsetWidth || window.innerWidth;
+        canvas.height = canvas.offsetHeight || window.innerHeight;
+      };
+      window.addEventListener('resize', resize);
+      resize();
+
+      const particleCount = window.innerWidth >= 768 ? 100 : 50;
+      const particles = Array.from({ length: particleCount }, () => ({
+        x: Math.random() * (canvas.width || window.innerWidth),
+        y: Math.random() * (canvas.height || window.innerHeight),
+        r: Math.random() * 2 + 1,
+        dx: (Math.random() - 0.5) * 0.4,
+        dy: (Math.random() - 0.5) * 0.4,
+        opacity: Math.random() * 0.6 + 0.2,
+      }));
+
+      const draw = () => {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach((p) => {
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(184, 247, 60, ${p.opacity})`;
+          ctx.fill();
+          p.x += p.dx;
+          p.y += p.dy;
+          if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
+          if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+        });
+        animId = requestAnimationFrame(draw);
+      };
+
+      draw();
     };
 
-    const timeoutId = setTimeout(() => {
-      resize();
-      draw();
-    }, 100);
+    if ('requestIdleCallback' in window) {
+      window.requestIdleCallback(initCanvas, { timeout: 1200 });
+    } else {
+      timeoutId = setTimeout(initCanvas, 600);
+    }
 
     return () => {
-      clearTimeout(timeoutId);
-      cancelAnimationFrame(animId);
-      window.removeEventListener('resize', resize);
+      if (timeoutId) clearTimeout(timeoutId);
+      if (animId) cancelAnimationFrame(animId);
     };
   }, []);
 
