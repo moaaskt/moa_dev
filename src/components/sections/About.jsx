@@ -13,7 +13,7 @@ import { useScrollAnimation } from '../../hooks/useScrollAnimation';
 
 // 5. CSS Stylesheets, Custom Fonts, and Module CSS (if any)
 
-const FAVORITE_STACK = ['React', 'PHP', 'Python', 'Next.js'];
+const FAVORITE_STACK = ['React', 'TypeScript', 'PHP', 'Golang', 'Python', 'Next.js'];
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 30 },
@@ -50,7 +50,7 @@ export default function About() {
                 marginBottom: '1.25rem',
               }}
             >
-              Sou Técnico em Desenvolvimento de Sistemas pelo SENAI e venho construindo uma trajetória prática no desenvolvimento web, criando projetos full stack, integrações e soluções que resolvem problemas reais.
+              Desenvolvedor Full Stack Junior com experiência prática na sustentação e evolução de plataformas web em produção. Atuei na Evento Santo &amp; Doar Digital desenvolvendo módulos de eventos, checkout, fila de espera e integrações com Asaas e WhatsApp API.
             </motion.p>
 
             <motion.p
@@ -61,24 +61,10 @@ export default function About() {
                 fontSize: 'var(--text-base)',
                 color: 'var(--text-secondary)',
                 lineHeight: 1.8,
-                marginBottom: '1.25rem',
-              }}
-            >
-              Tenho experiência com PHP, JavaScript, React, Python, Docker, bancos de dados e APIs. Gosto de atuar em toda a stack: da regra de negócio e modelagem de dados até interfaces responsivas e bem organizadas.
-            </motion.p>
-
-            <motion.p
-              {...fadeUp(0.3)}
-              animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-              style={{
-                fontFamily: 'DM Sans, sans-serif',
-                fontSize: 'var(--text-base)',
-                color: 'var(--text-secondary)',
-                lineHeight: 1.8,
                 marginBottom: '2rem',
               }}
             >
-              Minha evolução como dev vem de projetos reais, estudo constante e manutenção de sistemas em produção, onde aprendi a investigar bugs, entender impacto no usuário e entregar correções com responsabilidade.
+              Trabalho com PHP, CodeIgniter, Laravel, JavaScript, TypeScript, React, Node.js, Python e Golang. Interesse especial em automações e agentes de IA.
             </motion.p>
 
             {/* Favorite Stack Section */}

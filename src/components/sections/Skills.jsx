@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import {
   SiReact, SiNextdotjs, SiTypescript, SiJavascript, SiHtml5, SiCss, SiTailwindcss,
-  SiNodedotjs, SiPhp, SiPython, SiCodeigniter,
+  SiNodedotjs, SiPhp, SiLaravel, SiNestjs, SiGo, SiPython, SiCodeigniter, SiRabbitmq,
   SiPostgresql, SiMysql, SiFirebase, SiSupabase,
-  SiDocker, SiWordpress, SiGit, SiGithub, SiLinux,
+  SiDocker, SiPostman, SiGit, SiGithub, SiLinux, SiWordpress,
 } from 'react-icons/si';
 import SectionHeader from '../ui/SectionHeader';
 
@@ -25,8 +25,12 @@ const CATEGORIES = [
     skills: [
       { label: 'Node.js',     Icon: SiNodedotjs,   color: '#339933' },
       { label: 'PHP',         Icon: SiPhp,         color: '#777BB4' },
+      { label: 'Laravel',     Icon: SiLaravel,     color: '#FF2D20' },
+      { label: 'NestJS',      Icon: SiNestjs,      color: '#E0234E' },
+      { label: 'Golang',      Icon: SiGo,          color: '#00ADD8' },
       { label: 'Python',      Icon: SiPython,      color: '#3776AB' },
       { label: 'CodeIgniter', Icon: SiCodeigniter, color: '#EF4223' },
+      { label: 'RabbitMQ',    Icon: SiRabbitmq,    color: '#FF6600' },
     ],
   },
   {
@@ -41,12 +45,12 @@ const CATEGORIES = [
   {
     title: 'Ferramentas',
     skills: [
-       { label: 'Linux',     Icon: SiLinux,     color: '#e4edf4ff' },
       { label: 'Docker',    Icon: SiDocker,    color: '#2496ED' },
-      { label: 'WordPress', Icon: SiWordpress, color: '#21759B' },
+      { label: 'Postman',   Icon: SiPostman,   color: '#FF6C37' },
       { label: 'Git',       Icon: SiGit,       color: '#F05032' },
       { label: 'GitHub',    Icon: SiGithub,    color: '#f0f0f0' },
-     
+      { label: 'Linux',     Icon: SiLinux,     color: '#e4edf4ff' },
+      { label: 'WordPress', Icon: SiWordpress, color: '#21759B' },
     ],
   },
 ];

@@ -202,6 +202,8 @@ function GithubCard({ repo }) {
   );
 }
 
+const HIDDEN_REPOS = ['korp_teste_moacirneto', 'korp-teste-moacirneto'];
+
 export default function GithubProjects() {
   const [repos, setRepos] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -215,7 +217,7 @@ export default function GithubProjects() {
         setLoading(true);
         setError(false);
 
-        const res = await fetch('https://api.github.com/users/moaaskt/repos?sort=updated&per_page=6');
+        const res = await fetch('https://api.github.com/users/moaaskt/repos?sort=updated&per_page=12');
         if (!res.ok) {
           throw new Error(`HTTP ${res.status}`);
         }
@@ -225,14 +227,17 @@ export default function GithubProjects() {
           throw new Error('Formato inválido retornado pela API');
         }
 
-        const formattedRepos = data.map((r) => ({
-          id: r.id,
-          name: r.name,
-          description: r.description,
-          language: r.language,
-          html_url: r.html_url,
-          commitCount: null,
-        }));
+        const formattedRepos = data
+          .filter((r) => !HIDDEN_REPOS.includes(r.name.toLowerCase()))
+          .slice(0, 6)
+          .map((r) => ({
+            id: r.id,
+            name: r.name,
+            description: r.description,
+            language: r.language,
+            html_url: r.html_url,
+            commitCount: null,
+          }));
 
         if (isMounted) {
           setRepos(formattedRepos);

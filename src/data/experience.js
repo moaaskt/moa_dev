@@ -6,8 +6,8 @@ export const experiences = [
     type: 'Full Stack',
     period: { start: '2025-07', end: '2026-05' },
     duration: '~10 meses',
-    description: 'Atuação em plataforma web multi-tenant em produção, em pelo menos 6 módulos (Eventos, Caravanas, Cursos, Produtos Avulsos, Faturas, Checkout). Correção de bug crítico de estoque/checkout causado por lógica de deduplicação via MD5. Investigação e resolução de gargalo de performance (memory exhausted) na listagem de eventos.',
-    tags: ['PHP', 'CodeIgniter 4', 'MySQL', 'Bootstrap', 'JavaScript'],
+    description: 'Atuação em plataforma web multi-tenant em produção, desenvolvendo e mantendo módulos de Eventos, Checkout, Fila de Espera, Caravanas, Cursos e Faturas. Implementação de integrações com gateway de pagamento Asaas e notificações via WhatsApp API, além de mensageria assíncrona com RabbitMQ. Correção de bug crítico de concorrência/estoque no checkout e resolução de gargalo de performance (memory exhausted) na listagem de eventos.',
+    tags: ['PHP', 'CodeIgniter 4', 'RabbitMQ', 'Asaas', 'WhatsApp API', 'MySQL', 'JavaScript', 'Bootstrap'],
     current: false,
   },
   {

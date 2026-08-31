@@ -5,7 +5,7 @@ export const skills = [
   },
   {
     category: 'Backend',
-    items: ['Node.js', 'PHP', 'CodeIgniter 4', 'Python', 'Java'],
+    items: ['Node.js', 'PHP', 'Laravel', 'NestJS', 'Golang', 'Python', 'CodeIgniter 4', 'RabbitMQ', 'Java'],
   },
   {
     category: 'Banco de Dados',
@@ -13,7 +13,7 @@ export const skills = [
   },
   {
     category: 'Ferramentas',
-    items: ['Git', 'GitHub', 'Docker', 'Vercel', 'WordPress', 'Figma' , 'Linux'],
+    items: ['Docker', 'Postman', 'Git', 'GitHub', 'Linux', 'Vercel', 'WordPress', 'Figma'],
   },
   {
     category: 'IA & Data',

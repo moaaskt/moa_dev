@@ -6,9 +6,10 @@ import {
   SiGooglegemini,
   SiYoutube, SiBootstrap, SiOpenai,
   SiHuggingface, SiPuppeteer, SiPostman,
-  SiGo, SiRedis, SiLaravel,
+  SiGo, SiRedis, SiLaravel, SiNestjs, SiRabbitmq,
+  SiWhatsapp, SiPrisma,
 } from 'react-icons/si';
-import { TbGps, TbBrain } from 'react-icons/tb';
+import { TbGps, TbBrain, TbCreditCard } from 'react-icons/tb';
 
 export const TECH_ICONS = {
   'Next.js':       { icon: SiNextdotjs,    color: '#ffffff' },
@@ -36,9 +37,16 @@ export const TECH_ICONS = {
   'NLP':           { icon: SiHuggingface,  color: '#FFD21E' },
   'Web Scraping':  { icon: SiPuppeteer,    color: '#40B5A4' },
   'REST API':      { icon: SiPostman,      color: '#FF6C37' },
+  'Postman':       { icon: SiPostman,      color: '#FF6C37' },
   'Go':            { icon: SiGo,           color: '#00ADD8' },
+  'Golang':        { icon: SiGo,           color: '#00ADD8' },
   'Redis':         { icon: SiRedis,        color: '#DC382D' },
   'Laravel':       { icon: SiLaravel,      color: '#FF2D20' },
+  'NestJS':        { icon: SiNestjs,       color: '#E0234E' },
+  'Prisma':        { icon: SiPrisma,       color: '#2D3748' },
+  'RabbitMQ':      { icon: SiRabbitmq,     color: '#FF6600' },
+  'WhatsApp API':  { icon: SiWhatsapp,     color: '#25D366' },
+  'Asaas':         { icon: TbCreditCard,   color: '#0030B9' },
   'GPS/IoT':       { icon: TbGps,          color: '#06B6D4' },
   'IA':            { icon: TbBrain,        color: '#b8f73c' },
 };
