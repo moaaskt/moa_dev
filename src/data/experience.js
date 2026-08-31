@@ -17,8 +17,8 @@ export const experiences = [
     type: 'Projetos',
     period: { start: '2023-01', end: null },
     duration: '4 anos',
-    description: 'Rastrecob: sistema de gestão de assinaturas e cobranças recorrentes para Digital Combo, incluindo correção de integração externa GPSWOX que retornava erro HTTP 422, com ajuste de identificador de API e restrição UNIQUE de banco. VetOS IA: SaaS veterinário multi-tenant com NestJS, Prisma, PostgreSQL e Redis, autenticação JWT e controle de permissões por role. Desenvolvimento de projetos web sob demanda (e-commerce, portais de conteúdo, automações com IA).',
-    tags: ['NestJS', 'Prisma', 'PostgreSQL', 'Redis', 'PHP', 'React'],
+    description: 'Desenvolvimento e manutenção de aplicações web full stack como freelancer, atuando em múltiplos projetos simultâneos. Integração do Rastrecob com plataforma GPSWOX via APIs REST (PHP/Laravel). Desenvolvimento do VetOS AI, SaaS veterinário multi-tenant com NestJS, Prisma, PostgreSQL e Redis. Projetos sob demanda com React, Next.js, TypeScript, automações com Python e IA generativa (Google Gemini).',
+    tags: ['NestJS', 'Prisma', 'PostgreSQL', 'Redis', 'Laravel', 'React', 'TypeScript', 'Python'],
     current: true,
   },
 ];
