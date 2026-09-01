@@ -1,6 +1,6 @@
 import guiadocachorro from '../assets/images/projects/guiadocachorro.webp';
 import gstore from '../assets/images/projects/gstore.webp';
-import vetosIA from '../assets/images/projects/vetosAI.webp';
+import vetosIA from '../assets/images/projects/vetosia2.png';
 import rastrecobImage from '../assets/images/projects/rastrecob.webp';
 import eventoSantoImage from '../assets/images/projects/eventosanto.webp';
 import sherlockScraperImage from '../assets/images/projects/sherlock-scraper.webp';
@@ -65,7 +65,7 @@ export const projects = [
     private: false,
     links: {
       github: 'https://github.com/moaaskt/vetos-ai',
-      live: null,
+      live: 'https://vetos.moadev.com.br/',
     },
     year: 2026,
   },

@@ -34,7 +34,7 @@ O objetivo principal é apresentar de forma clara e objetiva para recrutadores, 
 | **[WhatsMiau / Sherlock Scraper](https://github.com/moacir1neto/sherlock-scraper)** | Go, React, TypeScript, PostgreSQL, Redis, Docker | CRM B2B para prospecção e qualificação via WhatsApp, enriquecimento com IA, scraping assíncrono e dashboard analítico. | Open Source |
 | **[Rastrecob](https://rastrecob.digitalnexo.com.br/)** | Laravel, PHP, MySQL, GPS/IoT, Docker | Sistema web para gestão de assinaturas, faturamento recorrente e provisionamento de usuários no GPSWOX. | Case Privado |
 | **[Evento Santo](https://doardigital.com.br/evento-santo)** | PHP, CodeIgniter, JS, MySQL, Docker | Manutenção em produção de plataforma de eventos e doações, fluxos de checkout, faturas e regras de negócio. | Case Privado |
-| **[VetOS IA](https://github.com/moaaskt/vetos-ai)** | React, TypeScript, IA, Tailwind | SaaS veterinário multi-tenant para gestão clínica, prontuários, agendamentos e automações inteligentes com IA. | Em Progresso |
+| **[VetOS IA](https://vetos.moadev.com.br/)** | React, TypeScript, IA, Tailwind | SaaS veterinário multi-tenant para gestão clínica, prontuários, agendamentos e automações inteligentes com IA. | Em Progresso |
 | **[G'Store](https://gstore.moadev.com.br/)** | PHP, CodeIgniter 4, MySQL, Bootstrap, JS | E-commerce completo com catálogo dinâmico, carrinho de compras, painel administrativo e checkout. | Open Source |
 | **[Guia do Cachorro](https://guiadocachorro.vercel.app/)** | Next.js, TypeScript, Tailwind, Supabase | Portal de conteúdo canino com renderização híbrida, banco de dados Supabase e alta otimização de SEO. | Open Source |
 
