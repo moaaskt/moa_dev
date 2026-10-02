@@ -50,7 +50,7 @@ export default function About() {
                 marginBottom: '1.25rem',
               }}
             >
-              Desenvolvedor Full Stack Junior com experiência prática na sustentação e evolução de plataformas web em produção. Atuei na Evento Santo &amp; Doar Digital desenvolvendo módulos de eventos, checkout, fila de espera e integrações com Asaas e WhatsApp API.
+              Desenvolvedor Full Stack com experiência prática na sustentação e evolução de plataformas web em produção. Atuei na Evento Santo &amp; Doar Digital desenvolvendo módulos de eventos, checkout, fila de espera e integrações com Asaas e WhatsApp API.
             </motion.p>
 
             <motion.p
@@ -64,7 +64,7 @@ export default function About() {
                 marginBottom: '2rem',
               }}
             >
-              Trabalho com PHP, CodeIgniter, Laravel, JavaScript, TypeScript, React, Node.js, Python e Golang. Interesse especial em automações e agentes de IA.
+              Trabalho com PHP, CodeIgniter, Laravel, JavaScript, TypeScript, React, Node.js, Python e C++. Interesse especial em automações, IoT e agentes de IA.
             </motion.p>
 
             {/* Favorite Stack Section */}
