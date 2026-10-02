@@ -13,7 +13,7 @@ import { useScrollAnimation } from '../../hooks/useScrollAnimation';
 
 // 5. CSS Stylesheets, Custom Fonts, and Module CSS (if any)
 
-const FAVORITE_STACK = ['React', 'TypeScript', 'PHP', 'Golang', 'Python', 'Next.js'];
+const FAVORITE_STACK = ['React', 'TypeScript', 'PHP', 'Golang', 'Python', 'Next.js', 'C++'];
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 30 },
@@ -65,6 +65,20 @@ export default function About() {
               }}
             >
               Trabalho com PHP, CodeIgniter, Laravel, JavaScript, TypeScript, React, Node.js, Python e C++. Interesse especial em automações, IoT e agentes de IA.
+            </motion.p>
+
+            <motion.p
+              {...fadeUp(0.3)}
+              animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+              style={{
+                fontFamily: 'DM Sans, sans-serif',
+                fontSize: 'var(--text-base)',
+                color: 'var(--text-secondary)',
+                lineHeight: 1.8,
+                marginBottom: '2rem',
+              }}
+            >
+              Também tenho experiência prática com automação e IoT, projetos com ESP32, C++, sensores e atuadores, do hardware à programação, e atuei em campo na instalação e configuração de dispositivos IoT e sistemas de automação residencial.
             </motion.p>
 
             {/* Favorite Stack Section */}
