@@ -8,8 +8,9 @@ import {
   SiHuggingface, SiPuppeteer, SiPostman,
   SiGo, SiRedis, SiLaravel, SiNestjs, SiRabbitmq,
   SiWhatsapp, SiPrisma,
+  SiCplusplus, SiEspressif, SiArduino,
 } from 'react-icons/si';
-import { TbGps, TbBrain, TbCreditCard } from 'react-icons/tb';
+import { TbGps, TbBrain, TbCreditCard, TbWifi, TbSettings, TbRouter, TbAccessPoint, TbCpu } from 'react-icons/tb';
 
 export const TECH_ICONS = {
   'Next.js':       { icon: SiNextdotjs,    color: '#ffffff' },
@@ -49,4 +50,13 @@ export const TECH_ICONS = {
   'Asaas':         { icon: TbCreditCard,   color: '#0030B9' },
   'GPS/IoT':       { icon: TbGps,          color: '#06B6D4' },
   'IA':            { icon: TbBrain,        color: '#b8f73c' },
+  'C++':           { icon: SiCplusplus,    color: '#00599C' },
+  'ESP32':         { icon: SiEspressif,    color: '#E7352B' },
+  'Arduino':       { icon: SiArduino,      color: '#00979D' },
+  'IoT':           { icon: TbWifi,         color: '#06B6D4' },
+  'Automação':     { icon: TbSettings,     color: '#06B6D4' },
+  'Sensores':      { icon: TbCpu,         color: '#06B6D4' },
+  'Relés':         { icon: TbRouter,       color: '#06B6D4' },
+  'RFID':          { icon: TbAccessPoint,  color: '#06B6D4' },
+  'Eletrônica':    { icon: TbCpu,          color: '#b8f73c' },
 };
