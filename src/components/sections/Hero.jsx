@@ -202,7 +202,7 @@ export default function Hero() {
             margin: '0 auto 2.5rem',
           }}
         >
-          Full Stack Jr. com experiência prática em sistemas de produção — da correção de bugs críticos de negócio à construção de integrações e SaaS multi-tenant com IA.
+          Full Stack com experiência prática em sistemas de produção — da construção de integrações e SaaS multi-tenant com IA a automações e IoT.
         </motion.p>
 
         {/* Buttons */}

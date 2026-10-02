@@ -13,7 +13,7 @@ import { useScrollAnimation } from '../../hooks/useScrollAnimation';
 
 // 5. CSS Stylesheets, Custom Fonts, and Module CSS (if any)
 
-const FAVORITE_STACK = ['React', 'TypeScript', 'PHP', 'Golang', 'Python', 'Next.js'];
+const FAVORITE_STACK = ['PHP', 'React', 'TypeScript', 'Python', 'C++'];
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 30 },
@@ -50,7 +50,7 @@ export default function About() {
                 marginBottom: '1.25rem',
               }}
             >
-              Desenvolvedor Full Stack Junior com experiência prática na sustentação e evolução de plataformas web em produção. Atuei na Evento Santo &amp; Doar Digital desenvolvendo módulos de eventos, checkout, fila de espera e integrações com Asaas e WhatsApp API.
+              Desenvolvedor Full Stack com experiência prática na sustentação e evolução de plataformas web em produção. Atuei na Evento Santo &amp; Doar Digital desenvolvendo módulos de eventos, checkout, fila de espera e integrações com Asaas e WhatsApp API.
             </motion.p>
 
             <motion.p
@@ -64,7 +64,21 @@ export default function About() {
                 marginBottom: '2rem',
               }}
             >
-              Trabalho com PHP, CodeIgniter, Laravel, JavaScript, TypeScript, React, Node.js, Python e Golang. Interesse especial em automações e agentes de IA.
+              Trabalho com PHP, CodeIgniter, Laravel, JavaScript, TypeScript, React, Node.js, Python e C++. Interesse especial em automações, IoT e agentes de IA.
+            </motion.p>
+
+            <motion.p
+              {...fadeUp(0.3)}
+              animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+              style={{
+                fontFamily: 'DM Sans, sans-serif',
+                fontSize: 'var(--text-base)',
+                color: 'var(--text-secondary)',
+                lineHeight: 1.8,
+                marginBottom: '2rem',
+              }}
+            >
+              Também tenho experiência prática com automação e IoT, projetos com ESP32, C++, sensores e atuadores, do hardware à programação, e atuei em campo na instalação e configuração de dispositivos IoT e sistemas de automação residencial.
             </motion.p>
 
             {/* Favorite Stack Section */}
