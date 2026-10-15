@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { useScrollAnimation } from '../../hooks/useScrollAnimation';
 import SectionHeader from '../ui/SectionHeader';
 import { contactDetails } from '../../data/contacts';
@@ -39,7 +40,7 @@ const contacts = [
   },
 ];
 
-function ContactCard({ contact, index }) {
+function ContactCard({ contact, index, t }) {
   const [ref, isVisible] = useScrollAnimation(0.15);
 
   return (
@@ -48,7 +49,7 @@ function ContactCard({ contact, index }) {
       href={contact.href}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label={`Entrar em contato via ${contact.label}: ${contact.value}`}
+      aria-label={t('contact.ariaContact', { label: contact.label, value: contact.value, defaultValue: `Entrar em contato via ${contact.label}: ${contact.value}` })}
       style={{
         display: 'flex',
         flexDirection: 'column',
@@ -93,18 +94,24 @@ function ContactCard({ contact, index }) {
 }
 
 export default function Contact() {
+  const { t } = useTranslation();
   const [titleRef, titleVisible] = useScrollAnimation(0.1);
 
   return (
     <section id="contact" style={{ padding: 'var(--section-padding)', background: 'var(--bg-secondary)' }}>
-      <div style={{ maxWidth: 'var(--max-width)', margin: '0 auto', padding: '0 var(--padding-x)', textAlign: 'center' }}>
-        <SectionHeader label="Contato" title="Contato" centered />
+      <div style={{ maxWidth: 'var(--max-width)', margin: '0 auto', padding: '0 var(--padding-x)' }}>
+        <SectionHeader
+          label={t('contact.sectionLabel', 'Contato')}
+          title={t('contact.sectionTitle', 'Contato')}
+          centered
+        />
 
         <div
           ref={titleRef}
           style={{
             marginTop: '2rem',
             marginBottom: '3rem',
+            textAlign: 'center',
             opacity: titleVisible ? 1 : 0,
             transform: titleVisible ? 'translateY(0)' : 'translateY(20px)',
             transition: 'opacity 0.6s ease 0.2s, transform 0.6s ease 0.2s',
@@ -118,7 +125,7 @@ export default function Contact() {
             letterSpacing: '-0.03em',
             marginBottom: '0.75rem',
           }}>
-            Vamos trabalhar juntos?
+            {t('contact.heading', 'Vamos trabalhar juntos?')}
           </h3>
           <p style={{
             color: 'var(--text-secondary)',
@@ -126,7 +133,7 @@ export default function Contact() {
             maxWidth: '480px',
             margin: '0 auto',
           }}>
-            Aberto a oportunidades como Desenvolvedor Full Stack Jr. e projetos onde eu possa contribuir com soluções web, automações e evolução de sistemas.
+            {t('contact.description', 'Aberto a oportunidades como Desenvolvedor Full Stack Jr. e projetos onde eu possa contribuir com soluções web, automações e evolução de sistemas.')}
           </p>
         </div>
 
@@ -138,7 +145,7 @@ export default function Contact() {
           margin: '0 auto',
         }}>
           {contacts.map((c, i) => (
-            <ContactCard key={c.label} contact={c} index={i} />
+            <ContactCard key={c.label} contact={c} index={i} t={t} />
           ))}
         </div>
       </div>

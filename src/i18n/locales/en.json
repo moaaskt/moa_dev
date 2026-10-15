@@ -21,6 +21,86 @@
     "viewDetails": "View details",
     "viewAllProjects": "View all projects",
     "all": "All",
-    "loading": "Loading..."
+    "loading": "Loading...",
+    "privateCase": "Private Case",
+    "privateCaseAria": "Private case study: source code is not publicly available",
+    "viewCode": "GitHub",
+    "viewLive": "Live",
+    "screenshotAlt": "Screenshot of project {{title}}"
+  },
+  "hero": {
+    "greeting": "Hello, I am",
+    "name": "Moacir Neto",
+    "role": "Junior Full Stack Developer",
+    "description": "Full Stack Engineer with hands-on experience in production environments — from building integrations and multi-tenant AI SaaS platforms to IoT and automations.",
+    "ctaProjects": "View Projects",
+    "ctaGithub": "GitHub",
+    "ariaGithub": "View Moacir Neto's profile on GitHub",
+    "scroll": "scroll"
+  },
+  "about": {
+    "sectionNumber": "01",
+    "sectionTitle": "About me",
+    "bioP1": "Full Stack Developer with hands-on experience maintaining and scaling web platforms in production. Developed modules for events, checkout, waitlists, and API integrations with Asaas and WhatsApp at Evento Santo & Doar Digital.",
+    "bioP2": "I work with PHP, CodeIgniter, Laravel, JavaScript, TypeScript, React, Node.js, Python, and C++. I build personal projects with automations, IoT, and AI agents. I also have practical background in home automation and IoT with ESP32, sensors, actuators, and electronics from hardware assembly to field installation.",
+    "bioP3": "Always eager to learn and adapt to emerging technologies. I thrive on challenges and crafting innovative solutions for complex software problems.",
+    "favoriteStack": "// favorite stack",
+    "portraitAlt": "Profile photo of Moacir Neto"
+  },
+  "projectsSection": {
+    "sectionNumber": "02",
+    "sectionTitle": "Projects",
+    "categories": {
+      "all": "All",
+      "fullstack": "Full Stack",
+      "backend": "Backend",
+      "frontend": "Frontend",
+      "ai-automation": "AI / Automation"
+    },
+    "viewAllCta": "View all projects"
+  },
+  "skills": {
+    "sectionNumber": "03",
+    "sectionTitle": "Skills",
+    "categories": {
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "database": "Databases",
+      "tools": "Tools & DevOps",
+      "iot": "IoT & Automation"
+    }
+  },
+  "experience": {
+    "sectionNumber": "04",
+    "sectionTitle": "Experience",
+    "current": "Present",
+    "inProgress": "In progress",
+    "months": {
+      "1": "Jan", "2": "Feb", "3": "Mar", "4": "Apr",
+      "5": "May", "6": "Jun", "7": "Jul", "8": "Aug",
+      "9": "Sep", "10": "Oct", "11": "Nov", "12": "Dec"
+    }
+  },
+  "githubProjects": {
+    "sectionNumber": "05",
+    "sectionTitle": "GitHub Activity",
+    "loading": "Loading recent repositories...",
+    "errorNotice": "Unable to load repositories directly from GitHub at this time.",
+    "viewProfile": "View profile on GitHub",
+    "noDescription": "No description provided",
+    "commitsTitle": "Total recorded commits",
+    "commitsCount": "{{count}} commits",
+    "viewOnGithub": "View on GitHub",
+    "ariaViewRepo": "View repository {{name}} on GitHub"
+  },
+  "contact": {
+    "sectionLabel": "Contact",
+    "sectionTitle": "Contact",
+    "heading": "Let's work together?",
+    "description": "Open to opportunities as a Junior Full Stack Developer and engineering roles where I can contribute with robust web solutions, automations, and system scaling.",
+    "ariaContact": "Contact via {{label}}: {{value}}"
+  },
+  "footer": {
+    "developedBy": "Developed by"
   }
 }

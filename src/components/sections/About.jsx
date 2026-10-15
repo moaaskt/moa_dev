@@ -2,6 +2,7 @@
 
 // 2. Third-Party Libraries (Framer Motion, Lucide Icons, etc.)
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 
 // 3. Reusable UI Components & Layout Elements
 import AboutPortrait from '../ui/AboutPortrait';
@@ -22,6 +23,7 @@ const fadeUp = (delay = 0) => ({
 });
 
 export default function About() {
+  const { t } = useTranslation();
   const [ref, isVisible] = useScrollAnimation(0.1);
 
   return (
@@ -30,7 +32,10 @@ export default function About() {
       style={{ padding: 'var(--section-padding)', background: 'var(--bg-secondary)' }}
     >
       <div style={{ maxWidth: 'var(--max-width)', margin: '0 auto', padding: '0 var(--padding-x)' }}>
-        <SectionHeader number="01" title="Sobre mim" />
+        <SectionHeader
+          number={t('about.sectionNumber', '01')}
+          title={t('about.sectionTitle', 'Sobre mim')}
+        />
 
         <div
           ref={ref}
@@ -50,7 +55,7 @@ export default function About() {
                 marginBottom: '1.25rem',
               }}
             >
-              Desenvolvedor Full Stack com experiência prática na sustentação e evolução de plataformas web em produção. Atuei na Evento Santo &amp; Doar Digital desenvolvendo módulos de eventos, checkout, fila de espera e integrações com Asaas e WhatsApp API.
+              {t('about.bioP1')}
             </motion.p>
 
             <motion.p
@@ -64,7 +69,7 @@ export default function About() {
                 marginBottom: '2rem',
               }}
             >
-              Trabalho com PHP, CodeIgniter, Laravel, JavaScript, TypeScript, React, Node.js, Python e C++. Tenho projetos pessoais com automações, IoT e agentes de IA. Também tenho experiência prática com automação e IoT, projetos com ESP32, C++, sensores e atuadores, do hardware à programação, e atuei em campo na instalação e configuração de dispositivos IoT e sistemas de automação residencial.
+              {t('about.bioP2')}
             </motion.p>
 
             <motion.p
@@ -78,7 +83,7 @@ export default function About() {
                 marginBottom: '2rem',
               }}
             >
-              Busco sempre aprender e me adaptar a novas tecnologias. Gosto de desafios e de encontrar soluções inovadoras para problemas complexos.
+              {t('about.bioP3')}
             </motion.p>
 
             {/* Favorite Stack Section */}
@@ -97,7 +102,7 @@ export default function About() {
                   marginBottom: '1rem',
                 }}
               >
-                // stack favorita
+                {t('about.favoriteStack', '// stack favorita')}
               </p>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem' }}>
                 {FAVORITE_STACK.map((tech, i) => (

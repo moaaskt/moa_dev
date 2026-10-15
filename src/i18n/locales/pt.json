@@ -21,6 +21,86 @@
     "viewDetails": "Ver detalhes",
     "viewAllProjects": "Ver todos os projetos",
     "all": "Todos",
-    "loading": "Carregando..."
+    "loading": "Carregando...",
+    "privateCase": "Case Privado",
+    "privateCaseAria": "Caso de uso privado: código não disponível publicamente",
+    "viewCode": "GitHub",
+    "viewLive": "Live",
+    "screenshotAlt": "Captura de tela do projeto {{title}}"
+  },
+  "hero": {
+    "greeting": "Olá, eu sou",
+    "name": "Moacir Neto",
+    "role": "Desenvolvedor Full Stack Jr.",
+    "description": "Full Stack com experiência prática em sistemas de produção — da construção de integrações e SaaS multi-tenant com IA a automações e IoT.",
+    "ctaProjects": "Ver Projetos",
+    "ctaGithub": "GitHub",
+    "ariaGithub": "Acessar perfil de Moacir Neto no GitHub",
+    "scroll": "scroll"
+  },
+  "about": {
+    "sectionNumber": "01",
+    "sectionTitle": "Sobre mim",
+    "bioP1": "Desenvolvedor Full Stack com experiência prática na sustentação e evolução de plataformas web em produção. Atuei na Evento Santo & Doar Digital desenvolvendo módulos de eventos, checkout, fila de espera e integrações com Asaas e WhatsApp API.",
+    "bioP2": "Trabalho com PHP, CodeIgniter, Laravel, JavaScript, TypeScript, React, Node.js, Python e C++. Tenho projetos pessoais com automações, IoT e agentes de IA. Também tenho experiência prática com automação e IoT, projetos com ESP32, C++, sensores e atuadores, do hardware à programação, e atuei em campo na instalação e configuração de dispositivos IoT e sistemas de automação residencial.",
+    "bioP3": "Busco sempre aprender e me adaptar a novas tecnologias. Gosto de desafios e de encontrar soluções inovadoras para problemas complexos.",
+    "favoriteStack": "// stack favorita",
+    "portraitAlt": "Foto de perfil de Moacir Neto"
+  },
+  "projectsSection": {
+    "sectionNumber": "02",
+    "sectionTitle": "Projetos",
+    "categories": {
+      "all": "Todos",
+      "fullstack": "Full Stack",
+      "backend": "Backend",
+      "frontend": "Frontend",
+      "ai-automation": "IA / Automação"
+    },
+    "viewAllCta": "Ver todos os projetos"
+  },
+  "skills": {
+    "sectionNumber": "03",
+    "sectionTitle": "Skills",
+    "categories": {
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "database": "Banco de Dados",
+      "tools": "Ferramentas",
+      "iot": "IoT & Automação"
+    }
+  },
+  "experience": {
+    "sectionNumber": "04",
+    "sectionTitle": "Experiência",
+    "current": "Atual",
+    "inProgress": "Em andamento",
+    "months": {
+      "1": "Jan", "2": "Fev", "3": "Mar", "4": "Abr",
+      "5": "Mai", "6": "Jun", "7": "Jul", "8": "Ago",
+      "9": "Set", "10": "Out", "11": "Nov", "12": "Dez"
+    }
+  },
+  "githubProjects": {
+    "sectionNumber": "05",
+    "sectionTitle": "Atividade no GitHub",
+    "loading": "Carregando repositórios recentes...",
+    "errorNotice": "Não foi possível carregar os repositórios diretamente no momento.",
+    "viewProfile": "Ver perfil no GitHub",
+    "noDescription": "Sem descrição",
+    "commitsTitle": "Total de commits registrados",
+    "commitsCount": "{{count}} commits",
+    "viewOnGithub": "Ver no GitHub",
+    "ariaViewRepo": "Ver repositório {{name}} no GitHub"
+  },
+  "contact": {
+    "sectionLabel": "Contato",
+    "sectionTitle": "Contato",
+    "heading": "Vamos trabalhar juntos?",
+    "description": "Aberto a oportunidades como Desenvolvedor Full Stack Jr. e projetos onde eu possa contribuir com soluções web, automações e evolução de sistemas.",
+    "ariaContact": "Entrar em contato via {{label}}: {{value}}"
+  },
+  "footer": {
+    "developedBy": "Desenvolvido por"
   }
 }

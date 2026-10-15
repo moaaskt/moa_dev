@@ -1,6 +1,7 @@
 import { useRef, useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 function GithubIcon({ size = 16 }) {
   return (
@@ -9,8 +10,6 @@ function GithubIcon({ size = 16 }) {
     </svg>
   );
 }
-
-const TYPING_TEXT = 'Desenvolvedor Full Stack Jr.';
 
 function useTypingCursor(text, speed = 80) {
   const [displayed, setDisplayed] = useState('');
@@ -39,8 +38,46 @@ const fadeUp = (delay = 0) => ({
   transition: { duration: 0.6, delay, ease: [0.16, 1, 0.3, 1] },
 });
 
+function TypingSubtitle({ text }) {
+  const { displayed, done } = useTypingCursor(text, 70);
+
+  return (
+    <motion.div
+      {...fadeUp(0.5)}
+      style={{
+        fontFamily: 'Syne, sans-serif',
+        fontWeight: 700,
+        fontSize: 'clamp(1.25rem, 3.5vw, 1.75rem)',
+        color: 'var(--text-secondary)',
+        letterSpacing: '-0.02em',
+        marginBottom: '1.5rem',
+        minHeight: '2.2rem',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: '2px',
+      }}
+    >
+      {displayed}
+      <span
+        style={{
+          display: 'inline-block',
+          width: '2px',
+          height: '1.2em',
+          background: 'var(--accent)',
+          marginLeft: '2px',
+          animation: done ? 'blink 1s step-end infinite' : 'none',
+          opacity: 1,
+        }}
+      />
+    </motion.div>
+  );
+}
+
 export default function Hero() {
+  const { t } = useTranslation();
   const vantaRef = useRef(null);
+  const typingRole = t('hero.role', 'Desenvolvedor Full Stack Jr.');
 
   useEffect(() => {
     if (window.innerWidth < 480) return;
@@ -102,8 +139,6 @@ export default function Hero() {
     };
   }, []);
 
-  const { displayed, done } = useTypingCursor(TYPING_TEXT, 70);
-
   return (
     <section
       id="hero"
@@ -140,7 +175,7 @@ export default function Hero() {
             marginBottom: '1rem',
           }}
         >
-          Olá, eu sou
+          {t('hero.greeting', 'Olá, eu sou')}
         </motion.p>
 
         {/* Name */}
@@ -156,39 +191,11 @@ export default function Hero() {
             marginBottom: '1.25rem',
           }}
         >
-          Moacir Neto
+          {t('hero.name', 'Moacir Neto')}
         </motion.h1>
 
         {/* Typing subtitle */}
-        <motion.div
-          {...fadeUp(0.5)}
-          style={{
-            fontFamily: 'Syne, sans-serif',
-            fontWeight: 700,
-            fontSize: 'clamp(1.25rem, 3.5vw, 1.75rem)',
-            color: 'var(--text-secondary)',
-            letterSpacing: '-0.02em',
-            marginBottom: '1.5rem',
-            minHeight: '2.2rem',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: '2px',
-          }}
-        >
-          {displayed}
-          <span
-            style={{
-              display: 'inline-block',
-              width: '2px',
-              height: '1.2em',
-              background: 'var(--accent)',
-              marginLeft: '2px',
-              animation: done ? 'blink 1s step-end infinite' : 'none',
-              opacity: 1,
-            }}
-          />
-        </motion.div>
+        <TypingSubtitle key={typingRole} text={typingRole} />
 
         {/* Description */}
         <motion.p
@@ -202,7 +209,7 @@ export default function Hero() {
             margin: '0 auto 2.5rem',
           }}
         >
-          Full Stack com experiência prática em sistemas de produção — da construção de integrações e SaaS multi-tenant com IA a automações e IoT.
+          {t('hero.description', 'Full Stack com experiência prática em sistemas de produção — da construção de integrações e SaaS multi-tenant com IA a automações e IoT.')}
         </motion.p>
 
         {/* Buttons */}
@@ -238,14 +245,14 @@ export default function Hero() {
               e.currentTarget.style.transform = 'translateY(0)';
             }}
           >
-            Ver Projetos
+            {t('hero.ctaProjects', 'Ver Projetos')}
           </a>
 
           <a
             href="https://github.com/moaaskt"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Acessar perfil de Moacir Neto no GitHub"
+            aria-label={t('hero.ariaGithub', 'Acessar perfil de Moacir Neto no GitHub')}
             style={{
               display: 'inline-flex',
               alignItems: 'center',
@@ -273,7 +280,7 @@ export default function Hero() {
             }}
           >
             <GithubIcon size={16} />
-            GitHub
+            {t('hero.ctaGithub', 'GitHub')}
           </a>
         </motion.div>
       </div>
@@ -298,7 +305,7 @@ export default function Hero() {
         aria-hidden="true"
       >
         <span style={{ fontFamily: 'JetBrains Mono', fontSize: '0.65rem', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
-          scroll
+          {t('hero.scroll', 'scroll')}
         </span>
         <ChevronDown size={16} />
       </motion.div>

@@ -1,19 +1,31 @@
+import { useTranslation } from 'react-i18next';
 import { useScrollAnimation } from '../../hooks/useScrollAnimation';
 import SectionHeader from '../ui/SectionHeader';
 import TechIcon from '../ui/TechIcon';
 import { experiences } from '../../data/experience';
 
-function formatPeriod(period) {
+function formatPeriod(period, t) {
   const fmt = (str) => {
     const [y, m] = str.split('-');
-    const months = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
-    return `${months[parseInt(m) - 1]} ${y}`;
+    const monthKey = parseInt(m, 10).toString();
+    const monthName = t(`experience.months.${monthKey}`, m);
+    return `${monthName} ${y}`;
   };
-  return `${fmt(period.start)} — ${period.end ? fmt(period.end) : 'Atual'}`;
+  const currentLabel = t('experience.current', 'Atual');
+  return `${fmt(period.start)} — ${period.end ? fmt(period.end) : currentLabel}`;
 }
 
-function ExperienceCard({ exp, index }) {
+function getLocalizedField(field, lang) {
+  if (!field) return '';
+  if (typeof field === 'string') return field;
+  return field[lang] || field.pt || field.en || '';
+}
+
+function ExperienceCard({ exp, index, lang, t }) {
   const [ref, isVisible] = useScrollAnimation(0.15);
+  const role = getLocalizedField(exp.role, lang);
+  const type = getLocalizedField(exp.type, lang);
+  const description = getLocalizedField(exp.description, lang);
 
   return (
     <div
@@ -65,7 +77,7 @@ function ExperienceCard({ exp, index }) {
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '0.75rem' }}>
           <div>
             <h3 style={{ fontFamily: 'Syne, sans-serif', fontWeight: 700, fontSize: 'var(--text-lg)', color: 'var(--text-primary)' }}>
-              {exp.role}
+              {role}
             </h3>
             <p style={{ color: 'var(--accent)', fontSize: 'var(--text-sm)', fontWeight: 500, marginTop: '2px' }}>
               {exp.company}
@@ -80,7 +92,7 @@ function ExperienceCard({ exp, index }) {
               padding: '2px 8px',
               borderRadius: '4px',
             }}>
-              {formatPeriod(exp.period)}
+              {formatPeriod(exp.period, t)}
             </span>
             <div style={{ display: 'flex', gap: '6px', alignItems: 'center' }}>
               <span style={{
@@ -88,12 +100,12 @@ function ExperienceCard({ exp, index }) {
                 fontFamily: 'JetBrains Mono, monospace',
                 letterSpacing: '0.08em',
                 textTransform: 'uppercase',
-                color: exp.type === 'CLT' ? '#60a5fa' : 'var(--accent)',
-                background: exp.type === 'CLT' ? 'rgba(96,165,250,0.1)' : 'var(--accent-glow)',
+                color: type === 'CLT' ? '#60a5fa' : 'var(--accent)',
+                background: type === 'CLT' ? 'rgba(96,165,250,0.1)' : 'var(--accent-glow)',
                 padding: '2px 8px',
                 borderRadius: '4px',
               }}>
-                {exp.type}
+                {type}
               </span>
               {exp.current && (
                 <span style={{
@@ -103,7 +115,7 @@ function ExperienceCard({ exp, index }) {
                   letterSpacing: '0.08em',
                   textTransform: 'uppercase',
                 }}>
-                  ● Atual
+                  ● {t('experience.current', 'Atual')}
                 </span>
               )}
             </div>
@@ -111,7 +123,7 @@ function ExperienceCard({ exp, index }) {
         </div>
 
         <p style={{ color: 'var(--text-secondary)', fontSize: 'var(--text-sm)', lineHeight: 1.7, marginBottom: '1rem' }}>
-          {exp.description}
+          {description}
         </p>
 
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', alignItems: 'center' }}>
@@ -125,10 +137,16 @@ function ExperienceCard({ exp, index }) {
 }
 
 export default function Experience() {
+  const { t, i18n } = useTranslation();
+  const currentLang = (i18n.resolvedLanguage || i18n.language || 'pt').startsWith('en') ? 'en' : 'pt';
+
   return (
     <section id="experience" style={{ padding: 'var(--section-padding)' }}>
       <div style={{ maxWidth: 'var(--max-width)', margin: '0 auto', padding: '0 var(--padding-x)' }}>
-        <SectionHeader label="Carreira" title="Experiência" />
+        <SectionHeader
+          label={t('experience.sectionNumber', '04')}
+          title={t('experience.sectionTitle', 'Experiência')}
+        />
 
         <div style={{ marginTop: '3rem', position: 'relative' }}>
           {/* Linha vertical central (à esquerda dos cards) */}
@@ -143,7 +161,7 @@ export default function Experience() {
 
           <div style={{ paddingLeft: '0' }}>
             {experiences.map((exp, i) => (
-              <ExperienceCard key={exp.id} exp={exp} index={i} />
+              <ExperienceCard key={exp.id} exp={exp} index={i} lang={currentLang} t={t} />
             ))}
           </div>
         </div>

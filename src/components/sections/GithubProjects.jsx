@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { SiGithub } from 'react-icons/si';
 import { TbGitCommit } from 'react-icons/tb';
 import { ExternalLink, RefreshCw } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import SectionHeader from '../ui/SectionHeader';
 import TechIcon from '../ui/TechIcon';
 
@@ -9,10 +10,8 @@ const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 async function fetchRepoCommits(repoName) {
   try {
-    // Tenta primeiro com autor moaaskt
     let res = await fetch(`https://api.github.com/repos/moaaskt/${repoName}/commits?author=moaaskt&per_page=1`);
     if (!res.ok) {
-      // Fallback sem parâmetro de autor caso a rota retorne erro
       res = await fetch(`https://api.github.com/repos/moaaskt/${repoName}/commits?per_page=1`);
       if (!res.ok) return null;
     }
@@ -28,7 +27,6 @@ async function fetchRepoCommits(repoName) {
     const data = await res.json();
     if (Array.isArray(data)) {
       if (data.length === 0) {
-        // Tenta sem autor se a busca filtrada retornar 0 commits
         const fallbackRes = await fetch(`https://api.github.com/repos/moaaskt/${repoName}/commits?per_page=1`);
         if (fallbackRes.ok) {
           const fallbackLink = fallbackRes.headers.get('Link');
@@ -51,7 +49,7 @@ async function fetchRepoCommits(repoName) {
   }
 }
 
-function GithubCard({ repo }) {
+function GithubCard({ repo, t }) {
   const [hovered, setHovered] = useState(false);
 
   return (
@@ -127,7 +125,7 @@ function GithubCard({ repo }) {
             flex: 1,
           }}
         >
-          {repo.description || 'Sem descrição'}
+          {repo.description || t('githubProjects.noDescription', 'Sem descrição')}
         </p>
 
         {/* Footer */}
@@ -168,10 +166,14 @@ function GithubCard({ repo }) {
                 fontFamily: 'JetBrains Mono, monospace',
                 fontSize: '0.75rem',
               }}
-              title="Total de commits registrados"
+              title={t('githubProjects.commitsTitle', 'Total de commits registrados')}
             >
               <TbGitCommit size={16} />
-              <span>{repo.commitCount !== null ? `${repo.commitCount} commits` : '—'}</span>
+              <span>
+                {repo.commitCount !== null
+                  ? t('githubProjects.commitsCount', { count: repo.commitCount, defaultValue: `${repo.commitCount} commits` })
+                  : '—'}
+              </span>
             </div>
           </div>
 
@@ -180,7 +182,7 @@ function GithubCard({ repo }) {
             href={repo.html_url}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label={`Ver repositório ${repo.name} no GitHub`}
+            aria-label={t('githubProjects.ariaViewRepo', { name: repo.name, defaultValue: `Ver repositório ${repo.name} no GitHub` })}
             style={{
               display: 'inline-flex',
               alignItems: 'center',
@@ -193,7 +195,7 @@ function GithubCard({ repo }) {
               flexShrink: 0,
             }}
           >
-            Ver no GitHub
+            {t('githubProjects.viewOnGithub', 'Ver no GitHub')}
             <ExternalLink size={14} aria-hidden="true" />
           </a>
         </div>
@@ -205,6 +207,7 @@ function GithubCard({ repo }) {
 const HIDDEN_REPOS = ['korp_teste_moacirneto', 'korp-teste-moacirneto'];
 
 export default function GithubProjects() {
+  const { t } = useTranslation();
   const [repos, setRepos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
@@ -244,7 +247,6 @@ export default function GithubProjects() {
           setLoading(false);
         }
 
-        // Busca commits sequencialmente com delay de 180ms para evitar rate limiting
         for (let i = 0; i < formattedRepos.length; i++) {
           if (!isMounted) break;
           const repo = formattedRepos[i];
@@ -278,7 +280,10 @@ export default function GithubProjects() {
       style={{ padding: 'var(--section-padding)', background: 'var(--bg-secondary)' }}
     >
       <div style={{ maxWidth: 'var(--max-width)', margin: '0 auto', padding: '0 var(--padding-x)' }}>
-        <SectionHeader number="05" title="Atividade no GitHub" />
+        <SectionHeader
+          number={t('githubProjects.sectionNumber', '05')}
+          title={t('githubProjects.sectionTitle', 'Atividade no GitHub')}
+        />
 
         {loading ? (
           <div
@@ -294,7 +299,7 @@ export default function GithubProjects() {
             }}
           >
             <RefreshCw size={20} className="animate-spin" style={{ animation: 'spin 1s linear infinite' }} />
-            <span>Carregando repositórios recentes...</span>
+            <span>{t('githubProjects.loading', 'Carregando repositórios recentes...')}</span>
           </div>
         ) : error ? (
           <div
@@ -307,7 +312,7 @@ export default function GithubProjects() {
             }}
           >
             <p style={{ color: 'var(--text-secondary)', marginBottom: '1rem', fontFamily: 'DM Sans, sans-serif' }}>
-              Não foi possível carregar os repositórios diretamente no momento.
+              {t('githubProjects.errorNotice', 'Não foi possível carregar os repositórios diretamente no momento.')}
             </p>
             <a
               href="https://github.com/moaaskt"
@@ -324,7 +329,7 @@ export default function GithubProjects() {
               }}
             >
               <SiGithub size={18} />
-              Ver perfil no GitHub
+              {t('githubProjects.viewProfile', 'Ver perfil no GitHub')}
             </a>
           </div>
         ) : (
@@ -338,7 +343,7 @@ export default function GithubProjects() {
             }}
           >
             {repos.map((repo) => (
-              <GithubCard key={repo.id} repo={repo} />
+              <GithubCard key={repo.id} repo={repo} t={t} />
             ))}
           </div>
         )}

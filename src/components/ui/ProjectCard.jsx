@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { ExternalLink } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import TechIcon from './TechIcon';
 import { Button } from './button';
 
@@ -87,6 +88,7 @@ function LinkButton({ href, label, icon, ariaLabel }) {
 }
 
 export default function ProjectCard({ project }) {
+  const { t } = useTranslation();
   const [hovered, setHovered] = useState(false);
 
   return (
@@ -121,7 +123,7 @@ export default function ProjectCard({ project }) {
           <>
             <img
               src={project.image}
-              alt={`Captura de tela do projeto ${project.title}`}
+              alt={t('common.screenshotAlt', { title: project.title, defaultValue: `Captura de tela do projeto ${project.title}` })}
               loading="lazy"
               decoding="async"
               style={{
@@ -228,7 +230,7 @@ export default function ProjectCard({ project }) {
               {project.links.github && (
                 <LinkButton
                   href={project.links.github}
-                  label="GitHub"
+                  label={t('common.viewCode', 'GitHub')}
                   ariaLabel={`Acessar código-fonte do projeto ${project.title} no GitHub`}
                   icon={<GithubIcon size={15} />}
                 />
@@ -236,7 +238,7 @@ export default function ProjectCard({ project }) {
               {project.links.live && (
                 <LinkButton
                   href={project.links.live}
-                  label="Live"
+                  label={t('common.viewLive', 'Live')}
                   ariaLabel={`Acessar demonstração online do projeto ${project.title}`}
                   icon={<ExternalLink size={14} aria-hidden="true" />}
                 />
@@ -254,9 +256,9 @@ export default function ProjectCard({ project }) {
                     letterSpacing: '0.06em',
                     textTransform: 'uppercase',
                   }}
-                  aria-label="Caso de uso privado: código não disponível publicamente"
+                  aria-label={t('common.privateCaseAria', 'Caso de uso privado: código não disponível publicamente')}
                 >
-                  Case Privado
+                  {t('common.privateCase', 'Case Privado')}
                 </span>
               )}
             </div>
@@ -285,7 +287,7 @@ export default function ProjectCard({ project }) {
               }}
             >
               <a href={`#/projeto/${project.id}`}>
-                <span>Ver detalhes</span>
+                <span>{t('common.viewDetails', 'Ver detalhes')}</span>
                 <span aria-hidden="true" style={{ fontSize: '0.95rem', fontWeight: 700 }}>→</span>
               </a>
             </Button>
