@@ -222,56 +222,71 @@ export default function ProjectCard({ project }) {
           }}
         >
           <TagIcons tags={project.tags} />
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1.2rem', minHeight: '24px', width: '100%' }}>
-            {project.links.github && (
-              <LinkButton
-                href={project.links.github}
-                label="GitHub"
-                ariaLabel={`Acessar código-fonte do projeto ${project.title} no GitHub`}
-                icon={<GithubIcon size={15} />}
-              />
-            )}
-            {project.links.live && (
-              <LinkButton
-                href={project.links.live}
-                label="Live"
-                ariaLabel={`Acessar demonstração online do projeto ${project.title}`}
-                icon={<ExternalLink size={14} aria-hidden="true" />}
-              />
-            )}
-            {project.private && (
-              <span
-                style={{
-                  fontFamily: 'JetBrains Mono, monospace',
-                  fontSize: '0.7rem',
-                  color: 'var(--accent)',
-                  border: '1px solid var(--border-accent)',
-                  background: 'rgba(184, 247, 60, 0.05)',
-                  padding: '0.2rem 0.5rem',
-                  borderRadius: '3px',
-                  letterSpacing: '0.06em',
-                  textTransform: 'uppercase',
-                  marginLeft: project.links.live ? 'auto' : '0',
-                }}
-                aria-label="Caso de uso privado: código não disponível publicamente"
-              >
-                Case Privado
-              </span>
-            )}
-            {project.links.github && (
-              <span
-                style={{
-                  fontFamily: 'JetBrains Mono, monospace',
-                  fontSize: '0.7rem',
-                  color: 'var(--text-secondary)',
-                  marginLeft: 'auto',
-                  letterSpacing: '0.06em',
-                  textTransform: 'uppercase',
-                }}
-              >
-                Código disponível
-              </span>
-            )}
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '0.75rem', minHeight: '28px', width: '100%', flexWrap: 'wrap' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+              {project.links.github && (
+                <LinkButton
+                  href={project.links.github}
+                  label="GitHub"
+                  ariaLabel={`Acessar código-fonte do projeto ${project.title} no GitHub`}
+                  icon={<GithubIcon size={15} />}
+                />
+              )}
+              {project.links.live && (
+                <LinkButton
+                  href={project.links.live}
+                  label="Live"
+                  ariaLabel={`Acessar demonstração online do projeto ${project.title}`}
+                  icon={<ExternalLink size={14} aria-hidden="true" />}
+                />
+              )}
+              {project.private && (
+                <span
+                  style={{
+                    fontFamily: 'JetBrains Mono, monospace',
+                    fontSize: '0.7rem',
+                    color: 'var(--accent)',
+                    border: '1px solid var(--border-accent)',
+                    background: 'rgba(184, 247, 60, 0.05)',
+                    padding: '0.2rem 0.5rem',
+                    borderRadius: '3px',
+                    letterSpacing: '0.06em',
+                    textTransform: 'uppercase',
+                  }}
+                  aria-label="Caso de uso privado: código não disponível publicamente"
+                >
+                  Case Privado
+                </span>
+              )}
+            </div>
+
+            <a
+              href={`#/projeto/${project.id}`}
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.35rem',
+                fontFamily: 'JetBrains Mono, monospace',
+                fontSize: '0.75rem',
+                color: 'var(--accent)',
+                textDecoration: 'none',
+                padding: '0.3rem 0.65rem',
+                borderRadius: '4px',
+                border: '1px solid var(--border-accent)',
+                background: 'rgba(184, 247, 60, 0.05)',
+                transition: 'all 0.2s ease',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = 'var(--accent)';
+                e.currentTarget.style.color = '#080808';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = 'rgba(184, 247, 60, 0.05)';
+                e.currentTarget.style.color = 'var(--accent)';
+              }}
+            >
+              Ver detalhes →
+            </a>
           </div>
         </div>
       </div>

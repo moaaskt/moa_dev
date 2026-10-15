@@ -10,6 +10,9 @@ import Contact from './components/sections/Contact';
 import Footer from './components/layout/Footer';
 import CustomCursor from './components/ui/CustomCursor';
 import ScrollProgress from './components/ui/ScrollProgress';
+import AllProjectsPage from './components/pages/AllProjectsPage';
+import ProjectDetailPage from './components/pages/ProjectDetailPage';
+import { useHashRoute } from './hooks/useHashRoute';
 
 function Loader({ onDone }) {
   const [fading, setFading] = useState(false);
@@ -17,29 +20,36 @@ function Loader({ onDone }) {
   useEffect(() => {
     const t1 = setTimeout(() => setFading(true), 900);
     const t2 = setTimeout(() => onDone(), 1500);
-    return () => { clearTimeout(t1); clearTimeout(t2); };
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+    };
   }, [onDone]);
 
   return (
-    <div style={{
-      position: 'fixed',
-      inset: 0,
-      background: 'var(--bg-primary)',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      zIndex: 99999,
-      opacity: fading ? 0 : 1,
-      transition: 'opacity 0.6s ease',
-      pointerEvents: fading ? 'none' : 'all',
-    }}>
-      <span style={{
-        fontFamily: 'Syne, sans-serif',
-        fontWeight: 800,
-        fontSize: 'clamp(2rem, 6vw, 4rem)',
-        color: 'var(--text-primary)',
-        letterSpacing: '-0.03em',
-      }}>
+    <div
+      style={{
+        position: 'fixed',
+        inset: 0,
+        background: 'var(--bg-primary)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        zIndex: 99999,
+        opacity: fading ? 0 : 1,
+        transition: 'opacity 0.6s ease',
+        pointerEvents: fading ? 'none' : 'all',
+      }}
+    >
+      <span
+        style={{
+          fontFamily: 'Syne, sans-serif',
+          fontWeight: 800,
+          fontSize: 'clamp(2rem, 6vw, 4rem)',
+          color: 'var(--text-primary)',
+          letterSpacing: '-0.03em',
+        }}
+      >
         moa<span style={{ color: 'var(--accent)' }}>(dev)</span>
       </span>
     </div>
@@ -51,6 +61,8 @@ function App() {
     return !sessionStorage.getItem('moadev_visited');
   });
 
+  const { route, params } = useHashRoute();
+
   const handleLoaderDone = () => {
     sessionStorage.setItem('moadev_visited', '1');
     setShowLoader(false);
@@ -61,19 +73,27 @@ function App() {
       <CustomCursor />
       <ScrollProgress />
       {showLoader && <Loader onDone={handleLoaderDone} />}
-      <div style={{
-        opacity: showLoader ? 0 : 1,
-        transition: 'opacity 0.4s ease',
-      }}>
+      <div
+        style={{
+          opacity: showLoader ? 0 : 1,
+          transition: 'opacity 0.4s ease',
+        }}
+      >
         <Navbar />
         <main>
-          <Hero />
-          <About />
-          <Projects />
-          <Skills />
-          <Experience />
-          <GithubProjects />
-          <Contact />
+          {route === 'projects_list' && <AllProjectsPage />}
+          {route === 'project_detail' && <ProjectDetailPage projectId={params.id} />}
+          {route !== 'projects_list' && route !== 'project_detail' && (
+            <>
+              <Hero />
+              <About />
+              <Projects />
+              <Skills />
+              <Experience />
+              <GithubProjects />
+              <Contact />
+            </>
+          )}
         </main>
         <Footer />
       </div>

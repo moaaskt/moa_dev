@@ -92,6 +92,51 @@ export default function Projects() {
           </AnimatePresence>
         </motion.div>
 
+        {/* View all projects CTA */}
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            marginTop: '3.5rem',
+          }}
+        >
+          <a
+            href="#/projetos"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '0.6rem',
+              background: 'var(--bg-secondary)',
+              color: 'var(--text-primary)',
+              border: '1px solid var(--border)',
+              padding: '0.9rem 2rem',
+              borderRadius: '8px',
+              fontFamily: 'Syne, sans-serif',
+              fontWeight: 700,
+              fontSize: '1rem',
+              textDecoration: 'none',
+              letterSpacing: '-0.01em',
+              transition: 'all 0.3s ease',
+              boxShadow: '0 4px 20px rgba(0, 0, 0, 0.3)',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.borderColor = 'var(--accent)';
+              e.currentTarget.style.color = 'var(--accent)';
+              e.currentTarget.style.transform = 'translateY(-3px)';
+              e.currentTarget.style.boxShadow = '0 8px 30px rgba(184, 247, 60, 0.15)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.borderColor = 'var(--border)';
+              e.currentTarget.style.color = 'var(--text-primary)';
+              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.3)';
+            }}
+          >
+            <span>Ver todos os projetos</span>
+            <span style={{ color: 'var(--accent)', transition: 'transform 0.2s ease' }}>→</span>
+          </a>
+        </div>
+
         <style>{`
           @media (max-width: 767px) {
             .projects-grid { grid-template-columns: 1fr !important; }
