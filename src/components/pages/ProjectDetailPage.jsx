@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import { SiGithub } from 'react-icons/si';
 import TechIcon from '../ui/TechIcon';
+import FuzzyText from '../ui/FuzzyText';
 import { projects } from '../../data/projects';
 
 export default function ProjectDetailPage({ projectId }) {
@@ -60,22 +61,28 @@ export default function ProjectDetailPage({ projectId }) {
           textAlign: 'center',
         }}
       >
-        <h1
-          style={{
-            fontFamily: 'Syne, sans-serif',
-            fontSize: '2rem',
-            color: '#f0f0f0',
-            marginBottom: '1rem',
-          }}
-        >
-          Projeto não encontrado
-        </h1>
+        <h1 className="sr-only">404 - Projeto não encontrado</h1>
+        <div style={{ fontSize: "clamp(4rem, 12vw, 8rem)", lineHeight: 1 }}>
+          <FuzzyText
+            fontSize="clamp(4rem, 12vw, 8rem)"
+            fontFamily="Syne, sans-serif"
+            fontWeight={700}
+            color="#b8f73c"
+            enableHover={true}
+            baseIntensity={0.18}
+            hoverIntensity={0.5}
+            trigger="hover"
+          >
+            404
+          </FuzzyText>
+        </div>
         <p
           style={{
             fontFamily: 'DM Sans, sans-serif',
             color: 'var(--text-secondary)',
             fontSize: '1rem',
             maxWidth: '500px',
+            marginTop: '1.5rem',
             marginBottom: '2rem',
           }}
         >
@@ -732,26 +739,37 @@ export default function ProjectDetailPage({ projectId }) {
           <a
             href="#/projetos"
             style={{
-              fontFamily: 'JetBrains Mono, monospace',
-              fontSize: '0.85rem',
-              color: 'var(--accent)',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '0.6rem',
+              background: 'var(--bg-secondary)',
+              color: 'var(--text-primary)',
+              border: '1px solid var(--border)',
+              padding: '0.9rem 2rem',
+              borderRadius: '8px',
+              fontFamily: 'Syne, sans-serif',
+              fontWeight: 700,
+              fontSize: '1rem',
               textDecoration: 'none',
-              border: '1px solid var(--border-accent)',
-              background: 'rgba(184, 247, 60, 0.05)',
-              padding: '0.5rem 1.25rem',
-              borderRadius: '4px',
-              transition: 'all 0.2s ease',
+              letterSpacing: '-0.01em',
+              transition: 'all 0.3s ease',
+              boxShadow: '0 4px 20px rgba(0, 0, 0, 0.3)',
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.background = 'var(--accent)';
-              e.currentTarget.style.color = '#080808';
+              e.currentTarget.style.borderColor = 'var(--accent)';
+              e.currentTarget.style.color = 'var(--accent)';
+              e.currentTarget.style.transform = 'translateY(-3px)';
+              e.currentTarget.style.boxShadow = '0 8px 30px rgba(184, 247, 60, 0.15)';
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.background = 'rgba(184, 247, 60, 0.05)';
-              e.currentTarget.style.color = 'var(--accent)';
+              e.currentTarget.style.borderColor = 'var(--border)';
+              e.currentTarget.style.color = 'var(--text-primary)';
+              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.3)';
             }}
           >
-            Ver Catálogo Geral
+            <span>Ver todos os projetos</span>
+            <span style={{ color: 'var(--accent)', transition: 'transform 0.2s ease' }}>→</span>
           </a>
 
           {nextProject ? (
