@@ -55,7 +55,8 @@
       "fullstack": "Full Stack",
       "backend": "Backend",
       "frontend": "Frontend",
-      "ai-automation": "AI / Automation"
+      "ai-automation": "AI / Automation",
+      "ai": "AI & Python"
     },
     "viewAllCta": "View all projects"
   },
@@ -102,5 +103,77 @@
   },
   "footer": {
     "developedBy": "Developed by"
+  },
+  "allProjects": {
+    "metaTitle": "All Projects | Moacir Neto (moa_dev)",
+    "backToHome": "Back to home",
+    "badge": "Full Portfolio",
+    "title": "All Projects",
+    "subtitle": "Explore the complete portfolio of software engineering solutions, from scalable backend systems and transactional APIs to AI-driven applications and modern web interfaces.",
+    "searchPlaceholder": "Search by name, tag (e.g. React, Go, Docker), or technology...",
+    "searchAria": "Search projects by name or technology",
+    "clearSearchAria": "Clear search",
+    "categories": {
+      "all": "All",
+      "fullstack": "Full Stack",
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "ai": "AI & Python"
+    },
+    "showingCount": "Showing <1>{{count}}</1> of {{total}} projects",
+    "emptyTitle": "No projects found",
+    "emptyDesc": "No results found matching \"{{query}}\" with the selected filter.",
+    "clearFilters": "Clear search filters"
+  },
+  "projectDetail": {
+    "metaTitle": "{{title}} — Case Study | Moacir Neto (moa_dev)",
+    "notFoundMetaTitle": "Project not found | Moacir Neto",
+    "notFoundHeading": "404 - Project not found",
+    "notFoundDesc": "The project identifier \"{{id}}\" does not match any items in our current catalog.",
+    "backToAll": "Back to all projects",
+    "breadcrumbs": {
+      "home": "Home",
+      "projects": "Projects"
+    },
+    "corporateCase": "Private / Enterprise Case",
+    "publicCode": "Public Code",
+    "imageAlt": "Interface overview of {{title}}",
+    "liveProject": "Live Project Demo",
+    "githubRepo": "GitHub Repository",
+    "overviewTitle": "Overview & Challenge",
+    "highlightsTitle": "Key Technical Highlights",
+    "featuresTitle": "Modules & Features",
+    "technicalDecisionsTitle": "Architecture & Technical Decisions",
+    "rolePerformed": "My Role",
+    "defaultRole": "Full Stack Developer",
+    "stackAndTools": "Stack & Tools",
+    "prevProject": "Previous Project",
+    "nextProject": "Next Project",
+    "viewAllProjects": "View all projects"
+  },
+  "gallery": {
+    "badge": "Production System Screenshots",
+    "title": "Production UI & System Gallery",
+    "subtitle": "Explore real user flows and screenshots from {{title}}. Click any thumbnail to inspect high-resolution interfaces and technical metrics in fullscreen mode.",
+    "allTab": "All",
+    "lightboxCounter": "{{current}} / {{total}}",
+    "closeAria": "Close fullscreen viewer (ESC)",
+    "prevAria": "Previous image (Left arrow)",
+    "nextAria": "Next image (Right arrow)",
+    "openDetails": "View details"
+  },
+  "architecture": {
+    "badge": "Systems Engineering & Microservices",
+    "title": "Production Architecture & Pipelines",
+    "subtitle": "Technical architecture and distributed topology of {{title}}. Explore the containerized Docker services, asynchronous message queues, and AI-driven pipeline.",
+    "tabs": {
+      "services": "7 Docker Services",
+      "campaign": "Async Pipeline (Asynq + SSE)",
+      "ai": "AI Pipeline (Google Gemini)"
+    },
+    "campaignTitle": "Batch Dispatch Flow & Real-Time Telemetry",
+    "campaignDesc": "Asynchronous event-driven architecture designed to decouple the frontend from high-latency network operations and Meta API connections, ensuring instantaneous client responses and real-time streaming via Server-Sent Events (SSE).",
+    "aiTitle": "Data Enrichment & Commercial Dossier Pipeline",
+    "aiDesc": "Orchestrated synergy between headless web crawlers (Playwright) and generative language models (Google Gemini) to convert raw merchant data into actionable commercial intelligence."
   }
 }

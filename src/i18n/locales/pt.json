@@ -55,7 +55,8 @@
       "fullstack": "Full Stack",
       "backend": "Backend",
       "frontend": "Frontend",
-      "ai-automation": "IA / Automação"
+      "ai-automation": "IA / Automação",
+      "ai": "IA & Python"
     },
     "viewAllCta": "Ver todos os projetos"
   },
@@ -102,5 +103,77 @@
   },
   "footer": {
     "developedBy": "Desenvolvido por"
+  },
+  "allProjects": {
+    "metaTitle": "Todos os Projetos | Moacir Neto (moa_dev)",
+    "backToHome": "Voltar para o início",
+    "badge": "Catálogo Completo",
+    "title": "Todos os Projetos",
+    "subtitle": "Explore o repositório completo de soluções desenvolvidas, desde arquiteturas backend e APIs transacionais até aplicações interativas com Inteligência Artificial e interfaces web modernas.",
+    "searchPlaceholder": "Buscar por nome, tag (ex: React, Go, Docker) ou tecnologia...",
+    "searchAria": "Buscar projetos por nome ou tecnologia",
+    "clearSearchAria": "Limpar busca",
+    "categories": {
+      "all": "Todos",
+      "fullstack": "Full Stack",
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "ai": "IA & Python"
+    },
+    "showingCount": "Exibindo <1>{{count}}</1> de {{total}} projetos",
+    "emptyTitle": "Nenhum projeto encontrado",
+    "emptyDesc": "Não localizamos resultados para \"{{query}}\" com o filtro selecionado.",
+    "clearFilters": "Limpar filtros de busca"
+  },
+  "projectDetail": {
+    "metaTitle": "{{title}} — Case Study | Moacir Neto (moa_dev)",
+    "notFoundMetaTitle": "Projeto não encontrado | Moacir Neto",
+    "notFoundHeading": "404 - Projeto não encontrado",
+    "notFoundDesc": "O identificador de projeto \"{{id}}\" não corresponde a nenhum item do nosso catálogo atual.",
+    "backToAll": "Voltar para todos os projetos",
+    "breadcrumbs": {
+      "home": "Início",
+      "projects": "Projetos"
+    },
+    "corporateCase": "Case Privado / Corporativo",
+    "publicCode": "Código Público",
+    "imageAlt": "Visão geral da interface de {{title}}",
+    "liveProject": "Acessar Projeto Online",
+    "githubRepo": "Repositório no GitHub",
+    "overviewTitle": "Visão Geral & Desafio",
+    "highlightsTitle": "Principais Conquistas Técnicas",
+    "featuresTitle": "Módulos & Funcionalidades",
+    "technicalDecisionsTitle": "Arquitetura & Decisões Técnicas",
+    "rolePerformed": "Papel Desempenhado",
+    "defaultRole": "Desenvolvedor Full Stack",
+    "stackAndTools": "Stack & Ferramentas",
+    "prevProject": "Projeto Anterior",
+    "nextProject": "Próximo Projeto",
+    "viewAllProjects": "Ver todos os projetos"
+  },
+  "gallery": {
+    "badge": "Capturas Reais do Sistema",
+    "title": "Galeria & Interface em Produção",
+    "subtitle": "Explore as telas e fluxos reais do sistema {{title}}. Clique em qualquer imagem para visualizar os detalhes técnicos e as métricas em tela cheia com alta resolução.",
+    "allTab": "Todas",
+    "lightboxCounter": "{{current}} / {{total}}",
+    "closeAria": "Fechar visualização em tela cheia (ESC)",
+    "prevAria": "Imagem anterior (Seta esquerda)",
+    "nextAria": "Próxima imagem (Seta direita)",
+    "openDetails": "Ver detalhes"
+  },
+  "architecture": {
+    "badge": "Engenharia de Sistemas & Microsserviços",
+    "title": "Arquitetura de Produção & Pipelines",
+    "subtitle": "Estrutura técnica e topologia distribuída do {{title}}. Navegue entre os containers Docker orquestrados e os pipelines de mensageria assíncrona e inteligência artificial.",
+    "tabs": {
+      "services": "7 Serviços Docker",
+      "campaign": "Pipeline Assíncrono (Asynq + SSE)",
+      "ai": "Pipeline de IA (Google Gemini)"
+    },
+    "campaignTitle": "Fluxo de Disparo em Lote & Telemetria em Tempo Real",
+    "campaignDesc": "Arquitetura de processamento assíncrono projetada para desacoplar a interface do usuário das operações de alta latência e conexões com a rede Meta, garantindo resposta imediata e acompanhamento contínuo via SSE.",
+    "aiTitle": "Pipeline de Enriquecimento de Dados & Geração de Dossiês",
+    "aiDesc": "Integração orquestrada entre crawlers web headless (Playwright) e modelos de linguagem generativa (Google Gemini) para converter dados brutos de estabelecimentos em inteligência comercial prática."
   }
 }

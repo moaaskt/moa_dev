@@ -4,20 +4,29 @@ import {
   Server,
   Workflow,
   Sparkles,
-  ArrowRight,
-  Database,
   Terminal,
   Activity,
   Layers,
-  CheckCircle,
 } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 export default function ProjectArchitecture({ architecture, projectTitle = 'Projeto' }) {
+  const { t, i18n } = useTranslation();
+  const currentLang = (i18n.resolvedLanguage || i18n.language || 'pt').startsWith('en')
+    ? 'en'
+    : 'pt';
+
   const [activeTab, setActiveTab] = useState('services');
 
   if (!architecture) return null;
 
   const { services = [], campaignFlow = [], aiPipeline = [] } = architecture;
+
+  const getLocalized = (val) => {
+    if (!val) return '';
+    if (typeof val === 'object') return val[currentLang] || val.pt || val.en || '';
+    return val;
+  };
 
   return (
     <section style={{ marginTop: '3.5rem', marginBottom: '3.5rem' }}>
@@ -45,7 +54,7 @@ export default function ProjectArchitecture({ architecture, projectTitle = 'Proj
               flexShrink: 0,
             }}
           />
-          Engenharia de Sistemas & Microsserviços
+          {t('architecture.badge', 'Engenharia de Sistemas & Microsserviços')}
         </div>
         <h2
           style={{
@@ -57,7 +66,7 @@ export default function ProjectArchitecture({ architecture, projectTitle = 'Proj
             marginBottom: '0.75rem',
           }}
         >
-          Arquitetura de Produção & Pipelines
+          {t('architecture.title', 'Arquitetura de Produção & Pipelines')}
         </h2>
         <p
           style={{
@@ -68,8 +77,7 @@ export default function ProjectArchitecture({ architecture, projectTitle = 'Proj
             lineHeight: 1.6,
           }}
         >
-          Estrutura técnica e topologia distribuída do {projectTitle}. Navegue entre os containers
-          Docker orquestrados e os pipelines de mensageria assíncrona e inteligência artificial.
+          {t('architecture.subtitle', { title: projectTitle, defaultValue: `Estrutura técnica e topologia distribuída do ${projectTitle}. Navegue entre os containers Docker orquestrados e os pipelines de mensageria assíncrona e inteligência artificial.` })}
         </p>
       </div>
 
@@ -105,7 +113,7 @@ export default function ProjectArchitecture({ architecture, projectTitle = 'Proj
           }}
         >
           <Server size={15} />
-          <span>7 Serviços Docker</span>
+          <span>{t('architecture.tabs.services', '7 Serviços Docker')}</span>
         </button>
 
         <button
@@ -129,7 +137,7 @@ export default function ProjectArchitecture({ architecture, projectTitle = 'Proj
           }}
         >
           <Workflow size={15} />
-          <span>Pipeline Assíncrono (Asynq + SSE)</span>
+          <span>{t('architecture.tabs.campaign', 'Pipeline Assíncrono (Asynq + SSE)')}</span>
         </button>
 
         <button
@@ -153,7 +161,7 @@ export default function ProjectArchitecture({ architecture, projectTitle = 'Proj
           }}
         >
           <Sparkles size={15} />
-          <span>Pipeline de IA (Google Gemini)</span>
+          <span>{t('architecture.tabs.ai', 'Pipeline de IA (Google Gemini)')}</span>
         </button>
       </div>
 
@@ -258,7 +266,7 @@ export default function ProjectArchitecture({ architecture, projectTitle = 'Proj
                     paddingTop: '0.75rem',
                   }}
                 >
-                  {srv.role}
+                  {getLocalized(srv.role)}
                 </p>
               </div>
             ))}
@@ -297,7 +305,7 @@ export default function ProjectArchitecture({ architecture, projectTitle = 'Proj
                   margin: 0,
                 }}
               >
-                Fluxo de Disparo em Lote & Telemetria em Tempo Real
+                {t('architecture.campaignTitle', 'Fluxo de Disparo em Lote & Telemetria em Tempo Real')}
               </h3>
             </div>
             <p
@@ -309,56 +317,58 @@ export default function ProjectArchitecture({ architecture, projectTitle = 'Proj
                 lineHeight: 1.6,
               }}
             >
-              Arquitetura de processamento assíncrono projetada para desacoplar a interface do usuário das
-              operações de alta latência e conexões com a rede Meta, garantindo resposta imediata e acompanhamento contínuo via SSE.
+              {t('architecture.campaignDesc')}
             </p>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-              {campaignFlow.map((step, idx) => (
-                <div
-                  key={idx}
-                  style={{
-                    display: 'flex',
-                    alignItems: 'flex-start',
-                    gap: '1rem',
-                    background: 'var(--bg-primary)',
-                    border: '1px solid var(--border)',
-                    borderRadius: '6px',
-                    padding: '1.1rem 1.3rem',
-                  }}
-                >
-                  <span
+              {campaignFlow.map((step, idx) => {
+                const stepText = getLocalized(step);
+                return (
+                  <div
+                    key={idx}
                     style={{
-                      fontFamily: 'JetBrains Mono, monospace',
-                      fontSize: '0.8rem',
-                      fontWeight: 700,
-                      color: '#080808',
-                      background: 'var(--accent)',
-                      borderRadius: '50%',
-                      width: '26px',
-                      height: '26px',
                       display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      flexShrink: 0,
-                      marginTop: '2px',
+                      alignItems: 'flex-start',
+                      gap: '1rem',
+                      background: 'var(--bg-primary)',
+                      border: '1px solid var(--border)',
+                      borderRadius: '6px',
+                      padding: '1.1rem 1.3rem',
                     }}
                   >
-                    {idx + 1}
-                  </span>
-                  <p
-                    style={{
-                      fontFamily: 'DM Sans, sans-serif',
-                      fontSize: '0.92rem',
-                      color: '#e0e0e0',
-                      lineHeight: 1.65,
-                      margin: 0,
-                    }}
-                  >
-                    {step.replace(/^\d+\.\s*/, '')}
-                  </p>
-                </div>
-              ))}
+                    <span
+                      style={{
+                        fontFamily: 'JetBrains Mono, monospace',
+                        fontSize: '0.8rem',
+                        fontWeight: 700,
+                        color: '#080808',
+                        background: 'var(--accent)',
+                        borderRadius: '50%',
+                        width: '26px',
+                        height: '26px',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        flexShrink: 0,
+                        marginTop: '2px',
+                      }}
+                    >
+                      {idx + 1}
+                    </span>
+                    <p
+                      style={{
+                        fontFamily: 'DM Sans, sans-serif',
+                        fontSize: '0.92rem',
+                        color: '#e0e0e0',
+                        lineHeight: 1.65,
+                        margin: 0,
+                      }}
+                    >
+                      {stepText.replace(/^\d+\.\s*/, '')}
+                    </p>
+                  </div>
+                );
+              })}
             </div>
           </motion.div>
         )}
@@ -395,7 +405,7 @@ export default function ProjectArchitecture({ architecture, projectTitle = 'Proj
                   margin: 0,
                 }}
               >
-                Pipeline de Enriquecimento de Dados & Geração de Dossiês
+                {t('architecture.aiTitle', 'Pipeline de Enriquecimento de Dados & Geração de Dossiês')}
               </h3>
             </div>
             <p
@@ -407,57 +417,59 @@ export default function ProjectArchitecture({ architecture, projectTitle = 'Proj
                 lineHeight: 1.6,
               }}
             >
-              Integração orquestrada entre crawlers web headless (Playwright) e modelos de linguagem generativa
-              (Google Gemini) para converter dados brutos de estabelecimentos em inteligência comercial prática.
+              {t('architecture.aiDesc')}
             </p>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-              {aiPipeline.map((step, idx) => (
-                <div
-                  key={idx}
-                  style={{
-                    display: 'flex',
-                    alignItems: 'flex-start',
-                    gap: '1rem',
-                    background: 'var(--bg-primary)',
-                    border: '1px solid var(--border)',
-                    borderRadius: '6px',
-                    padding: '1.1rem 1.3rem',
-                  }}
-                >
-                  <span
+              {aiPipeline.map((step, idx) => {
+                const stepText = getLocalized(step);
+                return (
+                  <div
+                    key={idx}
                     style={{
-                      fontFamily: 'JetBrains Mono, monospace',
-                      fontSize: '0.8rem',
-                      fontWeight: 700,
-                      color: 'var(--accent)',
-                      background: 'rgba(184, 247, 60, 0.1)',
-                      border: '1px solid var(--border-accent)',
-                      borderRadius: '50%',
-                      width: '26px',
-                      height: '26px',
                       display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      flexShrink: 0,
-                      marginTop: '2px',
+                      alignItems: 'flex-start',
+                      gap: '1rem',
+                      background: 'var(--bg-primary)',
+                      border: '1px solid var(--border)',
+                      borderRadius: '6px',
+                      padding: '1.1rem 1.3rem',
                     }}
                   >
-                    {idx + 1}
-                  </span>
-                  <p
-                    style={{
-                      fontFamily: 'DM Sans, sans-serif',
-                      fontSize: '0.92rem',
-                      color: '#e0e0e0',
-                      lineHeight: 1.65,
-                      margin: 0,
-                    }}
-                  >
-                    {step.replace(/^\d+\.\s*/, '')}
-                  </p>
-                </div>
-              ))}
+                    <span
+                      style={{
+                        fontFamily: 'JetBrains Mono, monospace',
+                        fontSize: '0.8rem',
+                        fontWeight: 700,
+                        color: 'var(--accent)',
+                        background: 'rgba(184, 247, 60, 0.1)',
+                        border: '1px solid var(--border-accent)',
+                        borderRadius: '50%',
+                        width: '26px',
+                        height: '26px',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        flexShrink: 0,
+                        marginTop: '2px',
+                      }}
+                    >
+                      {idx + 1}
+                    </span>
+                    <p
+                      style={{
+                        fontFamily: 'DM Sans, sans-serif',
+                        fontSize: '0.92rem',
+                        color: '#e0e0e0',
+                        lineHeight: 1.65,
+                        margin: 0,
+                      }}
+                    >
+                      {stepText.replace(/^\d+\.\s*/, '')}
+                    </p>
+                  </div>
+                );
+              })}
             </div>
           </motion.div>
         )}

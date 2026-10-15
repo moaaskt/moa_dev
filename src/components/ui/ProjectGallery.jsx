@@ -1,9 +1,15 @@
 import { useState, useEffect, useMemo, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Maximize2, X, ChevronLeft, ChevronRight, Image as ImageIcon } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 export default function ProjectGallery({ items = [], projectTitle = 'Projeto' }) {
-  const [activeCategory, setActiveCategory] = useState('Todas');
+  const { t, i18n } = useTranslation();
+  const currentLang = (i18n.resolvedLanguage || i18n.language || 'pt').startsWith('en')
+    ? 'en'
+    : 'pt';
+
+  const [activeCategory, setActiveCategory] = useState('ALL');
   const [lightboxIndex, setLightboxIndex] = useState(null);
 
   const categories = useMemo(() => {
@@ -11,11 +17,11 @@ export default function ProjectGallery({ items = [], projectTitle = 'Projeto' })
     items.forEach((item) => {
       if (item.category) set.add(item.category);
     });
-    return ['Todas', ...Array.from(set)];
+    return ['ALL', ...Array.from(set)];
   }, [items]);
 
   const filteredItems = useMemo(() => {
-    if (activeCategory === 'Todas') return items;
+    if (activeCategory === 'ALL') return items;
     return items.filter((item) => item.category === activeCategory);
   }, [items, activeCategory]);
 
@@ -57,6 +63,16 @@ export default function ProjectGallery({ items = [], projectTitle = 'Projeto' })
 
   const currentLightboxItem = lightboxIndex !== null ? filteredItems[lightboxIndex] : null;
 
+  const getItemField = (item, field) => {
+    if (!item) return '';
+    const val = item[field];
+    if (!val) return '';
+    if (typeof val === 'object') {
+      return val[currentLang] || val.pt || val.en || '';
+    }
+    return val;
+  };
+
   return (
     <section style={{ marginTop: '4rem', marginBottom: '4rem' }}>
       {/* Header da Galeria */}
@@ -83,7 +99,7 @@ export default function ProjectGallery({ items = [], projectTitle = 'Projeto' })
               flexShrink: 0,
             }}
           />
-          Capturas Reais do Sistema
+          {t('gallery.badge', 'Capturas Reais do Sistema')}
         </div>
         <h2
           style={{
@@ -95,7 +111,7 @@ export default function ProjectGallery({ items = [], projectTitle = 'Projeto' })
             marginBottom: '0.75rem',
           }}
         >
-          Galeria & Interface em Produção
+          {t('gallery.title', 'Galeria & Interface em Produção')}
         </h2>
         <p
           style={{
@@ -106,8 +122,7 @@ export default function ProjectGallery({ items = [], projectTitle = 'Projeto' })
             lineHeight: 1.6,
           }}
         >
-          Explore as telas e fluxos reais do sistema {projectTitle}. Clique em qualquer imagem para
-          visualizar os detalhes técnicos e as métricas em tela cheia com alta resolução.
+          {t('gallery.subtitle', { title: projectTitle, defaultValue: `Explore as telas e fluxos reais do sistema ${projectTitle}. Clique em qualquer imagem para visualizar os detalhes técnicos e as métricas em tela cheia com alta resolução.` })}
         </p>
       </div>
 
@@ -123,6 +138,8 @@ export default function ProjectGallery({ items = [], projectTitle = 'Projeto' })
         >
           {categories.map((cat) => {
             const isActive = activeCategory === cat;
+            const label = cat === 'ALL' ? t('gallery.allTab', 'Todas') : cat;
+
             return (
               <button
                 key={cat}
@@ -157,7 +174,7 @@ export default function ProjectGallery({ items = [], projectTitle = 'Projeto' })
                   }
                 }}
               >
-                {cat}
+                {label}
               </button>
             );
           })}
@@ -175,158 +192,166 @@ export default function ProjectGallery({ items = [], projectTitle = 'Projeto' })
         }}
       >
         <AnimatePresence mode="popLayout">
-          {filteredItems.map((item, index) => (
-            <motion.div
-              key={item.id || index}
-              layout
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              transition={{ duration: 0.25, delay: index * 0.03 }}
-              onClick={() => setLightboxIndex(index)}
-              style={{
-                background: 'var(--bg-secondary)',
-                border: '1px solid var(--border)',
-                borderRadius: '8px',
-                overflow: 'hidden',
-                cursor: 'pointer',
-                display: 'flex',
-                flexDirection: 'column',
-                transition: 'border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease',
-              }}
-              className="gallery-card"
-              onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = 'var(--accent)';
-                e.currentTarget.style.transform = 'translateY(-4px)';
-                e.currentTarget.style.boxShadow = '0 12px 30px rgba(0, 0, 0, 0.4)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = 'var(--border)';
-                e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = 'none';
-              }}
-            >
-              {/* Thumbnail Container */}
-              <div
-                style={{
-                  position: 'relative',
-                  width: '100%',
-                  aspectRatio: '16/10',
-                  overflow: 'hidden',
-                  background: '#121212',
-                }}
-              >
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  loading="lazy"
-                  style={{
-                    width: '100%',
-                    height: '100%',
-                    objectFit: 'cover',
-                    display: 'block',
-                    transition: 'transform 0.4s ease',
-                  }}
-                  className="gallery-thumb"
-                />
-                <div
-                  style={{
-                    position: 'absolute',
-                    inset: 0,
-                    background: 'rgba(8, 8, 8, 0.45)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    opacity: 0,
-                    transition: 'opacity 0.2s ease',
-                  }}
-                  className="gallery-overlay"
-                >
-                  <span
-                    style={{
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      gap: '0.4rem',
-                      background: 'var(--accent)',
-                      color: '#080808',
-                      padding: '0.45rem 0.85rem',
-                      borderRadius: '4px',
-                      fontFamily: 'JetBrains Mono, monospace',
-                      fontSize: '0.75rem',
-                      fontWeight: 700,
-                      boxShadow: '0 4px 15px rgba(0,0,0,0.4)',
-                    }}
-                  >
-                    <Maximize2 size={14} />
-                    Expandir
-                  </span>
-                </div>
-              </div>
+          {filteredItems.map((item, index) => {
+            const itemTitle = getItemField(item, 'title');
+            const itemCategory = getItemField(item, 'category');
+            const itemDescription = getItemField(item, 'description');
 
-              {/* Informações da Imagem */}
-              <div
+            return (
+              <motion.div
+                key={item.id || index}
+                layout
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.25, delay: index * 0.03 }}
+                onClick={() => setLightboxIndex(index)}
                 style={{
-                  padding: '1rem 1.2rem',
+                  background: 'var(--bg-secondary)',
+                  border: '1px solid var(--border)',
+                  borderRadius: '8px',
+                  overflow: 'hidden',
+                  cursor: 'pointer',
                   display: 'flex',
                   flexDirection: 'column',
-                  gap: '0.35rem',
-                  flex: 1,
+                  transition: 'border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease',
+                }}
+                className="gallery-card"
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = 'var(--accent)';
+                  e.currentTarget.style.transform = 'translateY(-4px)';
+                  e.currentTarget.style.boxShadow = '0 12px 30px rgba(0, 0, 0, 0.4)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = 'var(--border)';
+                  e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.boxShadow = 'none';
                 }}
               >
+                {/* Thumbnail Container */}
                 <div
                   style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                    gap: '0.5rem',
+                    position: 'relative',
+                    width: '100%',
+                    aspectRatio: '16/10',
+                    overflow: 'hidden',
+                    background: '#121212',
                   }}
                 >
-                  <h3
+                  <img
+                    src={item.image}
+                    alt={itemTitle}
+                    loading="lazy"
                     style={{
-                      fontFamily: 'Syne, sans-serif',
-                      fontSize: '0.95rem',
-                      fontWeight: 700,
-                      color: '#f0f0f0',
-                      margin: 0,
-                      lineHeight: 1.3,
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover',
+                      display: 'block',
+                      transition: 'transform 0.4s ease',
+                    }}
+                    className="gallery-thumb"
+                  />
+                  <div
+                    style={{
+                      position: 'absolute',
+                      inset: 0,
+                      background: 'rgba(8, 8, 8, 0.45)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      opacity: 0,
+                      transition: 'opacity 0.2s ease',
+                    }}
+                    className="gallery-overlay"
+                  >
+                    <span
+                      style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '0.4rem',
+                        background: 'var(--accent)',
+                        color: '#080808',
+                        padding: '0.45rem 0.9rem',
+                        borderRadius: '4px',
+                        fontFamily: 'JetBrains Mono, monospace',
+                        fontSize: '0.75rem',
+                        fontWeight: 700,
+                        letterSpacing: '0.04em',
+                        boxShadow: '0 4px 15px rgba(0,0,0,0.5)',
+                      }}
+                    >
+                      <Maximize2 size={13} />
+                      {t('gallery.openDetails', 'Ver detalhes')}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Card Content */}
+                <div
+                  style={{
+                    padding: '1.25rem',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    flex: 1,
+                  }}
+                >
+                  <div
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      marginBottom: '0.5rem',
                     }}
                   >
-                    {item.title}
-                  </h3>
-                  {item.category && (
                     <span
                       style={{
                         fontFamily: 'JetBrains Mono, monospace',
-                        fontSize: '0.65rem',
+                        fontSize: '0.7rem',
                         color: 'var(--accent)',
                         background: 'rgba(184, 247, 60, 0.08)',
+                        border: '1px solid var(--border-accent)',
                         padding: '0.15rem 0.45rem',
                         borderRadius: '3px',
-                        whiteSpace: 'nowrap',
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.04em',
                       }}
                     >
-                      {item.category}
+                      {itemCategory}
                     </span>
-                  )}
+                  </div>
+
+                  <h3
+                    style={{
+                      fontFamily: 'Syne, sans-serif',
+                      fontWeight: 700,
+                      fontSize: '1.05rem',
+                      color: '#f0f0f0',
+                      letterSpacing: '-0.01em',
+                      marginBottom: '0.5rem',
+                    }}
+                  >
+                    {itemTitle}
+                  </h3>
+
+                  <p
+                    style={{
+                      fontFamily: 'DM Sans, sans-serif',
+                      fontSize: '0.85rem',
+                      color: 'var(--text-secondary)',
+                      lineHeight: 1.5,
+                      margin: 0,
+                      display: '-webkit-box',
+                      WebkitLineClamp: 2,
+                      WebkitBoxOrient: 'vertical',
+                      overflow: 'hidden',
+                    }}
+                  >
+                    {itemDescription}
+                  </p>
                 </div>
-                <p
-                  style={{
-                    fontFamily: 'DM Sans, sans-serif',
-                    fontSize: '0.8rem',
-                    color: 'var(--text-secondary)',
-                    lineHeight: 1.5,
-                    margin: 0,
-                    display: '-webkit-box',
-                    WebkitLineClamp: 2,
-                    WebkitBoxOrient: 'vertical',
-                    overflow: 'hidden',
-                  }}
-                >
-                  {item.description}
-                </p>
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            );
+          })}
         </AnimatePresence>
       </motion.div>
 
@@ -334,6 +359,7 @@ export default function ProjectGallery({ items = [], projectTitle = 'Projeto' })
       <AnimatePresence>
         {lightboxIndex !== null && currentLightboxItem && (
           <motion.div
+            key="lightbox"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -341,12 +367,13 @@ export default function ProjectGallery({ items = [], projectTitle = 'Projeto' })
             style={{
               position: 'fixed',
               inset: 0,
-              background: 'rgba(0, 0, 0, 0.94)',
+              zIndex: 1000,
+              background: 'rgba(5, 5, 5, 0.94)',
               backdropFilter: 'blur(10px)',
               WebkitBackdropFilter: 'blur(10px)',
-              zIndex: 99999,
               display: 'flex',
               flexDirection: 'column',
+              justifyContent: 'space-between',
               padding: '1.25rem 2rem',
             }}
             onClick={(e) => {
@@ -377,7 +404,7 @@ export default function ProjectGallery({ items = [], projectTitle = 'Projeto' })
                     background: 'rgba(184, 247, 60, 0.08)',
                   }}
                 >
-                  {lightboxIndex + 1} / {filteredItems.length}
+                  {t('gallery.lightboxCounter', { current: lightboxIndex + 1, total: filteredItems.length, defaultValue: `${lightboxIndex + 1} / ${filteredItems.length}` })}
                 </span>
                 <span
                   style={{
@@ -387,13 +414,13 @@ export default function ProjectGallery({ items = [], projectTitle = 'Projeto' })
                     color: '#f0f0f0',
                   }}
                 >
-                  {currentLightboxItem.title}
+                  {getItemField(currentLightboxItem, 'title')}
                 </span>
               </div>
 
               <button
                 onClick={closeLightbox}
-                aria-label="Fechar visualização em tela cheia"
+                aria-label={t('gallery.closeAria', 'Fechar visualização em tela cheia (ESC)')}
                 style={{
                   background: 'rgba(255, 255, 255, 0.05)',
                   border: '1px solid var(--border)',
@@ -433,7 +460,7 @@ export default function ProjectGallery({ items = [], projectTitle = 'Projeto' })
               {/* Botão Anterior */}
               <button
                 onClick={showPrev}
-                aria-label="Imagem anterior"
+                aria-label={t('gallery.prevAria', 'Imagem anterior (Seta esquerda)')}
                 style={{
                   position: 'absolute',
                   left: '1rem',
@@ -472,7 +499,7 @@ export default function ProjectGallery({ items = [], projectTitle = 'Projeto' })
                 exit={{ opacity: 0, scale: 0.96 }}
                 transition={{ duration: 0.25 }}
                 src={currentLightboxItem.image}
-                alt={currentLightboxItem.title}
+                alt={getItemField(currentLightboxItem, 'title')}
                 style={{
                   maxWidth: '92%',
                   maxHeight: '75vh',
@@ -486,7 +513,7 @@ export default function ProjectGallery({ items = [], projectTitle = 'Projeto' })
               {/* Botão Próximo */}
               <button
                 onClick={showNext}
-                aria-label="Próxima imagem"
+                aria-label={t('gallery.nextAria', 'Próxima imagem (Seta direita)')}
                 style={{
                   position: 'absolute',
                   right: '1rem',
@@ -540,7 +567,7 @@ export default function ProjectGallery({ items = [], projectTitle = 'Projeto' })
                   lineHeight: 1.5,
                 }}
               >
-                {currentLightboxItem.description}
+                {getItemField(currentLightboxItem, 'description')}
               </p>
             </div>
           </motion.div>

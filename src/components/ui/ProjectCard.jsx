@@ -88,7 +88,7 @@ function LinkButton({ href, label, icon, ariaLabel }) {
 }
 
 export default function ProjectCard({ project }) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [hovered, setHovered] = useState(false);
 
   return (
@@ -210,7 +210,9 @@ export default function ProjectCard({ project }) {
             margin: 0,
           }}
         >
-          {project.description}
+          {typeof project.description === 'object' && project.description !== null
+            ? (project.description[i18n.resolvedLanguage?.startsWith('en') ? 'en' : 'pt'] || project.description.pt || project.description.en)
+            : project.description}
         </p>
 
         {/* Footer */}
