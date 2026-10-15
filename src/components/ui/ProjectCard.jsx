@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { ExternalLink } from 'lucide-react';
 import TechIcon from './TechIcon';
+import { Button } from './button';
 
 const extraPillStyle = {
   fontFamily: 'JetBrains Mono, monospace',
@@ -222,7 +223,7 @@ export default function ProjectCard({ project }) {
           }}
         >
           <TagIcons tags={project.tags} />
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '0.75rem', minHeight: '28px', width: '100%', flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '0.75rem', minHeight: '36px', width: '100%', flexWrap: 'wrap' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
               {project.links.github && (
                 <LinkButton
@@ -260,33 +261,34 @@ export default function ProjectCard({ project }) {
               )}
             </div>
 
-            <a
-              href={`#/projeto/${project.id}`}
+            <Button
+              asChild
+              className="hvr-sweep-to-right"
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: '0.35rem',
-                fontFamily: 'JetBrains Mono, monospace',
-                fontSize: '0.75rem',
+                justifyContent: 'center',
+                gap: '0.45rem',
+                height: '38px',
+                padding: '0 1.1rem',
+                borderRadius: '8px',
+                fontSize: '0.875rem',
+                fontWeight: 600,
+                fontFamily: 'DM Sans, sans-serif',
                 color: 'var(--accent)',
-                textDecoration: 'none',
-                padding: '0.3rem 0.65rem',
-                borderRadius: '4px',
                 border: '1px solid var(--border-accent)',
-                background: 'rgba(184, 247, 60, 0.05)',
-                transition: 'all 0.2s ease',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.background = 'var(--accent)';
-                e.currentTarget.style.color = '#080808';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = 'rgba(184, 247, 60, 0.05)';
-                e.currentTarget.style.color = 'var(--accent)';
+                background: '#141414',
+                whiteSpace: 'nowrap',
+                textDecoration: 'none',
+                boxShadow: '0 1px 2px rgba(0, 0, 0, 0.4)',
+                cursor: 'pointer',
               }}
             >
-              Ver detalhes →
-            </a>
+              <a href={`#/projeto/${project.id}`}>
+                <span>Ver detalhes</span>
+                <span aria-hidden="true" style={{ fontSize: '0.95rem', fontWeight: 700 }}>→</span>
+              </a>
+            </Button>
           </div>
         </div>
       </div>
