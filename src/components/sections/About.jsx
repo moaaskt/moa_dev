@@ -64,7 +64,7 @@ export default function About() {
                 marginBottom: '2rem',
               }}
             >
-              Trabalho com PHP, CodeIgniter, Laravel, JavaScript, TypeScript, React, Node.js, Python e C++. Tenho projetos pessoais com automações, IoT e agentes de IA.
+              Trabalho com PHP, CodeIgniter, Laravel, JavaScript, TypeScript, React, Node.js, Python e C++. Tenho projetos pessoais com automações, IoT e agentes de IA. Também tenho experiência prática com automação e IoT, projetos com ESP32, C++, sensores e atuadores, do hardware à programação, e atuei em campo na instalação e configuração de dispositivos IoT e sistemas de automação residencial.
             </motion.p>
 
             <motion.p
@@ -78,7 +78,7 @@ export default function About() {
                 marginBottom: '2rem',
               }}
             >
-              Também tenho experiência prática com automação e IoT, projetos com ESP32, C++, sensores e atuadores, do hardware à programação, e atuei em campo na instalação e configuração de dispositivos IoT e sistemas de automação residencial.
+              Busco sempre aprender e me adaptar a novas tecnologias. Gosto de desafios e de encontrar soluções inovadoras para problemas complexos.
             </motion.p>
 
             {/* Favorite Stack Section */}
