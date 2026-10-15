@@ -64,7 +64,7 @@ export default function About() {
                 marginBottom: '2rem',
               }}
             >
-              Trabalho com PHP, CodeIgniter, Laravel, JavaScript, TypeScript, React, Node.js, Python e C++. Interesse especial em automações, IoT e agentes de IA.
+              Trabalho com PHP, CodeIgniter, Laravel, JavaScript, TypeScript, React, Node.js, Python e C++. Tenho projetos pessoais com automações, IoT e agentes de IA.
             </motion.p>
 
             <motion.p
