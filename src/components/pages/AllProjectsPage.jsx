@@ -95,6 +95,9 @@ export default function AllProjectsPage() {
 
         {/* Page Header */}
         <div style={{ marginBottom: '3rem' }}>
+          
+          
+          
           <div
             style={{
               display: 'inline-flex',
@@ -108,9 +111,11 @@ export default function AllProjectsPage() {
               marginBottom: '0.75rem',
             }}
           >
-            <Sparkles size={14} />
+              <span style={{ display: 'block', width: '14px', height: '1px', background: 'var(--accent)', flexShrink: 0 }}></span>
+            {/* <Sparkles size={14} /> */}
             Catálogo Completo
           </div>
+        
           <h1
             style={{
               fontFamily: 'Syne, sans-serif',
