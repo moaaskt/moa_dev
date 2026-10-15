@@ -1,0 +1,26 @@
+{
+  "nav": {
+    "about": "About",
+    "projects": "Projects",
+    "skills": "Skills",
+    "experience": "Experience",
+    "github": "GitHub",
+    "contact": "Contact",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  },
+  "language": {
+    "pt": "PT",
+    "en": "EN",
+    "portuguese": "Portuguese",
+    "english": "English",
+    "ariaLabel": "Select language"
+  },
+  "common": {
+    "back": "Back",
+    "viewDetails": "View details",
+    "viewAllProjects": "View all projects",
+    "all": "All",
+    "loading": "Loading..."
+  }
+}

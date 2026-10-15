@@ -1,0 +1,26 @@
+{
+  "nav": {
+    "about": "Sobre",
+    "projects": "Projetos",
+    "skills": "Skills",
+    "experience": "Experiência",
+    "github": "GitHub",
+    "contact": "Contato",
+    "openMenu": "Abrir menu",
+    "closeMenu": "Fechar menu"
+  },
+  "language": {
+    "pt": "PT",
+    "en": "EN",
+    "portuguese": "Português",
+    "english": "English",
+    "ariaLabel": "Selecionar idioma"
+  },
+  "common": {
+    "back": "Voltar",
+    "viewDetails": "Ver detalhes",
+    "viewAllProjects": "Ver todos os projetos",
+    "all": "Todos",
+    "loading": "Carregando..."
+  }
+}
