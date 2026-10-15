@@ -43,6 +43,16 @@ export default function Navbar() {
   const handleLinkClick = (href) => {
     setActive(href);
     setDrawerOpen(false);
+
+    // Se estiver em uma sub-página (ex: #/projetos ou #/projeto/:id), garante scroll após mudança de rota
+    if (window.location.hash && window.location.hash.startsWith('#/')) {
+      setTimeout(() => {
+        const targetElement = document.querySelector(href);
+        if (targetElement) {
+          targetElement.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 150);
+    }
   };
 
   return (
