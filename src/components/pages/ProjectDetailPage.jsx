@@ -13,7 +13,6 @@ import {
 } from 'lucide-react';
 import { SiGithub } from 'react-icons/si';
 import TechIcon from '../ui/TechIcon';
-import { Badge } from '../ui/badge';
 import FuzzyText from '../ui/FuzzyText';
 import { projects } from '../../data/projects';
 
@@ -63,17 +62,20 @@ export default function ProjectDetailPage({ projectId }) {
         }}
       >
         <h1 className="sr-only">404 - Projeto não encontrado</h1>
-        <FuzzyText
-          fontSize="clamp(4rem, 12vw, 8rem)"
-          fontFamily="Syne, sans-serif"
-          fontWeight={700}
-          color="var(--accent)"
-          baseIntensity={0.18}
-          hoverIntensity={0.5}
-          trigger="hover"
-        >
-          404
-        </FuzzyText>
+        <div style={{ fontSize: "clamp(4rem, 12vw, 8rem)", lineHeight: 1 }}>
+          <FuzzyText
+            fontSize="clamp(4rem, 12vw, 8rem)"
+            fontFamily="Syne, sans-serif"
+            fontWeight={700}
+            color="#b8f73c"
+            enableHover={true}
+            baseIntensity={0.18}
+            hoverIntensity={0.5}
+            trigger="hover"
+          >
+            404
+          </FuzzyText>
+        </div>
         <p
           style={{
             fontFamily: 'DM Sans, sans-serif',
@@ -202,30 +204,79 @@ export default function ProjectDetailPage({ projectId }) {
             style={{
               display: 'flex',
               alignItems: 'center',
-              gap: '0.6rem',
+              gap: '0.75rem',
               flexWrap: 'wrap',
-              marginBottom: '1.25rem',
+              marginBottom: '1rem',
             }}
           >
-            <Badge variant="accent" className="text-[0.75rem] py-1 px-2.5">
+            <span
+              style={{
+                fontFamily: 'JetBrains Mono, monospace',
+                fontSize: '0.75rem',
+                color: 'var(--accent)',
+                background: 'rgba(184, 247, 60, 0.08)',
+                border: '1px solid var(--border-accent)',
+                padding: '0.25rem 0.6rem',
+                borderRadius: '4px',
+                letterSpacing: '0.06em',
+                textTransform: 'uppercase',
+              }}
+            >
               {project.category}
-            </Badge>
+            </span>
 
-            <Badge variant="muted" className="text-[0.75rem] py-1 px-2.5">
-              <Calendar className="size-3.5" />
+            <span
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.35rem',
+                fontFamily: 'JetBrains Mono, monospace',
+                fontSize: '0.75rem',
+                color: 'var(--text-secondary)',
+                border: '1px solid var(--border)',
+                padding: '0.25rem 0.6rem',
+                borderRadius: '4px',
+              }}
+            >
+              <Calendar size={13} />
               {project.year}
-            </Badge>
+            </span>
 
             {project.private ? (
-              <Badge variant="warning" className="text-[0.75rem] py-1 px-2.5">
-                <Lock className="size-3.5" />
+              <span
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '0.35rem',
+                  fontFamily: 'JetBrains Mono, monospace',
+                  fontSize: '0.75rem',
+                  color: '#eab308',
+                  background: 'rgba(234, 179, 8, 0.08)',
+                  border: '1px solid rgba(234, 179, 8, 0.3)',
+                  padding: '0.25rem 0.6rem',
+                  borderRadius: '4px',
+                }}
+              >
+                <Lock size={12} />
                 Case Privado / Corporativo
-              </Badge>
+              </span>
             ) : (
-              <Badge variant="accent" className="text-[0.75rem] py-1 px-2.5">
-                <Code2 className="size-3.5" />
+              <span
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '0.35rem',
+                  fontFamily: 'JetBrains Mono, monospace',
+                  fontSize: '0.75rem',
+                  color: 'var(--accent)',
+                  border: '1px solid var(--border)',
+                  padding: '0.25rem 0.6rem',
+                  borderRadius: '4px',
+                }}
+              >
+                <Code2 size={13} />
                 Código Público
-              </Badge>
+              </span>
             )}
           </div>
 
