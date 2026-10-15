@@ -93,18 +93,19 @@ function SkillIcon({ label, Icon, color }) {
     >
       <div style={{
         fontSize: '1.75rem',
-        color: hovered ? color : 'var(--text-secondary)',
-        transition: 'color 0.2s ease',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
+        transform: hovered ? 'scale(1.15)' : 'scale(1)',
+        filter: hovered ? `drop-shadow(0 0 6px ${color})` : 'none',
+        transition: 'transform 0.2s ease, filter 0.2s ease',
       }}>
-        <Icon size={28} />
+        <Icon size={28} color={color} />
       </div>
       <span style={{
         fontFamily: 'JetBrains Mono, monospace',
         fontSize: '0.7rem',
-        color: hovered ? 'var(--text-primary)' : 'var(--text-muted)',
+        color: hovered ? '#b8f73c' : 'var(--text-muted)',
         transition: 'color 0.2s ease',
         textAlign: 'center',
       }}>

@@ -191,7 +191,7 @@ export default function Navbar() {
           </ul>
 
           {/* Desktop Language Selector */}
-          <LanguageSelector />
+          <LanguageSelector id="desktop" />
         </div>
 
         {/* Mobile Header Actions (Language Selector + Hamburger) */}
@@ -203,7 +203,7 @@ export default function Navbar() {
             gap: '0.75rem',
           }}
         >
-          <LanguageSelector />
+          <LanguageSelector id="mobile-header" />
           <button
             onClick={() => setDrawerOpen(true)}
             aria-label={t('nav.openMenu', 'Abrir menu')}
@@ -307,7 +307,7 @@ export default function Navbar() {
               </nav>
 
               <div style={{ marginTop: 'auto', paddingTop: '2rem' }}>
-                <LanguageSelector isFullWidth />
+                <LanguageSelector id="mobile-drawer" isFullWidth />
               </div>
             </motion.aside>
           </>

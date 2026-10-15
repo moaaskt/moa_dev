@@ -59,4 +59,11 @@ export const TECH_ICONS = {
   'Relés':         { icon: TbRouter,       color: '#06B6D4' },
   'RFID':          { icon: TbAccessPoint,  color: '#06B6D4' },
   'Eletrônica':    { icon: TbCpu,          color: '#b8f73c' },
+  'Go (Fiber)':       { icon: SiGo,           color: '#00ADD8' },
+  'React 18':         { icon: SiReact,        color: '#61DAFB' },
+  'PostgreSQL 15':    { icon: SiPostgresql,   color: '#4169E1' },
+  'Docker Compose':   { icon: SiDocker,       color: '#2496ED' },
+  'Gemini AI':        { icon: SiGooglegemini, color: '#8E75B2' },
+  'whatsmeow':        { icon: SiWhatsapp,     color: '#25D366' },
+  'Asynq':            { icon: SiRedis,        color: '#DC382D' },
 };

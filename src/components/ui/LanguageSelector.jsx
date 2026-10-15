@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 
-export default function LanguageSelector({ style, className, isFullWidth = false }) {
+export default function LanguageSelector({ id = 'desktop', style, className, isFullWidth = false }) {
   const { i18n, t } = useTranslation();
   const currentLang = (i18n.resolvedLanguage || i18n.language || 'pt').startsWith('en')
     ? 'en'
@@ -71,7 +71,7 @@ export default function LanguageSelector({ style, className, isFullWidth = false
           >
             {isActive && (
               <motion.span
-                layoutId="active-language-pill"
+                layoutId={`active-lang-pill-${id}`}
                 transition={{ type: 'spring', stiffness: 450, damping: 32 }}
                 style={{
                   position: 'absolute',
