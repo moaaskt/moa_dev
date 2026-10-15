@@ -8,13 +8,27 @@ import petflixImage from '../assets/images/projects/petflix.webp';
 import radarAlfaImage from '../assets/images/projects/radaralfa.webp';
 import rsSistemasImage from '../assets/images/projects/rs-sistemas.webp';
 
+// Screenshots reais do ecossistema Sherlock Scraper & WhatsMiau
+import listagemLeadsImg from '../assets/images/projects/sherlock/listagemleads.png';
+import modalLeadImg from '../assets/images/projects/sherlock/modallead.png';
+import kanbanLeadsImg from '../assets/images/projects/sherlock/kanbanleads.png';
+import chatImg from '../assets/images/projects/sherlock/chat.png';
+import configuracoesIAImg from '../assets/images/projects/sherlock/configuracoesIA.png';
+import modalDisparoImg from '../assets/images/projects/sherlock/modaldisparo.png';
+import dashboardImg from '../assets/images/projects/sherlock/dashboard.png';
+import instanciasImg from '../assets/images/projects/sherlock/instancias.png';
+import apiPlaygroundImg from '../assets/images/projects/sherlock/apyplayground.png';
+import listaScraperImg from '../assets/images/projects/sherlock/listascraper.png';
+import modalDisparoSucessoImg from '../assets/images/projects/sherlock/modaldisparosucesso.png';
+import qrCodeInstanciaImg from '../assets/images/projects/sherlock/qrcodestancia.png';
+
 export const projects = [
   {
     id: 'sherlock-scraper',
     title: 'WhatsMiau / Sherlock Scraper',
-    description: 'CRM B2B para prospecção e qualificação de leads via WhatsApp, com scraping de dados públicos, enriquecimento com IA, campanhas assíncronas, chat multicanal e dashboard analítico.',
+    description: 'Ecossistema SaaS B2B de alta escala para prospecção automatizada no Google Maps, enriquecimento de leads com IA (Gemini), orquestração assíncrona de campanhas via Redis/Asynq, streaming SSE e CRM multicanal WhatsApp.',
     image: sherlockScraperImage,
-    tags: ['Go', 'React', 'TypeScript', 'PostgreSQL', 'Redis', 'Docker'],
+    tags: ['Go (Fiber)', 'React 18', 'TypeScript', 'PostgreSQL 15', 'Redis', 'Docker Compose', 'Gemini AI', 'Asynq', 'whatsmeow'],
     category: 'fullstack',
     featured: true,
     private: false,
@@ -24,28 +38,188 @@ export const projects = [
     },
     year: 2025,
     role: 'Engenheiro de Software & Arquiteto Full Stack',
-    overview: 'Solução completa voltada para inteligência comercial e prospecção ativa B2B. O sistema combina crawlers de alta concorrência em Go com uma interface analítica reativa em React e TypeScript, integrando mensageria via WhatsApp e processamento em lote com Redis e PostgreSQL.',
+    overview: 'Ecossistema SaaS de prospecção e qualificação B2B composto por dois núcleos independentes e complementares: o Sherlock Scraper (backend em Go/Fiber responsável pela raspagem concorrente no Google Maps, scrapers Playwright, enriquecimento de dados com IA generativa Gemini e orquestração assíncrona de filas via Redis/Asynq com streaming em tempo real via Server-Sent Events) e o WhatsMiau (painel CRM completo em React 18 com TypeScript, chat multicanal com WhatsApp Web nativo via whatsmeow, kanban de oportunidades drag-and-drop e telemetria analítica).',
     highlights: [
-      'Scraping concorrente de alto rendimento com workers distribuídos em Go.',
-      'Fila assíncrona gerenciada com Redis para envio controlado de campanhas e prevenção de bloqueios.',
-      'Enriquecimento automatizado de contatos via APIs de inteligência artificial.',
-      'Painel em tempo real com métricas de entrega, conversão e resposta de leads.',
+      'Arquitetura distribuída com 7 microsserviços orquestrados via Docker Compose.',
+      'Fila assíncrona gerenciada com Redis e Asynq com streaming de progresso em tempo real via SSE (Server-Sent Events).',
+      'Pipeline de Inteligência Artificial com Google Gemini: geração automática de dossiês com maturidade digital, identificação de gaps de negócio, icebreakers e pitches customizados.',
+      'Integração direta com o protocolo do WhatsApp via biblioteca Go whatsmeow, suportando múltiplas instâncias simultâneas e pareamento por QR Code.',
+      'Chat multicanal reativo com suporte a anexos, notas internas, tags de contato e histórico de interações.',
+      'API REST modular com Fiber em Go dividida rigorosamente no padrão Handlers → Services → Repositories → Core.',
     ],
     features: [
       {
         title: 'Mecanismo de Prospecção Concorrente',
-        description: 'Coleta automatizada e sanitização de dados públicos com validação de formato e checagem de integridade.',
+        description: 'Extração contínua no Google Maps e Google Places API por nicho e região geográfica, com sanitização de telefones e deduplicação automática.',
       },
       {
-        title: 'Mensageria e Gatilhos WhatsApp',
-        description: 'Orquestração de templates e disparos com cadência inteligente para comunicação ponta a ponta.',
+        title: 'Dossiê Comercial com Gemini AI',
+        description: 'Coleta o site público do lead via Playwright e gera em segundos um diagnóstico completo com nota de maturidade digital, oportunidades de venda e quebras de objeções.',
       },
       {
-        title: 'Painel e Gestão de Oportunidades',
-        description: 'Dashboard reativo para qualificação de leads em funil, controle de status e histórico de interações.',
+        title: 'Disparos em Lote com Cadência Inteligente',
+        description: 'Fila de background com Asynq para envio humanizado com pausas randômicas, variáveis personalizadas e monitoramento de taxa de entrega ao vivo.',
+      },
+      {
+        title: 'Chat Multicanal & Painel de Atendimento',
+        description: 'Central de conversas fluida integrada ao WhatsApp Web, permitindo atendimento em tempo real por múltiplos operadores.',
+      },
+      {
+        title: 'Kanban do Funil de Vendas',
+        description: 'Gestão visual de leads em etapas de qualificação, proposta, negociação e fechamento com interface drag-and-drop.',
+      },
+      {
+        title: 'Gestor Multi-Instâncias & Telemetria',
+        description: 'Conexão e monitoramento de integridade de múltiplos números de WhatsApp com reconexão automática e gráficos analíticos.',
       },
     ],
-    technicalDecisions: 'A escolha de Go para o backend de scraping garantiu consumo reduzido de memória e execução concorrente ultra rápida através de goroutines. No frontend, TypeScript e React asseguraram segurança de tipos na manipulação de payloads complexos de prospecção.',
+    technicalDecisions: 'A decisão de estruturar o backend em Go com Fiber e workers dedicados através do Asynq sobre Redis foi tomada para assegurar baixa latência, footprint mínimo de memória e isolamento das tarefas intensivas de rede (scraping e disparo) em relação à API transacional. A sincronização em tempo real do progresso das campanhas utiliza SSE (Server-Sent Events) com Redis Pub/Sub, eliminando polling desnecessário no frontend. O frontend adota React 18 com tipagem estrita em TypeScript, Tailwind CSS e Framer Motion para uma experiência de usuário rica com cards em glassmorphism e microinterações.',
+    gallery: [
+      {
+        id: 'listagemleads',
+        title: 'Listagem de Leads & Filtros Avançados',
+        category: 'Inteligência & Gestão',
+        description: 'Tabela de leads com glassmorphism, busca instantânea, badges de status e ações rápidas para disparo e visualização de dossiês.',
+        image: listagemLeadsImg,
+      },
+      {
+        id: 'modallead',
+        title: 'Dossiê IA do Lead (Google Gemini)',
+        category: 'Inteligência & Gestão',
+        description: 'Modal detalhado exibindo score de maturidade digital, análise de gaps comerciais, icebreakers para abordagem e pitches personalizados gerados por IA.',
+        image: modalLeadImg,
+      },
+      {
+        id: 'kanbanleads',
+        title: 'Kanban do Funil de Vendas',
+        category: 'Inteligência & Gestão',
+        description: 'Visualização de pipeline em colunas de qualificação com movimentação drag-and-drop e controle de conversão por estágio.',
+        image: kanbanLeadsImg,
+      },
+      {
+        id: 'chat',
+        title: 'Chat Multicanal em Tempo Real',
+        category: 'Operação & Comunicação',
+        description: 'Painel de conversas do WhatsApp com histórico integrado, mensagens de áudio/mídia, painel retrátil de perfil e troca rápida de instâncias.',
+        image: chatImg,
+      },
+      {
+        id: 'configuracoesIA',
+        title: 'Configurações de IA & Prompts',
+        category: 'Operação & Comunicação',
+        description: 'Interface para customização do tom de voz do agente, instruções de sistema e parâmetros da API Gemini para análise dos sites.',
+        image: configuracoesIAImg,
+      },
+      {
+        id: 'modaldisparo',
+        title: 'Configuração de Disparos em Lote',
+        category: 'Operação & Comunicação',
+        description: 'Definição de campanhas em massa com seleção de instâncias, templates dinâmicos, cadência de segundos entre envios e validação prévia de números.',
+        image: modalDisparoImg,
+      },
+      {
+        id: 'dashboard',
+        title: 'Dashboard Analítico & Métricas',
+        category: 'Monitoramento & Infra',
+        description: 'Visão consolidada de desempenho das campanhas, taxas de resposta, volume de mensagens trafegadas e saúde operacional das conexões.',
+        image: dashboardImg,
+      },
+      {
+        id: 'instancias',
+        title: 'Gestor de Múltiplas Instâncias WhatsApp',
+        category: 'Monitoramento & Infra',
+        description: 'Painel de controle com status de conexão em tempo real, nomes das instâncias, números vinculados e opções de reinicialização.',
+        image: instanciasImg,
+      },
+      {
+        id: 'apyplayground',
+        title: 'API Playground & Documentação REST',
+        category: 'Monitoramento & Infra',
+        description: 'Ambiente interativo embutido para testes de endpoints, visualização de payloads JSON e validação de tokens de autenticação.',
+        image: apiPlaygroundImg,
+      },
+      {
+        id: 'listascraper',
+        title: 'Gestão de Tarefas de Scraping',
+        category: 'Automação & Scraping',
+        description: 'Histórico de pesquisas executadas no Google Maps com quantidade de leads coletados, status de execução e logs do worker.',
+        image: listaScraperImg,
+      },
+      {
+        id: 'modaldisparosucesso',
+        title: 'Confirmação e Fila de Campanha',
+        category: 'Automação & Scraping',
+        description: 'Feedback visual imediato após o enfileiramento das mensagens no Asynq com identificador do job e redirecionamento para o monitoramento SSE.',
+        image: modalDisparoSucessoImg,
+      },
+      {
+        id: 'qrcodestancia',
+        title: 'Pareamento WhatsApp via QR Code',
+        category: 'Automação & Scraping',
+        description: 'Geração dinâmica de QR Code para autenticação rápida de novas contas WhatsApp diretamente pela biblioteca Go whatsmeow.',
+        image: qrCodeInstanciaImg,
+      },
+    ],
+    architecture: {
+      services: [
+        {
+          name: 'whatsmiau-ui',
+          port: '3031',
+          tech: 'React 18 + Vite + Tailwind',
+          role: 'Painel CRM principal, chat multicanal, kanban e dashboard de métricas.',
+        },
+        {
+          name: 'whatsmiau-api',
+          port: '8081',
+          tech: 'Go + whatsmeow',
+          role: 'Microserviço especializado na conexão de baixo nível com o protocolo do WhatsApp, pareamento QR Code e envio/recebimento de mensagens.',
+        },
+        {
+          name: 'api (Sherlock API)',
+          port: '3005',
+          tech: 'Go + Fiber Framework',
+          role: 'API central de negócios: autenticação, orquestração de campanhas, streaming SSE, gerenciamento de leads e dossiês de IA.',
+        },
+        {
+          name: 'sherlock-scraper',
+          port: '8000',
+          tech: 'Python + Playwright',
+          role: 'Worker especializado em web scraping dinâmico no Google Maps, busca de CNPJ e extração de conteúdo para alimentar a IA.',
+        },
+        {
+          name: 'db',
+          port: '5434',
+          tech: 'PostgreSQL 15',
+          role: 'Banco de dados relacional principal armazenando leads, contatos, conversas, campanhas e histórico de métricas.',
+        },
+        {
+          name: 'redis',
+          port: '6379',
+          tech: 'Redis Alpine',
+          role: 'Fila assíncrona de alta performance para o Asynq, cache transacional e barramento Pub/Sub para eventos SSE.',
+        },
+        {
+          name: 'frontend (Sherlock Admin)',
+          port: '5173',
+          tech: 'React + TypeScript',
+          role: 'Interface administrativa complementar de controle e monitoramento de scraping.',
+        },
+      ],
+      campaignFlow: [
+        '1. Frontend (React 18) submete requisição POST /api/v1/campaigns para disparo em lote.',
+        '2. API Go (Fiber) valida os dados e enfileira a tarefa assíncrona no Redis (Asynq) retornando status 202 Accepted imediatamente.',
+        '3. Background Worker Go consome a task, consulta a API WhatsMiau para validar a existência dos números e dispara as mensagens com intervalos randômicos anti-bloqueio.',
+        '4. Cada evento de envio é publicado no canal Redis Pub/Sub (campaigns:logs:<id>).',
+        '5. API Go consome o Pub/Sub e transmite o progresso em tempo real para o Frontend via conexão Server-Sent Events (SSE).',
+      ],
+      aiPipeline: [
+        '1. Scraping inicial extrai nome, categoria e telefone no Google Maps e Google Places API.',
+        '2. Worker com Playwright navega no website do estabelecimento comercial e extrai conteúdo textual estruturado.',
+        '3. Pipeline do Google Gemini analisa o material corporativo extraindo Business Insights estruturados em JSON.',
+        '4. Dossier Service injeta os dados em prompts contextuais refinados para o Gemini AI.',
+        '5. Sistema armazena no PostgreSQL e renderiza no LeadDetailsModal com diagnósticos de maturidade, gaps e argumentos de venda prontos.',
+      ],
+    },
   },
   {
     id: 'rastrecob',
