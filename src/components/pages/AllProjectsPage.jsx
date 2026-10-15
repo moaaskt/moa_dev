@@ -1,6 +1,6 @@
 import { useState, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowLeft, Search, X, Sparkles } from 'lucide-react';
+import { ArrowLeft, Search, X } from 'lucide-react';
 import ProjectCard from '../ui/ProjectCard';
 import { projects, categories } from '../../data/projects';
 
@@ -95,9 +95,6 @@ export default function AllProjectsPage() {
 
         {/* Page Header */}
         <div style={{ marginBottom: '3rem' }}>
-          
-          
-          
           <div
             style={{
               display: 'inline-flex',
@@ -111,11 +108,17 @@ export default function AllProjectsPage() {
               marginBottom: '0.75rem',
             }}
           >
-              <span style={{ display: 'block', width: '14px', height: '1px', background: 'var(--accent)', flexShrink: 0 }}></span>
-            {/* <Sparkles size={14} /> */}
+            <span
+              style={{
+                display: 'block',
+                width: '14px',
+                height: '1px',
+                background: 'var(--accent)',
+                flexShrink: 0,
+              }}
+            />
             Catálogo Completo
           </div>
-        
           <h1
             style={{
               fontFamily: 'Syne, sans-serif',
