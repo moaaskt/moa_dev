@@ -15,6 +15,7 @@ import { SiGithub } from 'react-icons/si';
 import TechIcon from '../ui/TechIcon';
 import FuzzyText from '../ui/FuzzyText';
 import ProjectGallery from '../ui/ProjectGallery';
+import ProjectArchitecture from '../ui/ProjectArchitecture';
 import { projects } from '../../data/projects';
 
 export default function ProjectDetailPage({ projectId }) {
@@ -684,6 +685,11 @@ export default function ProjectDetailPage({ projectId }) {
             </div>
           </aside>
         </div>
+
+        {/* Architecture Section */}
+        {project.architecture && (
+          <ProjectArchitecture architecture={project.architecture} projectTitle={project.title} />
+        )}
 
         {/* Gallery Section */}
         {project.gallery && project.gallery.length > 0 && (
