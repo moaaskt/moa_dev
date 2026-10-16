@@ -140,69 +140,44 @@ function AcademicItem({ item, index, lang, t }) {
 
           {/* Badges & Period */}
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '6px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '6px', flexWrap: 'wrap', justifyContent: 'flex-end' }}>
-              {item.achievement && (
-                <Badge
-                  style={{
-                    fontFamily: 'JetBrains Mono, monospace',
-                    fontSize: '0.68rem',
-                    fontWeight: 700,
-                    letterSpacing: '0.04em',
-                    background: 'rgba(245, 158, 11, 0.15)',
-                    color: '#fbbf24',
-                    border: '1px solid rgba(245, 158, 11, 0.4)',
-                    padding: '0.2rem 0.55rem',
-                    borderRadius: '4px',
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '4px',
-                    boxShadow: '0 0 10px rgba(245, 158, 11, 0.2)',
-                  }}
-                  aria-label={`${t('education.achievementBadge', 'Hackathon 2025')}: ${getLocalizedField(item.achievement.badge, lang)}`}
-                >
-                  <Trophy size={11} aria-hidden="true" style={{ color: '#fbbf24' }} />
-                  <span>{getLocalizedField(item.achievement.badge, lang)}</span>
-                </Badge>
-              )}
-              {isInProgress ? (
-                <Badge
-                  style={{
-                    fontFamily: 'JetBrains Mono, monospace',
-                    fontSize: '0.7rem',
-                    fontWeight: 700,
-                    letterSpacing: '0.06em',
-                    textTransform: 'uppercase',
-                    background: 'var(--accent)',
-                    color: '#080808',
-                    border: '1px solid var(--accent)',
-                    padding: '0.25rem 0.6rem',
-                    borderRadius: '4px',
-                    boxShadow: '0 2px 5px rgba(0, 0, 0, 0.3)',
-                  }}
-                  aria-label={`Status: ${statusLabel}`}
-                >
-                  {statusLabel}
-                </Badge>
-              ) : (
-                <Badge
-                  style={{
-                    fontFamily: 'JetBrains Mono, monospace',
-                    fontSize: '0.7rem',
-                    fontWeight: 600,
-                    letterSpacing: '0.06em',
-                    textTransform: 'uppercase',
-                    background: 'var(--bg-elevated)',
-                    color: 'var(--text-secondary)',
-                    border: '1px solid var(--border)',
-                    padding: '0.25rem 0.6rem',
-                    borderRadius: '4px',
-                  }}
-                  aria-label={`Status: ${statusLabel}`}
-                >
-                  {statusLabel}
-                </Badge>
-              )}
-            </div>
+            {isInProgress ? (
+              <Badge
+                style={{
+                  fontFamily: 'JetBrains Mono, monospace',
+                  fontSize: '0.7rem',
+                  fontWeight: 700,
+                  letterSpacing: '0.06em',
+                  textTransform: 'uppercase',
+                  background: 'var(--accent)',
+                  color: '#080808',
+                  border: '1px solid var(--accent)',
+                  padding: '0.25rem 0.6rem',
+                  borderRadius: '4px',
+                  boxShadow: '0 2px 5px rgba(0, 0, 0, 0.3)',
+                }}
+                aria-label={`Status: ${statusLabel}`}
+              >
+                {statusLabel}
+              </Badge>
+            ) : (
+              <Badge
+                style={{
+                  fontFamily: 'JetBrains Mono, monospace',
+                  fontSize: '0.7rem',
+                  fontWeight: 600,
+                  letterSpacing: '0.06em',
+                  textTransform: 'uppercase',
+                  background: 'var(--bg-elevated)',
+                  color: 'var(--text-secondary)',
+                  border: '1px solid var(--border)',
+                  padding: '0.25rem 0.6rem',
+                  borderRadius: '4px',
+                }}
+                aria-label={`Status: ${statusLabel}`}
+              >
+                {statusLabel}
+              </Badge>
+            )}
             <span
               style={{
                 fontFamily: 'JetBrains Mono, monospace',
@@ -230,41 +205,48 @@ function AcademicItem({ item, index, lang, t }) {
           {description}
         </p>
 
-        {/* Achievement Banner / Callout */}
+        {/* Achievement Card (Hackathon) */}
         {item.achievement && (
           <div
             style={{
               margin: '1.25rem 0',
-              padding: '1.15rem',
+              padding: '1.2rem',
               borderRadius: '8px',
-              background: 'linear-gradient(135deg, rgba(245, 158, 11, 0.08) 0%, rgba(184, 247, 60, 0.04) 100%)',
-              border: '1px solid rgba(245, 158, 11, 0.35)',
-              boxShadow: '0 4px 20px rgba(0, 0, 0, 0.25)',
+              background: 'var(--bg-elevated)',
+              border: '1px solid rgba(184, 247, 60, 0.25)',
               position: 'relative',
+              transition: 'border-color 0.25s ease, box-shadow 0.25s ease',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.borderColor = 'var(--border-accent)';
+              e.currentTarget.style.boxShadow = '0 0 16px var(--accent-glow)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.borderColor = 'rgba(184, 247, 60, 0.25)';
+              e.currentTarget.style.boxShadow = 'none';
             }}
           >
-            <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.85rem' }}>
+            <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
               <div
                 style={{
-                  width: '38px',
-                  height: '38px',
+                  width: '40px',
+                  height: '40px',
                   borderRadius: '8px',
-                  background: 'rgba(245, 158, 11, 0.16)',
-                  border: '1px solid rgba(245, 158, 11, 0.45)',
+                  background: 'rgba(184, 247, 60, 0.08)',
+                  border: '1px solid rgba(184, 247, 60, 0.25)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   flexShrink: 0,
-                  color: '#fbbf24',
-                  boxShadow: '0 0 12px rgba(245, 158, 11, 0.25)',
+                  color: 'var(--accent)',
                 }}
                 aria-hidden="true"
               >
-                <Trophy size={19} />
+                <Trophy size={20} />
               </div>
 
               <div style={{ flex: 1, minWidth: 0 }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap', marginBottom: '0.35rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap', marginBottom: '0.4rem' }}>
                   <h5
                     style={{
                       fontFamily: 'Syne, sans-serif',
@@ -276,20 +258,35 @@ function AcademicItem({ item, index, lang, t }) {
                   >
                     {getLocalizedField(item.achievement.title, lang)}
                   </h5>
-                  <span
+                  <Badge
                     style={{
                       fontFamily: 'JetBrains Mono, monospace',
                       fontSize: '0.7rem',
                       fontWeight: 700,
-                      color: '#fbbf24',
-                      background: 'rgba(245, 158, 11, 0.14)',
-                      padding: '2px 8px',
+                      letterSpacing: '0.04em',
+                      background: 'rgba(184, 247, 60, 0.1)',
+                      color: 'var(--accent)',
+                      border: '1px solid var(--border-accent)',
+                      padding: '0.15rem 0.55rem',
                       borderRadius: '4px',
-                      border: '1px solid rgba(245, 158, 11, 0.3)',
+                    }}
+                  >
+                    {getLocalizedField(item.achievement.badge, lang)}
+                  </Badge>
+                  <Badge
+                    style={{
+                      fontFamily: 'JetBrains Mono, monospace',
+                      fontSize: '0.7rem',
+                      fontWeight: 600,
+                      background: 'var(--bg-secondary)',
+                      color: 'var(--text-secondary)',
+                      border: '1px solid var(--border)',
+                      padding: '0.15rem 0.55rem',
+                      borderRadius: '4px',
                     }}
                   >
                     {item.achievement.team}
-                  </span>
+                  </Badge>
                 </div>
 
                 <p
@@ -315,12 +312,13 @@ function AcademicItem({ item, index, lang, t }) {
                       fontFamily: 'JetBrains Mono, monospace',
                       fontSize: '0.74rem',
                       fontWeight: 600,
-                      color: '#fbbf24',
+                      color: 'var(--accent)',
                       textDecoration: 'none',
                       transition: 'opacity 0.2s ease, transform 0.2s ease',
+                      width: 'fit-content',
                     }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.opacity = '0.85';
+                      e.currentTarget.style.opacity = '0.8';
                       e.currentTarget.style.transform = 'translateX(2px)';
                     }}
                     onMouseLeave={(e) => {
@@ -340,22 +338,34 @@ function AcademicItem({ item, index, lang, t }) {
 
         {/* Skills learned */}
         {item.skills && item.skills.length > 0 && (
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem', marginTop: '0.75rem' }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem', marginTop: '0.9rem' }}>
             {item.skills.map((skill) => (
-              <span
+              <Badge
                 key={skill}
+                variant="outline"
                 style={{
                   fontFamily: 'JetBrains Mono, monospace',
                   fontSize: '0.72rem',
-                  color: 'var(--text-muted)',
+                  fontWeight: 500,
+                  color: 'var(--text-secondary)',
                   background: 'var(--bg-elevated)',
                   border: '1px solid var(--border)',
                   padding: '2px 8px',
-                  borderRadius: '3px',
+                  borderRadius: '4px',
+                  transition: 'border-color 0.2s ease, color 0.2s ease',
+                  cursor: 'default',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = 'var(--border-accent)';
+                  e.currentTarget.style.color = 'var(--accent)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = 'var(--border)';
+                  e.currentTarget.style.color = 'var(--text-secondary)';
                 }}
               >
                 {skill}
-              </span>
+              </Badge>
             ))}
           </div>
         )}
@@ -474,20 +484,32 @@ function CertificationCard({ cert, index, lang, t }) {
         {cert.skills && cert.skills.length > 0 && (
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.35rem', marginBottom: '1rem' }}>
             {cert.skills.map((skill) => (
-              <span
+              <Badge
                 key={skill}
+                variant="outline"
                 style={{
                   fontFamily: 'JetBrains Mono, monospace',
                   fontSize: '0.7rem',
-                  color: 'var(--text-muted)',
+                  fontWeight: 500,
+                  color: 'var(--text-secondary)',
                   background: 'var(--bg-elevated)',
                   border: '1px solid var(--border)',
                   padding: '1px 6px',
                   borderRadius: '3px',
+                  transition: 'border-color 0.2s ease, color 0.2s ease',
+                  cursor: 'default',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = 'var(--border-accent)';
+                  e.currentTarget.style.color = 'var(--accent)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = 'var(--border)';
+                  e.currentTarget.style.color = 'var(--text-secondary)';
                 }}
               >
                 {skill}
-              </span>
+              </Badge>
             ))}
           </div>
         )}
