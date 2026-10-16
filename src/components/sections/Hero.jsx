@@ -271,7 +271,7 @@ export default function Hero() {
             margin: '0 auto 2.5rem',
           }}
         >
-          {t('hero.description', '“Sistemas reais — de CRMs B2B com IA e scraping em Go a SaaS multi-tenant em PHP/Laravel.”')}
+          {t('hero.description', 'Sistemas reais — de CRMs B2B com IA e scraping em Go a integrações e automações com PHP e React.')}
         </motion.p>
 
         {/* Buttons */}
