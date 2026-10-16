@@ -77,7 +77,7 @@ function TypingSubtitle({ text }) {
 export default function Hero() {
   const { t } = useTranslation();
   const vantaRef = useRef(null);
-  const typingRole = t('hero.role', 'Desenvolvedor Full Stack Jr.');
+  const typingRole = t('hero.role', 'Desenvolvedor Full Stack');
 
   useEffect(() => {
     if (window.innerWidth < 480) return;

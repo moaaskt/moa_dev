@@ -12,18 +12,27 @@ export default function ProjectGallery({ items = [], projectTitle = 'Projeto' })
   const [activeCategory, setActiveCategory] = useState('ALL');
   const [lightboxIndex, setLightboxIndex] = useState(null);
 
+  const getItemCategory = useCallback((item) => {
+    if (!item || !item.category) return '';
+    if (typeof item.category === 'object') {
+      return item.category[currentLang] || item.category.pt || item.category.en || '';
+    }
+    return String(item.category);
+  }, [currentLang]);
+
   const categories = useMemo(() => {
     const set = new Set();
     items.forEach((item) => {
-      if (item.category) set.add(item.category);
+      const cat = getItemCategory(item);
+      if (cat) set.add(cat);
     });
     return ['ALL', ...Array.from(set)];
-  }, [items]);
+  }, [items, getItemCategory]);
 
   const filteredItems = useMemo(() => {
     if (activeCategory === 'ALL') return items;
-    return items.filter((item) => item.category === activeCategory);
-  }, [items, activeCategory]);
+    return items.filter((item) => getItemCategory(item) === activeCategory);
+  }, [items, activeCategory, getItemCategory]);
 
   const closeLightbox = useCallback(() => {
     setLightboxIndex(null);

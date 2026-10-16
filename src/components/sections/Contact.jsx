@@ -133,7 +133,7 @@ export default function Contact() {
             maxWidth: '480px',
             margin: '0 auto',
           }}>
-            {t('contact.description', 'Aberto a oportunidades como Desenvolvedor Full Stack Jr. e projetos onde eu possa contribuir com soluções web, automações e evolução de sistemas.')}
+            {t('contact.description', 'Aberto a oportunidades como Desenvolvedor Full Stack e projetos onde eu possa contribuir com soluções web, automações e evolução de sistemas.')}
           </p>
         </div>
 
