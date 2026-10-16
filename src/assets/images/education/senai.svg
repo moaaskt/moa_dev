@@ -1,8 +1,18 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
-  <rect width="64" height="64" rx="14" fill="#141414" stroke="#262626" stroke-width="1.5"/>
-  <!-- SENAI Emblem in Technical Badge -->
-  <path d="M14 22H50V42H14V22Z" rx="4" fill="#005DAA"/>
-  <!-- SENAI Text Representation -->
-  <text x="32" y="34.5" font-family="'JetBrains Mono', 'Syne', sans-serif" font-weight="900" font-size="12" fill="#FFFFFF" text-anchor="middle" letter-spacing="1">SENAI</text>
-  <rect x="20" y="38" width="24" height="2" rx="1" fill="#ED1C24"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="231 1582 3634 932" width="100%" height="100%">
+  <rect style="fill:#005caa;fill-opacity:1;fill-rule:evenodd;" width="3633.8877" height="931.60901" x="231.05614" y="1582.1956" rx="40" ry="40" />
+  <g transform="translate(0, 3799)">
+    <g transform="matrix(20.187964,0,0,-20.187964,1125.3978,-1886.1282)" style="fill:#ffffff">
+      <path d="m 0,0 c 2.193,7.812 -4.168,10.192 -10.858,10.192 -6.779,0 -13.963,-2.111 -15.953,-9.788 -0.741,-3.502 0.239,-6.465 3.21,-7.902 6.39,-3.098 13.237,-2.155 12.302,-6.555 -0.457,-2.155 -3.33,-3.233 -5.403,-3.233 -3.233,0 -5.118,1.662 -4.43,4.715 h -8.979 c -1.736,-8.8 4.445,-11.008 11.988,-11.008 7.497,0 14.92,3.24 16.372,10.065 1.856,8.755 -5.926,9.294 -11.067,10.685 -2.245,0.629 -4.954,1.392 -4.452,3.772 0.344,1.616 2.424,2.963 4.489,2.963 1.527,0 2.619,-0.359 3.24,-1.033 C -8.875,2.2 -8.673,1.257 -8.979,0 Z m 25.973,-22.898 1.34,6.286 H 11.599 l 1.459,6.869 h 14.457 l 1.332,6.286 H 14.39 l 1.421,6.69 h 15.715 l 1.339,6.285 H 8.171 L 1.28,-22.898 Z m 5.074,0 h 8.081 l 5.276,24.829 h 0.089 l 5.725,-24.829 H 62.654 L 69.546,9.518 H 61.465 L 56.346,-14.547 56.241,-14.637 50.51,9.518 H 37.938 Z m 43.909,0 3.457,6.331 h 13.155 l 0.808,-6.331 h 10.147 L 96.619,9.518 H 85.664 L 65.977,-22.898 Z m 7.079,12.617 7.266,13.469 h 0.135 L 90.7,-10.281 Z m 32.88,-12.617 6.892,32.416 h -8.98 l -6.891,-32.416 z" style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none" />
+    </g>
+    <path d="m 231.05614,-1760.7164 h 190.41983 v 19.4525 H 231.05614 Z" style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;" />
+    <path d="m 231.05614,-1918.2418 h 190.41983 v 19.4525 H 231.05614 Z" style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;" />
+    <path d="m 231.05614,-2075.7474 h 190.41983 v 19.4525 H 231.05614 Z" style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;" />
+    <path d="m 231.05614,-1603.2108 h 190.41983 v 19.4526 H 231.05614 Z" style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;" />
+    <path d="m 231.05614,-1445.7052 h 190.41983 v 19.4525 H 231.05614 Z" style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;" />
+    <path d="m 3674.5241,-1760.7164 h 190.4198 v 19.4525 h -190.4198 z" style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;" />
+    <path d="m 3674.5241,-1918.2418 h 190.4198 v 19.4525 h -190.4198 z" style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;" />
+    <path d="m 3674.5241,-2075.7474 h 190.4198 v 19.4525 h -190.4198 z" style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;" />
+    <path d="m 3674.5241,-1603.2108 h 190.4198 v 19.4526 h -190.4198 z" style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;" />
+    <path d="m 3674.5241,-1445.7052 h 190.4198 v 19.4525 h -190.4198 z" style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;" />
+  </g>
 </svg>

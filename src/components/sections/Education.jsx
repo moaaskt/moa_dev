@@ -75,16 +75,17 @@ function AcademicItem({ item, index, lang, t }) {
             {/* Institution Logo */}
             <div
               style={{
-                width: '52px',
+                width: '60px',
                 height: '52px',
                 borderRadius: '8px',
-                background: 'var(--bg-elevated)',
-                border: '1px solid var(--border)',
+                background: '#ffffff',
+                border: '1px solid rgba(255, 255, 255, 0.2)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                padding: '8px',
+                padding: '6px 8px',
                 flexShrink: 0,
+                boxShadow: '0 2px 8px rgba(0, 0, 0, 0.35)',
               }}
             >
               <img
