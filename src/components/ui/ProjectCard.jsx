@@ -3,6 +3,7 @@ import { ExternalLink } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import TechIcon from './TechIcon';
 import { Button } from './button';
+import { Badge } from './badge';
 
 const extraPillStyle = {
   fontFamily: 'JetBrains Mono, monospace',
@@ -246,22 +247,24 @@ export default function ProjectCard({ project }) {
                 />
               )}
               {project.private && (
-                <span
+                <Badge
                   style={{
                     fontFamily: 'JetBrains Mono, monospace',
                     fontSize: '0.7rem',
-                    color: 'var(--accent)',
-                    border: '1px solid var(--border-accent)',
-                    background: 'rgba(184, 247, 60, 0.05)',
-                    padding: '0.2rem 0.5rem',
-                    borderRadius: '3px',
+                    fontWeight: 700,
                     letterSpacing: '0.06em',
                     textTransform: 'uppercase',
+                    background: 'var(--accent)',
+                    color: '#080808',
+                    border: '1px solid var(--accent)',
+                    padding: '0.25rem 0.55rem',
+                    borderRadius: '4px',
+                    boxShadow: '0 2px 5px rgba(0, 0, 0, 0.3)',
                   }}
                   aria-label={t('common.privateCaseAria', 'Caso de uso privado: código não disponível publicamente')}
                 >
                   {t('common.privateCase', 'Case Privado')}
-                </span>
+                </Badge>
               )}
             </div>
 
