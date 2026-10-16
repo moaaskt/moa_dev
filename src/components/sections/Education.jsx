@@ -4,6 +4,7 @@ import { useScrollAnimation } from '../../hooks/useScrollAnimation';
 import SectionHeader from '../ui/SectionHeader';
 import { Badge } from '../ui/badge';
 import { academicEducation, certifications } from '../../data/education';
+import trophyIcon from '../../assets/52725trophy_109387.svg';
 
 function getLocalizedField(field, lang) {
   if (!field) return '';
@@ -75,16 +76,17 @@ function AcademicItem({ item, index, lang, t }) {
             {/* Institution Logo */}
             <div
               style={{
-                width: '52px',
+                width: '60px',
                 height: '52px',
                 borderRadius: '8px',
-                background: 'var(--bg-elevated)',
-                border: '1px solid var(--border)',
+                background: '#ffffff',
+                border: '1px solid rgba(255, 255, 255, 0.2)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                padding: '8px',
+                padding: '6px 8px',
                 flexShrink: 0,
+                boxShadow: '0 2px 8px rgba(0, 0, 0, 0.35)',
               }}
             >
               <img
@@ -204,24 +206,168 @@ function AcademicItem({ item, index, lang, t }) {
           {description}
         </p>
 
+        {/* Achievement Card (Hackathon) */}
+        {item.achievement && (
+          <div
+            style={{
+              margin: '1.25rem 0',
+              padding: '1.2rem',
+              borderRadius: '8px',
+              background: 'var(--bg-elevated)',
+              border: '1px solid rgba(184, 247, 60, 0.25)',
+              position: 'relative',
+              transition: 'border-color 0.25s ease, box-shadow 0.25s ease',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.borderColor = 'var(--border-accent)';
+              e.currentTarget.style.boxShadow = '0 0 16px var(--accent-glow)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.borderColor = 'rgba(184, 247, 60, 0.25)';
+              e.currentTarget.style.boxShadow = 'none';
+            }}
+          >
+            <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
+              <div
+                style={{
+                  width: '42px',
+                  height: '42px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  flexShrink: 0,
+                }}
+                aria-hidden="true"
+              >
+                <img
+                  src={trophyIcon}
+                  alt="Troféu do Hackathon"
+                  style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+                  loading="lazy"
+                />
+              </div>
+
+              <div style={{ flex: 1, minWidth: 0 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap', marginBottom: '0.4rem' }}>
+                  <h5
+                    style={{
+                      fontFamily: 'Syne, sans-serif',
+                      fontWeight: 700,
+                      fontSize: 'var(--text-sm)',
+                      color: 'var(--text-primary)',
+                      margin: 0,
+                    }}
+                  >
+                    {getLocalizedField(item.achievement.title, lang)}
+                  </h5>
+                  <Badge
+                    style={{
+                      fontFamily: 'JetBrains Mono, monospace',
+                      fontSize: '0.7rem',
+                      fontWeight: 700,
+                      letterSpacing: '0.04em',
+                      background: 'rgba(9, 9, 9, 0.12)',
+                      color: 'var(--accent)',
+                      border: '1px solid var(--border-accent)',
+                      padding: '0.15rem 0.55rem',
+                      borderRadius: '4px',
+                    }}
+                  >
+                    {getLocalizedField(item.achievement.badge, lang)}
+                  </Badge>
+                  <Badge
+                    style={{
+                      fontFamily: 'JetBrains Mono, monospace',
+                      fontSize: '0.7rem',
+                      fontWeight: 600,
+                      background: 'var(--bg-secondary)',
+                      color: 'var(--text-secondary)',
+                      border: '1px solid var(--border)',
+                      padding: '0.15rem 0.55rem',
+                      borderRadius: '4px',
+                    }}
+                  >
+                    {item.achievement.team}
+                  </Badge>
+                </div>
+
+                <p
+                  style={{
+                    fontSize: '0.84rem',
+                    color: 'var(--text-secondary)',
+                    lineHeight: 1.55,
+                    margin: '0 0 0.75rem 0',
+                  }}
+                >
+                  {getLocalizedField(item.achievement.description, lang)}
+                </p>
+
+                {item.achievement.url && (
+                  <a
+                    href={item.achievement.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '5px',
+                      fontFamily: 'JetBrains Mono, monospace',
+                      fontSize: '0.74rem',
+                      fontWeight: 600,
+                      color: 'var(--accent)',
+                      textDecoration: 'none',
+                      transition: 'opacity 0.2s ease, transform 0.2s ease',
+                      width: 'fit-content',
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.opacity = '0.8';
+                      e.currentTarget.style.transform = 'translateX(2px)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.opacity = '1';
+                      e.currentTarget.style.transform = 'translateX(0)';
+                    }}
+                    aria-label={`${getLocalizedField(item.achievement.title, lang)} - ${t('education.viewAchievementArticle', 'Ver notícia oficial no SEPROSC')} (abre em nova aba)`}
+                  >
+                    <span>{t('education.viewAchievementArticle', 'Ver notícia oficial no SEPROSC')}</span>
+                    <ExternalLink size={12} aria-hidden="true" />
+                  </a>
+                )}
+              </div>
+            </div>
+          </div>
+        )}
+
         {/* Skills learned */}
         {item.skills && item.skills.length > 0 && (
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem', marginTop: '0.75rem' }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem', marginTop: '0.9rem' }}>
             {item.skills.map((skill) => (
-              <span
+              <Badge
                 key={skill}
+                variant="outline"
                 style={{
                   fontFamily: 'JetBrains Mono, monospace',
                   fontSize: '0.72rem',
-                  color: 'var(--text-muted)',
+                  fontWeight: 500,
+                  color: 'var(--text-secondary)',
                   background: 'var(--bg-elevated)',
                   border: '1px solid var(--border)',
                   padding: '2px 8px',
-                  borderRadius: '3px',
+                  borderRadius: '4px',
+                  transition: 'border-color 0.2s ease, color 0.2s ease',
+                  cursor: 'default',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = 'var(--border-accent)';
+                  e.currentTarget.style.color = 'var(--accent)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = 'var(--border)';
+                  e.currentTarget.style.color = 'var(--text-secondary)';
                 }}
               >
                 {skill}
-              </span>
+              </Badge>
             ))}
           </div>
         )}
@@ -340,20 +486,32 @@ function CertificationCard({ cert, index, lang, t }) {
         {cert.skills && cert.skills.length > 0 && (
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.35rem', marginBottom: '1rem' }}>
             {cert.skills.map((skill) => (
-              <span
+              <Badge
                 key={skill}
+                variant="outline"
                 style={{
                   fontFamily: 'JetBrains Mono, monospace',
                   fontSize: '0.7rem',
-                  color: 'var(--text-muted)',
+                  fontWeight: 500,
+                  color: 'var(--text-secondary)',
                   background: 'var(--bg-elevated)',
                   border: '1px solid var(--border)',
                   padding: '1px 6px',
                   borderRadius: '3px',
+                  transition: 'border-color 0.2s ease, color 0.2s ease',
+                  cursor: 'default',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = 'var(--border-accent)';
+                  e.currentTarget.style.color = 'var(--accent)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = 'var(--border)';
+                  e.currentTarget.style.color = 'var(--text-secondary)';
                 }}
               >
                 {skill}
-              </span>
+              </Badge>
             ))}
           </div>
         )}
@@ -437,7 +595,7 @@ export default function Education() {
               fontWeight: 600,
               letterSpacing: '0.06em',
               textTransform: 'uppercase',
-              background: 'rgba(184, 247, 60, 0.1)',
+              background: 'rgba(0, 0, 0, 0.92)',
               color: 'var(--accent)',
               border: '1px solid var(--border-accent)',
               padding: '0.2rem 0.5rem',
@@ -493,7 +651,7 @@ export default function Education() {
               fontWeight: 600,
               letterSpacing: '0.06em',
               textTransform: 'uppercase',
-              background: 'rgba(184, 247, 60, 0.1)',
+              background: 'rgba(6, 6, 6, 0.1)',
               color: 'var(--accent)',
               border: '1px solid var(--border-accent)',
               padding: '0.2rem 0.5rem',

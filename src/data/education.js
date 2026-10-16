@@ -22,10 +22,10 @@ export const academicEducation = [
       en: 'In Progress',
     },
     description: {
-      pt: 'Graduação voltada para arquiteturas neurais, machine learning, estatística computacional aplicada, processamento de linguagem natural (NLP) e engenharia de dados em larga escala.',
-      en: 'Undergraduate degree focused on neural architectures, machine learning, applied computational statistics, NLP, and large-scale data engineering pipelines.',
+      pt: 'Graduação superior com grade curricular focada em algoritmos estruturados, matemática discreta e estatística para análise de dados, aprendizado de máquina (Machine Learning), redes neurais profundas (Deep Learning), processamento de linguagem natural (PLN) e arquitetura de dados em larga escala.',
+      en: 'Undergraduate degree focused on structured algorithms, discrete mathematics, and statistics for data analytics, machine learning, deep learning neural networks, natural language processing (NLP), and large-scale data engineering architectures.',
     },
-    skills: ['Machine Learning', 'Data Science', 'Python', 'Deep Learning', 'Statistics'],
+    skills: ['Python', 'Machine Learning', 'Deep Learning', 'Estatística Computacional', 'Bancos de Dados', 'PLN / NLP'],
     logo: anhangueraLogo,
     website: 'https://www.anhanguera.com/',
   },
@@ -37,8 +37,8 @@ export const academicEducation = [
       en: 'Systems Development Technician',
     },
     period: {
-      pt: 'ago/2021 a ago/2023',
-      en: 'Aug 2021 - Aug 2023',
+      pt: '2021 a 2023',
+      en: '2021 - 2023',
     },
     status: 'completed',
     statusLabel: {
@@ -46,10 +46,10 @@ export const academicEducation = [
       en: 'Completed',
     },
     description: {
-      pt: 'Formação técnica profunda em arquitetura de software, programação orientada a objetos (POO), modelagem e otimização de bancos de dados relacionais SQL, arquitetura MVC e metodologias ágeis.',
-      en: 'Rigorous technical foundation in software architecture, object-oriented programming (OOP), relational SQL database modeling, MVC architecture, and agile software development.',
+      pt: 'Matriz curricular de 1.200h estruturada em fundamentos de lógica e POO, engenharia de software (modelagem UML, levantamento de requisitos e padrões de projeto), banco de dados relacional (SQL com MySQL/PostgreSQL), desenvolvimento web (HTML5, CSS3, JavaScript) e mobile nativo para Android com Java, qualidade e testes de software, e integração com Indústria 4.0 e Internet das Coisas (IoT).',
+      en: '1,200-hour comprehensive technical diploma covering programming logic & OOP, software engineering (UML modeling, requirements, design patterns), relational databases (SQL with MySQL/PostgreSQL), web development (HTML5, CSS3, JavaScript) and native Android mobile apps with Java, software testing and QA, and Industry 4.0 with IoT integration.',
     },
-    skills: ['Lógica de Programação', 'Java', 'PHP', 'MySQL', 'MVC', 'Git'],
+    skills: ['Java', 'JavaScript', 'HTML5 & CSS3', 'Mobile (Android)', 'SQL', 'Engenharia de Software (UML)', 'Testes & QA', 'IoT & Indústria 4.0'],
     logo: senaiLogo,
     website: 'https://sc.senai.br/',
   },
@@ -57,12 +57,12 @@ export const academicEducation = [
     id: 'senac-sc',
     institution: 'Senac SC',
     degree: {
-      pt: 'Qualificação Profissional ADS',
-      en: 'Professional Qualification in Systems Analysis & Development',
+      pt: 'Qualificação profissional em Desenvolvimento de Sistemas',
+      en: 'Professional Qualification in Systems Development',
     },
     period: {
-      pt: 'fev/2025 a nov/2025',
-      en: 'Feb 2025 - Nov 2025',
+      pt: '2025',
+      en: '2025',
     },
     status: 'completed',
     statusLabel: {
@@ -70,10 +70,27 @@ export const academicEducation = [
       en: 'Completed',
     },
     description: {
-      pt: 'Especialização prática orientada a soluções web corporativas, desenvolvimento e consumo de APIs RESTful, testes de integração e engenharia de requisitos de software.',
-      en: 'Hands-on specialization tailored to enterprise web solutions, RESTful API design, integration testing, and software requirements engineering.',
+      pt: 'Formação profissional de 440h dividida em: workshop inicial de pensamento computacional, Programador de Sistemas (200h focado em estruturação e lógica de sistemas), Desenvolvimento Web com Inteligência Artificial (240h focado em aplicações web modernas com HTML, CSS, JavaScript integradas com ferramentas de IA e manipulação de bancos de dados), oficinas de carreira e Hackathon Final em equipe com entrega de projeto real.',
+      en: '440-hour intensive professional training divided into: computational thinking workshop, Systems Programming (200h on core system architecture and logic), Web Development with AI (240h building modern web apps with HTML, CSS, JavaScript integrated with AI tools and database management), career development, and a final Hackathon delivering a real-world software project.',
     },
-    skills: ['Web Development', 'JavaScript', 'Node.js', 'APIs REST', 'SQL'],
+    achievement: {
+      badge: {
+        pt: '🥈 2º Lugar Estadual',
+        en: '🥈 2nd Place Statewide',
+      },
+      title: {
+        pt: 'Hackathon Jovem Programador 2025',
+        en: '2025 Young Programmer Hackathon',
+      },
+      team: 'Equipe Luna (Florianópolis)',
+      organization: 'SEPROSC & Senac SC',
+      description: {
+        pt: 'Vice-campeão estadual entre centenas de estudantes e 10 equipes finalistas de Santa Catarina, com desenvolvimento de solução prática e apresentação de pitch ao vivo perante banca técnica avaliadora.',
+        en: 'Statewide runner-up among hundreds of students and 10 finalist teams across Santa Catarina, developing a practical solution with a live pitch presentation before an executive technical jury.',
+      },
+      url: 'https://www.seprosc.com.br/n.php?ID=573&T=hackathon-jovem-programador-2025-premia-equipes',
+    },
+    skills: ['Desenvolvimento Web', 'Inteligência Artificial', 'Python', 'JavaScript', 'HTML5 & CSS3', 'Bancos de Dados', 'Lógica & Algoritmos', 'Hackathon Final'],
     logo: senacLogo,
     website: 'https://www.sc.senac.br/',
   },
