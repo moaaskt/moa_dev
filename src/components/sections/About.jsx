@@ -14,7 +14,7 @@ import { useScrollAnimation } from '../../hooks/useScrollAnimation';
 
 // 5. CSS Stylesheets, Custom Fonts, and Module CSS (if any)
 
-const FAVORITE_STACK = ['Go', 'PHP', 'React', 'TypeScript', 'Node.js', 'Python'];
+const FAVORITE_STACK = ['PHP', 'React', 'TypeScript', 'Node.js', 'Python', 'C++'];
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 30 },
