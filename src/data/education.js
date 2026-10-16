@@ -49,7 +49,7 @@ export const academicEducation = [
       pt: 'Matriz curricular de 1.200h estruturada em fundamentos de lógica e POO, engenharia de software (modelagem UML, levantamento de requisitos e padrões de projeto), banco de dados relacional (SQL com MySQL/PostgreSQL), desenvolvimento web (HTML5, CSS3, JavaScript) e mobile nativo para Android com Java, qualidade e testes de software, e integração com Indústria 4.0 e Internet das Coisas (IoT).',
       en: '1,200-hour comprehensive technical diploma covering programming logic & OOP, software engineering (UML modeling, requirements, design patterns), relational databases (SQL with MySQL/PostgreSQL), web development (HTML5, CSS3, JavaScript) and native Android mobile apps with Java, software testing and QA, and Industry 4.0 with IoT integration.',
     },
-    skills: ['Java', 'Python', 'JavaScript', 'HTML5 & CSS3', 'Mobile (Android)', 'SQL', 'Engenharia de Software (UML)', 'Testes & QA', 'IoT & Indústria 4.0'],
+    skills: ['Java', 'JavaScript', 'HTML5 & CSS3', 'Mobile (Android)', 'SQL', 'Engenharia de Software (UML)', 'Testes & QA', 'IoT & Indústria 4.0'],
     logo: senaiLogo,
     website: 'https://sc.senai.br/',
   },
@@ -57,8 +57,8 @@ export const academicEducation = [
     id: 'senac-sc',
     institution: 'Senac SC',
     degree: {
-      pt: 'Programa Jovem Programador',
-      en: 'Youth Programmer Program — Systems Development',
+      pt: 'Qualificação profissional em Desenvolvimento de Sistemas',
+      en: 'Professional Qualification in Systems Development',
     },
     period: {
       pt: '2025',
@@ -73,7 +73,7 @@ export const academicEducation = [
       pt: 'Formação profissional de 440h dividida em: workshop inicial de pensamento computacional, Programador de Sistemas (200h focado em estruturação e lógica de sistemas), Desenvolvimento Web com Inteligência Artificial (240h focado em aplicações web modernas com HTML, CSS, JavaScript integradas com ferramentas de IA e manipulação de bancos de dados), oficinas de carreira e Hackathon Final em equipe com entrega de projeto real.',
       en: '440-hour intensive professional training divided into: computational thinking workshop, Systems Programming (200h on core system architecture and logic), Web Development with AI (240h building modern web apps with HTML, CSS, JavaScript integrated with AI tools and database management), career development, and a final Hackathon delivering a real-world software project.',
     },
-    skills: ['Desenvolvimento Web', 'Inteligência Artificial', 'JavaScript', 'HTML5 & CSS3', 'Bancos de Dados', 'Lógica & Algoritmos', 'Hackathon Final'],
+    skills: ['Desenvolvimento Web', 'Inteligência Artificial', 'Python', 'JavaScript', 'HTML5 & CSS3', 'Bancos de Dados', 'Lógica & Algoritmos', 'Hackathon Final'],
     logo: senacLogo,
     website: 'https://www.sc.senac.br/',
   },
