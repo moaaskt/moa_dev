@@ -2,6 +2,7 @@ import { useState, useEffect, useMemo, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Maximize2, X, ChevronLeft, ChevronRight, Image as ImageIcon } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { Badge } from './badge';
 
 export default function ProjectGallery({ items = [], projectTitle = 'Projeto' }) {
   const { t, i18n } = useTranslation();
@@ -312,21 +313,12 @@ export default function ProjectGallery({ items = [], projectTitle = 'Projeto' })
                       marginBottom: '0.5rem',
                     }}
                   >
-                    <span
-                      style={{
-                        fontFamily: 'JetBrains Mono, monospace',
-                        fontSize: '0.7rem',
-                        color: 'var(--accent)',
-                        background: 'rgba(184, 247, 60, 0.08)',
-                        border: '1px solid var(--border-accent)',
-                        padding: '0.15rem 0.45rem',
-                        borderRadius: '3px',
-                        textTransform: 'uppercase',
-                        letterSpacing: '0.04em',
-                      }}
+                    <Badge
+                      variant="secondary"
+                      className="font-mono text-[0.7rem] uppercase tracking-wider font-semibold"
                     >
                       {itemCategory}
-                    </span>
+                    </Badge>
                   </div>
 
                   <h3
@@ -402,19 +394,12 @@ export default function ProjectGallery({ items = [], projectTitle = 'Projeto' })
               }}
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                <span
-                  style={{
-                    fontFamily: 'JetBrains Mono, monospace',
-                    fontSize: '0.8rem',
-                    color: 'var(--accent)',
-                    border: '1px solid var(--border-accent)',
-                    padding: '0.2rem 0.5rem',
-                    borderRadius: '4px',
-                    background: 'rgba(184, 247, 60, 0.08)',
-                  }}
+                <Badge
+                  variant="secondary"
+                  className="font-mono text-xs font-semibold"
                 >
                   {t('gallery.lightboxCounter', { current: lightboxIndex + 1, total: filteredItems.length, defaultValue: `${lightboxIndex + 1} / ${filteredItems.length}` })}
-                </span>
+                </Badge>
                 <span
                   style={{
                     fontFamily: 'Syne, sans-serif',

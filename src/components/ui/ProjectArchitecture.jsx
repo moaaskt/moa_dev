@@ -9,6 +9,7 @@ import {
   Layers,
 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { Badge } from './badge';
 
 export default function ProjectArchitecture({ architecture, projectTitle = 'Projeto' }) {
   const { t, i18n } = useTranslation();
@@ -224,19 +225,12 @@ export default function ProjectArchitecture({ architecture, projectTitle = 'Proj
                       {srv.name}
                     </span>
                   </div>
-                  <span
-                    style={{
-                      fontFamily: 'JetBrains Mono, monospace',
-                      fontSize: '0.75rem',
-                      color: 'var(--accent)',
-                      border: '1px solid var(--border-accent)',
-                      background: 'rgba(184, 247, 60, 0.08)',
-                      padding: '0.2rem 0.5rem',
-                      borderRadius: '4px',
-                    }}
+                  <Badge
+                    variant="secondary"
+                    className="font-mono text-xs font-semibold"
                   >
                     :{srv.port}
-                  </span>
+                  </Badge>
                 </div>
 
                 {/* Badge de Tech */}
