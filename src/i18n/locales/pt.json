@@ -4,6 +4,7 @@
     "projects": "Projetos",
     "skills": "Skills",
     "experience": "Experiência",
+    "education": "Formação",
     "github": "GitHub",
     "contact": "Contato",
     "openMenu": "Abrir menu",
@@ -88,8 +89,25 @@
       "9": "Set", "10": "Out", "11": "Nov", "12": "Dez"
     }
   },
-  "githubProjects": {
+  "education": {
     "sectionNumber": "05",
+    "sectionTitle": "Formação & Certificações",
+    "sectionSubtitle": "Trajetória acadêmica formal em ciência de dados e engenharia de software, somada a certificações técnicas contínuas.",
+    "academicTitle": "Formação Acadêmica",
+    "academicBadge": "Graduação & Técnico",
+    "certificationsTitle": "Certificações",
+    "certificationsBadge": "Credenciais Técnicas",
+    "status": {
+      "in_progress": "Em andamento",
+      "completed": "Concluído"
+    },
+    "viewWebsite": "Instituição",
+    "viewCredential": "Ver credencial",
+    "skillsLearned": "Competências",
+    "competencies": "Competências principais"
+  },
+  "githubProjects": {
+    "sectionNumber": "06",
     "sectionTitle": "Atividade no GitHub",
     "loading": "Carregando repositórios recentes...",
     "errorNotice": "Não foi possível carregar os repositórios diretamente no momento.",

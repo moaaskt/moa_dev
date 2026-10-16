@@ -4,6 +4,7 @@
     "projects": "Projects",
     "skills": "Skills",
     "experience": "Experience",
+    "education": "Education",
     "github": "GitHub",
     "contact": "Contact",
     "openMenu": "Open menu",
@@ -88,8 +89,25 @@
       "9": "Sep", "10": "Oct", "11": "Nov", "12": "Dec"
     }
   },
-  "githubProjects": {
+  "education": {
     "sectionNumber": "05",
+    "sectionTitle": "Education & Certifications",
+    "sectionSubtitle": "Formal academic degree in data science and software engineering, paired with continuous technical certifications.",
+    "academicTitle": "Academic Education",
+    "academicBadge": "Degree & Technical",
+    "certificationsTitle": "Certifications",
+    "certificationsBadge": "Technical Credentials",
+    "status": {
+      "in_progress": "In Progress",
+      "completed": "Completed"
+    },
+    "viewWebsite": "Institution",
+    "viewCredential": "View credential",
+    "skillsLearned": "Skills",
+    "competencies": "Core competencies"
+  },
+  "githubProjects": {
+    "sectionNumber": "06",
     "sectionTitle": "GitHub Activity",
     "loading": "Loading recent repositories...",
     "errorNotice": "Unable to load repositories directly from GitHub at this time.",
