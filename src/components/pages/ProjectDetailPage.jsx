@@ -17,6 +17,7 @@ import TechIcon from '../ui/TechIcon';
 import FuzzyText from '../ui/FuzzyText';
 import ProjectGallery from '../ui/ProjectGallery';
 import ProjectArchitecture from '../ui/ProjectArchitecture';
+import { Badge } from '../ui/badge';
 import { projects } from '../../data/projects';
 
 // Helper utilitário para extrair texto no idioma ativo
@@ -230,23 +231,26 @@ export default function ProjectDetailPage({ projectId }) {
               marginBottom: '1rem',
             }}
           >
-            <span
+            <Badge
               style={{
                 fontFamily: 'JetBrains Mono, monospace',
                 fontSize: '0.75rem',
-                color: 'var(--accent)',
-                background: 'rgba(184, 247, 60, 0.08)',
-                border: '1px solid var(--border-accent)',
-                padding: '0.25rem 0.6rem',
+                fontWeight: 700,
+                color: '#080808',
+                background: 'var(--accent)',
+                border: '1px solid var(--accent)',
+                padding: '0.25rem 0.65rem',
                 borderRadius: '4px',
                 letterSpacing: '0.06em',
                 textTransform: 'uppercase',
+                boxShadow: '0 2px 5px rgba(0, 0, 0, 0.3)',
               }}
             >
               {t(`allProjects.categories.${project.category}`, project.category)}
-            </span>
+            </Badge>
 
-            <span
+            <Badge
+              variant="outline"
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
@@ -255,16 +259,18 @@ export default function ProjectDetailPage({ projectId }) {
                 fontSize: '0.75rem',
                 color: 'var(--text-secondary)',
                 border: '1px solid var(--border)',
-                padding: '0.25rem 0.6rem',
+                background: 'rgba(255, 255, 255, 0.03)',
+                padding: '0.25rem 0.65rem',
                 borderRadius: '4px',
               }}
             >
               <Calendar size={13} />
               {project.year}
-            </span>
+            </Badge>
 
             {project.private ? (
-              <span
+              <Badge
+                variant="outline"
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',
@@ -274,15 +280,16 @@ export default function ProjectDetailPage({ projectId }) {
                   color: '#eab308',
                   background: 'rgba(234, 179, 8, 0.08)',
                   border: '1px solid rgba(234, 179, 8, 0.3)',
-                  padding: '0.25rem 0.6rem',
+                  padding: '0.25rem 0.65rem',
                   borderRadius: '4px',
                 }}
               >
                 <Lock size={12} />
                 {t('projectDetail.corporateCase', 'Case Privado / Corporativo')}
-              </span>
+              </Badge>
             ) : (
-              <span
+              <Badge
+                variant="outline"
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',
@@ -291,13 +298,13 @@ export default function ProjectDetailPage({ projectId }) {
                   fontSize: '0.75rem',
                   color: 'var(--accent)',
                   border: '1px solid var(--border)',
-                  padding: '0.25rem 0.6rem',
+                  padding: '0.25rem 0.65rem',
                   borderRadius: '4px',
                 }}
               >
                 <Code2 size={13} />
                 {t('projectDetail.publicCode', 'Código Público')}
-              </span>
+              </Badge>
             )}
           </div>
 
