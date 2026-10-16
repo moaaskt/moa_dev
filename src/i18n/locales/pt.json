@@ -31,8 +31,13 @@
   "hero": {
     "greeting": "Olá, eu sou",
     "name": "Moacir Neto",
-    "role": "Desenvolvedor Full Stack Jr.",
-    "description": "Full Stack com experiência prática em sistemas de produção — da construção de integrações e SaaS multi-tenant com IA a automações e IoT.",
+    "role": "Desenvolvedor Full Stack",
+    "subtitles": [
+      "que constrói sistemas em produção.",
+      "com Go, PHP e React.",
+      "do backend ao deploy."
+    ],
+    "description": "“Sistemas reais — de CRMs B2B com IA e scraping em Go a SaaS multi-tenant em PHP/Laravel.”",
     "ctaProjects": "Ver Projetos",
     "ctaGithub": "GitHub",
     "ariaGithub": "Acessar perfil de Moacir Neto no GitHub",

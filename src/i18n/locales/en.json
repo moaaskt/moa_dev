@@ -31,8 +31,13 @@
   "hero": {
     "greeting": "Hello, I am",
     "name": "Moacir Neto",
-    "role": "Junior Full Stack Developer",
-    "description": "Full Stack Engineer with hands-on experience in production environments — from building integrations and multi-tenant AI SaaS platforms to IoT and automations.",
+    "role": "Full Stack Developer",
+    "subtitles": [
+      "building systems in production.",
+      "with Go, PHP, and React.",
+      "from backend to deployment."
+    ],
+    "description": "“Production systems — from B2B AI & scraping CRMs in Go to multi-tenant SaaS in PHP/Laravel.”",
     "ctaProjects": "View Projects",
     "ctaGithub": "GitHub",
     "ariaGithub": "View Moacir Neto's profile on GitHub",
