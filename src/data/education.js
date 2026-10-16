@@ -73,6 +73,23 @@ export const academicEducation = [
       pt: 'Formação profissional de 440h dividida em: workshop inicial de pensamento computacional, Programador de Sistemas (200h focado em estruturação e lógica de sistemas), Desenvolvimento Web com Inteligência Artificial (240h focado em aplicações web modernas com HTML, CSS, JavaScript integradas com ferramentas de IA e manipulação de bancos de dados), oficinas de carreira e Hackathon Final em equipe com entrega de projeto real.',
       en: '440-hour intensive professional training divided into: computational thinking workshop, Systems Programming (200h on core system architecture and logic), Web Development with AI (240h building modern web apps with HTML, CSS, JavaScript integrated with AI tools and database management), career development, and a final Hackathon delivering a real-world software project.',
     },
+    achievement: {
+      badge: {
+        pt: '🥈 2º Lugar Estadual',
+        en: '🥈 2nd Place Statewide',
+      },
+      title: {
+        pt: 'Hackathon Jovem Programador 2025',
+        en: '2025 Young Programmer Hackathon',
+      },
+      team: 'Equipe Luna (Florianópolis)',
+      organization: 'SEPROSC & Senac SC',
+      description: {
+        pt: 'Vice-campeão estadual entre centenas de estudantes e 10 equipes finalistas de Santa Catarina, com desenvolvimento de solução prática e apresentação de pitch ao vivo perante banca técnica avaliadora.',
+        en: 'Statewide runner-up among hundreds of students and 10 finalist teams across Santa Catarina, developing a practical solution with a live pitch presentation before an executive technical jury.',
+      },
+      url: 'https://www.seprosc.com.br/n.php?ID=573&T=hackathon-jovem-programador-2025-premia-equipes',
+    },
     skills: ['Desenvolvimento Web', 'Inteligência Artificial', 'Python', 'JavaScript', 'HTML5 & CSS3', 'Bancos de Dados', 'Lógica & Algoritmos', 'Hackathon Final'],
     logo: senacLogo,
     website: 'https://www.sc.senac.br/',

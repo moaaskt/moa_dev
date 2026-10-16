@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { GraduationCap, Award, ExternalLink } from 'lucide-react';
+import { GraduationCap, Award, ExternalLink, Trophy } from 'lucide-react';
 import { useScrollAnimation } from '../../hooks/useScrollAnimation';
 import SectionHeader from '../ui/SectionHeader';
 import { Badge } from '../ui/badge';
@@ -140,44 +140,69 @@ function AcademicItem({ item, index, lang, t }) {
 
           {/* Badges & Period */}
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '6px' }}>
-            {isInProgress ? (
-              <Badge
-                style={{
-                  fontFamily: 'JetBrains Mono, monospace',
-                  fontSize: '0.7rem',
-                  fontWeight: 700,
-                  letterSpacing: '0.06em',
-                  textTransform: 'uppercase',
-                  background: 'var(--accent)',
-                  color: '#080808',
-                  border: '1px solid var(--accent)',
-                  padding: '0.25rem 0.6rem',
-                  borderRadius: '4px',
-                  boxShadow: '0 2px 5px rgba(0, 0, 0, 0.3)',
-                }}
-                aria-label={`Status: ${statusLabel}`}
-              >
-                {statusLabel}
-              </Badge>
-            ) : (
-              <Badge
-                style={{
-                  fontFamily: 'JetBrains Mono, monospace',
-                  fontSize: '0.7rem',
-                  fontWeight: 600,
-                  letterSpacing: '0.06em',
-                  textTransform: 'uppercase',
-                  background: 'var(--bg-elevated)',
-                  color: 'var(--text-secondary)',
-                  border: '1px solid var(--border)',
-                  padding: '0.25rem 0.6rem',
-                  borderRadius: '4px',
-                }}
-                aria-label={`Status: ${statusLabel}`}
-              >
-                {statusLabel}
-              </Badge>
-            )}
+            <div style={{ display: 'flex', alignItems: 'center', gap: '6px', flexWrap: 'wrap', justifyContent: 'flex-end' }}>
+              {item.achievement && (
+                <Badge
+                  style={{
+                    fontFamily: 'JetBrains Mono, monospace',
+                    fontSize: '0.68rem',
+                    fontWeight: 700,
+                    letterSpacing: '0.04em',
+                    background: 'rgba(245, 158, 11, 0.15)',
+                    color: '#fbbf24',
+                    border: '1px solid rgba(245, 158, 11, 0.4)',
+                    padding: '0.2rem 0.55rem',
+                    borderRadius: '4px',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '4px',
+                    boxShadow: '0 0 10px rgba(245, 158, 11, 0.2)',
+                  }}
+                  aria-label={`${t('education.achievementBadge', 'Hackathon 2025')}: ${getLocalizedField(item.achievement.badge, lang)}`}
+                >
+                  <Trophy size={11} aria-hidden="true" style={{ color: '#fbbf24' }} />
+                  <span>{getLocalizedField(item.achievement.badge, lang)}</span>
+                </Badge>
+              )}
+              {isInProgress ? (
+                <Badge
+                  style={{
+                    fontFamily: 'JetBrains Mono, monospace',
+                    fontSize: '0.7rem',
+                    fontWeight: 700,
+                    letterSpacing: '0.06em',
+                    textTransform: 'uppercase',
+                    background: 'var(--accent)',
+                    color: '#080808',
+                    border: '1px solid var(--accent)',
+                    padding: '0.25rem 0.6rem',
+                    borderRadius: '4px',
+                    boxShadow: '0 2px 5px rgba(0, 0, 0, 0.3)',
+                  }}
+                  aria-label={`Status: ${statusLabel}`}
+                >
+                  {statusLabel}
+                </Badge>
+              ) : (
+                <Badge
+                  style={{
+                    fontFamily: 'JetBrains Mono, monospace',
+                    fontSize: '0.7rem',
+                    fontWeight: 600,
+                    letterSpacing: '0.06em',
+                    textTransform: 'uppercase',
+                    background: 'var(--bg-elevated)',
+                    color: 'var(--text-secondary)',
+                    border: '1px solid var(--border)',
+                    padding: '0.25rem 0.6rem',
+                    borderRadius: '4px',
+                  }}
+                  aria-label={`Status: ${statusLabel}`}
+                >
+                  {statusLabel}
+                </Badge>
+              )}
+            </div>
             <span
               style={{
                 fontFamily: 'JetBrains Mono, monospace',
@@ -204,6 +229,114 @@ function AcademicItem({ item, index, lang, t }) {
         >
           {description}
         </p>
+
+        {/* Achievement Banner / Callout */}
+        {item.achievement && (
+          <div
+            style={{
+              margin: '1.25rem 0',
+              padding: '1.15rem',
+              borderRadius: '8px',
+              background: 'linear-gradient(135deg, rgba(245, 158, 11, 0.08) 0%, rgba(184, 247, 60, 0.04) 100%)',
+              border: '1px solid rgba(245, 158, 11, 0.35)',
+              boxShadow: '0 4px 20px rgba(0, 0, 0, 0.25)',
+              position: 'relative',
+            }}
+          >
+            <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.85rem' }}>
+              <div
+                style={{
+                  width: '38px',
+                  height: '38px',
+                  borderRadius: '8px',
+                  background: 'rgba(245, 158, 11, 0.16)',
+                  border: '1px solid rgba(245, 158, 11, 0.45)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  flexShrink: 0,
+                  color: '#fbbf24',
+                  boxShadow: '0 0 12px rgba(245, 158, 11, 0.25)',
+                }}
+                aria-hidden="true"
+              >
+                <Trophy size={19} />
+              </div>
+
+              <div style={{ flex: 1, minWidth: 0 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap', marginBottom: '0.35rem' }}>
+                  <h5
+                    style={{
+                      fontFamily: 'Syne, sans-serif',
+                      fontWeight: 700,
+                      fontSize: 'var(--text-sm)',
+                      color: 'var(--text-primary)',
+                      margin: 0,
+                    }}
+                  >
+                    {getLocalizedField(item.achievement.title, lang)}
+                  </h5>
+                  <span
+                    style={{
+                      fontFamily: 'JetBrains Mono, monospace',
+                      fontSize: '0.7rem',
+                      fontWeight: 700,
+                      color: '#fbbf24',
+                      background: 'rgba(245, 158, 11, 0.14)',
+                      padding: '2px 8px',
+                      borderRadius: '4px',
+                      border: '1px solid rgba(245, 158, 11, 0.3)',
+                    }}
+                  >
+                    {item.achievement.team}
+                  </span>
+                </div>
+
+                <p
+                  style={{
+                    fontSize: '0.84rem',
+                    color: 'var(--text-secondary)',
+                    lineHeight: 1.55,
+                    margin: '0 0 0.75rem 0',
+                  }}
+                >
+                  {getLocalizedField(item.achievement.description, lang)}
+                </p>
+
+                {item.achievement.url && (
+                  <a
+                    href={item.achievement.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '5px',
+                      fontFamily: 'JetBrains Mono, monospace',
+                      fontSize: '0.74rem',
+                      fontWeight: 600,
+                      color: '#fbbf24',
+                      textDecoration: 'none',
+                      transition: 'opacity 0.2s ease, transform 0.2s ease',
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.opacity = '0.85';
+                      e.currentTarget.style.transform = 'translateX(2px)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.opacity = '1';
+                      e.currentTarget.style.transform = 'translateX(0)';
+                    }}
+                    aria-label={`${getLocalizedField(item.achievement.title, lang)} - ${t('education.viewAchievementArticle', 'Ver notícia oficial no SEPROSC')} (abre em nova aba)`}
+                  >
+                    <span>{t('education.viewAchievementArticle', 'Ver notícia oficial no SEPROSC')}</span>
+                    <ExternalLink size={12} aria-hidden="true" />
+                  </a>
+                )}
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* Skills learned */}
         {item.skills && item.skills.length > 0 && (
