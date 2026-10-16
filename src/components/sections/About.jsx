@@ -14,7 +14,7 @@ import { useScrollAnimation } from '../../hooks/useScrollAnimation';
 
 // 5. CSS Stylesheets, Custom Fonts, and Module CSS (if any)
 
-const FAVORITE_STACK = ['PHP', 'React', 'TypeScript', 'Python', 'C++'];
+const FAVORITE_STACK = ['Go', 'PHP', 'React', 'TypeScript', 'Node.js', 'Python'];
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 30 },
@@ -66,10 +66,24 @@ export default function About() {
                 fontSize: 'var(--text-base)',
                 color: 'var(--text-secondary)',
                 lineHeight: 1.8,
-                marginBottom: '2rem',
+                marginBottom: '1.25rem',
               }}
             >
               {t('about.bioP2')}
+            </motion.p>
+
+            <motion.p
+              {...fadeUp(0.25)}
+              animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+              style={{
+                fontFamily: 'DM Sans, sans-serif',
+                fontSize: 'var(--text-base)',
+                color: 'var(--text-secondary)',
+                lineHeight: 1.8,
+                marginBottom: '1.25rem',
+              }}
+            >
+              {t('about.bioP3')}
             </motion.p>
 
             <motion.p
@@ -83,7 +97,7 @@ export default function About() {
                 marginBottom: '2rem',
               }}
             >
-              {t('about.bioP3')}
+              {t('about.bioP4')}
             </motion.p>
 
             {/* Favorite Stack Section */}

@@ -46,9 +46,10 @@
   "about": {
     "sectionNumber": "01",
     "sectionTitle": "About me",
-    "bioP1": "Full Stack Developer with hands-on experience maintaining and scaling web platforms in production. Developed modules for events, checkout, waitlists, and API integrations with Asaas and WhatsApp at Evento Santo & Doar Digital.",
-    "bioP2": "I work with PHP, CodeIgniter, Laravel, JavaScript, TypeScript, React, Node.js, Python, and C++. I build personal projects with automations, IoT, and AI agents. I also have practical background in home automation and IoT with ESP32, sensors, actuators, and electronics from hardware assembly to field installation.",
-    "bioP3": "Always eager to learn and adapt to emerging technologies. I thrive on challenges and crafting innovative solutions for complex software problems.",
+    "bioP1": "Full Stack Developer with a backend focus — I build systems ranging from AI-powered web scraping to full-scale production platforms.",
+    "bioP2": "At Evento Santo & Doar Digital, I developed a complete LMS: course modules, customizable certificate generation, student area with analytics, and tutor panel with student records and attendance tracking. Additionally, I built modules for events, checkout, waitlists, group bookings, and API integrations with Asaas and WhatsApp API.",
+    "bioP3": "In my personal projects, I pushed further: a B2B CRM in Go with an AI pipeline using Google Gemini, asynchronous workers with Redis, and a custom WhatsApp gateway — from scratch to Docker Compose with 7 microservices.",
+    "bioP4": "Stack: Go, PHP, React, TypeScript, Node.js, Python. Hands-on IoT experience — ESP32, sensors, and hardware deployment in the field.",
     "favoriteStack": "// favorite stack",
     "portraitAlt": "Profile photo of Moacir Neto"
   },

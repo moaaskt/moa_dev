@@ -46,9 +46,10 @@
   "about": {
     "sectionNumber": "01",
     "sectionTitle": "Sobre mim",
-    "bioP1": "Desenvolvedor Full Stack com experiência prática na sustentação e evolução de plataformas web em produção. Atuei na Evento Santo & Doar Digital desenvolvendo módulos de eventos, checkout, fila de espera e integrações com Asaas e WhatsApp API.",
-    "bioP2": "Trabalho com PHP, CodeIgniter, Laravel, JavaScript, TypeScript, React, Node.js, Python e C++. Tenho projetos pessoais com automações, IoT e agentes de IA. Também tenho experiência prática com automação e IoT, projetos com ESP32, C++, sensores e atuadores, do hardware à programação, e atuei em campo na instalação e configuração de dispositivos IoT e sistemas de automação residencial.",
-    "bioP3": "Busco sempre aprender e me adaptar a novas tecnologias. Gosto de desafios e de encontrar soluções inovadoras para problemas complexos.",
+    "bioP1": "Desenvolvedor Full Stack com foco em backend — construo sistemas que vão do scraping com IA até plataformas completas em produção.",
+    "bioP2": "Na Evento Santo & Doar Digital desenvolvi um LMS completo: módulos de cursos, geração de diplomas personalizáveis, área do aluno com estatísticas, painel do tutor com ficha e frequência. Além disso, módulos de eventos, checkout, fila de espera, caravanas e integrações com Asaas e WhatsApp API.",
+    "bioP3": "Nos projetos pessoais fui além: um CRM B2B em Go com pipeline de IA usando Gemini, workers assíncronos com Redis e gateway WhatsApp próprio — do zero ao Docker Compose com 7 serviços.",
+    "bioP4": "Stack: Go, PHP, React, TypeScript, Node.js, Python. Vivência com IoT — ESP32, sensores e instalação em campo.",
     "favoriteStack": "// stack favorita",
     "portraitAlt": "Foto de perfil de Moacir Neto"
   },
