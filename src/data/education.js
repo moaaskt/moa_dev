@@ -57,7 +57,7 @@ export const academicEducation = [
     id: 'senac-sc',
     institution: 'Senac SC',
     degree: {
-      pt: 'Qualificação Profissional em Programador/ADS',
+      pt: 'Qualificação Profissional ADS',
       en: 'Professional Qualification in Systems Analysis & Development',
     },
     period: {
