@@ -230,17 +230,12 @@ function AcademicItem({ item, index, lang, t }) {
             <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
               <div
                 style={{
-                  width: '44px',
-                  height: '44px',
-                  borderRadius: '8px',
-                  background: 'var(--bg-secondary)',
-                  border: '1px solid rgba(184, 247, 60, 0.25)',
+                  width: '42px',
+                  height: '42px',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  padding: '4px',
                   flexShrink: 0,
-                  boxShadow: '0 2px 8px rgba(0, 0, 0, 0.35)',
                 }}
                 aria-hidden="true"
               >
