@@ -37,8 +37,8 @@ export const academicEducation = [
       en: 'Systems Development Technician',
     },
     period: {
-      pt: '2023 a 2024',
-      en: '2023 - 2024',
+      pt: '2021 a 2023',
+      en: '2021 - 2023',
     },
     status: 'completed',
     statusLabel: {

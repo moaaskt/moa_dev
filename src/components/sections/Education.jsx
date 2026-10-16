@@ -1,9 +1,10 @@
 import { useTranslation } from 'react-i18next';
-import { GraduationCap, Award, ExternalLink, Trophy } from 'lucide-react';
+import { GraduationCap, Award, ExternalLink } from 'lucide-react';
 import { useScrollAnimation } from '../../hooks/useScrollAnimation';
 import SectionHeader from '../ui/SectionHeader';
 import { Badge } from '../ui/badge';
 import { academicEducation, certifications } from '../../data/education';
+import trophyIcon from '../../assets/52725trophy_109387.svg';
 
 function getLocalizedField(field, lang) {
   if (!field) return '';
@@ -229,20 +230,26 @@ function AcademicItem({ item, index, lang, t }) {
             <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
               <div
                 style={{
-                  width: '40px',
-                  height: '40px',
+                  width: '44px',
+                  height: '44px',
                   borderRadius: '8px',
-                  background: 'rgba(184, 247, 60, 0.08)',
+                  background: 'var(--bg-secondary)',
                   border: '1px solid rgba(184, 247, 60, 0.25)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
+                  padding: '4px',
                   flexShrink: 0,
-                  color: 'var(--accent)',
+                  boxShadow: '0 2px 8px rgba(0, 0, 0, 0.35)',
                 }}
                 aria-hidden="true"
               >
-                <Trophy size={20} />
+                <img
+                  src={trophyIcon}
+                  alt="Troféu do Hackathon"
+                  style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+                  loading="lazy"
+                />
               </div>
 
               <div style={{ flex: 1, minWidth: 0 }}>
