@@ -1,687 +1,138 @@
-import { useTranslation } from 'react-i18next';
-import { GraduationCap, Award, ExternalLink } from 'lucide-react';
-import { useScrollAnimation } from '../../hooks/useScrollAnimation';
-import SectionHeader from '../ui/SectionHeader';
-import { Badge } from '../ui/badge';
-import { academicEducation, certifications } from '../../data/education';
-import trophyIcon from '../../assets/52725trophy_109387.svg';
+import anhangueraLogo from '../assets/images/education/anhanguera.svg';
+import senaiLogo from '../assets/images/education/senai.svg';
+import senacLogo from '../assets/images/education/senac.svg';
+import ciscoLogo from '../assets/images/education/cisco.svg';
+import dioLogo from '../assets/images/education/dio.svg';
 
-function getLocalizedField(field, lang) {
-  if (!field) return '';
-  if (typeof field === 'string') return field;
-  return field[lang] || field.pt || field.en || '';
-}
+export const academicEducation = [
+  {
+    id: 'anhanguera',
+    institution: 'Anhanguera Educacional',
+    degree: {
+      pt: 'Bacharelado em IA & Ciência de Dados',
+      en: 'Bachelor in Artificial Intelligence & Data Science',
+    },
+    period: {
+      pt: 'ago/2026 até o momento',
+      en: 'Aug 2026 - Present',
+    },
+    status: 'in_progress',
+    statusLabel: {
+      pt: 'Em andamento',
+      en: 'In Progress',
+    },
+    description: {
+      pt: 'Graduação superior com grade curricular focada em algoritmos estruturados, matemática discreta e estatística para análise de dados, aprendizado de máquina (Machine Learning), redes neurais profundas (Deep Learning), processamento de linguagem natural (PLN) e arquitetura de dados em larga escala.',
+      en: 'Undergraduate degree focused on structured algorithms, discrete mathematics, and statistics for data analytics, machine learning, deep learning neural networks, natural language processing (NLP), and large-scale data engineering architectures.',
+    },
+    skills: ['Python', 'Machine Learning', 'Deep Learning', 'Estatística Computacional', 'Bancos de Dados', 'PLN / NLP'],
+    logo: anhangueraLogo,
+    website: 'https://www.anhanguera.com/',
+  },
+  {
+    id: 'senai-sc',
+    institution: 'SENAI/SC',
+    degree: {
+      pt: 'Técnico em Desenvolvimento de Sistemas',
+      en: 'Systems Development Technician',
+    },
+    period: {
+      pt: '2021 a 2023',
+      en: '2021 - 2023',
+    },
+    status: 'completed',
+    statusLabel: {
+      pt: 'Concluído',
+      en: 'Completed',
+    },
+    description: {
+      pt: 'Matriz curricular de 1.200h estruturada em fundamentos de lógica e POO, engenharia de software (modelagem UML, levantamento de requisitos e padrões de projeto), banco de dados relacional (SQL com MySQL/PostgreSQL), desenvolvimento web (HTML5, CSS3, JavaScript) e mobile nativo para Android com Java, qualidade e testes de software, e integração com Indústria 4.0 e Internet das Coisas (IoT).',
+      en: '1,200-hour comprehensive technical diploma covering programming logic & OOP, software engineering (UML modeling, requirements, design patterns), relational databases (SQL with MySQL/PostgreSQL), web development (HTML5, CSS3, JavaScript) and native Android mobile apps with Java, software testing and QA, and Industry 4.0 with IoT integration.',
+    },
+    skills: ['Java', 'JavaScript', 'HTML5 & CSS3', 'Mobile (Android)', 'SQL', 'Engenharia de Software (UML)', 'Testes & QA', 'IoT & Indústria 4.0'],
+    logo: senaiLogo,
+    website: 'https://sc.senai.br/',
+  },
+  {
+    id: 'senac-sc',
+    institution: 'Senac SC',
+    degree: {
+      pt: 'Qualificação profissional em Desenvolvimento de Sistemas',
+      en: 'Professional Qualification in Systems Development',
+    },
+    period: {
+      pt: '2025',
+      en: '2025',
+    },
+    status: 'completed',
+    statusLabel: {
+      pt: 'Concluído',
+      en: 'Completed',
+    },
+    description: {
+      pt: 'Formação profissional de 440h dividida em: workshop inicial de pensamento computacional, Programador de Sistemas (200h focado em estruturação e lógica de sistemas), Desenvolvimento Web com Inteligência Artificial (240h focado em aplicações web modernas com HTML, CSS, JavaScript integradas com ferramentas de IA e manipulação de bancos de dados), oficinas de carreira e Hackathon Final em equipe com entrega de projeto real.',
+      en: '440-hour intensive professional training divided into: computational thinking workshop, Systems Programming (200h on core system architecture and logic), Web Development with AI (240h building modern web apps with HTML, CSS, JavaScript integrated with AI tools and database management), career development, and a final Hackathon delivering a real-world software project.',
+    },
+    achievement: {
+      badge: {
+        pt: '🥈 2º Lugar Estadual',
+        en: '🥈 2nd Place Statewide',
+      },
+      title: {
+        pt: 'Hackathon Jovem Programador 2025',
+        en: '2025 Young Programmer Hackathon',
+      },
+      team: 'Equipe Luna (Florianópolis)',
+      organization: 'SEPROSC & Senac SC',
+      description: {
+        pt: 'Vice-campeão estadual entre centenas de estudantes e 10 equipes finalistas de Santa Catarina, com desenvolvimento de solução prática e apresentação de pitch ao vivo perante banca técnica avaliadora.',
+        en: 'Statewide runner-up among hundreds of students and 10 finalist teams across Santa Catarina, developing a practical solution with a live pitch presentation before an executive technical jury.',
+      },
+      url: 'https://www.seprosc.com.br/n.php?ID=573&T=hackathon-jovem-programador-2025-premia-equipes',
+    },
+    skills: ['Desenvolvimento Web', 'Inteligência Artificial', 'Python', 'JavaScript', 'HTML5 & CSS3', 'Bancos de Dados', 'Lógica & Algoritmos', 'Hackathon Final'],
+    logo: senacLogo,
+    website: 'https://www.sc.senac.br/',
+  },
+];
 
-function AcademicItem({ item, index, lang, t }) {
-  const [ref, isVisible] = useScrollAnimation(0.12);
-  const isInProgress = item.status === 'in_progress';
-  const degree = getLocalizedField(item.degree, lang);
-  const period = getLocalizedField(item.period, lang);
-  const description = getLocalizedField(item.description, lang);
-  const statusLabel = item.statusLabel
-    ? getLocalizedField(item.statusLabel, lang)
-    : (isInProgress ? t('education.status.in_progress', 'Em andamento') : t('education.status.completed', 'Concluído'));
-
-  return (
-    <div
-      ref={ref}
-      style={{
-        opacity: isVisible ? 1 : 0,
-        transform: isVisible ? 'translateY(0)' : 'translateY(28px)',
-        transition: `opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1) ${index * 0.15}s, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) ${index * 0.15}s`,
-        display: 'flex',
-        gap: '1.5rem',
-        alignItems: 'flex-start',
-        position: 'relative',
-      }}
-    >
-      {/* Timeline Marker */}
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flexShrink: 0, marginTop: '6px' }}>
-        <div
-          style={{
-            width: isInProgress ? '14px' : '12px',
-            height: isInProgress ? '14px' : '12px',
-            borderRadius: '50%',
-            background: isInProgress ? 'var(--accent)' : 'var(--text-muted)',
-            border: isInProgress ? '2px solid var(--accent)' : '2px solid var(--text-muted)',
-            boxShadow: isInProgress ? '0 0 0 4px var(--accent-glow)' : 'none',
-            animation: isInProgress ? 'pulse-education 2s ease-in-out infinite' : 'none',
-          }}
-          aria-hidden="true"
-        />
-      </div>
-
-      {/* Card Content */}
-      <article
-        style={{
-          flex: 1,
-          background: 'var(--bg-secondary)',
-          border: '1px solid var(--border)',
-          borderRadius: '8px',
-          padding: '1.5rem',
-          marginBottom: '2rem',
-          transition: 'border-color 0.25s ease, box-shadow 0.25s ease',
-        }}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.borderColor = 'var(--border-accent)';
-          e.currentTarget.style.boxShadow = '0 0 20px var(--accent-glow)';
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.borderColor = 'var(--border)';
-          e.currentTarget.style.boxShadow = 'none';
-        }}
-      >
-        <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1rem', marginBottom: '1rem' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', minWidth: '240px' }}>
-            {/* Institution Logo */}
-            <div
-              style={{
-                width: '60px',
-                height: '52px',
-                borderRadius: '8px',
-                background: '#ffffff',
-                border: '1px solid rgba(255, 255, 255, 0.2)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                padding: '6px 8px',
-                flexShrink: 0,
-                boxShadow: '0 2px 8px rgba(0, 0, 0, 0.35)',
-              }}
-            >
-              <img
-                src={item.logo}
-                alt={`Logo da instituição ${item.institution}`}
-                style={{ width: '100%', height: '100%', objectFit: 'contain' }}
-                loading="lazy"
-              />
-            </div>
-
-            <div>
-              <h4
-                style={{
-                  fontFamily: 'Syne, sans-serif',
-                  fontWeight: 700,
-                  fontSize: 'var(--text-lg)',
-                  color: 'var(--text-primary)',
-                  margin: 0,
-                  lineHeight: 1.25,
-                }}
-              >
-                {degree}
-              </h4>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginTop: '4px' }}>
-                {item.website ? (
-                  <a
-                    href={item.website}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{
-                      color: 'var(--accent)',
-                      fontSize: 'var(--text-sm)',
-                      fontWeight: 500,
-                      textDecoration: 'none',
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      gap: '4px',
-                    }}
-                    aria-label={`${item.institution} - ${t('education.viewWebsite', 'Instituição')} (abre em nova aba)`}
-                  >
-                    <span>{item.institution}</span>
-                    <ExternalLink size={12} aria-hidden="true" />
-                  </a>
-                ) : (
-                  <span style={{ color: 'var(--accent)', fontSize: 'var(--text-sm)', fontWeight: 500 }}>
-                    {item.institution}
-                  </span>
-                )}
-              </div>
-            </div>
-          </div>
-
-          {/* Badges & Period */}
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '6px' }}>
-            {isInProgress ? (
-              <Badge
-                style={{
-                  fontFamily: 'JetBrains Mono, monospace',
-                  fontSize: '0.7rem',
-                  fontWeight: 700,
-                  letterSpacing: '0.06em',
-                  textTransform: 'uppercase',
-                  background: 'var(--accent)',
-                  color: '#080808',
-                  border: '1px solid var(--accent)',
-                  padding: '0.25rem 0.6rem',
-                  borderRadius: '4px',
-                  boxShadow: '0 2px 5px rgba(0, 0, 0, 0.3)',
-                }}
-                aria-label={`Status: ${statusLabel}`}
-              >
-                {statusLabel}
-              </Badge>
-            ) : (
-              <Badge
-                style={{
-                  fontFamily: 'JetBrains Mono, monospace',
-                  fontSize: '0.7rem',
-                  fontWeight: 600,
-                  letterSpacing: '0.06em',
-                  textTransform: 'uppercase',
-                  background: 'var(--bg-elevated)',
-                  color: 'var(--text-secondary)',
-                  border: '1px solid var(--border)',
-                  padding: '0.25rem 0.6rem',
-                  borderRadius: '4px',
-                }}
-                aria-label={`Status: ${statusLabel}`}
-              >
-                {statusLabel}
-              </Badge>
-            )}
-            <span
-              style={{
-                fontFamily: 'JetBrains Mono, monospace',
-                fontSize: 'var(--text-xs)',
-                color: 'var(--text-secondary)',
-                background: 'var(--bg-elevated)',
-                padding: '2px 8px',
-                borderRadius: '4px',
-              }}
-            >
-              {period}
-            </span>
-          </div>
-        </div>
-
-        {/* Description */}
-        <p
-          style={{
-            fontSize: 'var(--text-sm)',
-            color: 'var(--text-secondary)',
-            lineHeight: 1.6,
-            marginBottom: '1rem',
-          }}
-        >
-          {description}
-        </p>
-
-        {/* Achievement Card (Hackathon) */}
-        {item.achievement && (
-          <div
-            style={{
-              margin: '1.25rem 0',
-              padding: '1.2rem',
-              borderRadius: '8px',
-              background: 'var(--bg-elevated)',
-              border: '1px solid rgba(184, 247, 60, 0.25)',
-              position: 'relative',
-              transition: 'border-color 0.25s ease, box-shadow 0.25s ease',
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.borderColor = 'var(--border-accent)';
-              e.currentTarget.style.boxShadow = '0 0 16px var(--accent-glow)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.borderColor = 'rgba(184, 247, 60, 0.25)';
-              e.currentTarget.style.boxShadow = 'none';
-            }}
-          >
-            <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
-              <div
-                style={{
-                  width: '42px',
-                  height: '42px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  flexShrink: 0,
-                }}
-                aria-hidden="true"
-              >
-                <img
-                  src={trophyIcon}
-                  alt="Troféu do Hackathon"
-                  style={{ width: '100%', height: '100%', objectFit: 'contain' }}
-                  loading="lazy"
-                />
-              </div>
-
-              <div style={{ flex: 1, minWidth: 0 }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap', marginBottom: '0.4rem' }}>
-                  <h5
-                    style={{
-                      fontFamily: 'Syne, sans-serif',
-                      fontWeight: 700,
-                      fontSize: 'var(--text-sm)',
-                      color: 'var(--text-primary)',
-                      margin: 0,
-                    }}
-                  >
-                    {getLocalizedField(item.achievement.title, lang)}
-                  </h5>
-                  <Badge
-                    style={{
-                      fontFamily: 'JetBrains Mono, monospace',
-                      fontSize: '0.7rem',
-                      fontWeight: 700,
-                      letterSpacing: '0.04em',
-                      background: 'rgba(9, 9, 9, 0.12)',
-                      color: 'var(--accent)',
-                      border: '1px solid var(--border-accent)',
-                      padding: '0.15rem 0.55rem',
-                      borderRadius: '4px',
-                    }}
-                  >
-                    {getLocalizedField(item.achievement.badge, lang)}
-                  </Badge>
-                  <Badge
-                    style={{
-                      fontFamily: 'JetBrains Mono, monospace',
-                      fontSize: '0.7rem',
-                      fontWeight: 600,
-                      background: 'var(--bg-secondary)',
-                      color: 'var(--text-secondary)',
-                      border: '1px solid var(--border)',
-                      padding: '0.15rem 0.55rem',
-                      borderRadius: '4px',
-                    }}
-                  >
-                    {item.achievement.team}
-                  </Badge>
-                </div>
-
-                <p
-                  style={{
-                    fontSize: '0.84rem',
-                    color: 'var(--text-secondary)',
-                    lineHeight: 1.55,
-                    margin: '0 0 0.75rem 0',
-                  }}
-                >
-                  {getLocalizedField(item.achievement.description, lang)}
-                </p>
-
-                {item.achievement.url && (
-                  <a
-                    href={item.achievement.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      gap: '5px',
-                      fontFamily: 'JetBrains Mono, monospace',
-                      fontSize: '0.74rem',
-                      fontWeight: 600,
-                      color: 'var(--accent)',
-                      textDecoration: 'none',
-                      transition: 'opacity 0.2s ease, transform 0.2s ease',
-                      width: 'fit-content',
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.opacity = '0.8';
-                      e.currentTarget.style.transform = 'translateX(2px)';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.opacity = '1';
-                      e.currentTarget.style.transform = 'translateX(0)';
-                    }}
-                    aria-label={`${getLocalizedField(item.achievement.title, lang)} - ${t('education.viewAchievementArticle', 'Ver notícia oficial no SEPROSC')} (abre em nova aba)`}
-                  >
-                    <span>{t('education.viewAchievementArticle', 'Ver notícia oficial no SEPROSC')}</span>
-                    <ExternalLink size={12} aria-hidden="true" />
-                  </a>
-                )}
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* Skills learned */}
-        {item.skills && item.skills.length > 0 && (
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem', marginTop: '0.9rem' }}>
-            {item.skills.map((skill) => (
-              <Badge
-                key={skill}
-                variant="outline"
-                style={{
-                  fontFamily: 'JetBrains Mono, monospace',
-                  fontSize: '0.72rem',
-                  fontWeight: 500,
-                  color: 'var(--text-secondary)',
-                  background: 'var(--bg-elevated)',
-                  border: '1px solid var(--border)',
-                  padding: '2px 8px',
-                  borderRadius: '4px',
-                  transition: 'border-color 0.2s ease, color 0.2s ease',
-                  cursor: 'default',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = 'var(--border-accent)';
-                  e.currentTarget.style.color = 'var(--accent)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = 'var(--border)';
-                  e.currentTarget.style.color = 'var(--text-secondary)';
-                }}
-              >
-                {skill}
-              </Badge>
-            ))}
-          </div>
-        )}
-      </article>
-    </div>
-  );
-}
-
-function CertificationCard({ cert, index, lang, t }) {
-  const [ref, isVisible] = useScrollAnimation(0.12);
-  const title = getLocalizedField(cert.title, lang);
-  const date = getLocalizedField(cert.date, lang);
-  const description = getLocalizedField(cert.description, lang);
-
-  return (
-    <article
-      ref={ref}
-      style={{
-        opacity: isVisible ? 1 : 0,
-        transform: isVisible ? 'translateY(0)' : 'translateY(24px)',
-        transition: `opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1) ${index * 0.12}s, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) ${index * 0.12}s`,
-        background: 'var(--bg-secondary)',
-        border: '1px solid var(--border)',
-        borderRadius: '8px',
-        padding: '1.5rem',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        transitionProperty: 'border-color, box-shadow, opacity, transform',
-        transitionDuration: '0.25s, 0.25s, 0.6s, 0.6s',
-      }}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.borderColor = 'var(--border-accent)';
-        e.currentTarget.style.boxShadow = '0 0 20px var(--accent-glow)';
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.borderColor = 'var(--border)';
-        e.currentTarget.style.boxShadow = 'none';
-      }}
-    >
-      <div>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '0.75rem', marginBottom: '1rem' }}>
-          {/* Issuer Logo Container */}
-          <div
-            style={{
-              width: '46px',
-              height: '46px',
-              borderRadius: '8px',
-              background: 'var(--bg-elevated)',
-              border: '1px solid var(--border)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              padding: '6px',
-              flexShrink: 0,
-            }}
-          >
-            <img
-              src={cert.logo}
-              alt={`Logo da certificadora ${cert.issuer}`}
-              style={{ width: '100%', height: '100%', objectFit: 'contain' }}
-              loading="lazy"
-            />
-          </div>
-
-          <span
-            style={{
-              fontFamily: 'JetBrains Mono, monospace',
-              fontSize: 'var(--text-xs)',
-              color: 'var(--text-secondary)',
-              background: 'var(--bg-elevated)',
-              padding: '2px 8px',
-              borderRadius: '4px',
-            }}
-          >
-            {date}
-          </span>
-        </div>
-
-        <h4
-          style={{
-            fontFamily: 'Syne, sans-serif',
-            fontWeight: 700,
-            fontSize: 'var(--text-base)',
-            color: 'var(--text-primary)',
-            margin: '0 0 4px 0',
-            lineHeight: 1.3,
-          }}
-        >
-          {title}
-        </h4>
-
-        <p
-          style={{
-            color: 'var(--accent)',
-            fontSize: 'var(--text-xs)',
-            fontFamily: 'JetBrains Mono, monospace',
-            fontWeight: 600,
-            margin: '0 0 0.75rem 0',
-          }}
-        >
-          {cert.issuer}
-        </p>
-
-        <p
-          style={{
-            fontSize: 'var(--text-xs)',
-            color: 'var(--text-secondary)',
-            lineHeight: 1.5,
-            marginBottom: '1rem',
-          }}
-        >
-          {description}
-        </p>
-
-        {cert.skills && cert.skills.length > 0 && (
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.35rem', marginBottom: '1rem' }}>
-            {cert.skills.map((skill) => (
-              <Badge
-                key={skill}
-                variant="outline"
-                style={{
-                  fontFamily: 'JetBrains Mono, monospace',
-                  fontSize: '0.7rem',
-                  fontWeight: 500,
-                  color: 'var(--text-secondary)',
-                  background: 'var(--bg-elevated)',
-                  border: '1px solid var(--border)',
-                  padding: '1px 6px',
-                  borderRadius: '3px',
-                  transition: 'border-color 0.2s ease, color 0.2s ease',
-                  cursor: 'default',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = 'var(--border-accent)';
-                  e.currentTarget.style.color = 'var(--accent)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = 'var(--border)';
-                  e.currentTarget.style.color = 'var(--text-secondary)';
-                }}
-              >
-                {skill}
-              </Badge>
-            ))}
-          </div>
-        )}
-      </div>
-
-      {cert.link && (
-        <a
-          href={cert.link}
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '0.4rem',
-            fontFamily: 'JetBrains Mono, monospace',
-            fontSize: 'var(--text-xs)',
-            color: 'var(--accent)',
-            textDecoration: 'none',
-            paddingTop: '0.5rem',
-            borderTop: '1px solid var(--border)',
-            transition: 'color 0.2s ease',
-            width: 'fit-content',
-          }}
-          aria-label={`${title} - ${t('education.viewCredential', 'Ver credencial')} (abre em nova aba)`}
-        >
-          <span>{t('education.viewCredential', 'Ver credencial')}</span>
-          <ExternalLink size={13} aria-hidden="true" />
-        </a>
-      )}
-    </article>
-  );
-}
-
-export default function Education() {
-  const { t, i18n } = useTranslation();
-  const currentLang = i18n.language && i18n.language.startsWith('pt') ? 'pt' : 'en';
-
-  return (
-    <section id="education" style={{ padding: '6rem 0', background: 'var(--bg-primary)' }}>
-      <div style={{ maxWidth: 'var(--max-width)', margin: '0 auto', padding: '0 var(--padding-x)' }}>
-        <SectionHeader
-          label={t('education.sectionNumber', '05')}
-          title={t('education.sectionTitle', 'Formação & Certificações')}
-        />
-
-        {t('education.sectionSubtitle') && (
-          <p
-            style={{
-              color: 'var(--text-secondary)',
-              fontSize: 'var(--text-base)',
-              maxWidth: '680px',
-              marginTop: '-2rem',
-              marginBottom: '3.5rem',
-              lineHeight: 1.6,
-            }}
-          >
-            {t('education.sectionSubtitle')}
-          </p>
-        )}
-
-        {/* --- Sub-seção 1: Formação Acadêmica --- */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '2.5rem', flexWrap: 'wrap' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <GraduationCap size={22} style={{ color: 'var(--accent)' }} aria-hidden="true" />
-            <h3
-              style={{
-                fontFamily: 'Syne, sans-serif',
-                fontWeight: 700,
-                fontSize: 'clamp(1.2rem, 3vw, var(--text-xl))',
-                color: 'var(--text-primary)',
-                margin: 0,
-              }}
-            >
-              {t('education.academicTitle', 'Formação Acadêmica')}
-            </h3>
-          </div>
-          <Badge
-            style={{
-              fontFamily: 'JetBrains Mono, monospace',
-              fontSize: '0.7rem',
-              fontWeight: 600,
-              letterSpacing: '0.06em',
-              textTransform: 'uppercase',
-              background: 'rgba(0, 0, 0, 0.92)',
-              color: 'var(--accent)',
-              border: '1px solid var(--border-accent)',
-              padding: '0.2rem 0.5rem',
-              borderRadius: '4px',
-            }}
-          >
-            {t('education.academicBadge', 'Graduação & Técnico')}
-          </Badge>
-        </div>
-
-        {/* Timeline Container */}
-        <div style={{ position: 'relative', marginBottom: '4.5rem' }}>
-          {/* Linha vertical conectora */}
-          <div
-            style={{
-              position: 'absolute',
-              left: '6px',
-              top: '6px',
-              bottom: '24px',
-              width: '1px',
-              background: 'linear-gradient(to bottom, var(--accent), var(--border) 70%, transparent)',
-            }}
-            aria-hidden="true"
-          />
-
-          <div>
-            {academicEducation.map((item, i) => (
-              <AcademicItem key={item.id} item={item} index={i} lang={currentLang} t={t} />
-            ))}
-          </div>
-        </div>
-
-        {/* --- Sub-seção 2: Certificações Complementares --- */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '2rem', flexWrap: 'wrap' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <Award size={22} style={{ color: 'var(--accent)' }} aria-hidden="true" />
-            <h3
-              style={{
-                fontFamily: 'Syne, sans-serif',
-                fontWeight: 700,
-                fontSize: 'clamp(1.2rem, 3vw, var(--text-xl))',
-                color: 'var(--text-primary)',
-                margin: 0,
-              }}
-            >
-              {t('education.certificationsTitle', 'Certificações')}
-            </h3>
-          </div>
-          <Badge
-            style={{
-              fontFamily: 'JetBrains Mono, monospace',
-              fontSize: '0.7rem',
-              fontWeight: 600,
-              letterSpacing: '0.06em',
-              textTransform: 'uppercase',
-              background: 'rgba(6, 6, 6, 0.1)',
-              color: 'var(--accent)',
-              border: '1px solid var(--border-accent)',
-              padding: '0.2rem 0.5rem',
-              borderRadius: '4px',
-            }}
-          >
-            {t('education.certificationsBadge', 'Credenciais Técnicas')}
-          </Badge>
-        </div>
-
-        {/* Grid de Certificações */}
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-            gap: '1.5rem',
-          }}
-        >
-          {certifications.map((cert, i) => (
-            <CertificationCard key={cert.id} cert={cert} index={i} lang={currentLang} t={t} />
-          ))}
-        </div>
-      </div>
-
-      <style>{`
-        @keyframes pulse-education {
-          0%, 100% { box-shadow: 0 0 0 4px var(--accent-glow); }
-          50% { box-shadow: 0 0 0 8px transparent; }
-        }
-      `}</style>
-    </section>
-  );
-}
+export const certifications = [
+  {
+    id: 'cisco-learnathon',
+    title: {
+      pt: 'Networking Academy Learn-A-Thon 2025',
+      en: 'Networking Academy Learn-A-Thon 2025',
+    },
+    issuer: 'Cisco',
+    date: {
+      pt: 'jan/2026',
+      en: 'Jan 2026',
+    },
+    description: {
+      pt: 'Imersão técnica internacional em topologia e fundamentos de redes de computadores, protocolos TCP/IP, roteamento, sub-redes e práticas de segurança de infraestrutura.',
+      en: 'International technical immersion covering computer networking foundations, TCP/IP protocol suite, IP subnetting, routing, and infrastructure cybersecurity best practices.',
+    },
+    skills: ['Redes de Computadores', 'TCP/IP', 'Segurança', 'Infraestrutura'],
+    logo: ciscoLogo,
+    link: 'https://www.netacad.com/',
+  },
+  {
+    id: 'dio-ia',
+    title: {
+      pt: 'Introdução à Inteligência Artificial',
+      en: 'Introduction to Artificial Intelligence',
+    },
+    issuer: 'DIO (Digital Innovation One)',
+    date: {
+      pt: 'jan/2026',
+      en: 'Jan 2026',
+    },
+    description: {
+      pt: 'Capacitação prática em fundamentos de inteligência artificial generativa, processamento de linguagem natural (NLP), engenharia de prompts e integração com APIs de LLMs.',
+      en: 'Practical certification in generative AI principles, natural language processing (NLP), advanced prompt engineering, and LLM API integrations.',
+    },
+    skills: ['Inteligência Artificial', 'Prompt Engineering', 'LLMs', 'GenAI'],
+    logo: dioLogo,
+    link: 'https://www.dio.me/',
+  },
+];
