@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import SectionHeader from '../ui/SectionHeader';
 import ProjectCard from '../ui/ProjectCard';
 import { projects, categories } from '../../data/projects';
 
 export default function Projects() {
+  const { t } = useTranslation();
   const [activeFilter, setActiveFilter] = useState('all');
 
   const filtered = activeFilter === 'all'
@@ -17,7 +19,10 @@ export default function Projects() {
       style={{ padding: 'var(--section-padding)', background: 'var(--bg-primary)' }}
     >
       <div style={{ maxWidth: 'var(--max-width)', margin: '0 auto', padding: '0 var(--padding-x)' }}>
-        <SectionHeader number="02" title="Projetos" />
+        <SectionHeader
+          number={t('projectsSection.sectionNumber', '02')}
+          title={t('projectsSection.sectionTitle', 'Projetos')}
+        />
 
         {/* Filter buttons */}
         <div
@@ -30,6 +35,8 @@ export default function Projects() {
         >
           {categories.map(({ id, label }) => {
             const isActive = activeFilter === id;
+            const categoryLabel = t(`projectsSection.categories.${id}`, label);
+
             return (
               <button
                 key={id}
@@ -60,7 +67,7 @@ export default function Projects() {
                   }
                 }}
               >
-                {label}
+                {categoryLabel}
               </button>
             );
           })}
@@ -132,7 +139,7 @@ export default function Projects() {
               e.currentTarget.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.3)';
             }}
           >
-            <span>Ver todos os projetos</span>
+            <span>{t('projectsSection.viewAllCta', 'Ver todos os projetos')}</span>
             <span style={{ color: 'var(--accent)', transition: 'transform 0.2s ease' }}>→</span>
           </a>
         </div>

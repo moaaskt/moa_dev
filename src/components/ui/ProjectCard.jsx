@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import { ExternalLink } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import TechIcon from './TechIcon';
+import { Button } from './button';
+import { Badge } from './badge';
 
 const extraPillStyle = {
   fontFamily: 'JetBrains Mono, monospace',
@@ -86,6 +89,7 @@ function LinkButton({ href, label, icon, ariaLabel }) {
 }
 
 export default function ProjectCard({ project }) {
+  const { t, i18n } = useTranslation();
   const [hovered, setHovered] = useState(false);
 
   return (
@@ -120,7 +124,7 @@ export default function ProjectCard({ project }) {
           <>
             <img
               src={project.image}
-              alt={`Captura de tela do projeto ${project.title}`}
+              alt={t('common.screenshotAlt', { title: project.title, defaultValue: `Captura de tela do projeto ${project.title}` })}
               loading="lazy"
               decoding="async"
               style={{
@@ -207,7 +211,9 @@ export default function ProjectCard({ project }) {
             margin: 0,
           }}
         >
-          {project.description}
+          {typeof project.description === 'object' && project.description !== null
+            ? (project.description[i18n.resolvedLanguage?.startsWith('en') ? 'en' : 'pt'] || project.description.pt || project.description.en)
+            : project.description}
         </p>
 
         {/* Footer */}
@@ -222,12 +228,12 @@ export default function ProjectCard({ project }) {
           }}
         >
           <TagIcons tags={project.tags} />
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '0.75rem', minHeight: '28px', width: '100%', flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '0.75rem', minHeight: '36px', width: '100%', flexWrap: 'wrap' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
               {project.links.github && (
                 <LinkButton
                   href={project.links.github}
-                  label="GitHub"
+                  label={t('common.viewCode', 'GitHub')}
                   ariaLabel={`Acessar código-fonte do projeto ${project.title} no GitHub`}
                   icon={<GithubIcon size={15} />}
                 />
@@ -235,58 +241,61 @@ export default function ProjectCard({ project }) {
               {project.links.live && (
                 <LinkButton
                   href={project.links.live}
-                  label="Live"
+                  label={t('common.viewLive', 'Live')}
                   ariaLabel={`Acessar demonstração online do projeto ${project.title}`}
                   icon={<ExternalLink size={14} aria-hidden="true" />}
                 />
               )}
               {project.private && (
-                <span
+                <Badge
                   style={{
                     fontFamily: 'JetBrains Mono, monospace',
                     fontSize: '0.7rem',
-                    color: 'var(--accent)',
-                    border: '1px solid var(--border-accent)',
-                    background: 'rgba(184, 247, 60, 0.05)',
-                    padding: '0.2rem 0.5rem',
-                    borderRadius: '3px',
+                    fontWeight: 700,
                     letterSpacing: '0.06em',
                     textTransform: 'uppercase',
+                    background: 'var(--accent)',
+                    color: '#080808',
+                    border: '1px solid var(--accent)',
+                    padding: '0.25rem 0.55rem',
+                    borderRadius: '4px',
+                    boxShadow: '0 2px 5px rgba(0, 0, 0, 0.3)',
                   }}
-                  aria-label="Caso de uso privado: código não disponível publicamente"
+                  aria-label={t('common.privateCaseAria', 'Caso de uso privado: código não disponível publicamente')}
                 >
-                  Case Privado
-                </span>
+                  {t('common.privateCase', 'Case Privado')}
+                </Badge>
               )}
             </div>
 
-            <a
-              href={`#/projeto/${project.id}`}
+            <Button
+              asChild
+              className="hvr-sweep-to-right"
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: '0.35rem',
-                fontFamily: 'JetBrains Mono, monospace',
-                fontSize: '0.75rem',
+                justifyContent: 'center',
+                gap: '0.45rem',
+                height: '38px',
+                padding: '0 1.1rem',
+                borderRadius: '8px',
+                fontSize: '0.875rem',
+                fontWeight: 600,
+                fontFamily: 'DM Sans, sans-serif',
                 color: 'var(--accent)',
-                textDecoration: 'none',
-                padding: '0.3rem 0.65rem',
-                borderRadius: '4px',
                 border: '1px solid var(--border-accent)',
-                background: 'rgba(184, 247, 60, 0.05)',
-                transition: 'all 0.2s ease',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.background = 'var(--accent)';
-                e.currentTarget.style.color = '#080808';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = 'rgba(184, 247, 60, 0.05)';
-                e.currentTarget.style.color = 'var(--accent)';
+                background: '#141414',
+                whiteSpace: 'nowrap',
+                textDecoration: 'none',
+                boxShadow: '0 1px 2px rgba(0, 0, 0, 0.4)',
+                cursor: 'pointer',
               }}
             >
-              Ver detalhes →
-            </a>
+              <a href={`#/projeto/${project.id}`}>
+                <span>{t('common.viewDetails', 'Ver detalhes')}</span>
+                <span aria-hidden="true" style={{ fontSize: '0.95rem', fontWeight: 700 }}>→</span>
+              </a>
+            </Button>
           </div>
         </div>
       </div>

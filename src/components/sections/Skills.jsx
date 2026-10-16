@@ -6,12 +6,13 @@ import {
   SiDocker, SiPostman, SiGit, SiGithub, SiLinux, SiWordpress,
   SiCplusplus, SiEspressif, SiArduino,
 } from 'react-icons/si';
-import { TbWifi, TbSettings, TbRouter, TbAccessPoint, TbCpu } from 'react-icons/tb';
+import { TbWifi, TbSettings, TbCpu } from 'react-icons/tb';
+import { useTranslation } from 'react-i18next';
 import SectionHeader from '../ui/SectionHeader';
 
 const CATEGORIES = [
   {
-    title: 'Frontend',
+    key: 'frontend',
     skills: [
       { label: 'React',      Icon: SiReact,       color: '#61DAFB' },
       { label: 'Next.js',    Icon: SiNextdotjs,    color: '#f0f0f0' },
@@ -23,7 +24,7 @@ const CATEGORIES = [
     ],
   },
   {
-    title: 'Backend',
+    key: 'backend',
     skills: [
       { label: 'Node.js',     Icon: SiNodedotjs,   color: '#339933' },
       { label: 'PHP',         Icon: SiPhp,         color: '#777BB4' },
@@ -37,7 +38,7 @@ const CATEGORIES = [
     ],
   },
   {
-    title: 'Banco de Dados',
+    key: 'database',
     skills: [
       { label: 'PostgreSQL', Icon: SiPostgresql, color: '#4169E1' },
       { label: 'MySQL',      Icon: SiMysql,      color: '#4479A1' },
@@ -46,7 +47,7 @@ const CATEGORIES = [
     ],
   },
   {
-    title: 'Ferramentas',
+    key: 'tools',
     skills: [
       { label: 'Docker',    Icon: SiDocker,    color: '#2496ED' },
       { label: 'Postman',   Icon: SiPostman,   color: '#FF6C37' },
@@ -57,7 +58,7 @@ const CATEGORIES = [
     ],
   },
   {
-    title: 'IoT & Automação',
+    key: 'iot',
     skills: [
       { label: 'ESP32',      Icon: SiEspressif,  color: '#E7352B' },
       { label: 'Arduino',    Icon: SiArduino,    color: '#00979D' },
@@ -65,8 +66,6 @@ const CATEGORIES = [
       { label: 'IoT',        Icon: TbWifi,       color: '#06B6D4' },
       { label: 'Automação',  Icon: TbSettings,   color: '#06B6D4' },
       { label: 'Sensores',   Icon: TbCpu,        color: '#06B6D4' },
-      // { label: 'Relés',      Icon: TbRouter,     color: '#06B6D4' },
-      // { label: 'RFID',       Icon: TbAccessPoint,color: '#06B6D4' },
       { label: 'Eletrônica', Icon: TbCpu,        color: '#b8f73c' },
     ],
   },
@@ -74,6 +73,7 @@ const CATEGORIES = [
 
 function SkillIcon({ label, Icon, color }) {
   const [hovered, setHovered] = useState(false);
+
   return (
     <div
       onMouseEnter={() => setHovered(true)}
@@ -84,17 +84,30 @@ function SkillIcon({ label, Icon, color }) {
         alignItems: 'center',
         gap: '0.4rem',
         cursor: 'default',
-        transform: hovered ? 'scale(1.2)' : 'scale(1)',
-        transition: 'transform 0.2s ease',
+        padding: '0.5rem',
+        borderRadius: '6px',
+        transition: 'transform 0.2s ease, background 0.2s ease',
+        transform: hovered ? 'translateY(-3px)' : 'translateY(0)',
+        background: hovered ? 'rgba(255,255,255,0.03)' : 'transparent',
       }}
     >
-      <Icon size={28} color={color} />
+      <div style={{
+        fontSize: '1.75rem',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        transform: hovered ? 'scale(1.15)' : 'scale(1)',
+        filter: hovered ? `drop-shadow(0 0 6px ${color})` : 'none',
+        transition: 'transform 0.2s ease, filter 0.2s ease',
+      }}>
+        <Icon size={28} color={color} />
+      </div>
       <span style={{
         fontFamily: 'JetBrains Mono, monospace',
-        fontSize: '0.65rem',
-        color: hovered ? '#b8f73c' : '#555',
+        fontSize: '0.7rem',
+        color: hovered ? '#b8f73c' : 'var(--text-muted)',
         transition: 'color 0.2s ease',
-        whiteSpace: 'nowrap',
+        textAlign: 'center',
       }}>
         {label}
       </span>
@@ -105,18 +118,19 @@ function SkillIcon({ label, Icon, color }) {
 function CategoryGroup({ title, skills }) {
   return (
     <div style={{
-      background: 'var(--bg-elevated)',
+      background: 'var(--bg-primary)',
       border: '1px solid var(--border)',
       borderRadius: '8px',
       padding: '1.5rem',
+      height: '100%',
     }}>
       <p style={{
-        fontFamily: 'JetBrains Mono, monospace',
-        fontSize: '0.7rem',
-        color: '#444',
-        textTransform: 'uppercase',
-        letterSpacing: '0.15em',
-        margin: '0 0 0.75rem 0',
+        fontFamily: 'Syne, sans-serif',
+        fontWeight: 700,
+        fontSize: 'var(--text-base)',
+        color: 'var(--text-primary)',
+        letterSpacing: '-0.02em',
+        marginBottom: '0.25rem',
       }}>
         {title}
       </p>
@@ -138,13 +152,18 @@ function CategoryGroup({ title, skills }) {
 }
 
 export default function Skills() {
+  const { t } = useTranslation();
+
   return (
     <section
       id="skills"
       style={{ padding: 'var(--section-padding)', background: 'var(--bg-secondary)' }}
     >
       <div style={{ maxWidth: 'var(--max-width)', margin: '0 auto', padding: '0 var(--padding-x)' }}>
-        <SectionHeader number="03" title="Conhecimentos" />
+        <SectionHeader
+          number={t('skills.sectionNumber', '03')}
+          title={t('skills.sectionTitle', 'Skills')}
+        />
 
         <div style={{
           display: 'grid',
@@ -154,18 +173,21 @@ export default function Skills() {
         }}
           className="skills-grid"
         >
-          {CATEGORIES.map((cat, i) => (
-            <div
-              key={cat.title}
-              style={
-                CATEGORIES.length % 2 !== 0 && i === CATEGORIES.length - 1
-                  ? { gridColumn: '1 / -1' }
-                  : {}
-              }
-            >
-              <CategoryGroup {...cat} />
-            </div>
-          ))}
+          {CATEGORIES.map((cat, i) => {
+            const title = t(`skills.categories.${cat.key}`);
+            return (
+              <div
+                key={cat.key}
+                style={
+                  CATEGORIES.length % 2 !== 0 && i === CATEGORIES.length - 1
+                    ? { gridColumn: '1 / -1' }
+                    : {}
+                }
+              >
+                <CategoryGroup title={title} skills={cat.skills} />
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>

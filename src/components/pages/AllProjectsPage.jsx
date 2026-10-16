@@ -1,20 +1,26 @@
 import { useState, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, Search, X } from 'lucide-react';
+import { useTranslation, Trans } from 'react-i18next';
 import ProjectCard from '../ui/ProjectCard';
 import { projects, categories } from '../../data/projects';
 
 export default function AllProjectsPage() {
+  const { t, i18n } = useTranslation();
   const [activeCategory, setActiveCategory] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
 
+  const currentLang = (i18n.resolvedLanguage || i18n.language || 'pt').startsWith('en')
+    ? 'en'
+    : 'pt';
+
   useEffect(() => {
-    document.title = 'Todos os Projetos | Moacir Neto (moa_dev)';
+    document.title = t('allProjects.metaTitle', 'Todos os Projetos | Moacir Neto (moa_dev)');
     window.scrollTo({ top: 0, behavior: 'smooth' });
     return () => {
       document.title = 'Moacir Neto | Engenheiro de Software & Desenvolvedor Full Stack';
     };
-  }, []);
+  }, [t, currentLang]);
 
   const filteredProjects = useMemo(() => {
     return projects.filter((project) => {
@@ -24,15 +30,25 @@ export default function AllProjectsPage() {
       const normalizedQuery = searchQuery.trim().toLowerCase();
       if (!normalizedQuery) return matchesCategory;
 
+      const description =
+        typeof project.description === 'object'
+          ? project.description[currentLang] || project.description.pt
+          : project.description;
+
+      const role =
+        typeof project.role === 'object'
+          ? project.role[currentLang] || project.role.pt
+          : project.role;
+
       const matchesSearch =
         project.title.toLowerCase().includes(normalizedQuery) ||
-        project.description.toLowerCase().includes(normalizedQuery) ||
+        (description && description.toLowerCase().includes(normalizedQuery)) ||
         (project.tags && project.tags.some((tag) => tag.toLowerCase().includes(normalizedQuery))) ||
-        (project.role && project.role.toLowerCase().includes(normalizedQuery));
+        (role && role.toLowerCase().includes(normalizedQuery));
 
       return matchesCategory && matchesSearch;
     });
-  }, [activeCategory, searchQuery]);
+  }, [activeCategory, searchQuery, currentLang]);
 
   const handleClearFilters = () => {
     setActiveCategory('all');
@@ -89,7 +105,7 @@ export default function AllProjectsPage() {
             }}
           >
             <ArrowLeft size={16} />
-            Voltar para o início
+            {t('allProjects.backToHome', 'Voltar para o início')}
           </a>
         </motion.div>
 
@@ -117,7 +133,7 @@ export default function AllProjectsPage() {
                 flexShrink: 0,
               }}
             />
-            Catálogo Completo
+            {t('allProjects.badge', 'Catálogo Completo')}
           </div>
           <h1
             style={{
@@ -130,7 +146,7 @@ export default function AllProjectsPage() {
               marginBottom: '1rem',
             }}
           >
-            Todos os Projetos
+            {t('allProjects.title', 'Todos os Projetos')}
           </h1>
           <p
             style={{
@@ -141,8 +157,7 @@ export default function AllProjectsPage() {
               lineHeight: 1.6,
             }}
           >
-            Explore o repositório completo de soluções desenvolvidas, desde arquiteturas backend e
-            APIs transacionais até aplicações interativas com Inteligência Artificial e interfaces web modernas.
+            {t('allProjects.subtitle')}
           </p>
         </div>
 
@@ -176,8 +191,8 @@ export default function AllProjectsPage() {
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Buscar por nome, tag (ex: React, Go, Docker) ou tecnologia..."
-              aria-label="Buscar projetos por nome ou tecnologia"
+              placeholder={t('allProjects.searchPlaceholder', 'Buscar por nome, tag ou tecnologia...')}
+              aria-label={t('allProjects.searchAria', 'Buscar projetos por nome ou tecnologia')}
               style={{
                 width: '100%',
                 background: 'var(--bg-primary)',
@@ -200,7 +215,7 @@ export default function AllProjectsPage() {
             {searchQuery && (
               <button
                 onClick={() => setSearchQuery('')}
-                aria-label="Limpar busca"
+                aria-label={t('allProjects.clearSearchAria', 'Limpar busca')}
                 style={{
                   position: 'absolute',
                   right: '0.75rem',
@@ -240,6 +255,8 @@ export default function AllProjectsPage() {
             >
               {categories.map(({ id, label }) => {
                 const isActive = activeCategory === id;
+                const catLabel = t(`allProjects.categories.${id}`, label);
+
                 return (
                   <button
                     key={id}
@@ -271,7 +288,7 @@ export default function AllProjectsPage() {
                       }
                     }}
                   >
-                    {label}
+                    {catLabel}
                   </button>
                 );
               })}
@@ -284,7 +301,11 @@ export default function AllProjectsPage() {
                 color: 'var(--text-secondary)',
               }}
             >
-              Exibindo <strong style={{ color: 'var(--accent)' }}>{filteredProjects.length}</strong> de {projects.length} projetos
+              <Trans
+                i18nKey="allProjects.showingCount"
+                values={{ count: filteredProjects.length, total: projects.length }}
+                components={{ 1: <strong style={{ color: 'var(--accent)' }} /> }}
+              />
             </span>
           </div>
         </div>
@@ -308,7 +329,7 @@ export default function AllProjectsPage() {
                 marginBottom: '0.5rem',
               }}
             >
-              Nenhum projeto encontrado
+              {t('allProjects.emptyTitle', 'Nenhum projeto encontrado')}
             </h3>
             <p
               style={{
@@ -318,7 +339,7 @@ export default function AllProjectsPage() {
                 marginBottom: '1.5rem',
               }}
             >
-              Não localizamos resultados para "{searchQuery}" com o filtro selecionado.
+              {t('allProjects.emptyDesc', { query: searchQuery, defaultValue: `Não localizamos resultados para "${searchQuery}".` })}
             </p>
             <button
               onClick={handleClearFilters}
@@ -342,7 +363,7 @@ export default function AllProjectsPage() {
                 e.currentTarget.style.color = 'var(--accent)';
               }}
             >
-              Limpar filtros de busca
+              {t('allProjects.clearFilters', 'Limpar filtros de busca')}
             </button>
           </div>
         ) : (
