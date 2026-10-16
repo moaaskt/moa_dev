@@ -1,4 +1,5 @@
 // 1. React, Core Hooks, and Native Packages
+import { useTranslation } from 'react-i18next';
 
 // 2. Third-Party Libraries (Framer Motion, Lucide Icons, etc.)
 
@@ -12,6 +13,8 @@
  * Componente de rodapé simplificado que exibe apenas a assinatura de direitos autorais.
  */
 export default function Footer() {
+  const { t } = useTranslation();
+
   return (
     <footer
       style={{
@@ -32,7 +35,7 @@ export default function Footer() {
           textAlign: 'center',
         }}
       >
-        Desenvolvido por{' '}
+        {t('footer.developedBy', 'Desenvolvido por')}{' '}
         <span style={{ color: 'var(--text-secondary)' }}>Moacir Neto</span>
         {' '}•{' '}{new Date().getFullYear()}
       </p>

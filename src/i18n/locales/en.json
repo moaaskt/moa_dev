@@ -1,0 +1,203 @@
+{
+  "nav": {
+    "about": "About",
+    "projects": "Projects",
+    "skills": "Skills",
+    "experience": "Experience",
+    "education": "Education",
+    "github": "GitHub",
+    "contact": "Contact",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  },
+  "language": {
+    "pt": "PT",
+    "en": "EN",
+    "portuguese": "Portuguese",
+    "english": "English",
+    "ariaLabel": "Select language"
+  },
+  "common": {
+    "back": "Back",
+    "viewDetails": "View details",
+    "viewAllProjects": "View all projects",
+    "all": "All",
+    "loading": "Loading...",
+    "privateCase": "Private Case",
+    "privateCaseAria": "Private case study: source code is not publicly available",
+    "viewCode": "GitHub",
+    "viewLive": "Live",
+    "screenshotAlt": "Screenshot of project {{title}}"
+  },
+  "hero": {
+    "greeting": "Hello, I am",
+    "name": "Moacir Neto",
+    "role": "Full Stack Developer",
+    "subtitles": [
+      "building systems in production.",
+      "with Go, PHP, and React.",
+      "from backend to deployment."
+    ],
+    "description": "Real-world systems — from B2B CRMs with AI and scraping in Go to integrations and automations with PHP and React.",
+    "ctaProjects": "View Projects",
+    "ctaGithub": "GitHub",
+    "ariaGithub": "View Moacir Neto's profile on GitHub",
+    "scroll": "scroll"
+  },
+  "about": {
+    "sectionNumber": "01",
+    "sectionTitle": "About me",
+    "bioP1": "Full Stack Developer with a backend focus — I build systems ranging from AI-powered web scraping to full-scale production platforms.",
+    "bioP2": "At Evento Santo & Doar Digital, I developed a complete LMS: course modules, customizable certificate generation, student area with analytics, and tutor panel with student records and attendance tracking. Additionally, I built modules for events, checkout, waitlists, group bookings, and API integrations with Asaas and WhatsApp API.",
+    "bioP3": "In my personal projects, I pushed further: a B2B CRM in Go with an AI pipeline using Google Gemini, asynchronous workers with Redis, and a custom WhatsApp gateway — from scratch to Docker Compose with 7 microservices.",
+    "bioP4": "Stack: Go, PHP, React, TypeScript, Node.js, Python. Hands-on IoT experience — ESP32, sensors, and hardware deployment in the field.",
+    "favoriteStack": "// favorite stack",
+    "portraitAlt": "Profile photo of Moacir Neto"
+  },
+  "projectsSection": {
+    "sectionNumber": "02",
+    "sectionTitle": "Projects",
+    "categories": {
+      "all": "All",
+      "fullstack": "Full Stack",
+      "backend": "Backend",
+      "frontend": "Frontend",
+      "ai-automation": "AI / Automation",
+      "ai": "AI & Python"
+    },
+    "viewAllCta": "View all projects"
+  },
+  "skills": {
+    "sectionNumber": "03",
+    "sectionTitle": "Skills",
+    "categories": {
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "database": "Databases",
+      "tools": "Tools & DevOps",
+      "iot": "IoT & Automation"
+    }
+  },
+  "experience": {
+    "sectionNumber": "04",
+    "sectionTitle": "Experience",
+    "current": "Present",
+    "inProgress": "In progress",
+    "months": {
+      "1": "Jan", "2": "Feb", "3": "Mar", "4": "Apr",
+      "5": "May", "6": "Jun", "7": "Jul", "8": "Aug",
+      "9": "Sep", "10": "Oct", "11": "Nov", "12": "Dec"
+    }
+  },
+  "education": {
+    "sectionNumber": "05",
+    "sectionTitle": "Education & Certifications",
+    "sectionSubtitle": "Formal academic degree in data science and software engineering, paired with continuous technical certifications.",
+    "academicTitle": "Academic Education",
+    "academicBadge": "Degree & Technical",
+    "certificationsTitle": "Certifications",
+    "certificationsBadge": "Technical Credentials",
+    "status": {
+      "in_progress": "In Progress",
+      "completed": "Completed"
+    },
+    "viewWebsite": "Institution",
+    "viewCredential": "View credential",
+    "skillsLearned": "Skills",
+    "competencies": "Core competencies"
+  },
+  "githubProjects": {
+    "sectionNumber": "06",
+    "sectionTitle": "GitHub Activity",
+    "loading": "Loading recent repositories...",
+    "errorNotice": "Unable to load repositories directly from GitHub at this time.",
+    "viewProfile": "View profile on GitHub",
+    "noDescription": "No description provided",
+    "commitsTitle": "Total recorded commits",
+    "commitsCount": "{{count}} commits",
+    "viewOnGithub": "View on GitHub",
+    "ariaViewRepo": "View repository {{name}} on GitHub"
+  },
+  "contact": {
+    "sectionLabel": "Contact",
+    "sectionTitle": "Contact",
+    "heading": "Let's work together?",
+    "description": "Open to opportunities as a Junior Full Stack Developer and engineering roles where I can contribute with robust web solutions, automations, and system scaling.",
+    "ariaContact": "Contact via {{label}}: {{value}}"
+  },
+  "footer": {
+    "developedBy": "Developed by"
+  },
+  "allProjects": {
+    "metaTitle": "All Projects | Moacir Neto (moa_dev)",
+    "backToHome": "Back to home",
+    "badge": "Full Portfolio",
+    "title": "All Projects",
+    "subtitle": "Explore the complete portfolio of software engineering solutions, from scalable backend systems and transactional APIs to AI-driven applications and modern web interfaces.",
+    "searchPlaceholder": "Search by name, tag (e.g. React, Go, Docker), or technology...",
+    "searchAria": "Search projects by name or technology",
+    "clearSearchAria": "Clear search",
+    "categories": {
+      "all": "All",
+      "fullstack": "Full Stack",
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "ai": "AI & Python"
+    },
+    "showingCount": "Showing <1>{{count}}</1> of {{total}} projects",
+    "emptyTitle": "No projects found",
+    "emptyDesc": "No results found matching \"{{query}}\" with the selected filter.",
+    "clearFilters": "Clear search filters"
+  },
+  "projectDetail": {
+    "metaTitle": "{{title}} — Case Study | Moacir Neto (moa_dev)",
+    "notFoundMetaTitle": "Project not found | Moacir Neto",
+    "notFoundHeading": "404 - Project not found",
+    "notFoundDesc": "The project identifier \"{{id}}\" does not match any items in our current catalog.",
+    "backToAll": "Back to all projects",
+    "breadcrumbs": {
+      "home": "Home",
+      "projects": "Projects"
+    },
+    "corporateCase": "Private / Enterprise Case",
+    "publicCode": "Public Code",
+    "imageAlt": "Interface overview of {{title}}",
+    "liveProject": "Live Project Demo",
+    "githubRepo": "GitHub Repository",
+    "overviewTitle": "Overview & Challenge",
+    "highlightsTitle": "Key Technical Highlights",
+    "featuresTitle": "Modules & Features",
+    "technicalDecisionsTitle": "Architecture & Technical Decisions",
+    "rolePerformed": "My Role",
+    "defaultRole": "Full Stack Developer",
+    "stackAndTools": "Stack & Tools",
+    "prevProject": "Previous Project",
+    "nextProject": "Next Project",
+    "viewAllProjects": "View all projects"
+  },
+  "gallery": {
+    "badge": "Production System Screenshots",
+    "title": "Production UI & System Gallery",
+    "subtitle": "Explore real user flows and screenshots from {{title}}. Click any thumbnail to inspect high-resolution interfaces and technical metrics in fullscreen mode.",
+    "allTab": "All",
+    "lightboxCounter": "{{current}} / {{total}}",
+    "closeAria": "Close fullscreen viewer (ESC)",
+    "prevAria": "Previous image (Left arrow)",
+    "nextAria": "Next image (Right arrow)",
+    "openDetails": "View details"
+  },
+  "architecture": {
+    "badge": "Systems Engineering & Microservices",
+    "title": "Production Architecture & Pipelines",
+    "subtitle": "Technical architecture and distributed topology of {{title}}. Explore the containerized Docker services, asynchronous message queues, and AI-driven pipeline.",
+    "tabs": {
+      "services": "7 Docker Services",
+      "campaign": "Async Pipeline (Asynq + SSE)",
+      "ai": "AI Pipeline (Google Gemini)"
+    },
+    "campaignTitle": "Batch Dispatch Flow & Real-Time Telemetry",
+    "campaignDesc": "Asynchronous event-driven architecture designed to decouple the frontend from high-latency network operations and Meta API connections, ensuring instantaneous client responses and real-time streaming via Server-Sent Events (SSE).",
+    "aiTitle": "Data Enrichment & Commercial Dossier Pipeline",
+    "aiDesc": "Orchestrated synergy between headless web crawlers (Playwright) and generative language models (Google Gemini) to convert raw merchant data into actionable commercial intelligence."
+  }
+}

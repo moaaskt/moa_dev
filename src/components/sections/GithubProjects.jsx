@@ -2,18 +2,34 @@ import { useState, useEffect } from 'react';
 import { SiGithub } from 'react-icons/si';
 import { TbGitCommit } from 'react-icons/tb';
 import { ExternalLink, RefreshCw } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import SectionHeader from '../ui/SectionHeader';
 import TechIcon from '../ui/TechIcon';
+import { FALLBACK_REPOS } from '../../data/githubFallbackRepos';
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
+const CACHE_KEY = 'moa_github_repos_v2';
+const CACHE_TTL = 60 * 60 * 1000; // 1 hora de cache no localStorage
+const HIDDEN_REPOS = ['korp_teste_moacirneto', 'korp-teste-moacirneto'];
+
+function getGithubHeaders() {
+  const headers = {
+    Accept: 'application/vnd.github.v3+json',
+  };
+  const token = import.meta.env.VITE_GITHUB_TOKEN;
+  if (token) {
+    headers.Authorization = `Bearer ${token}`;
+  }
+  return headers;
+}
+
 async function fetchRepoCommits(repoName) {
   try {
-    // Tenta primeiro com autor moaaskt
-    let res = await fetch(`https://api.github.com/repos/moaaskt/${repoName}/commits?author=moaaskt&per_page=1`);
+    const headers = getGithubHeaders();
+    let res = await fetch(`https://api.github.com/repos/moaaskt/${repoName}/commits?author=moaaskt&per_page=1`, { headers });
     if (!res.ok) {
-      // Fallback sem parâmetro de autor caso a rota retorne erro
-      res = await fetch(`https://api.github.com/repos/moaaskt/${repoName}/commits?per_page=1`);
+      res = await fetch(`https://api.github.com/repos/moaaskt/${repoName}/commits?per_page=1`, { headers });
       if (!res.ok) return null;
     }
 
@@ -28,8 +44,7 @@ async function fetchRepoCommits(repoName) {
     const data = await res.json();
     if (Array.isArray(data)) {
       if (data.length === 0) {
-        // Tenta sem autor se a busca filtrada retornar 0 commits
-        const fallbackRes = await fetch(`https://api.github.com/repos/moaaskt/${repoName}/commits?per_page=1`);
+        const fallbackRes = await fetch(`https://api.github.com/repos/moaaskt/${repoName}/commits?per_page=1`, { headers });
         if (fallbackRes.ok) {
           const fallbackLink = fallbackRes.headers.get('Link');
           if (fallbackLink) {
@@ -45,14 +60,18 @@ async function fetchRepoCommits(repoName) {
       return data.length;
     }
     return 0;
-  } catch (err) {
-    console.error(`Erro ao buscar commits para ${repoName}:`, err);
+  } catch {
     return null;
   }
 }
 
-function GithubCard({ repo }) {
+function GithubCard({ repo, t, currentLang }) {
   const [hovered, setHovered] = useState(false);
+
+  const description =
+    typeof repo.description === 'object' && repo.description !== null
+      ? repo.description[currentLang] || repo.description.pt || repo.description.en || ''
+      : repo.description || t('githubProjects.noDescription', 'Sem descrição');
 
   return (
     <div
@@ -127,7 +146,7 @@ function GithubCard({ repo }) {
             flex: 1,
           }}
         >
-          {repo.description || 'Sem descrição'}
+          {description}
         </p>
 
         {/* Footer */}
@@ -168,10 +187,14 @@ function GithubCard({ repo }) {
                 fontFamily: 'JetBrains Mono, monospace',
                 fontSize: '0.75rem',
               }}
-              title="Total de commits registrados"
+              title={t('githubProjects.commitsTitle', 'Total de commits registrados')}
             >
               <TbGitCommit size={16} />
-              <span>{repo.commitCount !== null ? `${repo.commitCount} commits` : '—'}</span>
+              <span>
+                {repo.commitCount !== null && repo.commitCount !== undefined
+                  ? t('githubProjects.commitsCount', { count: repo.commitCount, defaultValue: `${repo.commitCount} commits` })
+                  : '—'}
+              </span>
             </div>
           </div>
 
@@ -180,7 +203,7 @@ function GithubCard({ repo }) {
             href={repo.html_url}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label={`Ver repositório ${repo.name} no GitHub`}
+            aria-label={t('githubProjects.ariaViewRepo', { name: repo.name, defaultValue: `Ver repositório ${repo.name} no GitHub` })}
             style={{
               display: 'inline-flex',
               alignItems: 'center',
@@ -193,7 +216,7 @@ function GithubCard({ repo }) {
               flexShrink: 0,
             }}
           >
-            Ver no GitHub
+            {t('githubProjects.viewOnGithub', 'Ver no GitHub')}
             <ExternalLink size={14} aria-hidden="true" />
           </a>
         </div>
@@ -202,9 +225,12 @@ function GithubCard({ repo }) {
   );
 }
 
-const HIDDEN_REPOS = ['korp_teste_moacirneto', 'korp-teste-moacirneto'];
-
 export default function GithubProjects() {
+  const { t, i18n } = useTranslation();
+  const currentLang = (i18n.resolvedLanguage || i18n.language || 'pt').startsWith('en')
+    ? 'en'
+    : 'pt';
+
   const [repos, setRepos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
@@ -213,13 +239,55 @@ export default function GithubProjects() {
     let isMounted = true;
 
     async function loadGithubData() {
+      // 1. Tentar ler do cache local
+      let cached = null;
+      try {
+        const cachedRaw = localStorage.getItem(CACHE_KEY);
+        if (cachedRaw) {
+          cached = JSON.parse(cachedRaw);
+        }
+      } catch {
+        cached = null;
+      }
+
+      const isCacheValid =
+        cached &&
+        Array.isArray(cached.data) &&
+        cached.data.length > 0 &&
+        Date.now() - cached.timestamp < CACHE_TTL;
+
+      if (isCacheValid) {
+        if (isMounted) {
+          setRepos(cached.data);
+          setLoading(false);
+          setError(false);
+        }
+        return;
+      }
+
+      // 2. Se não houver cache válido, buscar na API do GitHub
       try {
         setLoading(true);
         setError(false);
 
-        const res = await fetch('https://api.github.com/users/moaaskt/repos?sort=updated&per_page=12');
+        const res = await fetch('https://api.github.com/users/moaaskt/repos?sort=updated&per_page=12', {
+          headers: getGithubHeaders(),
+        });
+
+        // Se a API bater limite (403 Rate Limit) ou outro erro
         if (!res.ok) {
-          throw new Error(`HTTP ${res.status}`);
+          console.warn(`GitHub API indisponível (HTTP ${res.status}). Carregando repositórios salvos/fallback.`);
+          const fallbackData =
+            cached && Array.isArray(cached.data) && cached.data.length > 0
+              ? cached.data
+              : FALLBACK_REPOS;
+
+          if (isMounted) {
+            setRepos(fallbackData);
+            setLoading(false);
+            setError(false);
+          }
+          return;
         }
 
         const data = await res.json();
@@ -244,23 +312,44 @@ export default function GithubProjects() {
           setLoading(false);
         }
 
-        // Busca commits sequencialmente com delay de 180ms para evitar rate limiting
-        for (let i = 0; i < formattedRepos.length; i++) {
+        // Buscar commits com delay seguro
+        const updatedRepos = [...formattedRepos];
+        for (let i = 0; i < updatedRepos.length; i++) {
           if (!isMounted) break;
-          const repo = formattedRepos[i];
-          await delay(180);
+          const repo = updatedRepos[i];
+          await delay(200);
           const count = await fetchRepoCommits(repo.name);
-          if (isMounted) {
-            setRepos((prev) =>
-              prev.map((item) => (item.id === repo.id ? { ...item, commitCount: count } : item))
-            );
+          if (count !== null) {
+            updatedRepos[i] = { ...repo, commitCount: count };
+            if (isMounted) {
+              setRepos([...updatedRepos]);
+            }
           }
         }
+
+        // Salvar dados atualizados no cache
+        try {
+          localStorage.setItem(
+            CACHE_KEY,
+            JSON.stringify({
+              timestamp: Date.now(),
+              data: updatedRepos,
+            })
+          );
+        } catch {
+          // Ignora erro de cota de localStorage
+        }
       } catch (err) {
-        console.error('Erro ao carregar repositórios do GitHub:', err);
+        console.warn('Erro ao carregar repositórios do GitHub. Utilizando dados de fallback:', err.message);
+        const fallbackData =
+          cached && Array.isArray(cached.data) && cached.data.length > 0
+            ? cached.data
+            : FALLBACK_REPOS;
+
         if (isMounted) {
-          setError(true);
+          setRepos(fallbackData);
           setLoading(false);
+          setError(false);
         }
       }
     }
@@ -278,7 +367,10 @@ export default function GithubProjects() {
       style={{ padding: 'var(--section-padding)', background: 'var(--bg-secondary)' }}
     >
       <div style={{ maxWidth: 'var(--max-width)', margin: '0 auto', padding: '0 var(--padding-x)' }}>
-        <SectionHeader number="05" title="Atividade no GitHub" />
+        <SectionHeader
+          number={t('githubProjects.sectionNumber', '05')}
+          title={t('githubProjects.sectionTitle', 'Atividade no GitHub')}
+        />
 
         {loading ? (
           <div
@@ -294,7 +386,7 @@ export default function GithubProjects() {
             }}
           >
             <RefreshCw size={20} className="animate-spin" style={{ animation: 'spin 1s linear infinite' }} />
-            <span>Carregando repositórios recentes...</span>
+            <span>{t('githubProjects.loading', 'Carregando repositórios recentes...')}</span>
           </div>
         ) : error ? (
           <div
@@ -307,7 +399,7 @@ export default function GithubProjects() {
             }}
           >
             <p style={{ color: 'var(--text-secondary)', marginBottom: '1rem', fontFamily: 'DM Sans, sans-serif' }}>
-              Não foi possível carregar os repositórios diretamente no momento.
+              {t('githubProjects.errorNotice', 'Não foi possível carregar os repositórios diretamente no momento.')}
             </p>
             <a
               href="https://github.com/moaaskt"
@@ -324,7 +416,7 @@ export default function GithubProjects() {
               }}
             >
               <SiGithub size={18} />
-              Ver perfil no GitHub
+              {t('githubProjects.viewProfile', 'Ver perfil no GitHub')}
             </a>
           </div>
         ) : (
@@ -338,7 +430,7 @@ export default function GithubProjects() {
             }}
           >
             {repos.map((repo) => (
-              <GithubCard key={repo.id} repo={repo} />
+              <GithubCard key={repo.id} repo={repo} t={t} currentLang={currentLang} />
             ))}
           </div>
         )}

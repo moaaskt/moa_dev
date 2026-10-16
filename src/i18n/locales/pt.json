@@ -1,0 +1,203 @@
+{
+  "nav": {
+    "about": "Sobre",
+    "projects": "Projetos",
+    "skills": "Skills",
+    "experience": "Experiência",
+    "education": "Formação",
+    "github": "GitHub",
+    "contact": "Contato",
+    "openMenu": "Abrir menu",
+    "closeMenu": "Fechar menu"
+  },
+  "language": {
+    "pt": "PT",
+    "en": "EN",
+    "portuguese": "Português",
+    "english": "English",
+    "ariaLabel": "Selecionar idioma"
+  },
+  "common": {
+    "back": "Voltar",
+    "viewDetails": "Ver detalhes",
+    "viewAllProjects": "Ver todos os projetos",
+    "all": "Todos",
+    "loading": "Carregando...",
+    "privateCase": "Case Privado",
+    "privateCaseAria": "Caso de uso privado: código não disponível publicamente",
+    "viewCode": "GitHub",
+    "viewLive": "Live",
+    "screenshotAlt": "Captura de tela do projeto {{title}}"
+  },
+  "hero": {
+    "greeting": "Olá, eu sou",
+    "name": "Moacir Neto",
+    "role": "Desenvolvedor Full Stack",
+    "subtitles": [
+      "que constrói sistemas em produção.",
+      "com Go, PHP e React.",
+      "do backend ao deploy."
+    ],
+    "description": "Sistemas reais — de CRMs B2B com IA e scraping em Go a integrações e automações com PHP e React.",
+    "ctaProjects": "Ver Projetos",
+    "ctaGithub": "GitHub",
+    "ariaGithub": "Acessar perfil de Moacir Neto no GitHub",
+    "scroll": "scroll"
+  },
+  "about": {
+    "sectionNumber": "01",
+    "sectionTitle": "Sobre mim",
+    "bioP1": "Desenvolvedor Full Stack com foco em backend — construo sistemas que vão do scraping com IA até plataformas completas em produção.",
+    "bioP2": "Na Evento Santo & Doar Digital desenvolvi um LMS completo: módulos de cursos, geração de diplomas personalizáveis, área do aluno com estatísticas, painel do tutor com ficha e frequência. Além disso, módulos de eventos, checkout, fila de espera, caravanas e integrações com Asaas e WhatsApp API.",
+    "bioP3": "Nos projetos pessoais fui além: um CRM B2B em Go com pipeline de IA usando Gemini, workers assíncronos com Redis e gateway WhatsApp próprio — do zero ao Docker Compose com 7 serviços.",
+    "bioP4": "Stack: Go, PHP, React, TypeScript, Node.js, Python. Vivência com IoT — ESP32, sensores e instalação em campo.",
+    "favoriteStack": "// stack favorita",
+    "portraitAlt": "Foto de perfil de Moacir Neto"
+  },
+  "projectsSection": {
+    "sectionNumber": "02",
+    "sectionTitle": "Projetos",
+    "categories": {
+      "all": "Todos",
+      "fullstack": "Full Stack",
+      "backend": "Backend",
+      "frontend": "Frontend",
+      "ai-automation": "IA / Automação",
+      "ai": "IA & Python"
+    },
+    "viewAllCta": "Ver todos os projetos"
+  },
+  "skills": {
+    "sectionNumber": "03",
+    "sectionTitle": "Skills",
+    "categories": {
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "database": "Banco de Dados",
+      "tools": "Ferramentas",
+      "iot": "IoT & Automação"
+    }
+  },
+  "experience": {
+    "sectionNumber": "04",
+    "sectionTitle": "Experiência",
+    "current": "Atual",
+    "inProgress": "Em andamento",
+    "months": {
+      "1": "Jan", "2": "Fev", "3": "Mar", "4": "Abr",
+      "5": "Mai", "6": "Jun", "7": "Jul", "8": "Ago",
+      "9": "Set", "10": "Out", "11": "Nov", "12": "Dez"
+    }
+  },
+  "education": {
+    "sectionNumber": "05",
+    "sectionTitle": "Formação & Certificações",
+    "sectionSubtitle": "Trajetória acadêmica formal em ciência de dados e engenharia de software, somada a certificações técnicas contínuas.",
+    "academicTitle": "Formação Acadêmica",
+    "academicBadge": "Graduação & Técnico",
+    "certificationsTitle": "Certificações",
+    "certificationsBadge": "Credenciais Técnicas",
+    "status": {
+      "in_progress": "Em andamento",
+      "completed": "Concluído"
+    },
+    "viewWebsite": "Instituição",
+    "viewCredential": "Ver credencial",
+    "skillsLearned": "Competências",
+    "competencies": "Competências principais"
+  },
+  "githubProjects": {
+    "sectionNumber": "06",
+    "sectionTitle": "Atividade no GitHub",
+    "loading": "Carregando repositórios recentes...",
+    "errorNotice": "Não foi possível carregar os repositórios diretamente no momento.",
+    "viewProfile": "Ver perfil no GitHub",
+    "noDescription": "Sem descrição",
+    "commitsTitle": "Total de commits registrados",
+    "commitsCount": "{{count}} commits",
+    "viewOnGithub": "Ver no GitHub",
+    "ariaViewRepo": "Ver repositório {{name}} no GitHub"
+  },
+  "contact": {
+    "sectionLabel": "Contato",
+    "sectionTitle": "Contato",
+    "heading": "Vamos trabalhar juntos?",
+    "description": "Aberto a oportunidades como Desenvolvedor Full Stack Jr. e projetos onde eu possa contribuir com soluções web, automações e evolução de sistemas.",
+    "ariaContact": "Entrar em contato via {{label}}: {{value}}"
+  },
+  "footer": {
+    "developedBy": "Desenvolvido por"
+  },
+  "allProjects": {
+    "metaTitle": "Todos os Projetos | Moacir Neto (moa_dev)",
+    "backToHome": "Voltar para o início",
+    "badge": "Catálogo Completo",
+    "title": "Todos os Projetos",
+    "subtitle": "Explore o repositório completo de soluções desenvolvidas, desde arquiteturas backend e APIs transacionais até aplicações interativas com Inteligência Artificial e interfaces web modernas.",
+    "searchPlaceholder": "Buscar por nome, tag (ex: React, Go, Docker) ou tecnologia...",
+    "searchAria": "Buscar projetos por nome ou tecnologia",
+    "clearSearchAria": "Limpar busca",
+    "categories": {
+      "all": "Todos",
+      "fullstack": "Full Stack",
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "ai": "IA & Python"
+    },
+    "showingCount": "Exibindo <1>{{count}}</1> de {{total}} projetos",
+    "emptyTitle": "Nenhum projeto encontrado",
+    "emptyDesc": "Não localizamos resultados para \"{{query}}\" com o filtro selecionado.",
+    "clearFilters": "Limpar filtros de busca"
+  },
+  "projectDetail": {
+    "metaTitle": "{{title}} — Case Study | Moacir Neto (moa_dev)",
+    "notFoundMetaTitle": "Projeto não encontrado | Moacir Neto",
+    "notFoundHeading": "404 - Projeto não encontrado",
+    "notFoundDesc": "O identificador de projeto \"{{id}}\" não corresponde a nenhum item do nosso catálogo atual.",
+    "backToAll": "Voltar para todos os projetos",
+    "breadcrumbs": {
+      "home": "Início",
+      "projects": "Projetos"
+    },
+    "corporateCase": "Case Privado / Corporativo",
+    "publicCode": "Código Público",
+    "imageAlt": "Visão geral da interface de {{title}}",
+    "liveProject": "Acessar Projeto Online",
+    "githubRepo": "Repositório no GitHub",
+    "overviewTitle": "Visão Geral & Desafio",
+    "highlightsTitle": "Principais Conquistas Técnicas",
+    "featuresTitle": "Módulos & Funcionalidades",
+    "technicalDecisionsTitle": "Arquitetura & Decisões Técnicas",
+    "rolePerformed": "Papel Desempenhado",
+    "defaultRole": "Desenvolvedor Full Stack",
+    "stackAndTools": "Stack & Ferramentas",
+    "prevProject": "Projeto Anterior",
+    "nextProject": "Próximo Projeto",
+    "viewAllProjects": "Ver todos os projetos"
+  },
+  "gallery": {
+    "badge": "Capturas Reais do Sistema",
+    "title": "Galeria & Interface em Produção",
+    "subtitle": "Explore as telas e fluxos reais do sistema {{title}}. Clique em qualquer imagem para visualizar os detalhes técnicos e as métricas em tela cheia com alta resolução.",
+    "allTab": "Todas",
+    "lightboxCounter": "{{current}} / {{total}}",
+    "closeAria": "Fechar visualização em tela cheia (ESC)",
+    "prevAria": "Imagem anterior (Seta esquerda)",
+    "nextAria": "Próxima imagem (Seta direita)",
+    "openDetails": "Ver detalhes"
+  },
+  "architecture": {
+    "badge": "Engenharia de Sistemas & Microsserviços",
+    "title": "Arquitetura de Produção & Pipelines",
+    "subtitle": "Estrutura técnica e topologia distribuída do {{title}}. Navegue entre os containers Docker orquestrados e os pipelines de mensageria assíncrona e inteligência artificial.",
+    "tabs": {
+      "services": "7 Serviços Docker",
+      "campaign": "Pipeline Assíncrono (Asynq + SSE)",
+      "ai": "Pipeline de IA (Google Gemini)"
+    },
+    "campaignTitle": "Fluxo de Disparo em Lote & Telemetria em Tempo Real",
+    "campaignDesc": "Arquitetura de processamento assíncrono projetada para desacoplar a interface do usuário das operações de alta latência e conexões com a rede Meta, garantindo resposta imediata e acompanhamento contínuo via SSE.",
+    "aiTitle": "Pipeline de Enriquecimento de Dados & Geração de Dossiês",
+    "aiDesc": "Integração orquestrada entre crawlers web headless (Playwright) e modelos de linguagem generativa (Google Gemini) para converter dados brutos de estabelecimentos em inteligência comercial prática."
+  }
+}

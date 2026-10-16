@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <rect width="64" height="64" rx="14" fill="#141414" stroke="#262626" stroke-width="1.5"/>
+  <!-- Senac Wings Symbol -->
+  <path d="M16 32C22 23 28 21 34 22C28 25 25 29 24 33C24 33 28 32 32 33C24 36 21 41 20 44C24 40 29 39 34 39C25 43 23 48 23 48C33 46 39 39 48 24C41 26 36 25 32 23C38 18 43 17 48 16C37 17 28 23 16 32Z" fill="url(#senac-grad)"/>
+  <text x="32" y="56" font-family="'JetBrains Mono', 'Syne', sans-serif" font-weight="800" font-size="8.5" fill="#F7941D" text-anchor="middle" letter-spacing="1.5">SENAC</text>
+  <defs>
+    <linearGradient id="senac-grad" x1="16" y1="16" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F7941D"/>
+      <stop offset="1" stop-color="#004A8D"/>
+    </linearGradient>
+  </defs>
+</svg>

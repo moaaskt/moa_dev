@@ -12,11 +12,27 @@ import {
   Code2,
 } from 'lucide-react';
 import { SiGithub } from 'react-icons/si';
+import { useTranslation } from 'react-i18next';
 import TechIcon from '../ui/TechIcon';
 import FuzzyText from '../ui/FuzzyText';
+import ProjectGallery from '../ui/ProjectGallery';
+import ProjectArchitecture from '../ui/ProjectArchitecture';
+import { Badge } from '../ui/badge';
 import { projects } from '../../data/projects';
 
+// Helper utilitário para extrair texto no idioma ativo
+const getLocalized = (val, lang) => {
+  if (!val) return '';
+  if (typeof val === 'object' && !Array.isArray(val)) {
+    return val[lang] || val.pt || val.en || '';
+  }
+  return val;
+};
+
 export default function ProjectDetailPage({ projectId }) {
+  const { t, i18n } = useTranslation();
+  const currentLang = (i18n.resolvedLanguage || i18n.language || 'pt').startsWith('en') ? 'en' : 'pt';
+
   const currentIndex = useMemo(() => {
     return projects.findIndex((p) => p.id === projectId);
   }, [projectId]);
@@ -35,16 +51,19 @@ export default function ProjectDetailPage({ projectId }) {
 
   useEffect(() => {
     if (project) {
-      document.title = `${project.title} — Case Study | Moacir Neto (moa_dev)`;
+      document.title = t('projectDetail.metaTitle', {
+        title: project.title,
+        defaultValue: `${project.title} — Case Study | Moacir Neto (moa_dev)`,
+      });
     } else {
-      document.title = 'Projeto não encontrado | Moacir Neto';
+      document.title = t('projectDetail.notFoundMetaTitle', 'Projeto não encontrado | Moacir Neto');
     }
     window.scrollTo({ top: 0, behavior: 'smooth' });
 
     return () => {
       document.title = 'Moacir Neto | Engenheiro de Software & Desenvolvedor Full Stack';
     };
-  }, [project, projectId]);
+  }, [project, projectId, t]);
 
   if (!project) {
     return (
@@ -61,7 +80,7 @@ export default function ProjectDetailPage({ projectId }) {
           textAlign: 'center',
         }}
       >
-        <h1 className="sr-only">404 - Projeto não encontrado</h1>
+        <h1 className="sr-only">{t('projectDetail.notFoundHeading', '404 - Projeto não encontrado')}</h1>
         <div style={{ fontSize: "clamp(4rem, 12vw, 8rem)", lineHeight: 1 }}>
           <FuzzyText
             fontSize="clamp(4rem, 12vw, 8rem)"
@@ -86,7 +105,10 @@ export default function ProjectDetailPage({ projectId }) {
             marginBottom: '2rem',
           }}
         >
-          O identificador de projeto "{projectId}" não corresponde a nenhum item do nosso catálogo atual.
+          {t('projectDetail.notFoundDesc', {
+            id: projectId,
+            defaultValue: `O identificador de projeto "${projectId}" não corresponde a nenhum item do nosso catálogo atual.`,
+          })}
         </p>
         <a
           href="#/projetos"
@@ -105,7 +127,7 @@ export default function ProjectDetailPage({ projectId }) {
           }}
         >
           <ArrowLeft size={16} />
-          Ver todos os projetos
+          {t('projectDetail.viewAllProjects', 'Ver todos os projetos')}
         </a>
       </div>
     );
@@ -168,7 +190,7 @@ export default function ProjectDetailPage({ projectId }) {
             }}
           >
             <ArrowLeft size={16} />
-            Voltar para todos os projetos
+            {t('projectDetail.backToAll', 'Voltar para todos os projetos')}
           </a>
 
           <div
@@ -182,11 +204,11 @@ export default function ProjectDetailPage({ projectId }) {
             }}
           >
             <a href="#/" style={{ color: 'inherit', textDecoration: 'none' }}>
-              Início
+              {t('projectDetail.breadcrumbs.home', 'Início')}
             </a>
             <span>/</span>
             <a href="#/projetos" style={{ color: 'inherit', textDecoration: 'none' }}>
-              Projetos
+              {t('projectDetail.breadcrumbs.projects', 'Projetos')}
             </a>
             <span>/</span>
             <span style={{ color: 'var(--accent)' }}>{project.title}</span>
@@ -209,23 +231,26 @@ export default function ProjectDetailPage({ projectId }) {
               marginBottom: '1rem',
             }}
           >
-            <span
+            <Badge
               style={{
                 fontFamily: 'JetBrains Mono, monospace',
                 fontSize: '0.75rem',
-                color: 'var(--accent)',
-                background: 'rgba(184, 247, 60, 0.08)',
-                border: '1px solid var(--border-accent)',
-                padding: '0.25rem 0.6rem',
+                fontWeight: 700,
+                color: '#080808',
+                background: 'var(--accent)',
+                border: '1px solid var(--accent)',
+                padding: '0.25rem 0.65rem',
                 borderRadius: '4px',
                 letterSpacing: '0.06em',
                 textTransform: 'uppercase',
+                boxShadow: '0 2px 5px rgba(0, 0, 0, 0.3)',
               }}
             >
-              {project.category}
-            </span>
+              {t(`allProjects.categories.${project.category}`, project.category)}
+            </Badge>
 
-            <span
+            <Badge
+              variant="outline"
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
@@ -234,16 +259,18 @@ export default function ProjectDetailPage({ projectId }) {
                 fontSize: '0.75rem',
                 color: 'var(--text-secondary)',
                 border: '1px solid var(--border)',
-                padding: '0.25rem 0.6rem',
+                background: 'rgba(255, 255, 255, 0.03)',
+                padding: '0.25rem 0.65rem',
                 borderRadius: '4px',
               }}
             >
               <Calendar size={13} />
               {project.year}
-            </span>
+            </Badge>
 
             {project.private ? (
-              <span
+              <Badge
+                variant="outline"
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',
@@ -253,15 +280,16 @@ export default function ProjectDetailPage({ projectId }) {
                   color: '#eab308',
                   background: 'rgba(234, 179, 8, 0.08)',
                   border: '1px solid rgba(234, 179, 8, 0.3)',
-                  padding: '0.25rem 0.6rem',
+                  padding: '0.25rem 0.65rem',
                   borderRadius: '4px',
                 }}
               >
                 <Lock size={12} />
-                Case Privado / Corporativo
-              </span>
+                {t('projectDetail.corporateCase', 'Case Privado / Corporativo')}
+              </Badge>
             ) : (
-              <span
+              <Badge
+                variant="outline"
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',
@@ -270,13 +298,13 @@ export default function ProjectDetailPage({ projectId }) {
                   fontSize: '0.75rem',
                   color: 'var(--accent)',
                   border: '1px solid var(--border)',
-                  padding: '0.25rem 0.6rem',
+                  padding: '0.25rem 0.65rem',
                   borderRadius: '4px',
                 }}
               >
                 <Code2 size={13} />
-                Código Público
-              </span>
+                {t('projectDetail.publicCode', 'Código Público')}
+              </Badge>
             )}
           </div>
 
@@ -304,7 +332,7 @@ export default function ProjectDetailPage({ projectId }) {
               marginBottom: '2rem',
             }}
           >
-            {project.description}
+            {getLocalized(project.description, currentLang)}
           </p>
 
           {/* Action Buttons Bar */}
@@ -337,7 +365,7 @@ export default function ProjectDetailPage({ projectId }) {
                   e.currentTarget.style.transform = 'translateY(0)';
                 }}
               >
-                Acessar Projeto Online
+                {t('projectDetail.liveProject', 'Acessar Projeto Online')}
                 <ExternalLink size={16} />
               </a>
             )}
@@ -373,7 +401,7 @@ export default function ProjectDetailPage({ projectId }) {
                 }}
               >
                 <SiGithub size={17} />
-                Repositório no GitHub
+                {t('projectDetail.githubRepo', 'Repositório no GitHub')}
               </a>
             )}
           </div>
@@ -397,7 +425,10 @@ export default function ProjectDetailPage({ projectId }) {
           >
             <img
               src={project.image}
-              alt={`Visão geral da interface de ${project.title}`}
+              alt={t('projectDetail.imageAlt', {
+                title: project.title,
+                defaultValue: `Visão geral da interface de ${project.title}`,
+              })}
               style={{
                 width: '100%',
                 maxHeight: '560px',
@@ -434,7 +465,7 @@ export default function ProjectDetailPage({ projectId }) {
                     letterSpacing: '-0.02em',
                   }}
                 >
-                  Visão Geral & Desafio
+                  {t('projectDetail.overviewTitle', 'Visão Geral & Desafio')}
                 </h2>
                 <p
                   style={{
@@ -444,7 +475,7 @@ export default function ProjectDetailPage({ projectId }) {
                     lineHeight: 1.8,
                   }}
                 >
-                  {project.overview}
+                  {getLocalized(project.overview, currentLang)}
                 </p>
               </section>
             )}
@@ -462,7 +493,7 @@ export default function ProjectDetailPage({ projectId }) {
                     letterSpacing: '-0.02em',
                   }}
                 >
-                  Principais Conquistas Técnicas
+                  {t('projectDetail.highlightsTitle', 'Principais Conquistas Técnicas')}
                 </h2>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
                   {project.highlights.map((highlight, index) => (
@@ -492,7 +523,7 @@ export default function ProjectDetailPage({ projectId }) {
                           margin: 0,
                         }}
                       >
-                        {highlight}
+                        {getLocalized(highlight, currentLang)}
                       </p>
                     </div>
                   ))}
@@ -513,7 +544,7 @@ export default function ProjectDetailPage({ projectId }) {
                     letterSpacing: '-0.02em',
                   }}
                 >
-                  Módulos & Funcionalidades
+                  {t('projectDetail.featuresTitle', 'Módulos & Funcionalidades')}
                 </h2>
                 <div
                   style={{
@@ -541,7 +572,7 @@ export default function ProjectDetailPage({ projectId }) {
                           marginBottom: '0.6rem',
                         }}
                       >
-                        {feature.title}
+                        {getLocalized(feature.title, currentLang)}
                       </h3>
                       <p
                         style={{
@@ -552,7 +583,7 @@ export default function ProjectDetailPage({ projectId }) {
                           margin: 0,
                         }}
                       >
-                        {feature.description}
+                        {getLocalized(feature.description, currentLang)}
                       </p>
                     </div>
                   ))}
@@ -573,7 +604,7 @@ export default function ProjectDetailPage({ projectId }) {
                     letterSpacing: '-0.02em',
                   }}
                 >
-                  Arquitetura & Decisões Técnicas
+                  {t('projectDetail.technicalDecisionsTitle', 'Arquitetura & Decisões Técnicas')}
                 </h2>
                 <div
                   style={{
@@ -595,7 +626,7 @@ export default function ProjectDetailPage({ projectId }) {
                       margin: 0,
                     }}
                   >
-                    {project.technicalDecisions}
+                    {getLocalized(project.technicalDecisions, currentLang)}
                   </p>
                 </div>
               </section>
@@ -631,7 +662,7 @@ export default function ProjectDetailPage({ projectId }) {
                 }}
               >
                 <Layers size={14} />
-                Papel Desempenhado
+                {t('projectDetail.rolePerformed', 'Papel Desempenhado')}
               </div>
               <div
                 style={{
@@ -641,7 +672,7 @@ export default function ProjectDetailPage({ projectId }) {
                   color: '#f0f0f0',
                 }}
               >
-                {project.role || 'Desenvolvedor Full Stack'}
+                {getLocalized(project.role, currentLang) || t('projectDetail.defaultRole', 'Desenvolvedor Full Stack')}
               </div>
             </div>
 
@@ -660,7 +691,7 @@ export default function ProjectDetailPage({ projectId }) {
                 }}
               >
                 <Cpu size={14} />
-                Stack & Ferramentas
+                {t('projectDetail.stackAndTools', 'Stack & Ferramentas')}
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
                 {project.tags.map((tag) => (
@@ -683,6 +714,16 @@ export default function ProjectDetailPage({ projectId }) {
             </div>
           </aside>
         </div>
+
+        {/* Architecture Section */}
+        {project.architecture && (
+          <ProjectArchitecture architecture={project.architecture} projectTitle={project.title} />
+        )}
+
+        {/* Gallery Section */}
+        {project.gallery && project.gallery.length > 0 && (
+          <ProjectGallery items={project.gallery} projectTitle={project.title} />
+        )}
 
         {/* Project Navigation Footer (Prev / Next) */}
         <div
@@ -719,7 +760,7 @@ export default function ProjectDetailPage({ projectId }) {
                 }}
               >
                 <ArrowLeft size={14} />
-                Projeto Anterior
+                {t('projectDetail.prevProject', 'Projeto Anterior')}
               </span>
               <span
                 style={{
@@ -768,7 +809,7 @@ export default function ProjectDetailPage({ projectId }) {
               e.currentTarget.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.3)';
             }}
           >
-            <span>Ver todos os projetos</span>
+            <span>{t('projectDetail.viewAllProjects', 'Ver todos os projetos')}</span>
             <span style={{ color: 'var(--accent)', transition: 'transform 0.2s ease' }}>→</span>
           </a>
 
@@ -796,7 +837,7 @@ export default function ProjectDetailPage({ projectId }) {
                   textTransform: 'uppercase',
                 }}
               >
-                Próximo Projeto
+                {t('projectDetail.nextProject', 'Próximo Projeto')}
                 <ArrowRight size={14} />
               </span>
               <span

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <rect width="64" height="64" rx="14" fill="#141414" stroke="#262626" stroke-width="1.5"/>
+  <!-- Cisco 9-Bar Bridge Symbol -->
+  <g fill="#049FD9">
+    <rect x="14" y="27" width="2.8" height="10" rx="1.4"/>
+    <rect x="18.5" y="22" width="2.8" height="15" rx="1.4"/>
+    <rect x="23" y="29" width="2.8" height="8" rx="1.4"/>
+    <rect x="27.5" y="24" width="2.8" height="13" rx="1.4"/>
+    <rect x="32" y="16" width="2.8" height="21" rx="1.4"/>
+    <rect x="36.5" y="24" width="2.8" height="13" rx="1.4"/>
+    <rect x="41" y="29" width="2.8" height="8" rx="1.4"/>
+    <rect x="45.5" y="22" width="2.8" height="15" rx="1.4"/>
+    <rect x="50" y="27" width="2.8" height="10" rx="1.4"/>
+  </g>
+  <text x="32" y="47" font-family="'JetBrains Mono', 'Syne', sans-serif" font-weight="800" font-size="9" fill="#FFFFFF" text-anchor="middle" letter-spacing="2">CISCO</text>
+</svg>

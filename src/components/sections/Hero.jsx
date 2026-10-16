@@ -1,6 +1,7 @@
 import { useRef, useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 function GithubIcon({ size = 16 }) {
   return (
@@ -10,27 +11,56 @@ function GithubIcon({ size = 16 }) {
   );
 }
 
-const TYPING_TEXT = 'Desenvolvedor Full Stack Jr.';
-
-function useTypingCursor(text, speed = 80) {
+function useRotatingTypewriter(items = [], typingSpeed = 60, deletingSpeed = 30, pauseDuration = 2200) {
+  const [index, setIndex] = useState(0);
   const [displayed, setDisplayed] = useState('');
-  const [done, setDone] = useState(false);
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
 
   useEffect(() => {
-    let i = 0;
-    const timer = setInterval(() => {
-      if (i < text.length) {
-        setDisplayed(text.slice(0, i + 1));
-        i++;
-      } else {
-        setDone(true);
-        clearInterval(timer);
-      }
-    }, speed);
-    return () => clearInterval(timer);
-  }, [text, speed]);
+    if (!items || items.length === 0) return;
 
-  return { displayed, done };
+    const currentText = items[index % items.length] || '';
+
+    // Período de pausa para leitura após digitar toda a frase
+    if (isPaused) {
+      const pauseTimer = setTimeout(() => {
+        setIsPaused(false);
+        setIsDeleting(true);
+      }, pauseDuration);
+      return () => clearTimeout(pauseTimer);
+    }
+
+    if (isDeleting) {
+      if (displayed.length > 0) {
+        const timer = setTimeout(() => {
+          setDisplayed(currentText.slice(0, displayed.length - 1));
+        }, deletingSpeed);
+        return () => clearTimeout(timer);
+      } else {
+        // Pausa breve antes de começar a digitar a próxima frase
+        const switchTimer = setTimeout(() => {
+          setIsDeleting(false);
+          setIndex((prev) => (prev + 1) % items.length);
+        }, 300);
+        return () => clearTimeout(switchTimer);
+      }
+    } else {
+      if (displayed.length < currentText.length) {
+        const timer = setTimeout(() => {
+          setDisplayed(currentText.slice(0, displayed.length + 1));
+        }, typingSpeed);
+        return () => clearTimeout(timer);
+      } else {
+        const pauseTimer = setTimeout(() => {
+          setIsPaused(true);
+        }, 100);
+        return () => clearTimeout(pauseTimer);
+      }
+    }
+  }, [items, index, displayed, isDeleting, isPaused, typingSpeed, deletingSpeed, pauseDuration]);
+
+  return { displayed, isPaused };
 }
 
 const fadeUp = (delay = 0) => ({
@@ -39,8 +69,77 @@ const fadeUp = (delay = 0) => ({
   transition: { duration: 0.6, delay, ease: [0.16, 1, 0.3, 1] },
 });
 
+function RotatingSubtitle({ role, items = [] }) {
+  const { displayed, isPaused } = useRotatingTypewriter(items, 60, 30, 2200);
+
+  return (
+    <motion.div
+      {...fadeUp(0.5)}
+      style={{
+        fontFamily: 'Syne, sans-serif',
+        fontWeight: 700,
+        fontSize: 'clamp(1.25rem, 3.5vw, 1.85rem)',
+        letterSpacing: '-0.02em',
+        marginBottom: '1.5rem',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        gap: '0.35rem',
+        minHeight: '4.4rem',
+      }}
+    >
+      <span style={{ color: 'var(--text-primary)' }}>
+        {role}
+      </span>
+      <span
+        style={{
+          color: 'var(--accent)',
+          fontWeight: 600,
+          fontSize: 'clamp(1.05rem, 2.8vw, 1.45rem)',
+          minHeight: '2rem',
+          display: 'inline-flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+      >
+        {displayed}
+        <span
+          style={{
+            display: 'inline-block',
+            width: '2px',
+            height: '1.15em',
+            background: 'var(--accent)',
+            marginLeft: '4px',
+            verticalAlign: 'middle',
+            animation: isPaused ? 'blink 1s step-end infinite' : 'none',
+          }}
+        />
+      </span>
+    </motion.div>
+  );
+}
+
 export default function Hero() {
+  const { t, i18n } = useTranslation();
   const vantaRef = useRef(null);
+
+  const role = t('hero.role', 'Desenvolvedor Full Stack');
+  const rawSubtitles = t('hero.subtitles', { returnObjects: true });
+  const isEn = (i18n.resolvedLanguage || i18n.language || 'pt').startsWith('en');
+
+  const subtitles = Array.isArray(rawSubtitles) && rawSubtitles.length > 0
+    ? rawSubtitles
+    : isEn
+    ? [
+        'building systems in production.',
+        'with Go, PHP, and React.',
+        'from backend to deployment.',
+      ]
+    : [
+        'que constrói sistemas em produção.',
+        'com Go, PHP e React.',
+        'do backend ao deploy.',
+      ];
 
   useEffect(() => {
     if (window.innerWidth < 480) return;
@@ -102,8 +201,6 @@ export default function Hero() {
     };
   }, []);
 
-  const { displayed, done } = useTypingCursor(TYPING_TEXT, 70);
-
   return (
     <section
       id="hero"
@@ -140,7 +237,7 @@ export default function Hero() {
             marginBottom: '1rem',
           }}
         >
-          Olá, eu sou
+          {t('hero.greeting', 'Olá, eu sou')}
         </motion.p>
 
         {/* Name */}
@@ -156,53 +253,25 @@ export default function Hero() {
             marginBottom: '1.25rem',
           }}
         >
-          Moacir Neto
+          {t('hero.name', 'Moacir Neto')}
         </motion.h1>
 
-        {/* Typing subtitle */}
-        <motion.div
-          {...fadeUp(0.5)}
-          style={{
-            fontFamily: 'Syne, sans-serif',
-            fontWeight: 700,
-            fontSize: 'clamp(1.25rem, 3.5vw, 1.75rem)',
-            color: 'var(--text-secondary)',
-            letterSpacing: '-0.02em',
-            marginBottom: '1.5rem',
-            minHeight: '2.2rem',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: '2px',
-          }}
-        >
-          {displayed}
-          <span
-            style={{
-              display: 'inline-block',
-              width: '2px',
-              height: '1.2em',
-              background: 'var(--accent)',
-              marginLeft: '2px',
-              animation: done ? 'blink 1s step-end infinite' : 'none',
-              opacity: 1,
-            }}
-          />
-        </motion.div>
+        {/* Rotating Typewriter Subtitle */}
+        <RotatingSubtitle key={subtitles.join('|')} role={role} items={subtitles} />
 
         {/* Description */}
         <motion.p
           {...fadeUp(0.65)}
           style={{
             fontFamily: 'DM Sans, sans-serif',
-            fontSize: 'var(--text-base)',
+            fontSize: 'clamp(1rem, 2.5vw, 1.15rem)',
             color: 'var(--text-secondary)',
             lineHeight: 1.7,
-            maxWidth: '560px',
+            maxWidth: '640px',
             margin: '0 auto 2.5rem',
           }}
         >
-          Full Stack com experiência prática em sistemas de produção — da construção de integrações e SaaS multi-tenant com IA a automações e IoT.
+          {t('hero.description', 'Sistemas reais — de CRMs B2B com IA e scraping em Go a integrações e automações com PHP e React.')}
         </motion.p>
 
         {/* Buttons */}
@@ -238,14 +307,14 @@ export default function Hero() {
               e.currentTarget.style.transform = 'translateY(0)';
             }}
           >
-            Ver Projetos
+            {t('hero.ctaProjects', 'Ver Projetos')}
           </a>
 
           <a
             href="https://github.com/moaaskt"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Acessar perfil de Moacir Neto no GitHub"
+            aria-label={t('hero.ariaGithub', 'Acessar perfil de Moacir Neto no GitHub')}
             style={{
               display: 'inline-flex',
               alignItems: 'center',
@@ -273,7 +342,7 @@ export default function Hero() {
             }}
           >
             <GithubIcon size={16} />
-            GitHub
+            {t('hero.ctaGithub', 'GitHub')}
           </a>
         </motion.div>
       </div>
@@ -298,7 +367,7 @@ export default function Hero() {
         aria-hidden="true"
       >
         <span style={{ fontFamily: 'JetBrains Mono', fontSize: '0.65rem', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
-          scroll
+          {t('hero.scroll', 'scroll')}
         </span>
         <ChevronDown size={16} />
       </motion.div>
