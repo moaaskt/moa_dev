@@ -7,8 +7,8 @@ export const experiences = [
     },
     company: 'Digital Combo',
     type: {
-      pt: 'Projetos',
-      en: 'Projects',
+      pt: 'Remoto',
+      en: 'Remote',
     },
     period: { start: '2026-06', end: null },
     duration: {
@@ -30,8 +30,8 @@ export const experiences = [
     },
     company: 'Evento Santo & Doar Digital',
     type: {
-      pt: 'Full Stack',
-      en: 'Full Stack',
+      pt: 'Híbrido',
+      en: 'Hybrid',
     },
     period: { start: '2025-07', end: '2026-05' },
     duration: {
