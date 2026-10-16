@@ -5,14 +5,31 @@ import { ExternalLink, RefreshCw } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import SectionHeader from '../ui/SectionHeader';
 import TechIcon from '../ui/TechIcon';
+import { FALLBACK_REPOS } from '../../data/githubFallbackRepos';
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
+const CACHE_KEY = 'moa_github_repos_v2';
+const CACHE_TTL = 60 * 60 * 1000; // 1 hora de cache no localStorage
+const HIDDEN_REPOS = ['korp_teste_moacirneto', 'korp-teste-moacirneto'];
+
+function getGithubHeaders() {
+  const headers = {
+    Accept: 'application/vnd.github.v3+json',
+  };
+  const token = import.meta.env.VITE_GITHUB_TOKEN;
+  if (token) {
+    headers.Authorization = `Bearer ${token}`;
+  }
+  return headers;
+}
+
 async function fetchRepoCommits(repoName) {
   try {
-    let res = await fetch(`https://api.github.com/repos/moaaskt/${repoName}/commits?author=moaaskt&per_page=1`);
+    const headers = getGithubHeaders();
+    let res = await fetch(`https://api.github.com/repos/moaaskt/${repoName}/commits?author=moaaskt&per_page=1`, { headers });
     if (!res.ok) {
-      res = await fetch(`https://api.github.com/repos/moaaskt/${repoName}/commits?per_page=1`);
+      res = await fetch(`https://api.github.com/repos/moaaskt/${repoName}/commits?per_page=1`, { headers });
       if (!res.ok) return null;
     }
 
@@ -27,7 +44,7 @@ async function fetchRepoCommits(repoName) {
     const data = await res.json();
     if (Array.isArray(data)) {
       if (data.length === 0) {
-        const fallbackRes = await fetch(`https://api.github.com/repos/moaaskt/${repoName}/commits?per_page=1`);
+        const fallbackRes = await fetch(`https://api.github.com/repos/moaaskt/${repoName}/commits?per_page=1`, { headers });
         if (fallbackRes.ok) {
           const fallbackLink = fallbackRes.headers.get('Link');
           if (fallbackLink) {
@@ -43,14 +60,18 @@ async function fetchRepoCommits(repoName) {
       return data.length;
     }
     return 0;
-  } catch (err) {
-    console.error(`Erro ao buscar commits para ${repoName}:`, err);
+  } catch {
     return null;
   }
 }
 
-function GithubCard({ repo, t }) {
+function GithubCard({ repo, t, currentLang }) {
   const [hovered, setHovered] = useState(false);
+
+  const description =
+    typeof repo.description === 'object' && repo.description !== null
+      ? repo.description[currentLang] || repo.description.pt || repo.description.en || ''
+      : repo.description || t('githubProjects.noDescription', 'Sem descrição');
 
   return (
     <div
@@ -125,7 +146,7 @@ function GithubCard({ repo, t }) {
             flex: 1,
           }}
         >
-          {repo.description || t('githubProjects.noDescription', 'Sem descrição')}
+          {description}
         </p>
 
         {/* Footer */}
@@ -170,7 +191,7 @@ function GithubCard({ repo, t }) {
             >
               <TbGitCommit size={16} />
               <span>
-                {repo.commitCount !== null
+                {repo.commitCount !== null && repo.commitCount !== undefined
                   ? t('githubProjects.commitsCount', { count: repo.commitCount, defaultValue: `${repo.commitCount} commits` })
                   : '—'}
               </span>
@@ -204,10 +225,12 @@ function GithubCard({ repo, t }) {
   );
 }
 
-const HIDDEN_REPOS = ['korp_teste_moacirneto', 'korp-teste-moacirneto'];
-
 export default function GithubProjects() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const currentLang = (i18n.resolvedLanguage || i18n.language || 'pt').startsWith('en')
+    ? 'en'
+    : 'pt';
+
   const [repos, setRepos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
@@ -216,13 +239,55 @@ export default function GithubProjects() {
     let isMounted = true;
 
     async function loadGithubData() {
+      // 1. Tentar ler do cache local
+      let cached = null;
+      try {
+        const cachedRaw = localStorage.getItem(CACHE_KEY);
+        if (cachedRaw) {
+          cached = JSON.parse(cachedRaw);
+        }
+      } catch {
+        cached = null;
+      }
+
+      const isCacheValid =
+        cached &&
+        Array.isArray(cached.data) &&
+        cached.data.length > 0 &&
+        Date.now() - cached.timestamp < CACHE_TTL;
+
+      if (isCacheValid) {
+        if (isMounted) {
+          setRepos(cached.data);
+          setLoading(false);
+          setError(false);
+        }
+        return;
+      }
+
+      // 2. Se não houver cache válido, buscar na API do GitHub
       try {
         setLoading(true);
         setError(false);
 
-        const res = await fetch('https://api.github.com/users/moaaskt/repos?sort=updated&per_page=12');
+        const res = await fetch('https://api.github.com/users/moaaskt/repos?sort=updated&per_page=12', {
+          headers: getGithubHeaders(),
+        });
+
+        // Se a API bater limite (403 Rate Limit) ou outro erro
         if (!res.ok) {
-          throw new Error(`HTTP ${res.status}`);
+          console.warn(`GitHub API indisponível (HTTP ${res.status}). Carregando repositórios salvos/fallback.`);
+          const fallbackData =
+            cached && Array.isArray(cached.data) && cached.data.length > 0
+              ? cached.data
+              : FALLBACK_REPOS;
+
+          if (isMounted) {
+            setRepos(fallbackData);
+            setLoading(false);
+            setError(false);
+          }
+          return;
         }
 
         const data = await res.json();
@@ -247,22 +312,44 @@ export default function GithubProjects() {
           setLoading(false);
         }
 
-        for (let i = 0; i < formattedRepos.length; i++) {
+        // Buscar commits com delay seguro
+        const updatedRepos = [...formattedRepos];
+        for (let i = 0; i < updatedRepos.length; i++) {
           if (!isMounted) break;
-          const repo = formattedRepos[i];
-          await delay(180);
+          const repo = updatedRepos[i];
+          await delay(200);
           const count = await fetchRepoCommits(repo.name);
-          if (isMounted) {
-            setRepos((prev) =>
-              prev.map((item) => (item.id === repo.id ? { ...item, commitCount: count } : item))
-            );
+          if (count !== null) {
+            updatedRepos[i] = { ...repo, commitCount: count };
+            if (isMounted) {
+              setRepos([...updatedRepos]);
+            }
           }
         }
+
+        // Salvar dados atualizados no cache
+        try {
+          localStorage.setItem(
+            CACHE_KEY,
+            JSON.stringify({
+              timestamp: Date.now(),
+              data: updatedRepos,
+            })
+          );
+        } catch {
+          // Ignora erro de cota de localStorage
+        }
       } catch (err) {
-        console.error('Erro ao carregar repositórios do GitHub:', err);
+        console.warn('Erro ao carregar repositórios do GitHub. Utilizando dados de fallback:', err.message);
+        const fallbackData =
+          cached && Array.isArray(cached.data) && cached.data.length > 0
+            ? cached.data
+            : FALLBACK_REPOS;
+
         if (isMounted) {
-          setError(true);
+          setRepos(fallbackData);
           setLoading(false);
+          setError(false);
         }
       }
     }
@@ -343,7 +430,7 @@ export default function GithubProjects() {
             }}
           >
             {repos.map((repo) => (
-              <GithubCard key={repo.id} repo={repo} t={t} />
+              <GithubCard key={repo.id} repo={repo} t={t} currentLang={currentLang} />
             ))}
           </div>
         )}
