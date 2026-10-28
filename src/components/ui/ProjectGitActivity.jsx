@@ -36,10 +36,10 @@ export default function ProjectGitActivity({ project }) {
 
   return (
     <Card className="border-[var(--border)] bg-[var(--bg-secondary)] overflow-hidden shadow-md">
-      <CardHeader className="p-3.5 pb-2.5 flex flex-row items-center justify-between space-y-0 border-b border-[var(--border)]/40 bg-[var(--bg-primary)]/20">
-        <div className="flex items-center gap-1.5 text-[var(--accent)] font-mono text-[11px] font-semibold uppercase tracking-wider">
+      <CardHeader className="p-3 pb-2.5 flex flex-row items-center justify-between gap-2 space-y-0 border-b border-[var(--border)]/40 bg-[var(--bg-primary)]/20">
+        <div className="flex items-center gap-1.5 text-[var(--accent)] font-mono text-[11px] font-semibold uppercase tracking-wider min-w-0">
           <GitBranch size={13} className="shrink-0" />
-          <span>{t('projectDetail.gitActivity.title', 'CI/CD & Atividade Git')}</span>
+          <span className="truncate">{t('projectDetail.gitActivity.title', 'CI/CD & Atividade Git')}</span>
         </div>
         <CiStatusBadge status={ciStatus} label={ciLabel} />
       </CardHeader>

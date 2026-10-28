@@ -19,11 +19,11 @@ export default function CiStatusBadge({
   return (
     <div
       className={cn(
-        'inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-sans font-medium tracking-normal transition-colors select-none border border-zinc-800/80 bg-secondary text-secondary-foreground shadow-sm',
+        'inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-sans font-medium tracking-normal transition-colors select-none border border-zinc-800/80 bg-secondary text-secondary-foreground shadow-sm whitespace-nowrap shrink-0',
         className
       )}
     >
-      <span className="relative flex h-2 w-2">
+      <span className="relative flex h-2 w-2 shrink-0">
         {isRunning && (
           <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 bg-amber-400" />
         )}
@@ -37,7 +37,7 @@ export default function CiStatusBadge({
           )}
         />
       </span>
-      <span className="text-zinc-200 font-medium">{label}</span>
+      <span className="text-zinc-200 font-medium whitespace-nowrap">{label}</span>
     </div>
   );
 }
