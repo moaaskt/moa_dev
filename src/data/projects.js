@@ -7,6 +7,7 @@ import sherlockScraperImage from '../assets/images/projects/sherlock-scraper.web
 import petflixImage from '../assets/images/projects/petflix.webp';
 import radarAlfaImage from '../assets/images/projects/radaralfa.webp';
 import rsSistemasImage from '../assets/images/projects/rs-sistemas.webp';
+import alvoraImage from '../assets/images/projects/alvora.jpg';
 
 // Screenshots reais do ecossistema Sherlock Scraper & WhatsMiau
 import listagemLeadsImg from '../assets/images/projects/sherlock/listagemleads.png';
@@ -444,6 +445,117 @@ export const projects = [
           en: '5. System persists dossiers in PostgreSQL and renders them in LeadDetailsModal with maturity diagnostics, gaps, and ready-to-use sales arguments.',
         },
       ],
+    },
+  },
+  {
+    id: 'alvora',
+    title: 'Alvora',
+    description: {
+      pt: 'Plataforma LMS B2B multi-tenant com IA preditiva de retenção. Calcula o Score de Risco de Evasão de cada colaborador em tempo real e dispara intervenções pedagógicas autônomas antes que a desistência aconteça.',
+      en: 'Multi-tenant B2B LMS platform with predictive retention AI. Calculates each employee\'s Evasion Risk Score in real time and triggers autonomous pedagogical interventions before dropout occurs.',
+    },
+    image: alvoraImage,
+    tags: [
+      'Laravel',
+      'PHP',
+      'Livewire 3',
+      'Tailwind',
+      'MySQL',
+      'Redis',
+      'Docker',
+      'Groq',
+      'OpenRouter',
+      'REST API',
+    ],
+    category: 'fullstack',
+    featured: true,
+    private: false,
+    links: {
+      github: 'https://github.com/moaaskt/alvora',
+      live: null,
+    },
+    year: 2026,
+    role: {
+      pt: 'Arquiteto & Engenheiro Full Stack',
+      en: 'Architect & Full Stack Engineer',
+    },
+    overview: {
+      pt: 'O Alvora nasceu de uma pergunta real: por que empresas investem em treinamento e ainda assim perdem colaboradores no meio do caminho? Sistemas LMS convencionais apenas notificam o RH depois que o abandono acontece. O Alvora age antes — calculando continuamente um Score de Risco de Evasão com 4 fatores ponderados (dias sem login, dias sem progresso, desempenho em quizzes e desvio da média da turma) e disparando intervenções autônomas quando o score ultrapassa 70/100. A plataforma é multi-tenant desde a fundação: cada empresa opera em isolamento total via BelongsToTenant + TenantScope global, com 4 papéis distintos (admin_alvora, company_admin, instructor, student). O módulo de IA integra Groq para chat em tempo real de baixa latência e OpenRouter com cascata de modelos gratuitos para geração de conteúdo, mantendo custo zero na camada de IA.',
+      en: 'Alvora was born from a real question: why do companies invest in training and still lose employees halfway through? Conventional LMS systems only notify HR after dropout occurs. Alvora acts before — continuously calculating an Evasion Risk Score with 4 weighted factors (days without login, days without progress, quiz performance and deviation from class average) and triggering autonomous interventions when the score exceeds 70/100. The platform is multi-tenant from the ground up: each company operates in complete isolation via BelongsToTenant + global TenantScope, with 4 distinct roles (admin_alvora, company_admin, instructor, student). The AI module integrates Groq for real-time low-latency chat and OpenRouter with a free model cascade for content generation, keeping AI costs at zero.',
+    },
+    highlights: [
+      {
+        pt: 'Score de Risco de Evasão com 4 fatores ponderados calculado em tempo real via Redis + Horizon queues.',
+        en: 'Evasion Risk Score with 4 weighted factors calculated in real time via Redis + Horizon queues.',
+      },
+      {
+        pt: 'Intervenção autônoma: ao atingir score > 70, o sistema envia mensagem motivacional ao aluno e notifica o company_admin automaticamente.',
+        en: 'Autonomous intervention: when score > 70, the system automatically sends a motivational message to the student and notifies the company_admin.',
+      },
+      {
+        pt: 'Multi-tenant com isolamento total por empresa via Eloquent Global Scope — zero risco de vazamento de dados entre tenants.',
+        en: 'Multi-tenant with full company isolation via Eloquent Global Scope — zero risk of data leakage between tenants.',
+      },
+      {
+        pt: 'Módulo de IA com Groq (chat < 3s) + OpenRouter com cascata de 3 modelos gratuitos como fallback automático.',
+        en: 'AI module with Groq (chat < 3s) + OpenRouter with 3 free model cascade as automatic fallback.',
+      },
+      {
+        pt: 'Suite de testes com 84 testes e 329 assertions cobrindo todos os 7 módulos da plataforma.',
+        en: 'Test suite with 84 tests and 329 assertions covering all 7 platform modules.',
+      },
+      {
+        pt: 'Pagamentos via Mercado Pago Checkout Pro com billing híbrido: renovação automática por cartão + fatura mensal para Pix/Boleto.',
+        en: 'Payments via Mercado Pago Checkout Pro with hybrid billing: automatic card renewal + monthly invoice for Pix/Boleto.',
+      },
+    ],
+    features: [
+      {
+        title: { pt: 'Score Preditivo de Evasão', en: 'Predictive Evasion Score' },
+        description: {
+          pt: 'Fórmula com 4 fatores ponderados — dias sem login (35%), dias sem progresso (25%), desempenho em quizzes (20%) e desvio da média da turma (20%). Score 0–100 com classificação automática: baixo, médio ou alto risco.',
+          en: '4-factor weighted formula — days without login (35%), days without progress (25%), quiz performance (20%) and class average deviation (20%). Score 0–100 with automatic classification: low, medium or high risk.',
+        },
+      },
+      {
+        title: { pt: 'Intervenção Autônoma por IA', en: 'Autonomous AI Intervention' },
+        description: {
+          pt: 'Score > 70 dispara automaticamente: mensagem motivacional personalizada enviada ao aluno via Reverb (WebSocket) + notificação em tempo real ao company_admin na Sala de Situação.',
+          en: 'Score > 70 automatically triggers: personalized motivational message sent to student via Reverb (WebSocket) + real-time notification to company_admin in the Situation Room.',
+        },
+      },
+      {
+        title: { pt: 'Sala de Situação do RH', en: 'HR Situation Room' },
+        description: {
+          pt: 'Painel exclusivo do company_admin com heatmap de risco de evasão por turma, histórico de intervenções e métricas de engajamento em tempo real via WebSockets.',
+          en: 'Exclusive company_admin panel with evasion risk heatmap by class, intervention history and real-time engagement metrics via WebSockets.',
+        },
+      },
+      {
+        title: { pt: 'Alvora AI — 4 Funções', en: 'Alvora AI — 4 Functions' },
+        description: {
+          pt: 'Tutor IA (Groq, baixa latência), Geração de cursos por IA (OpenRouter), Análise de desempenho e Geração de trilhas personalizadas. Cascata automática entre 3 modelos gratuitos como fallback.',
+          en: 'AI Tutor (Groq, low latency), AI Course Generation (OpenRouter), Performance Analysis and Personalized Learning Path Generation. Automatic cascade between 3 free models as fallback.',
+        },
+      },
+      {
+        title: { pt: 'Multi-tenant B2B', en: 'B2B Multi-tenant' },
+        description: {
+          pt: 'Isolamento total de dados por empresa via BelongsToTenant trait + TenantScope Eloquent Global Scope. 4 papéis com permissões granulares: admin_alvora, company_admin, instructor, student.',
+          en: 'Full data isolation per company via BelongsToTenant trait + Eloquent Global Scope TenantScope. 4 roles with granular permissions: admin_alvora, company_admin, instructor, student.',
+        },
+      },
+      {
+        title: { pt: 'Pagamentos & Billing', en: 'Payments & Billing' },
+        description: {
+          pt: 'Mercado Pago Checkout Pro com billing híbrido: cartão com renovação automática + fatura mensal para Pix/Boleto. Grace period de 5 dias com downgrade automático por inadimplência.',
+          en: 'Mercado Pago Checkout Pro with hybrid billing: card with automatic renewal + monthly invoice for Pix/Boleto. 5-day grace period with automatic downgrade for delinquency.',
+        },
+      },
+    ],
+    technicalDecisions: {
+      pt: 'A decisão de construir como monolito Laravel + Livewire 3 foi deliberada: elimina a complexidade de uma SPA separada, mantém o time-to-market baixo e ainda entrega reatividade real via WebSockets (Reverb). O isolamento multi-tenant foi implementado via Eloquent Global Scope em vez de middleware, garantindo que nenhuma query vaze entre tenants por omissão — a segurança é enforced no nível do ORM. Para IA, a estratégia de dual-provider (Groq para latência + OpenRouter para custo zero) com cascata automática de modelos gratuitos garante disponibilidade mesmo com limites de rate. A infraestrutura usa Laravel Octane com FrankenPHP, Redis para filas e cache, e Horizon para observabilidade das queues — escolhas que posicionam o projeto como referência de stack moderna no mercado brasileiro.',
+      en: 'The decision to build as a Laravel + Livewire 3 monolith was deliberate: it eliminates the complexity of a separate SPA, keeps time-to-market low while still delivering real reactivity via WebSockets (Reverb). Multi-tenant isolation was implemented via Eloquent Global Scope rather than middleware, ensuring no query leaks between tenants by omission — security is enforced at the ORM level. For AI, the dual-provider strategy (Groq for latency + OpenRouter for zero cost) with automatic free model cascade guarantees availability even under rate limits. The infrastructure uses Laravel Octane with FrankenPHP, Redis for queues and cache, and Horizon for queue observability — choices that position the project as a modern stack reference in the Brazilian market.',
     },
   },
   {
