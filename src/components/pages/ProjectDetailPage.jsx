@@ -18,6 +18,7 @@ import FuzzyText from '../ui/FuzzyText';
 import ProjectGallery from '../ui/ProjectGallery';
 import ProjectArchitecture from '../ui/ProjectArchitecture';
 import { Badge } from '../ui/badge';
+import ProjectGitActivity from '../ui/ProjectGitActivity';
 import { projects } from '../../data/projects';
 
 // Helper utilitário para extrair texto no idioma ativo
@@ -711,6 +712,11 @@ export default function ProjectDetailPage({ projectId }) {
                   </div>
                 ))}
               </div>
+            </div>
+
+            {/* CI/CD & Git Activity Card */}
+            <div style={{ borderTop: '1px solid var(--border)', paddingTop: '1.25rem' }}>
+              <ProjectGitActivity project={project} />
             </div>
           </aside>
         </div>

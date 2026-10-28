@@ -84,9 +84,18 @@
     "current": "Present",
     "inProgress": "In progress",
     "months": {
-      "1": "Jan", "2": "Feb", "3": "Mar", "4": "Apr",
-      "5": "May", "6": "Jun", "7": "Jul", "8": "Aug",
-      "9": "Sep", "10": "Oct", "11": "Nov", "12": "Dec"
+      "1": "Jan",
+      "2": "Feb",
+      "3": "Mar",
+      "4": "Apr",
+      "5": "May",
+      "6": "Jun",
+      "7": "Jul",
+      "8": "Aug",
+      "9": "Sep",
+      "10": "Oct",
+      "11": "Nov",
+      "12": "Dec"
     }
   },
   "education": {
@@ -175,7 +184,22 @@
     "stackAndTools": "Stack & Tools",
     "prevProject": "Previous Project",
     "nextProject": "Next Project",
-    "viewAllProjects": "View all projects"
+    "viewAllProjects": "View all projects",
+    "gitActivity": {
+      "title": "CI/CD & Git Activity",
+      "statusPassing": "Build Passing",
+      "statusProtected": "Protected Repository",
+      "statusRunning": "Active Workflow",
+      "statusFailed": "Build Offline",
+      "recentCommits": "Recent Commits",
+      "viewCommit": "View commit on GitHub",
+      "viewAllCommits": "View full history on GitHub",
+      "protectedBadge": "Proprietary Code",
+      "protectedDesc": "Enterprise source code under technical compliance, NDA, and restricted access control.",
+      "noCommits": "No recent commits found.",
+      "rateLimit": "API rate limit reached. Displaying local cache.",
+      "loading": "Loading commit activity..."
+    }
   },
   "gallery": {
     "badge": "Production System Screenshots",

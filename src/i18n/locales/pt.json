@@ -84,9 +84,18 @@
     "current": "Atual",
     "inProgress": "Em andamento",
     "months": {
-      "1": "Jan", "2": "Fev", "3": "Mar", "4": "Abr",
-      "5": "Mai", "6": "Jun", "7": "Jul", "8": "Ago",
-      "9": "Set", "10": "Out", "11": "Nov", "12": "Dez"
+      "1": "Jan",
+      "2": "Fev",
+      "3": "Mar",
+      "4": "Abr",
+      "5": "Mai",
+      "6": "Jun",
+      "7": "Jul",
+      "8": "Ago",
+      "9": "Set",
+      "10": "Out",
+      "11": "Nov",
+      "12": "Dez"
     }
   },
   "education": {
@@ -175,7 +184,22 @@
     "stackAndTools": "Stack & Ferramentas",
     "prevProject": "Projeto Anterior",
     "nextProject": "Próximo Projeto",
-    "viewAllProjects": "Ver todos os projetos"
+    "viewAllProjects": "Ver todos os projetos",
+    "gitActivity": {
+      "title": "CI/CD & Atividade Git",
+      "statusPassing": "Build Passing",
+      "statusProtected": "Repositório Protegido",
+      "statusRunning": "Workflow Ativo",
+      "statusFailed": "Build Offline",
+      "recentCommits": "Commits Recentes",
+      "viewCommit": "Ver commit no GitHub",
+      "viewAllCommits": "Ver histórico no GitHub",
+      "protectedBadge": "Código Proprietário",
+      "protectedDesc": "Código-fonte corporativo sob conformidade técnica, NDA e controle de acesso restrito.",
+      "noCommits": "Nenhum commit recente encontrado.",
+      "rateLimit": "Limite de consultas da API atingido. Exibindo dados locais.",
+      "loading": "Carregando atividade de commits..."
+    }
   },
   "gallery": {
     "badge": "Capturas Reais do Sistema",
