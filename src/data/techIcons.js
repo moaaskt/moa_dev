@@ -9,8 +9,9 @@ import {
   SiGo, SiRedis, SiLaravel, SiNestjs, SiRabbitmq,
   SiWhatsapp, SiPrisma,
   SiCplusplus, SiEspressif, SiArduino,
+  SiLivewire, SiMercadopago,
 } from 'react-icons/si';
-import { TbGps, TbBrain, TbCreditCard, TbWifi, TbSettings, TbRouter, TbAccessPoint, TbCpu } from 'react-icons/tb';
+import { TbGps, TbBrain, TbCreditCard, TbWifi, TbSettings, TbRouter, TbAccessPoint, TbCpu, TbBrandOpenai } from 'react-icons/tb';
 
 export const TECH_ICONS = {
   'Next.js':       { icon: SiNextdotjs,    color: '#ffffff' },
@@ -66,4 +67,11 @@ export const TECH_ICONS = {
   'Gemini AI':        { icon: SiGooglegemini, color: '#8E75B2' },
   'whatsmeow':        { icon: SiWhatsapp,     color: '#25D366' },
   'Asynq':            { icon: SiRedis,        color: '#DC382D' },
+  'Livewire':         { icon: SiLivewire,     color: '#fb70a9' },
+  'Livewire 3':       { icon: SiLivewire,     color: '#fb70a9' },
+  'Horizon':          { icon: SiLaravel,      color: '#FF2D20' },
+  'Reverb':           { icon: SiLaravel,      color: '#FF2D20' },
+  'Groq':             { icon: TbBrandOpenai,  color: '#f55036' },
+  'OpenRouter':       { icon: TbBrandOpenai,  color: '#6366F1' },
+  'Mercado Pago':     { icon: SiMercadopago,  color: '#009ee3' },
 };
