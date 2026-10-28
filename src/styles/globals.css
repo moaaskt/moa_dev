@@ -157,40 +157,57 @@ img {
   transform: perspective(1px) translateZ(0);
   box-shadow: 0 0 1px rgba(0, 0, 0, 0);
   position: relative;
-  -webkit-transition-property: color;
-  transition-property: color;
+  -webkit-transition-property: color, border-color;
+  transition-property: color, border-color;
   -webkit-transition-duration: 0.3s;
   transition-duration: 0.3s;
   overflow: hidden;
-  isolation: isolate;
   text-decoration: none;
+  background-color: #141414;
 }
 
 .hvr-sweep-to-right::before {
   content: "";
   position: absolute;
-  z-index: -1;
-  top: -1px;
-  left: -1px;
-  right: -1px;
-  bottom: -1px;
+  z-index: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   border-radius: inherit;
-  background: var(--accent);
+  background: var(--accent) !important;
   -webkit-transform: scaleX(0);
   transform: scaleX(0);
   -webkit-transform-origin: 0 50%;
   transform-origin: 0 50%;
   -webkit-transition-property: transform;
   transition-property: transform;
-  -webkit-transition-duration: 0.3s;
-  transition-duration: 0.3s;
-  -webkit-transition-timing-function: ease-out;
-  transition-timing-function: ease-out;
+  -webkit-transition-duration: 0.35s;
+  transition-duration: 0.35s;
+  -webkit-transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.hvr-sweep-to-right > *,
+.hvr-sweep-to-right span {
+  position: relative;
+  z-index: 1;
+  transition: color 0.3s ease;
 }
 
 .hvr-sweep-to-right:hover,
 .hvr-sweep-to-right:focus,
 .hvr-sweep-to-right:active {
+  color: #080808 !important;
+  border-color: var(--accent) !important;
+}
+
+.hvr-sweep-to-right:hover > *,
+.hvr-sweep-to-right:focus > *,
+.hvr-sweep-to-right:active > *,
+.hvr-sweep-to-right:hover span,
+.hvr-sweep-to-right:focus span,
+.hvr-sweep-to-right:active span {
   color: #080808 !important;
 }
 
@@ -201,3 +218,80 @@ img {
   transform: scaleX(1);
 }
 
+/* ==========================================================================
+   Botão Ver Detalhes - Efeito Sweep To Right Oficial (Hover.css)
+   ========================================================================== */
+.btn-project-details {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.45rem !important;
+  height: 38px !important;
+  padding: 0 1.1rem !important;
+  border-radius: 8px !important;
+  font-size: 0.875rem !important;
+  font-weight: 600 !important;
+  font-family: 'DM Sans', sans-serif !important;
+  color: var(--accent) !important;
+  border: 1px solid var(--border-accent) !important;
+  background-color: #141414 !important;
+  white-space: nowrap !important;
+  text-decoration: none !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4) !important;
+  cursor: pointer !important;
+  position: relative !important;
+  overflow: hidden !important;
+  vertical-align: middle !important;
+  -webkit-transform: perspective(1px) translateZ(0) !important;
+  transform: perspective(1px) translateZ(0) !important;
+  transition: border-color 0.3s ease, color 0.3s ease !important;
+}
+
+.btn-project-details::before {
+  content: "" !important;
+  position: absolute !important;
+  z-index: 1 !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  border-radius: inherit !important;
+  background: var(--accent) !important;
+  -webkit-transform: scaleX(0) !important;
+  transform: scaleX(0) !important;
+  -webkit-transform-origin: 0 50% !important;
+  transform-origin: 0 50% !important;
+  -webkit-transition: transform 0.35s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+  transition: transform 0.35s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+}
+
+.btn-project-details:hover::before,
+.btn-project-details:focus::before,
+.btn-project-details:active::before {
+  -webkit-transform: scaleX(1) !important;
+  transform: scaleX(1) !important;
+}
+
+.btn-project-details .btn-project-details-text,
+.btn-project-details .btn-project-details-arrow {
+  position: relative !important;
+  z-index: 2 !important;
+  color: var(--accent) !important;
+  transition: color 0.3s ease !important;
+}
+
+.btn-project-details:hover,
+.btn-project-details:focus,
+.btn-project-details:active {
+  border-color: var(--accent) !important;
+  color: #080808 !important;
+}
+
+.btn-project-details:hover .btn-project-details-text,
+.btn-project-details:hover .btn-project-details-arrow,
+.btn-project-details:focus .btn-project-details-text,
+.btn-project-details:focus .btn-project-details-arrow,
+.btn-project-details:active .btn-project-details-text,
+.btn-project-details:active .btn-project-details-arrow {
+  color: #080808 !important;
+}

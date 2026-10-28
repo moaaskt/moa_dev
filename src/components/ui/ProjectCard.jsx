@@ -268,34 +268,13 @@ export default function ProjectCard({ project }) {
               )}
             </div>
 
-            <Button
-              asChild
-              className="hvr-sweep-to-right"
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '0.45rem',
-                height: '38px',
-                padding: '0 1.1rem',
-                borderRadius: '8px',
-                fontSize: '0.875rem',
-                fontWeight: 600,
-                fontFamily: 'DM Sans, sans-serif',
-                color: 'var(--accent)',
-                border: '1px solid var(--border-accent)',
-                background: '#141414',
-                whiteSpace: 'nowrap',
-                textDecoration: 'none',
-                boxShadow: '0 1px 2px rgba(0, 0, 0, 0.4)',
-                cursor: 'pointer',
-              }}
+            <a
+              href={`#/projeto/${project.id}`}
+              className="btn-project-details"
             >
-              <a href={`#/projeto/${project.id}`}>
-                <span>{t('common.viewDetails', 'Ver detalhes')}</span>
-                <span aria-hidden="true" style={{ fontSize: '0.95rem', fontWeight: 700 }}>→</span>
-              </a>
-            </Button>
+              <span className="btn-project-details-text">{t('common.viewDetails', 'Ver detalhes')}</span>
+              <span aria-hidden="true" className="btn-project-details-arrow">→</span>
+            </a>
           </div>
         </div>
       </div>

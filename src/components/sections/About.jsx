@@ -97,7 +97,7 @@ export default function About() {
                 marginBottom: '2rem',
               }}
             >
-              {t('about.bioP4')}
+              {/* {t('about.bioP4')} */}
             </motion.p>
 
             {/* Favorite Stack Section */}
