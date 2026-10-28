@@ -39,7 +39,7 @@ export default function ProjectGitActivity({ project }) {
       <CardHeader className="p-3 pb-2.5 flex flex-row items-center justify-between gap-2 space-y-0 border-b border-[var(--border)]/40 bg-[var(--bg-primary)]/20">
         <div className="flex items-center gap-1.5 text-[var(--accent)] font-mono text-[11px] font-semibold uppercase tracking-wider min-w-0">
           <GitBranch size={13} className="shrink-0" />
-          <span className="truncate">{t('projectDetail.gitActivity.title', 'CI/CD & Atividade Git')}</span>
+          <span className="truncate">{t('projectDetail.gitActivity.title', 'Atividade Git')}</span>
         </div>
         <CiStatusBadge status={ciStatus} label={ciLabel} />
       </CardHeader>
@@ -47,12 +47,12 @@ export default function ProjectGitActivity({ project }) {
       <CardContent className="p-3.5 pt-3">
         {/* Caso 1: Projeto com código privado / proprietário */}
         {isPrivate ? (
-          <div className="flex flex-col gap-2 rounded-md border border-blue-900/30 bg-blue-950/20 p-3 text-left">
-            <div className="flex items-center gap-2 text-blue-400 font-mono text-xs font-semibold">
-              <Lock size={14} className="shrink-0 text-blue-400" />
+          <div className="flex flex-col gap-2 rounded-md border border-zinc-800 bg-zinc-900/70 p-3 text-left shadow-sm">
+            <div className="flex items-center gap-2 text-zinc-200 font-mono text-xs font-semibold">
+              <Lock size={13} className="shrink-0 text-zinc-400" />
               <span>{t('projectDetail.gitActivity.protectedBadge', 'Código Proprietário')}</span>
             </div>
-            <p className="text-[12px] text-[var(--text-secondary)] font-sans leading-relaxed m-0">
+            <p className="text-[11px] text-zinc-400 font-sans leading-relaxed m-0">
               {t(
                 'projectDetail.gitActivity.protectedDesc',
                 'Código-fonte corporativo sob conformidade técnica, NDA e controle de acesso restrito.'

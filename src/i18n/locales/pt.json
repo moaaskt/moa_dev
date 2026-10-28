@@ -188,7 +188,7 @@
     "gitActivity": {
       "title": "Atividade Git",
       "statusPassing": "Build Passing",
-      "statusProtected": "Repositório Protegido",
+      "statusProtected": "Privado",
       "statusRunning": "Workflow Ativo",
       "statusFailed": "Build Offline",
       "recentCommits": "Commits Recentes",
