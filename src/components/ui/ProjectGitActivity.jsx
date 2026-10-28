@@ -86,12 +86,12 @@ export default function ProjectGitActivity({ project }) {
                       href={commit.htmlUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 font-mono text-[11px] font-semibold text-[var(--accent)] bg-[var(--bg-primary)] hover:bg-[var(--accent)] hover:text-[#080808] px-1.5 py-0.5 rounded border border-[var(--border)] transition-colors"
+                      className="inline-flex items-center gap-1 font-mono text-[11px] font-medium text-zinc-300 bg-zinc-900/90 hover:bg-zinc-800/90 hover:text-[var(--accent)] hover:border-[var(--accent)] px-2 py-0.5 rounded border border-zinc-800 transition-all duration-150 select-none shadow-sm"
                       title={t('projectDetail.gitActivity.viewCommit', 'Ver commit no GitHub')}
                     >
-                      <GitCommit size={11} />
+                      <GitCommit size={11} className="shrink-0 text-zinc-400" />
                       <span>{commit.sha}</span>
-                      <ExternalLink size={9} className="opacity-70" />
+                      <ExternalLink size={9} className="opacity-60 shrink-0" />
                     </a>
                     <span className="text-[11px] font-sans text-[var(--text-secondary)]">
                       {formatRelativeTime(commit.date, currentLang)}

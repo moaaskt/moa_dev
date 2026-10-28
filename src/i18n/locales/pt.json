@@ -186,7 +186,7 @@
     "nextProject": "Próximo Projeto",
     "viewAllProjects": "Ver todos os projetos",
     "gitActivity": {
-      "title": "CI/CD & Atividade Git",
+      "title": "Atividade Git",
       "statusPassing": "Build Passing",
       "statusProtected": "Repositório Protegido",
       "statusRunning": "Workflow Ativo",
