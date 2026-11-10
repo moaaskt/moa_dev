@@ -32,13 +32,14 @@
   "hero": {
     "greeting": "Hello, I am",
     "name": "Moacir Neto",
-    "role": "Full Stack Developer",
+    "role": "Backend Developer",
     "subtitles": [
       "building systems in production.",
-      "with Go, PHP, and React.",
-      "from backend to deployment."
+      "with PHP, APIs, and integrations.",
+      "from backend to deployment.",
+      "with Go, Node.js, and Python."
     ],
-    "description": "Real-world systems — from B2B CRMs with AI and scraping in Go to integrations and automations with PHP and React.",
+    "description": "Real-world systems development — APIs, SaaS platforms, integrations, and artificial intelligence automations.",
     "ctaProjects": "View Projects",
     "ctaGithub": "GitHub",
     "ariaGithub": "View Moacir Neto's profile on GitHub",

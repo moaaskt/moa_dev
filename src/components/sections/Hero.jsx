@@ -123,7 +123,7 @@ export default function Hero() {
   const { t, i18n } = useTranslation();
   const vantaRef = useRef(null);
 
-  const role = t('hero.role', 'Desenvolvedor Full Stack');
+  const role = t('hero.role', 'Desenvolvedor Backend');
   const rawSubtitles = t('hero.subtitles', { returnObjects: true });
   const isEn = (i18n.resolvedLanguage || i18n.language || 'pt').startsWith('en');
 
@@ -132,13 +132,15 @@ export default function Hero() {
     : isEn
     ? [
         'building systems in production.',
-        'with Go, PHP, and React.',
+        'with PHP, APIs, and integrations.',
         'from backend to deployment.',
+        'with Go, Node.js, and Python.',
       ]
     : [
         'que constrói sistemas em produção.',
-        'com Go, PHP e React.',
+        'com PHP, APIs e integrações.',
         'do backend ao deploy.',
+        'com Go, Node.js e Python.',
       ];
 
   useEffect(() => {
@@ -271,7 +273,7 @@ export default function Hero() {
             margin: '0 auto 2.5rem',
           }}
         >
-          {t('hero.description', 'Sistemas reais — de CRMs B2B com IA e scraping em Go a integrações e automações com PHP e React.')}
+          {t('hero.description', 'Desenvolvimento de sistemas reais — APIs, plataformas SaaS, integrações e automações com inteligência artificial.')}
         </motion.p>
 
         {/* Buttons */}
