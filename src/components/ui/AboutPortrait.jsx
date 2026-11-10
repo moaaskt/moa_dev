@@ -1,6 +1,7 @@
 // 1. React, Core Hooks, and Native Packages
 
 // 2. Third-Party Libraries (Framer Motion, Lucide Icons, etc.)
+import { useTranslation } from 'react-i18next';
 
 // 3. Reusable UI Components & Layout Elements
 
@@ -15,6 +16,7 @@ import '../../styles/about-portrait.css';
  * moldura futurista de cantos cortados e legenda externa alinhada estilo terminal.
  */
 export default function AboutPortrait() {
+  const { t } = useTranslation();
   return (
     <div style={{ width: '100%', maxWidth: '300px' }}>
       {/* Wrapper principal recortado e com sombreado */}
@@ -28,7 +30,7 @@ export default function AboutPortrait() {
           <div className="portrait-tech-card">
             <img
               src={profileImg}
-              alt="Foto de Moacir Neto"
+              alt={t('about.portraitAlt', 'Foto de Moacir Neto')}
               className="portrait-image"
               loading="lazy"
               decoding="async"
@@ -41,7 +43,7 @@ export default function AboutPortrait() {
       <div className="portrait-caption-external">
         <span className="caption-terminal-prefix">// PERFIL.DEV</span>
         <h4 className="caption-name">Moacir Neto</h4>
-        <span className="caption-role">Desenvolvedor Full Stack Jr.</span>
+        <span className="caption-role">{t('about.portraitRole', 'Desenvolvedor Backend')}</span>
       </div>
     </div>
   );

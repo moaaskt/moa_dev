@@ -48,12 +48,13 @@
   "about": {
     "sectionNumber": "01",
     "sectionTitle": "Sobre mim",
-    "bioP1": " Sou Desenvolvedor Full Stack com foco em backend, construo sistemas que vão do scraping com IA até plataformas completas em produção.",
-    "bioP2": "Na Evento Santo & Doar Digital desenvolvi um LMS completo: módulos de cursos, geração de diplomas personalizáveis, área do aluno com estatísticas, painel do tutor com ficha e frequência. Além disso, módulos de eventos, checkout, fila de espera, caravanas e integrações com Asaas e WhatsApp API.",
-    "bioP3": "Nos projetos pessoais fiz um CRM B2B em Go com pipeline de IA usando Gemini, workers assíncronos com Redis e gateway WhatsApp próprio — do zero ao Docker Compose com 7 serviços.",
+    "bioP1": "Desenvolvedor Backend com experiência profissional sólida em PHP, CodeIgniter 4, MySQL, arquitetura de APIs REST, integrações de serviços externos e manutenção contínua de sistemas críticos em produção.",
+    "bioP2": "Na Doar Digital, atuo no desenvolvimento e sustentação de uma plataforma SaaS multi-tenant de eventos e captação de doações. Sou responsável por módulos centrais de inscrições, checkout, gestão de participantes, filas assíncronas com RabbitMQ e integrações diretas com gateways de pagamento (Asaas) e WhatsApp Business API, atuando ativamente na resolução de gargalos de concorrência, otimização de queries e estabilidade sob alto volume.",
+    "bioP3": "Em paralelo, desenvolvo projetos independentes e ecossistemas autorais como o Sherlock Scraper, Alvora e VetOS AI, aprofundando minha vivência Full Stack e arquitetural com Go, Laravel, NestJS, TypeScript e Python, construindo plataformas SaaS, fluxos de automação e pipelines com inteligência artificial.",
     "bioP4": "Stack: PHP, React, TypeScript, Node.js, Python. Vivência com IoT — ESP32, sensores e instalação em campo.",
     "favoriteStack": "// stack favorita",
-    "portraitAlt": "Foto de perfil de Moacir Neto"
+    "portraitAlt": "Foto de perfil de Moacir Neto",
+    "portraitRole": "Desenvolvedor Backend"
   },
   "projectsSection": {
     "sectionNumber": "02",
