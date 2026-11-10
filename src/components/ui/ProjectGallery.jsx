@@ -61,10 +61,12 @@ export default function ProjectGallery({ items = [], projectTitle = 'Projeto' })
 
     const originalOverflow = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
+    document.body.classList.add('lightbox-open');
     window.addEventListener('keydown', handleKeyDown);
 
     return () => {
       document.body.style.overflow = originalOverflow;
+      document.body.classList.remove('lightbox-open');
       window.removeEventListener('keydown', handleKeyDown);
     };
   }, [lightboxIndex, closeLightbox, showPrev, showNext]);
@@ -362,6 +364,7 @@ export default function ProjectGallery({ items = [], projectTitle = 'Projeto' })
         {lightboxIndex !== null && currentLightboxItem && (
           <motion.div
             key="lightbox"
+            className="gallery-lightbox"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -370,9 +373,7 @@ export default function ProjectGallery({ items = [], projectTitle = 'Projeto' })
               position: 'fixed',
               inset: 0,
               zIndex: 1000,
-              background: 'rgba(5, 5, 5, 0.94)',
-              backdropFilter: 'blur(10px)',
-              WebkitBackdropFilter: 'blur(10px)',
+              background: 'rgba(5, 5, 5, 0.96)',
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'space-between',
@@ -493,6 +494,7 @@ export default function ProjectGallery({ items = [], projectTitle = 'Projeto' })
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.96 }}
                 transition={{ duration: 0.25 }}
+                decoding="async"
                 src={currentLightboxItem.image}
                 alt={getItemField(currentLightboxItem, 'title')}
                 style={{
@@ -502,7 +504,7 @@ export default function ProjectGallery({ items = [], projectTitle = 'Projeto' })
                   height: 'auto',
                   objectFit: 'contain',
                   borderRadius: '8px',
-                  boxShadow: '0 25px 60px rgba(0, 0, 0, 0.7)',
+                  boxShadow: '0 12px 28px rgba(0, 0, 0, 0.55)',
                   border: '1px solid rgba(255, 255, 255, 0.1)',
                 }}
                 className="lightbox-image"
@@ -578,6 +580,10 @@ export default function ProjectGallery({ items = [], projectTitle = 'Projeto' })
         }
         .gallery-card:hover .gallery-thumb {
           transform: scale(1.04);
+        }
+        body.lightbox-open #custom-cursor,
+        body:has(.gallery-lightbox) #custom-cursor {
+          mix-blend-mode: normal !important;
         }
         @media (max-width: 991px) {
           .gallery-grid {
