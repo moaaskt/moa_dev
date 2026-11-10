@@ -256,6 +256,7 @@ export default function ProjectGallery({ items = [], projectTitle = 'Projeto' })
                       width: '100%',
                       height: '100%',
                       objectFit: 'cover',
+                      objectPosition: item.thumbnailPosition || item.objectPosition || 'center',
                       display: 'block',
                       transition: 'transform 0.4s ease',
                     }}
@@ -495,13 +496,16 @@ export default function ProjectGallery({ items = [], projectTitle = 'Projeto' })
                 src={currentLightboxItem.image}
                 alt={getItemField(currentLightboxItem, 'title')}
                 style={{
-                  maxWidth: '92%',
-                  maxHeight: '75vh',
+                  maxWidth: 'calc(100% - 120px)',
+                  maxHeight: '100%',
+                  width: 'auto',
+                  height: 'auto',
                   objectFit: 'contain',
                   borderRadius: '8px',
                   boxShadow: '0 25px 60px rgba(0, 0, 0, 0.7)',
                   border: '1px solid rgba(255, 255, 255, 0.1)',
                 }}
+                className="lightbox-image"
               />
 
               {/* Botão Próximo */}
@@ -578,6 +582,11 @@ export default function ProjectGallery({ items = [], projectTitle = 'Projeto' })
         @media (max-width: 991px) {
           .gallery-grid {
             grid-template-columns: repeat(2, 1fr) !important;
+          }
+        }
+        @media (max-width: 640px) {
+          .lightbox-image {
+            max-width: 94% !important;
           }
         }
         @media (max-width: 600px) {

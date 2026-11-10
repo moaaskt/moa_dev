@@ -716,6 +716,7 @@ export const projects = [
           en: 'Connector configuration interface enabling the management of scraping methods, status activation, URLs, and individual timeouts.',
         },
         image: buscavagScraplistImg,
+        thumbnailPosition: 'center 20%',
       },
     ],
   },
