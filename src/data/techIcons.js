@@ -11,7 +11,7 @@ import {
   SiCplusplus, SiEspressif, SiArduino,
   SiLivewire, SiMercadopago,
 } from 'react-icons/si';
-import { TbGps, TbBrain, TbCreditCard, TbWifi, TbSettings, TbRouter, TbAccessPoint, TbCpu, TbBrandOpenai } from 'react-icons/tb';
+import { TbGps, TbBrain, TbCreditCard, TbWifi, TbSettings, TbRouter, TbAccessPoint, TbCpu, TbBrandOpenai, TbApi } from 'react-icons/tb';
 
 export const TECH_ICONS = {
   'Next.js':       { icon: SiNextdotjs,    color: '#ffffff' },
@@ -38,7 +38,9 @@ export const TECH_ICONS = {
   'IA Generativa': { icon: SiOpenai,       color: '#b8f73c' },
   'NLP':           { icon: SiHuggingface,  color: '#FFD21E' },
   'Web Scraping':  { icon: SiPuppeteer,    color: '#40B5A4' },
-  'REST API':      { icon: SiPostman,      color: '#FF6C37' },
+  'REST API':      { icon: TbApi,          color: '#10B981' },
+  'APIs REST':     { icon: TbApi,          color: '#10B981' },
+  'API REST':      { icon: TbApi,          color: '#10B981' },
   'Postman':       { icon: SiPostman,      color: '#FF6C37' },
   'Go':            { icon: SiGo,           color: '#00ADD8' },
   'Golang':        { icon: SiGo,           color: '#00ADD8' },
@@ -50,6 +52,8 @@ export const TECH_ICONS = {
   'WhatsApp API':  { icon: SiWhatsapp,     color: '#25D366' },
   'Asaas':         { icon: TbCreditCard,   color: '#0030B9' },
   'GPS/IoT':       { icon: TbGps,          color: '#06B6D4' },
+  'GPS':           { icon: TbGps,          color: '#06B6D4' },
+  'GPSWOX':        { icon: TbGps,          color: '#06B6D4' },
   'IA':            { icon: TbBrain,        color: '#b8f73c' },
   'C++':           { icon: SiCplusplus,    color: '#00599C' },
   'ESP32':         { icon: SiEspressif,    color: '#E7352B' },
