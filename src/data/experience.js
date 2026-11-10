@@ -16,10 +16,10 @@ export const experiences = [
       en: 'In progress',
     },
     description: {
-      pt: 'Desenvolvimento e manutenção de aplicações web full stack como freelancer, atuando em múltiplos projetos simultâneos. Integração do Rastrecob com plataforma GPSWOX via APIs REST (PHP/Laravel). Desenvolvimento do VetOS AI, SaaS veterinário multi-tenant com NestJS, Prisma, PostgreSQL e Redis. Projetos sob demanda com React, Next.js, TypeScript, automações com Python e IA generativa (Google Gemini).',
-      en: 'Development and maintenance of full stack web applications as a freelancer, working across multiple concurrent projects. Integration of Rastrecob with the GPSWOX tracking platform via REST APIs (PHP/Laravel). Core development of VetOS AI, a multi-tenant veterinary SaaS built with NestJS, Prisma, PostgreSQL, and Redis. On-demand web platforms with React, Next.js, TypeScript, Python automations, and Generative AI (Google Gemini).',
+      pt: 'Atuação como desenvolvedor freelancer em projetos de desenvolvimento e manutenção de aplicações, com foco em backend, integrações e automações. No Rastrecob, desenvolvimento e manutenção de funcionalidades utilizando PHP e Laravel, com integração à API REST da plataforma GPSWOX. No WhatsMiau, desenvolvimento de soluções de automação e atendimento via WhatsApp.',
+      en: 'Freelance developer working on application development and maintenance projects, with a strong focus on backend, integrations, and automations. On Rastrecob, developed and maintained features using PHP and Laravel, integrated with the GPSWOX platform REST API. On WhatsMiau, built automation and customer support solutions via WhatsApp.',
     },
-    tags: ['NestJS', 'Prisma', 'PostgreSQL', 'Redis', 'Laravel', 'React', 'TypeScript', 'Python'],
+    tags: ['PHP', 'Laravel', 'REST API', 'WhatsApp API', 'GPS/IoT'],
     current: true,
   },
   {
@@ -28,7 +28,7 @@ export const experiences = [
       pt: 'Desenvolvedor Full Stack Jr.',
       en: 'Junior Full Stack Developer',
     },
-    company: 'Evento Santo & Doar Digital',
+    company: 'Doar Digital',
     type: {
       pt: 'Híbrido',
       en: 'Hybrid',
@@ -39,10 +39,10 @@ export const experiences = [
       en: '~10 months',
     },
     description: {
-      pt: 'Atuação em plataforma web multi-tenant em produção, desenvolvendo e mantendo módulos de Eventos, Checkout, Fila de Espera, Caravanas, Cursos e Faturas. Implementação de integrações com gateway de pagamento Asaas e notificações via WhatsApp API, além de mensageria assíncrona com RabbitMQ. Correção de bug crítico de concorrência/estoque no checkout e resolução de gargalo de performance (memory exhausted) na listagem de eventos.',
-      en: 'Hands-on development in a production multi-tenant web platform, building and maintaining modules for Events, Checkout, Waitlists, Caravans, Courses, and Invoicing. Implemented payment integrations with Asaas gateway and automated notifications via WhatsApp API, along with asynchronous messaging using RabbitMQ. Resolved critical race conditions in checkout inventory and performance bottlenecks (memory exhaustion) in event listings.',
+      pt: 'Atuação no desenvolvimento e manutenção do Evento Santo, plataforma SaaS multi-tenant de eventos e doações desenvolvida pela Doar Digital, utilizando PHP 8, CodeIgniter 4 e MySQL. Desenvolvimento de módulos de inscrições, checkout, certificados e gerenciamento de participantes; implementação de regras de negócio para controle de vagas, lista de espera e substituição de participantes; integrações com Asaas para pagamentos e WhatsApp Business API para notificações; implementação de mensageria assíncrona com RabbitMQ; investigação e correção de problemas de concorrência que provocavam inscrições e ingressos duplicados; otimização de consultas MySQL e resolução de problemas de consumo excessivo de memória; e geração de certificados em PDF utilizando Dompdf.',
+      en: 'Development and maintenance of Evento Santo, a multi-tenant SaaS platform for events and donations built by Doar Digital using PHP 8, CodeIgniter 4, and MySQL. Engineered registration, checkout, certificate, and participant management modules; implemented core business rules for capacity control, waitlists, and attendee substitutions; integrated Asaas for payments and WhatsApp Business API for notifications; implemented asynchronous messaging with RabbitMQ; investigated and fixed concurrency race conditions causing duplicate registrations and tickets; optimized MySQL queries and resolved excessive memory usage; and generated PDF certificates using Dompdf.',
     },
-    tags: ['PHP', 'CodeIgniter 4', 'RabbitMQ', 'Asaas', 'WhatsApp API', 'MySQL', 'JavaScript', 'Bootstrap'],
+    tags: ['PHP', 'CodeIgniter 4', 'MySQL', 'RabbitMQ', 'Asaas', 'WhatsApp API', 'JavaScript', 'Bootstrap'],
     current: false,
   },
   {
@@ -66,8 +66,8 @@ export const experiences = [
       en: 'Florianopolis, SC, Brazil',
     },
     description: {
-      pt: 'Atuação na instalação, configuração e manutenção de sistemas de automação residencial e dispositivos IoT, do planejamento da infraestrutura até a entrega e validação dos equipamentos no cliente. Instalação e configuração de dispositivos IoT e equipamentos inteligentes; implementação de automações residenciais; passagem, organização e identificação de cabeamento; planejamento básico de infraestrutura para automação; testes de funcionamento, suporte técnico em campo e manutenção de instalações existentes.',
-      en: 'Installation, configuration, and maintenance of smart home systems and IoT devices, from infrastructure planning through client handoff and equipment validation. Configured smart devices and automated home routines; managed structural cabling, wiring organization, and identification; performed on-site technical diagnostics, field testing, and maintenance of automation setups.',
+      pt: 'Atuação na instalação, configuração e manutenção de sistemas de automação residencial e dispositivos IoT. Responsável por cabeamento estruturado, testes de funcionamento, suporte técnico em campo e manutenção de instalações e equipamentos inteligentes.',
+      en: 'Installation, configuration, and maintenance of smart home automation systems and IoT devices. Responsible for structured cabling, operational testing, on-site technical support, and maintenance of smart equipment and setups.',
     },
     tags: ['IoT', 'Automação', 'Eletrônica'],
     current: false,
