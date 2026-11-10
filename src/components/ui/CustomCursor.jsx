@@ -24,13 +24,11 @@ export default function CustomCursor() {
       const size = isHovering.current ? 40 : 10;
 
       if (dotRef.current) {
-        dotRef.current.style.left = `${current.current.x}px`;
-        dotRef.current.style.top = `${current.current.y}px`;
+        dotRef.current.style.transform = `translate3d(${current.current.x}px, ${current.current.y}px, 0) translate(-50%, -50%)`;
         dotRef.current.style.width = `${size}px`;
         dotRef.current.style.height = `${size}px`;
         dotRef.current.style.background = isHovering.current ? 'transparent' : 'var(--accent)';
         dotRef.current.style.border = isHovering.current ? '2px solid var(--accent)' : 'none';
-        dotRef.current.style.transform = 'translate(-50%, -50%)';
       }
 
       // Keep animating if not fully stabilized
@@ -40,8 +38,7 @@ export default function CustomCursor() {
         // Snap to exact target and pause loop
         current.current = { ...pos.current };
         if (dotRef.current) {
-          dotRef.current.style.left = `${pos.current.x}px`;
-          dotRef.current.style.top = `${pos.current.y}px`;
+          dotRef.current.style.transform = `translate3d(${pos.current.x}px, ${pos.current.y}px, 0) translate(-50%, -50%)`;
         }
         isRunning.current = false;
         rafId.current = null;
@@ -109,11 +106,14 @@ export default function CustomCursor() {
       aria-hidden="true"
       style={{
         position: 'fixed',
+        top: 0,
+        left: 0,
         borderRadius: '50%',
         pointerEvents: 'none',
         zIndex: 9999,
         transition: 'width 0.2s ease, height 0.2s ease, background 0.2s ease, border 0.2s ease',
         mixBlendMode: 'difference',
+        transform: 'translate3d(-100px, -100px, 0) translate(-50%, -50%)',
       }}
     />
   );

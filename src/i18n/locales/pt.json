@@ -32,13 +32,14 @@
   "hero": {
     "greeting": "Olá, eu sou",
     "name": "Moacir Neto",
-    "role": "Desenvolvedor Full Stack",
+    "role": "Desenvolvedor Backend",
     "subtitles": [
       "que constrói sistemas em produção.",
-      "com Go, PHP e React.",
-      "do backend ao deploy."
+      "com PHP, APIs e integrações.",
+      "do backend ao deploy.",
+      "com Go, Node.js e Python."
     ],
-    "description": "Sistemas reais — de CRMs B2B com IA e scraping em Go a integrações e automações com PHP e React.",
+    "description": "Desenvolvimento de sistemas reais — APIs, plataformas SaaS, integrações e automações com inteligência artificial.",
     "ctaProjects": "Ver Projetos",
     "ctaGithub": "GitHub",
     "ariaGithub": "Acessar perfil de Moacir Neto no GitHub",
@@ -47,12 +48,13 @@
   "about": {
     "sectionNumber": "01",
     "sectionTitle": "Sobre mim",
-    "bioP1": " Sou Desenvolvedor Full Stack com foco em backend, construo sistemas que vão do scraping com IA até plataformas completas em produção.",
-    "bioP2": "Na Evento Santo & Doar Digital desenvolvi um LMS completo: módulos de cursos, geração de diplomas personalizáveis, área do aluno com estatísticas, painel do tutor com ficha e frequência. Além disso, módulos de eventos, checkout, fila de espera, caravanas e integrações com Asaas e WhatsApp API.",
-    "bioP3": "Nos projetos pessoais fiz um CRM B2B em Go com pipeline de IA usando Gemini, workers assíncronos com Redis e gateway WhatsApp próprio — do zero ao Docker Compose com 7 serviços.",
+    "bioP1": "Desenvolvedor Backend com experiência profissional em PHP, CodeIgniter 4, MySQL, arquitetura de APIs REST, integrações de serviços externos e manutenção contínua de sistemas críticos em produção.",
+    "bioP2": "Na Doar Digital, trabalhei no desenvolvimento e manutenção de uma plataforma SaaS multi-tenant de eventos e doações. Participei da implementação de módulos de inscrições, checkout e gestão de participantes, além de integrações com Asaas e WhatsApp Business API, mensageria com RabbitMQ e correções de problemas de concorrência e desempenho.",
+    "bioP3": "Em paralelo, desenvolvo projetos independentes e ecossistemas autorais como o Sherlock Scraper, Alvora e VetOS AI, aprofundando minha vivência Full Stack e arquitetural com Go, Laravel, NestJS, TypeScript e Python, construindo plataformas SaaS, fluxos de automação e pipelines com inteligência artificial.",
     "bioP4": "Stack: PHP, React, TypeScript, Node.js, Python. Vivência com IoT — ESP32, sensores e instalação em campo.",
     "favoriteStack": "// stack favorita",
-    "portraitAlt": "Foto de perfil de Moacir Neto"
+    "portraitAlt": "Foto de perfil de Moacir Neto",
+    "portraitRole": "Desenvolvedor Backend"
   },
   "projectsSection": {
     "sectionNumber": "02",
