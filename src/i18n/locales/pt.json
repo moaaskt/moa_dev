@@ -48,8 +48,8 @@
   "about": {
     "sectionNumber": "01",
     "sectionTitle": "Sobre mim",
-    "bioP1": "Desenvolvedor Backend com experiência profissional sólida em PHP, CodeIgniter 4, MySQL, arquitetura de APIs REST, integrações de serviços externos e manutenção contínua de sistemas críticos em produção.",
-    "bioP2": "Na Doar Digital, atuo no desenvolvimento e sustentação de uma plataforma SaaS multi-tenant de eventos e captação de doações. Sou responsável por módulos centrais de inscrições, checkout, gestão de participantes, filas assíncronas com RabbitMQ e integrações diretas com gateways de pagamento (Asaas) e WhatsApp Business API, atuando ativamente na resolução de gargalos de concorrência, otimização de queries e estabilidade sob alto volume.",
+    "bioP1": "Desenvolvedor Backend com experiência profissional em PHP, CodeIgniter 4, MySQL, arquitetura de APIs REST, integrações de serviços externos e manutenção contínua de sistemas críticos em produção.",
+    "bioP2": "Na Doar Digital, trabalhei no desenvolvimento e manutenção de uma plataforma SaaS multi-tenant de eventos e doações. Participei da implementação de módulos de inscrições, checkout e gestão de participantes, além de integrações com Asaas e WhatsApp Business API, mensageria com RabbitMQ e correções de problemas de concorrência e desempenho.",
     "bioP3": "Em paralelo, desenvolvo projetos independentes e ecossistemas autorais como o Sherlock Scraper, Alvora e VetOS AI, aprofundando minha vivência Full Stack e arquitetural com Go, Laravel, NestJS, TypeScript e Python, construindo plataformas SaaS, fluxos de automação e pipelines com inteligência artificial.",
     "bioP4": "Stack: PHP, React, TypeScript, Node.js, Python. Vivência com IoT — ESP32, sensores e instalação em campo.",
     "favoriteStack": "// stack favorita",
