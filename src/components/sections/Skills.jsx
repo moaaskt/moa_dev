@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import {
-  SiReact, SiNextdotjs, SiTypescript, SiJavascript, SiHtml5, SiCss, SiTailwindcss,
+  SiReact, SiNextdotjs, SiTypescript, SiJavascript, SiHtml5, SiCss, SiTailwindcss, SiBootstrap,
   SiNodedotjs, SiPhp, SiLaravel, SiNestjs, SiGo, SiPython, SiCodeigniter, SiRabbitmq,
-  SiPostgresql, SiMysql, SiFirebase, SiSupabase,
+  SiPostgresql, SiMysql, SiFirebase, SiSupabase, SiRedis,
   SiDocker, SiPostman, SiGit, SiGithub, SiLinux, SiWordpress,
   SiCplusplus, SiEspressif, SiArduino,
 } from 'react-icons/si';
@@ -11,18 +11,6 @@ import { useTranslation } from 'react-i18next';
 import SectionHeader from '../ui/SectionHeader';
 
 const CATEGORIES = [
-  {
-    key: 'frontend',
-    skills: [
-      { label: 'React',      Icon: SiReact,       color: '#61DAFB' },
-      { label: 'Next.js',    Icon: SiNextdotjs,    color: '#f0f0f0' },
-      { label: 'TypeScript', Icon: SiTypescript,   color: '#3178C6' },
-      { label: 'JavaScript', Icon: SiJavascript,   color: '#F7DF1E' },
-      { label: 'HTML5',      Icon: SiHtml5,        color: '#E34F26' },
-      { label: 'CSS3',       Icon: SiCss,          color: '#1572B6' },
-      { label: 'Tailwind',   Icon: SiTailwindcss,  color: '#06B6D4' },
-    ],
-  },
   {
     key: 'backend',
     skills: [
@@ -34,7 +22,19 @@ const CATEGORIES = [
       { label: 'Python',      Icon: SiPython,      color: '#3776AB' },
       { label: 'CodeIgniter', Icon: SiCodeigniter, color: '#EF4223' },
       { label: 'RabbitMQ',    Icon: SiRabbitmq,    color: '#FF6600' },
-      { label: 'C++',         Icon: SiCplusplus,   color: '#00599C' },
+    ],
+  },
+  {
+    key: 'frontend',
+    skills: [
+      { label: 'React',      Icon: SiReact,       color: '#61DAFB' },
+      { label: 'Next.js',    Icon: SiNextdotjs,    color: '#f0f0f0' },
+      { label: 'TypeScript', Icon: SiTypescript,   color: '#3178C6' },
+      { label: 'JavaScript', Icon: SiJavascript,   color: '#F7DF1E' },
+      { label: 'HTML5',      Icon: SiHtml5,        color: '#E34F26' },
+      { label: 'CSS3',       Icon: SiCss,          color: '#1572B6' },
+      { label: 'Tailwind',   Icon: SiTailwindcss,  color: '#06B6D4' },
+      { label: 'Bootstrap',  Icon: SiBootstrap,    color: '#7952B3' },
     ],
   },
   {
@@ -42,6 +42,7 @@ const CATEGORIES = [
     skills: [
       { label: 'PostgreSQL', Icon: SiPostgresql, color: '#4169E1' },
       { label: 'MySQL',      Icon: SiMysql,      color: '#4479A1' },
+      { label: 'Redis',      Icon: SiRedis,      color: '#DC382D' },
       { label: 'Firebase',   Icon: SiFirebase,   color: '#FFCA28' },
       { label: 'Supabase',   Icon: SiSupabase,   color: '#3ECF8E' },
     ],
