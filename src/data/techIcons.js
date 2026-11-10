@@ -10,8 +10,9 @@ import {
   SiWhatsapp, SiPrisma,
   SiCplusplus, SiEspressif, SiArduino,
   SiLivewire, SiMercadopago,
+  SiFastapi, SiSqlite,
 } from 'react-icons/si';
-import { TbGps, TbBrain, TbCreditCard, TbWifi, TbSettings, TbRouter, TbAccessPoint, TbCpu, TbBrandOpenai, TbApi } from 'react-icons/tb';
+import { TbGps, TbBrain, TbCreditCard, TbWifi, TbSettings, TbRouter, TbAccessPoint, TbCpu, TbBrandOpenai, TbApi, TbBrowser } from 'react-icons/tb';
 
 export const TECH_ICONS = {
   'Next.js':       { icon: SiNextdotjs,    color: '#ffffff' },
@@ -78,4 +79,7 @@ export const TECH_ICONS = {
   'Groq':             { icon: TbBrandOpenai,  color: '#f55036' },
   'OpenRouter':       { icon: TbBrandOpenai,  color: '#6366F1' },
   'Mercado Pago':     { icon: SiMercadopago,  color: '#009ee3' },
+  'FastAPI':          { icon: SiFastapi,      color: '#009688' },
+  'Playwright':       { icon: TbBrowser,      color: '#2EAD33' },
+  'SQLite':           { icon: SiSqlite,       color: '#003B57' },
 };

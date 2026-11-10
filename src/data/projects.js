@@ -8,6 +8,10 @@ import petflixImage from '../assets/images/projects/petflix.webp';
 import radarAlfaImage from '../assets/images/projects/radaralfa.webp';
 import rsSistemasImage from '../assets/images/projects/rs-sistemas.webp';
 import alvoraImage from '../assets/images/projects/alvora.jpg';
+import buscavagImage from '../assets/images/projects/buscavag.jpg';
+import buscavagScrapersImg from '../assets/images/projects/buscavag-scrapers.jpg';
+import buscavagTerminalImg from '../assets/images/projects/buscavag-terminal.jpg';
+import buscavagScraplistImg from '../assets/images/projects/buscavag-scraplist.jpg';
 
 // Screenshots reais do ecossistema Sherlock Scraper & WhatsMiau
 import listagemLeadsImg from '../assets/images/projects/sherlock/listagemleads.png';
@@ -557,6 +561,163 @@ export const projects = [
       pt: 'A decisão de construir como monolito Laravel + Livewire 3 foi deliberada: elimina a complexidade de uma SPA separada, mantém o time-to-market baixo e ainda entrega reatividade real via WebSockets (Reverb). O isolamento multi-tenant foi implementado via Eloquent Global Scope em vez de middleware, garantindo que nenhuma query vaze entre tenants por omissão — a segurança é enforced no nível do ORM. Para IA, a estratégia de dual-provider (Groq para latência + OpenRouter para custo zero) com cascata automática de modelos gratuitos garante disponibilidade mesmo com limites de rate. A infraestrutura usa Laravel Octane com FrankenPHP, Redis para filas e cache, e Horizon para observabilidade das queues — escolhas que posicionam o projeto como referência de stack moderna no mercado brasileiro.',
       en: 'The decision to build as a Laravel + Livewire 3 monolith was deliberate: it eliminates the complexity of a separate SPA, keeps time-to-market low while still delivering real reactivity via WebSockets (Reverb). Multi-tenant isolation was implemented via Eloquent Global Scope rather than middleware, ensuring no query leaks between tenants by omission — security is enforced at the ORM level. For AI, the dual-provider strategy (Groq for latency + OpenRouter for zero cost) with automatic free model cascade guarantees availability even under rate limits. The infrastructure uses Laravel Octane with FrankenPHP, Redis for queues and cache, and Horizon for queue observability — choices that position the project as a modern stack reference in the Brazilian market.',
     },
+  },
+  {
+    id: 'buscavag',
+    title: 'BuscaVag',
+    description: {
+      pt: 'Plataforma de monitoramento de vagas em tecnologia com arquitetura híbrida TypeScript + Python. Orquestra conectores de scraping com concorrência controlada, deduplica vagas por fingerprint SHA-256, normaliza localizações e calcula compatibilidade com o perfil do candidato.',
+      en: 'Tech job monitoring platform built on a hybrid TypeScript + Python architecture. It orchestrates scraping connectors with controlled concurrency, deduplicates jobs using SHA-256 fingerprints, normalizes locations, and scores compatibility against the candidate profile.',
+    },
+    image: buscavagImage,
+    tags: [
+      'TypeScript',
+      'Python',
+      'Next.js',
+      'FastAPI',
+      'Playwright',
+      'SQLite',
+    ],
+    category: 'backend',
+    featured: true,
+    private: false,
+    links: {
+      github: 'https://github.com/moaaskt/Buscavag',
+      live: null,
+    },
+    year: 2026,
+    role: {
+      pt: 'Idealizador & Desenvolvedor Full Stack',
+      en: 'Creator & Full Stack Developer',
+    },
+    overview: {
+      pt: 'O BuscaVag surgiu de um problema prático: vagas de tecnologia estão espalhadas por dezenas de portais, agregadores, ATSs e redes sociais, muitas vezes republicadas com títulos diferentes e misturadas a funções não técnicas. O projeto automatiza essa busca com um pipeline de ingestão em TypeScript que executa mais de 30 conectores com limite de concorrência e timeout individual. Para portais com proteção anti-bot, a coleta é delegada a um microserviço Python em FastAPI que utiliza a biblioteca Scrapling, com fallback para os conectores nativos quando o serviço não está disponível. Cada vaga passa por filtros de recência, blacklist e whitelist de títulos, deduplicação por URL e fingerprint, normalização geográfica e classificação técnica antes de ser persistida em SQLite. Na base atual, há vagas registradas de 18 plataformas distintas. Sobre esses dados, a aplicação Next.js oferece a área do candidato, com análise de currículo e cálculo de compatibilidade, e um painel administrativo para operar e acompanhar os conectores.',
+      en: 'BuscaVag started from a practical problem: tech jobs are scattered across dozens of job boards, aggregators, ATSs, and social networks, often reposted under different titles and mixed with non-technical roles. The project automates this search with a TypeScript ingestion pipeline that runs 30+ connectors with a concurrency limit and per-connector timeouts. For job boards protected by anti-bot measures, scraping is delegated to a Python FastAPI microservice built on the Scrapling library, falling back to native connectors when the service is unavailable. Each job goes through recency filters, title blacklist and whitelist rules, URL and fingerprint deduplication, geographic normalization, and technical classification before being persisted in SQLite. The current database holds jobs from 18 different platforms. On top of this data, the Next.js application provides a candidate area with resume analysis and compatibility scoring, plus an admin panel to operate and monitor the connectors.',
+    },
+    highlights: [
+      {
+        pt: 'Arquitetura híbrida: o orquestrador em TypeScript se comunica via HTTP com um microserviço Python (FastAPI) e inicia o processo Uvicorn automaticamente quando o health check não responde.',
+        en: 'Hybrid architecture: the TypeScript orchestrator communicates over HTTP with a Python (FastAPI) microservice and automatically spawns the Uvicorn process when the health check does not respond.',
+      },
+      {
+        pt: 'Execução paralela com limite de 5 conectores simultâneos e timeout isolado por fonte, evitando que um portal lento ou instável bloqueie o ciclo inteiro.',
+        en: 'Parallel execution limited to 5 concurrent connectors with isolated per-source timeouts, preventing a slow or unstable job board from blocking the entire cycle.',
+      },
+      {
+        pt: 'Deduplicação multi-fonte: cada vaga é verificada por ID, URL e por um fingerprint SHA-256 gerado a partir de título, empresa e localização normalizados.',
+        en: 'Multi-source deduplication: each job is checked by ID, URL, and a SHA-256 fingerprint generated from normalized title, company, and location.',
+      },
+      {
+        pt: 'Geoparser próprio com mapeamento das 27 UFs e desambiguação de municípios homônimos, como São José (SC, SP ou PR), a partir do conector e do contexto da vaga.',
+        en: 'Custom geoparser mapping all 27 Brazilian states and disambiguating homonymous cities, such as São José (SC, SP, or PR), based on the connector and job context.',
+      },
+      {
+        pt: 'Algoritmo de compatibilidade com cinco dimensões ponderadas (stack 30%, cargo 20%, senioridade 20%, localização 20%, salário 10%) e tetos de pontuação para incompatibilidade de senioridade.',
+        en: 'Compatibility algorithm with five weighted dimensions (stack 30%, role 20%, seniority 20%, location 20%, salary 10%) and score caps for seniority mismatches.',
+      },
+      {
+        pt: 'Persistência em SQLite com better-sqlite3, modo WAL, prepared statements, transações para operações em lote e migrações automáticas de colunas.',
+        en: 'SQLite persistence with better-sqlite3, WAL mode, prepared statements, transactions for batch operations, and automatic column migrations.',
+      },
+    ],
+    features: [
+      {
+        title: { pt: 'Orquestração de Scraping', en: 'Scraping Orchestration' },
+        description: {
+          pt: 'Mais de 30 conectores implementados com Playwright, Cheerio e Axios, além de 8 fontes atendidas pelo motor Scrapling em Python. Execução agendada via node-cron ou disparada manualmente por conector.',
+          en: '30+ connectors built with Playwright, Cheerio, and Axios, plus 8 sources handled by the Python Scrapling engine. Runs on a node-cron schedule or can be triggered manually per connector.',
+        },
+      },
+      {
+        title: { pt: 'Triagem e Classificação de Vagas', en: 'Job Screening & Classification' },
+        description: {
+          pt: 'Filtros de recência, blacklist de cargos operacionais e whitelist de termos técnicos. A classificação de categoria, senioridade, stack e modelo de trabalho usa Gemini 2.5 Flash quando configurado, com um motor heurístico de regras como fallback.',
+          en: 'Recency filters, a blacklist of operational roles, and a whitelist of technical terms. Category, seniority, stack, and work model classification uses Gemini 2.5 Flash when configured, with a rule-based heuristic engine as fallback.',
+        },
+      },
+      {
+        title: { pt: 'Análise de Currículos', en: 'Resume Analysis' },
+        description: {
+          pt: 'Extração de texto de arquivos PDF (pypdf) e DOCX (python-docx) com limpeza de quebras de linha e termos técnicos fragmentados, seguida de identificação de competências, senioridade e stack principal.',
+          en: 'Text extraction from PDF (pypdf) and DOCX (python-docx) files, cleaning up broken lines and fragmented technical terms, followed by identification of skills, seniority, and primary stack.',
+        },
+      },
+      {
+        title: { pt: 'Compatibilidade Candidato × Vaga', en: 'Candidate × Job Matching' },
+        description: {
+          pt: 'Pontuação de 0 a 100 combinando stack, cargo, senioridade, localização e salário. Inclui parser de faixas salariais (como "8k - 12k" e "R$ 3.500,00") e bloqueio rígido para distâncias críticas de senioridade.',
+          en: 'A 0–100 score combining stack, role, seniority, location, and salary. Includes a salary range parser (such as "8k - 12k" and "R$ 3.500,00") and a hard block for critical seniority gaps.',
+        },
+      },
+      {
+        title: { pt: 'Painel Administrativo & Terminal SSE', en: 'Admin Panel & SSE Terminal' },
+        description: {
+          pt: 'Central de scrapers com telemetria por conector, execução individual ou global, expurgo de vagas rejeitadas e terminal de logs em tempo real via Server-Sent Events. Acesso administrativo com sessão isolada e suporte a TOTP.',
+          en: 'Scraper hub with per-connector telemetry, single or global execution, purging of rejected jobs, and a real-time log terminal via Server-Sent Events. Admin access uses an isolated session with TOTP support.',
+        },
+      },
+      {
+        title: { pt: 'Notificações no Telegram', en: 'Telegram Notifications' },
+        description: {
+          pt: 'Bot construído com GrammY que envia ao candidato as vagas compatíveis com o perfil, com controle de envio para evitar notificações duplicadas.',
+          en: 'GrammY-based bot that sends profile-compatible jobs to the candidate, with delivery tracking to avoid duplicate notifications.',
+        },
+      },
+    ],
+    technicalDecisions: {
+      pt: 'A separação entre TypeScript e Python foi uma decisão de ferramenta, não de moda: o ecossistema Node.js concentra a aplicação Next.js e a maior parte dos conectores, enquanto o Scrapling, disponível apenas em Python, foi isolado em um microserviço FastAPI acessado por HTTP. Essa fronteira permite que o pipeline continue funcionando com os conectores nativos quando o serviço Python está fora do ar. O SQLite em modo WAL foi escolhido por permitir leituras do dashboard enquanto os scrapers gravam, sem exigir um servidor de banco dedicado. Prepared statements e transações mantêm as operações em lote consistentes. A deduplicação combina URL e fingerprint porque a mesma vaga costuma aparecer em portais diferentes com URLs distintas. Na camada de classificação, o Gemini foi integrado de forma opcional: o motor heurístico de regras garante que o pipeline processe vagas mesmo sem chave de API ou cota disponível.',
+      en: 'Splitting the system between TypeScript and Python was a tooling decision: the Node.js ecosystem hosts the Next.js application and most connectors, while Scrapling, available only in Python, was isolated in a FastAPI microservice accessed over HTTP. This boundary lets the pipeline keep running with native connectors when the Python service is down. SQLite in WAL mode was chosen because it allows dashboard reads while scrapers write, without requiring a dedicated database server. Prepared statements and transactions keep batch operations consistent. Deduplication combines URL and fingerprint because the same job often appears on different boards under different URLs. In the classification layer, Gemini was integrated as an optional component: the rule-based heuristic engine ensures the pipeline still processes jobs without an API key or available quota.',
+    },
+    gallery: [
+      {
+        id: 'central-scrapers',
+        title: {
+          pt: 'Central de Scrapers & Ingestão',
+          en: 'Scraper & Ingestion Hub',
+        },
+        category: {
+          pt: 'Operação & Monitoramento',
+          en: 'Operations & Monitoring',
+        },
+        description: {
+          pt: 'Painel administrativo com telemetria dos conectores, execução global ou individual por fonte, expurgo de vagas rejeitadas e acesso ao terminal de logs em tempo real via SSE.',
+          en: 'Admin panel with connector telemetry, global or per-source execution, purging of rejected jobs, and access to the real-time SSE log terminal.',
+        },
+        image: buscavagScrapersImg,
+      },
+      {
+        id: 'terminal-logs',
+        title: {
+          pt: 'Terminal de Logs em Tempo Real',
+          en: 'Real-Time Log Terminal',
+        },
+        category: {
+          pt: 'Operação & Monitoramento',
+          en: 'Operations & Monitoring',
+        },
+        description: {
+          pt: 'Terminal administrativo com acompanhamento dos logs de execução dos scrapers em tempo real, utilizando Server-Sent Events (SSE).',
+          en: 'Administrative console with real-time scraper execution log tracking powered by Server-Sent Events (SSE).',
+        },
+        image: buscavagTerminalImg,
+      },
+      {
+        id: 'governanca-conectores',
+        title: {
+          pt: 'Governança de Conectores',
+          en: 'Connector Governance',
+        },
+        category: {
+          pt: 'Configuração & Governança',
+          en: 'Configuration & Governance',
+        },
+        description: {
+          pt: 'Interface de configuração dos conectores, permitindo gerenciar métodos de coleta, ativação, URLs e timeouts individuais.',
+          en: 'Connector configuration interface enabling the management of scraping methods, status activation, URLs, and individual timeouts.',
+        },
+        image: buscavagScraplistImg,
+      },
+    ],
   },
   {
     id: 'rastrecob',
